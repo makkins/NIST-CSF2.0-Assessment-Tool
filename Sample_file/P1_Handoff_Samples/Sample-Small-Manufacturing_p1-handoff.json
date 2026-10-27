@@ -1,0 +1,5521 @@
+{
+ "schema": "csf-p1-handoff/1",
+ "engagement": {
+  "client": "Sample: Siam Precision Parts (fictional)",
+  "alias": "Client B",
+  "reference": "SAMPLE-002",
+  "assessor": "Sample Assessor, Senior Consultant",
+  "assessmentDate": "2026-09-14",
+  "cutoff": "2026-10-02",
+  "scope": "One plant and head office, ERP, file server, Microsoft 365. Fictional example data.",
+  "scale": "S",
+  "industry": "mfg",
+  "packOptions": [],
+  "flags": {
+   "cii": false,
+   "pdpa": true,
+   "cca": true,
+   "iso": false,
+   "cloud": true,
+   "mssp": false,
+   "ai": false,
+   "dev": false
+  },
+  "ot": false,
+  "employees": "160",
+  "systemsInScope": "9",
+  "sites": "1",
+  "appVersion": "2.0.0",
+  "rubricVersion": "1.2",
+  "stateSchema": "csf-ig/4",
+  "questionSetHash": "37cced1a",
+  "exported": "2026-10-25T11:03:08.740Z",
+  "sourceHash": "1ba200bd",
+  "aliased": false
+ },
+ "subcategories": [
+  {
+   "id": "GV.OC-01",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OC-02",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OC-03",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S4",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-001"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OC-04",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OC-05",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-01",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-02",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-03",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-04",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-05",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-06",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RM-07",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RR-01",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RR-02",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RR-03",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Finance Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.RR-04",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S4",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.PO-01",
+   "function": "GV",
+   "category": "GV.PO",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.PO-02",
+   "function": "GV",
+   "category": "GV.PO",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OV-01",
+   "function": "GV",
+   "category": "GV.OV",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OV-02",
+   "function": "GV",
+   "category": "GV.OV",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.OV-03",
+   "function": "GV",
+   "category": "GV.OV",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-01",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-02",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-03",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-04",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-05",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-40"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-06",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-07",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-08",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-09",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "GV.SC-10",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-01",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-002"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [
+    "OT-62443"
+   ],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-02",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "lg",
+    "pct": 83
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-03",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "full",
+    "pct": 100
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-04",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-05",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-07",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-39"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.AM-08",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-01",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "lg",
+    "pct": 83
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-02",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-03",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-04",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-05",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-06",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-07",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-08",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-09",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.RA-10",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.IM-01",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.IM-02",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.IM-03",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "ID.IM-04",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AA-01",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 60
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AA-02",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AA-03",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 17
+   },
+   "statements": [
+    {
+     "person": "Sample IT Manager",
+     "stance": "P",
+     "text": "Sample: VPN uses a password only."
+    },
+    {
+     "person": "Sample Managing Director",
+     "stance": "Y",
+     "text": "Sample: remote access is secured by the IT vendor."
+    }
+   ],
+   "conflict": "Interviewees gave different answers.",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AA-04",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AA-05",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 20
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37S"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AA-06",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S9",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AT-01",
+   "function": "PR",
+   "category": "PR.AT",
+   "session": "S4",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.AT-02",
+   "function": "PR",
+   "category": "PR.AT",
+   "session": "S4",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.DS-01",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37S"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.DS-02",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37S"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.DS-10",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.DS-11",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 30
+   },
+   "statements": [
+    {
+     "person": "Sample IT Manager",
+     "stance": "P",
+     "text": "Sample: weekly ERP copy to a USB disk; never restored."
+    }
+   ],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.PS-01",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "lg",
+    "pct": 75
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [
+    "OT-62443"
+   ],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.PS-02",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 67
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.PS-03",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.PS-04",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CCA-26"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.PS-05",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 25
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.PS-06",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "NA",
+   "countedTier": "NA",
+   "evidenceLevel": "",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [],
+   "notes": "Sample: no in-house software development; all systems are packaged software.",
+   "gap": ""
+  },
+  {
+   "id": "PR.IR-01",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [
+    "OT-62443"
+   ],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.IR-02",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S9",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-003"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.IR-03",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "PR.IR-04",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.CM-01",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "full",
+    "pct": 100
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.CM-02",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S9",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.CM-03",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 25
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.CM-06",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.CM-09",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.AE-02",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.AE-03",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.AE-04",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.AE-06",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.AE-07",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "DE.AE-08",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MA-01",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37B"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Purchasing Supervisor"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MA-02",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MA-03",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MA-04",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MA-05",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.AN-03",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.AN-06",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.AN-07",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.AN-08",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.CO-02",
+   "function": "RS",
+   "category": "RS.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37B"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.CO-03",
+   "function": "RS",
+   "category": "RS.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MI-01",
+   "function": "RS",
+   "category": "RS.MI",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RS.MI-02",
+   "function": "RS",
+   "category": "RS.MI",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.RP-01",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.RP-02",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.RP-03",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [
+    "OT-62443"
+   ],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.RP-04",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.RP-05",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.RP-06",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.CO-03",
+   "function": "RC",
+   "category": "RC.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  },
+  {
+   "id": "RC.CO-04",
+   "function": "RC",
+   "category": "RC.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Managing Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice depends on the IT Manager and is not written down or approved."
+  }
+ ],
+ "categories": [
+  {
+   "id": "GV.OC",
+   "function": "GV",
+   "subcategories": 5,
+   "rated": 5,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "GV.RM",
+   "function": "GV",
+   "subcategories": 7,
+   "rated": 7,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "N"
+  },
+  {
+   "id": "GV.RR",
+   "function": "GV",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "GV.PO",
+   "function": "GV",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "GV.OV",
+   "function": "GV",
+   "subcategories": 3,
+   "rated": 3,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "GV.SC",
+   "function": "GV",
+   "subcategories": 10,
+   "rated": 10,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "GV.SC-05"
+   ],
+   "screening": "N"
+  },
+  {
+   "id": "ID.AM",
+   "function": "ID",
+   "subcategories": 7,
+   "rated": 7,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "ID.AM-07"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "ID.RA",
+   "function": "ID",
+   "subcategories": 10,
+   "rated": 10,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "ID.IM",
+   "function": "ID",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "PR.AA",
+   "function": "PR",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 2,
+   "mandatedBelowTier2": [
+    "PR.AA-05"
+   ],
+   "screening": "P"
+  },
+  {
+   "id": "PR.AT",
+   "function": "PR",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "N"
+  },
+  {
+   "id": "PR.DS",
+   "function": "PR",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 1,
+   "mandatedBelowTier2": [
+    "PR.DS-01",
+    "PR.DS-02"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "PR.PS",
+   "function": "PR",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "PR.PS-04"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "PR.IR",
+   "function": "PR",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "DE.CM",
+   "function": "DE",
+   "subcategories": 5,
+   "rated": 5,
+   "suggestedTier": 0,
+   "currentTier": 0,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "N"
+  },
+  {
+   "id": "DE.AE",
+   "function": "DE",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 0,
+   "currentTier": 0,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "N"
+  },
+  {
+   "id": "RS.MA",
+   "function": "RS",
+   "subcategories": 5,
+   "rated": 5,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "RS.MA-01"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "RS.AN",
+   "function": "RS",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RS.CO",
+   "function": "RS",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "RS.CO-02"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "RS.MI",
+   "function": "RS",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RC.RP",
+   "function": "RC",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RC.CO",
+   "function": "RC",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  }
+ ],
+ "systems": [
+  {
+   "id": "SYS-01",
+   "name": "ERP",
+   "service": "Sales orders, production planning, inventory, accounting",
+   "owner": "Sample Finance Manager",
+   "hosting": "onprem",
+   "data": "M",
+   "internet": "N",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "5",
+    "financial": "4",
+    "legal": "3",
+    "reputation": "3",
+    "healthSafety": "1",
+    "personalData": "2"
+   },
+   "tolerableDowntime": "1d",
+   "manualFallback": "N",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "cotsc",
+    "C2": "staff",
+    "C3": "local",
+    "C4": "none",
+    "C5": "many",
+    "C6": "no",
+    "C7": "vpn",
+    "C8": "late",
+    "C9": "online",
+    "C11": "pd",
+    "F1": "bus",
+    "F2": "man",
+    "F3": "never",
+    "F4": "never",
+    "F5": "no",
+    "F6": "local",
+    "F7": "av",
+    "F8": "some",
+    "F9": "no",
+    "F10": "flat"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-02",
+   "name": "File server",
+   "service": "Drawings, quality records, shared folders",
+   "owner": "Sample IT Manager",
+   "hosting": "onprem",
+   "data": "M",
+   "internet": "N",
+   "vendor": "N",
+   "shared": "Y",
+   "impact": {
+    "operations": "4",
+    "financial": "2",
+    "legal": "3",
+    "reputation": "2",
+    "healthSafety": "1",
+    "personalData": "1"
+   },
+   "tolerableDowntime": "1d",
+   "manualFallback": "Y",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "cots",
+    "C2": "staff",
+    "C3": "dir",
+    "C4": "none",
+    "C5": "shared",
+    "C6": "no",
+    "C7": "none",
+    "C8": "late",
+    "C9": "imm",
+    "C11": "none",
+    "F1": "it",
+    "F2": "noap",
+    "F3": "never",
+    "F4": "never",
+    "F5": "no",
+    "F6": "local",
+    "F7": "av",
+    "F8": "none",
+    "F9": "no",
+    "F10": "flat"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-03",
+   "name": "Microsoft 365",
+   "service": "Email and Teams",
+   "owner": "Sample IT Manager",
+   "hosting": "saas",
+   "data": "M",
+   "internet": "Y",
+   "vendor": "N",
+   "shared": "Y",
+   "impact": {
+    "operations": "3",
+    "financial": "2",
+    "legal": "2",
+    "reputation": "3",
+    "healthSafety": "1",
+    "personalData": "2"
+   },
+   "tolerableDowntime": "1d",
+   "manualFallback": "N",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "saas",
+    "C2": "staff",
+    "C3": "sso",
+    "C4": "adm",
+    "C5": "many",
+    "C7": "none",
+    "C8": "ok",
+    "C9": "none",
+    "C11": "pd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-04",
+   "name": "Payroll",
+   "service": "Monthly payroll",
+   "owner": "Sample HR Manager",
+   "hosting": "saas",
+   "data": "H",
+   "internet": "Y",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "2",
+    "financial": "3",
+    "legal": "4",
+    "reputation": "3",
+    "healthSafety": "1",
+    "personalData": "4"
+   },
+   "tolerableDowntime": "1w",
+   "manualFallback": "Y",
+   "criticality": "B",
+   "sampled": false,
+   "profile": {
+    "C1": "saas",
+    "C2": "staff",
+    "C3": "local",
+    "C4": "none",
+    "C5": "named",
+    "C7": "none",
+    "C8": "ok",
+    "C9": "vend",
+    "C11": "spd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-05",
+   "name": "Quality inspection PCs",
+   "service": "Measurement software on standalone PCs at the plant",
+   "owner": "Sample Quality Manager",
+   "hosting": "onprem",
+   "data": "L",
+   "internet": "N",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "3",
+    "financial": "2",
+    "legal": "3",
+    "reputation": "3",
+    "healthSafety": "1",
+    "personalData": "1"
+   },
+   "tolerableDowntime": "1w",
+   "manualFallback": "Y",
+   "criticality": "B",
+   "sampled": false,
+   "profile": {
+    "C1": "cots",
+    "C2": "staff",
+    "C3": "shared",
+    "C4": "none",
+    "C5": "shared",
+    "C6": "no",
+    "C7": "sup",
+    "C8": "eol",
+    "C9": "less",
+    "C11": "none"
+   },
+   "unconfirmed": []
+  }
+ ],
+ "vendors": [
+  {
+   "id": "VEN-01",
+   "name": "Sample ERP vendor",
+   "profile": {
+    "V1": "sw",
+    "V2": "rem",
+    "V3": "pd",
+    "V4": "none",
+    "V5": "no",
+    "V6": "never",
+    "V7": "A"
+   },
+   "systems": [
+    "SYS-01"
+   ],
+   "note": "Sample: remote support with a shared password."
+  },
+  {
+   "id": "VEN-02",
+   "name": "Sample IT support company",
+   "profile": {
+    "V1": "msp",
+    "V2": "site",
+    "V3": "pd",
+    "V4": "conf",
+    "V5": "no",
+    "V6": "never",
+    "V7": "B"
+   },
+   "systems": [
+    "SYS-02"
+   ],
+   "note": ""
+  }
+ ],
+ "environment": {
+  "fields": {
+   "dc": "Sample: rack in the head office",
+   "dr": "none",
+   "seg": "flat",
+   "rem": "vpn",
+   "ws": "85",
+   "eol": "5to20",
+   "shws": "yes",
+   "otn": "0",
+   "bka": "online",
+   "ith": "3",
+   "secr": "none",
+   "otp": "na",
+   "outs": [
+    "sd"
+   ]
+  },
+  "evidence": {},
+  "notes": {
+   "otp": "Sample: production machines are standalone and not connected to the office network."
+  },
+  "tables": {
+   "sites": [
+    {
+     "id": "SITE-01",
+     "n": 1,
+     "name": "Sample: Plant and head office, Chonburi",
+     "type": "oth",
+     "staff": "160"
+    }
+   ],
+   "tools": [
+    {
+     "id": "TOOL-01",
+     "n": 1,
+     "cap": "fw",
+     "prod": "Sample: small business firewall",
+     "cov": "full",
+     "op": "inh",
+     "st": "use"
+    },
+    {
+     "id": "TOOL-02",
+     "n": 2,
+     "cap": "av",
+     "prod": "Sample: free antivirus",
+     "cov": "part",
+     "op": "inh",
+     "st": "use",
+     "note": "Sample: some PCs have no antivirus"
+    },
+    {
+     "id": "TOOL-03",
+     "n": 3,
+     "cap": "bkp",
+     "prod": "Sample: external USB disk",
+     "cov": "part",
+     "op": "inh",
+     "st": "use",
+     "note": "Sample: weekly copy of the ERP database, disk kept in the server rack"
+    },
+    {
+     "id": "TOOL-04",
+     "n": 4,
+     "cap": "mfa",
+     "prod": "Sample: Microsoft 365 MFA",
+     "cov": "none",
+     "op": "nobody",
+     "st": "bnd",
+     "note": "Sample: licensed but not turned on"
+    },
+    {
+     "id": "TOOL-05",
+     "n": 5,
+     "cap": "log",
+     "prod": "",
+     "cov": "none",
+     "op": "nobody",
+     "st": "plan",
+     "note": "Sample: no central logging"
+    }
+   ],
+   "hist": [
+    {
+     "id": "HIST-01",
+     "n": 1,
+     "date": "2025-11-03",
+     "type": "mal",
+     "sys": "File server",
+     "imp": "Sample: a USB virus spread to five office PCs; cleaned within one day",
+     "rep": "no"
+    }
+   ],
+   "chg": [
+    {
+     "id": "CHG-01",
+     "n": 1,
+     "proj": "Sample: ERP move to vendor cloud",
+     "sys": [
+      0
+     ],
+     "date": "2027-06-30",
+     "st": "plan"
+    }
+   ],
+   "prior": []
+  }
+ },
+ "technicalChecks": [
+  {
+   "id": "AST-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-01"
+   ]
+  },
+  {
+   "id": "AST-02",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-01",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "AST-03",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-02",
+    "PR.PS-02"
+   ]
+  },
+  {
+   "id": "AST-05",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-03"
+   ]
+  },
+  {
+   "id": "IAM-01",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-03"
+   ]
+  },
+  {
+   "id": "IAM-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-01",
+    "GV.RR-04"
+   ]
+  },
+  {
+   "id": "IAM-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "IAM-05",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "IAM-06",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-01"
+   ]
+  },
+  {
+   "id": "IAM-08",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-02"
+   ]
+  },
+  {
+   "id": "EP-01",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "DE.CM-09",
+    "PR.PS-05"
+   ]
+  },
+  {
+   "id": "EP-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-05",
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "EP-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-10"
+   ]
+  },
+  {
+   "id": "EP-05",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-01"
+   ]
+  },
+  {
+   "id": "EP-06",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "NET-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.IR-01",
+    "ID.RA-07"
+   ]
+  },
+  {
+   "id": "NET-03",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-03",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "NET-04",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.IR-01",
+    "PR.PS-01"
+   ]
+  },
+  {
+   "id": "NET-06",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.IR-04"
+   ]
+  },
+  {
+   "id": "EML-01",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-02",
+    "DE.CM-09"
+   ]
+  },
+  {
+   "id": "EML-02",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "DE.CM-09",
+    "PR.PS-05"
+   ]
+  },
+  {
+   "id": "EML-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AT-01",
+    "RS.MA-02"
+   ]
+  },
+  {
+   "id": "DATA-01",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-01",
+    "ID.AM-07"
+   ]
+  },
+  {
+   "id": "DATA-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-02"
+   ]
+  },
+  {
+   "id": "DATA-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-01",
+    "PR.DS-02"
+   ]
+  },
+  {
+   "id": "DATA-05",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-08",
+    "PR.PS-03"
+   ]
+  },
+  {
+   "id": "DATA-06",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-01"
+   ]
+  },
+  {
+   "id": "BKP-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "BKP-03",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-11",
+    "RC.RP-03"
+   ]
+  },
+  {
+   "id": "BKP-04",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "VUL-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.RA-01"
+   ]
+  },
+  {
+   "id": "VUL-02",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-02",
+    "ID.RA-06"
+   ]
+  },
+  {
+   "id": "VUL-03",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.RA-01",
+    "ID.IM-02"
+   ]
+  },
+  {
+   "id": "VUL-05",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-02",
+    "PR.PS-03"
+   ]
+  },
+  {
+   "id": "LOG-01",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-04"
+   ]
+  },
+  {
+   "id": "LOG-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-04"
+   ]
+  },
+  {
+   "id": "LOG-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "DE.CM-01",
+    "DE.AE-02",
+    "DE.AE-06"
+   ]
+  },
+  {
+   "id": "LOG-05",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "DE.AE-03",
+    "DE.CM-03"
+   ]
+  },
+  {
+   "id": "LOG-06",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "DE.CM-03",
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "CLD-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-01",
+    "DE.CM-09"
+   ]
+  },
+  {
+   "id": "CLD-03",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "GV.SC-02",
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "CLD-04",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-05",
+    "DE.CM-06"
+   ]
+  },
+  {
+   "id": "APP-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-06",
+    "ID.RA-01"
+   ]
+  },
+  {
+   "id": "APP-03",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-06",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "APP-04",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-06",
+    "GV.SC-09"
+   ]
+  },
+  {
+   "id": "SUP-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "GV.SC-04",
+    "DE.CM-06"
+   ]
+  },
+  {
+   "id": "SUP-02",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "DE.CM-06"
+   ]
+  },
+  {
+   "id": "SUP-03",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "GV.SC-10"
+   ]
+  },
+  {
+   "id": "OT-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "OT-03",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.PS-02",
+    "GV.SC-05"
+   ]
+  },
+  {
+   "id": "PHY-01",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-06"
+   ]
+  },
+  {
+   "id": "PHY-03",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.IR-02"
+   ]
+  },
+  {
+   "id": "IR-01",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "RS.MA-01",
+    "RS.MI-01"
+   ]
+  },
+  {
+   "id": "IR-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "RS.MI-01"
+   ]
+  },
+  {
+   "id": "IR-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.IM-02",
+    "ID.IM-04"
+   ]
+  },
+  {
+   "id": "IR-05",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "RS.CO-02",
+    "RS.MA-04"
+   ]
+  },
+  {
+   "id": "EP-07",
+   "result": "P",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-05",
+    "PR.DS-01",
+    "PR.PS-01"
+   ]
+  },
+  {
+   "id": "DATA-08",
+   "result": "Y",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-02",
+    "GV.PO-01",
+    "PR.DS-01"
+   ]
+  },
+  {
+   "id": "IAM-09",
+   "result": "N",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "PR.AA-05",
+    "PR.AA-01"
+   ]
+  },
+  {
+   "id": "AST-06",
+   "result": "NA",
+   "note": "Sample: answer from the IT lead.",
+   "subcategories": [
+    "ID.AM-01",
+    "ID.RA-01"
+   ]
+  }
+ ],
+ "documents": [
+  {
+   "id": "GV-CHR-001",
+   "title": "Cybersecurity Governance Charter",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-REG-001",
+   "title": "Legal, Regulatory, and Contractual Requirements Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-STM-001",
+   "title": "Risk Appetite and Tolerance Statement",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-002",
+   "title": "Cybersecurity Risk Management Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-PRC-001",
+   "title": "Risk Assessment and Treatment Methodology",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-CHR-002",
+   "title": "Information Security Steering Committee Terms of Reference",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-REG-003",
+   "title": "Cybersecurity Roles, Responsibilities, and RACI Matrix",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-STD-001",
+   "title": "Human Resources Security Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-FRM-002",
+   "title": "Confidentiality and Non-Disclosure Agreement",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-FRM-003",
+   "title": "Employee Offboarding Security Checklist",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-001",
+   "title": "Information Security Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PRC-002",
+   "title": "Document Control Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-POL-003",
+   "title": "Acceptable Use Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PRC-003",
+   "title": "Policy Exception Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-POL-004",
+   "title": "Personal Data Protection Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-REG-007",
+   "title": "Record of Processing Activities (ROPA)",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-TPL-002",
+   "title": "Privacy Notice Template",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-PRC-005",
+   "title": "Data Subject Rights Request Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-TPL-004",
+   "title": "Data Processing Agreement Template",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-006",
+   "title": "Third-Party and Supply Chain Security Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-REG-009",
+   "title": "Supplier Inventory and Criticality Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-STD-001",
+   "title": "Asset Management Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "ID-REG-001",
+   "title": "Hardware Asset Inventory",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-REG-002",
+   "title": "Software and Service Inventory",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-REG-003",
+   "title": "Data Inventory and Data Flow Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-RPT-001",
+   "title": "Network Architecture and Data Flow Diagram",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-RPT-002",
+   "title": "Business Impact Analysis (BIA)",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-REG-005",
+   "title": "IT and Cybersecurity Risk Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-STD-002",
+   "title": "Vulnerability Scanning and Remediation Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-POL-001",
+   "title": "Access Control Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-001",
+   "title": "Identity and Authentication Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-STD-002",
+   "title": "Privileged Access Management Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-003",
+   "title": "Remote Access Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-PRC-001",
+   "title": "User Access Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-PRC-002",
+   "title": "User Access Review Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-FRM-001",
+   "title": "User Access Request Form",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-REG-001",
+   "title": "Privileged Account Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-PLN-001",
+   "title": "Security Awareness and Training Program",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-POL-003",
+   "title": "Data Protection and Classification Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-004",
+   "title": "Information Classification and Handling Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-006",
+   "title": "Backup Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-PRC-005",
+   "title": "Backup and Restore Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-REC-003",
+   "title": "Backup and Restore Test Record",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-PRC-006",
+   "title": "Change Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-PRC-007",
+   "title": "Patch Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-011",
+   "title": "Logging Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-STD-012",
+   "title": "Endpoint Protection Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-STD-016",
+   "title": "Network Security Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-STD-002",
+   "title": "Incident Classification and Severity Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "RS-PLN-001",
+   "title": "Cybersecurity Incident Response Plan",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "RS-PRC-001",
+   "title": "Incident Handling Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PLB-001",
+   "title": "Ransomware Response Playbook",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PLB-003",
+   "title": "Personal Data Breach Response Playbook",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-FRM-001",
+   "title": "Incident Report Form",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-REG-001",
+   "title": "Incident Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-REG-002",
+   "title": "Incident Response Contact List",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "RS-PRC-003",
+   "title": "Incident Notification and Communication Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-PLN-001",
+   "title": "Business Continuity Plan (BCP)",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "RC-PLN-002",
+   "title": "IT Disaster Recovery Plan (DRP)",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  }
+ ],
+ "evidence": [
+  {
+   "id": "EV-SA-001",
+   "kind": "doc",
+   "title": "Sample: document supporting GV.OC-03",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-09-16",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "GV.OC-03"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-002",
+   "kind": "demo",
+   "title": "Sample: shown live for ID.AM-01",
+   "clientRef": "",
+   "recordDate": "2026-09-16",
+   "received": "2026-09-16",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "ID.AM-01"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-003",
+   "kind": "rec",
+   "title": "Sample: record supporting PR.IR-02",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-09-16",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.IR-02"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  }
+ ],
+ "observations": [
+  {
+   "id": "OBS-01",
+   "type": "vuln",
+   "system": "File server",
+   "description": "Sample: the Everyone group has write access to the shared drawings folder. Observed only; not tested.",
+   "severity": "M",
+   "internet": "N",
+   "subcategories": "PR.AA-05, PR.DS-01",
+   "status": "notified",
+   "date": "2026-09-15"
+  }
+ ],
+ "requests": [
+  {
+   "item": "GV-REG-003 Cybersecurity Roles, Responsibilities, and RACI Matrix",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-REG-001 Legal, Regulatory, and Contractual Requirements Register",
+   "owner": "Legal Counsel",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-POL-001 Information Security Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-FRM-001 Incident Report Form",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-REG-001 Incident Register",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-006 Backup Standard",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-REG-001 Privileged Account Register",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-RPT-001 Network Architecture and Data Flow Diagram",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-REG-003 Data Inventory and Data Flow Register",
+   "owner": "Data Protection Officer (DPO)",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-REG-009 Supplier Inventory and Criticality Register",
+   "owner": "Procurement Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-RPT-002 Business Impact Analysis (BIA)",
+   "owner": "Business Continuity Management (BCM) Coordinator",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-STM-001 Risk Appetite and Tolerance Statement",
+   "owner": "Chief Risk Officer (CRO) or Enterprise Risk Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PLB-001 Ransomware Response Playbook",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-002 Privileged Access Management Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-POL-003 Acceptable Use Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-POL-001 Access Control Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-POL-003 Data Protection and Classification Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-STD-001 Human Resources Security Standard",
+   "owner": "Human Resources Director",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-FRM-002 Confidentiality and Non-Disclosure Agreement",
+   "owner": "Legal Counsel",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-FRM-003 Employee Offboarding Security Checklist",
+   "owner": "Human Resources Director",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-TPL-004 Data Processing Agreement Template",
+   "owner": "Data Protection Officer (DPO)",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-PRC-005 Data Subject Rights Request Procedure",
+   "owner": "Data Protection Officer (DPO)",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-STD-002 Vulnerability Scanning and Remediation Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-004 Information Classification and Handling Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-PRC-006 Change Management Procedure",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-PRC-007 Patch Management Procedure",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-016 Network Security Standard",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-FRM-001 User Access Request Form",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PRC-001 Incident Handling Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PLB-003 Personal Data Breach Response Playbook",
+   "owner": "Data Protection Officer (DPO)",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PRC-003 Incident Notification and Communication Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  }
+ ],
+ "landscape": {
+  "locked": true,
+  "lockedAt": "2026-10-02T17:00:00.000Z",
+  "facts": [
+   {
+    "id": "LF-01",
+    "block": "Systems",
+    "text": "5 business systems are listed; 3 are Criticality A (ERP, File server, Microsoft 365).",
+    "evidence": [
+     "EV-SA-001"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-02",
+    "block": "Identity",
+    "text": "Sample: licensed but not turned on",
+    "evidence": [
+     "TOOL-04"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-03",
+    "block": "Backup",
+    "text": "Sample: backups run on schedule; restore tests are not recorded for every critical system.",
+    "evidence": [
+     "EV-SA-003"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-04",
+    "block": "Monitoring",
+    "text": "Sample: no central logging",
+    "evidence": [
+     "TOOL-05"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-05",
+    "block": "Suppliers",
+    "text": "2 suppliers with access to systems or data are recorded.",
+    "evidence": [
+     "EV-SA-002"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-06",
+    "block": "Tools",
+    "text": "Sample: Microsoft 365 MFA is bought but not deployed.",
+    "evidence": [
+     "TOOL-04"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-07",
+    "block": "Incidents",
+    "text": "Sample: a USB virus spread to five office PCs; cleaned within one day",
+    "evidence": [
+     "HIST-01"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-08",
+    "block": "Changes",
+    "text": "Sample: ERP move to vendor cloud, target 2027-06-30.",
+    "evidence": [
+     "CHG-01"
+    ],
+    "source": "manual"
+   }
+  ]
+ }
+}

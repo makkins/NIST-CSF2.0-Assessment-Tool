@@ -1,0 +1,403 @@
+{
+ "schema": "csf-gap-analyst/2",
+ "function": "RC",
+ "round": 3,
+ "categories": [
+  {
+   "categoryId": "RC.RP",
+   "keyMessage": {
+    "found": "HIS and Active Directory will not recover within tolerable downtime and no restore has been tested.",
+    "closes": "Agree recovery objectives for HIS, PACS, and LIS and test a restore with integrity checks."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-RC.RP-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No recovery plan based on agreed recovery objectives",
+     "statement": "Recovery objectives and restore order are not agreed, so no plan matches what HIS, PACS, and Active Directory need.",
+     "supportingFacts": [
+      {
+       "fact": "HIS and Active Directory will not recover within tolerable downtime.",
+       "evidence": [
+        "F5:HIS",
+        "F5:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "A recovery site or cloud option was not confirmed.",
+       "evidence": [
+        "BKP-05"
+       ]
+      },
+      {
+       "fact": "No restore order or end-of-recovery criteria are defined.",
+       "evidence": [
+        "RC.RP-02",
+        "RC.RP-06"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Active Directory and network core"
+      ],
+      "likely": [
+       "LIS"
+      ],
+      "notChecked": "Recovery of LIS and ERP was not profiled"
+     },
+     "linkedSubcategories": [
+      "RC.RP-01",
+      "RC.RP-02",
+      "RC.RP-04",
+      "RC.RP-06"
+     ],
+     "evidence": [
+      "F5:HIS",
+      "F5:Active Directory and network core",
+      "BKP-05",
+      "RC.RP-02",
+      "RC.RP-06"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Skills"
+     ],
+     "consequence": "Recovery after ransomware is unplanned, so clinical systems return late and in the wrong order.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "No plan exists for Criticality A systems and the threat is active.",
+      "evidence": [
+       "F5:HIS",
+       "F5:Active Directory and network core",
+       "BKP-05"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Unplanned recovery stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Unplanned recovery adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Unplanned recovery triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Unplanned recovery damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Unplanned recovery delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Unplanned recovery exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RC.RP-01-01"
+      ],
+      "find": [
+       "IMP-RC.RP-01-02"
+      ],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-RC.RP-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Backups and restored systems are never verified",
+     "statement": "No restore has been tested, so CMC does not know whether backups work or how long recovery takes.",
+     "supportingFacts": [
+      {
+       "fact": "No restore test ran on HIS, Microsoft 365, or Active Directory in 12 months.",
+       "evidence": [
+        "F4:HIS",
+        "F4:Microsoft 365",
+        "F4:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "Restore tests do not measure actual recovery time.",
+       "evidence": [
+        "BKP-03"
+       ]
+      },
+      {
+       "fact": "Backup jobs are monitored only in part.",
+       "evidence": [
+        "BKP-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "Microsoft 365",
+       "Active Directory and network core"
+      ],
+      "likely": [
+       "PACS"
+      ],
+      "notChecked": "PACS restore testing is unknown"
+     },
+     "linkedSubcategories": [
+      "RC.RP-03",
+      "RC.RP-05"
+     ],
+     "evidence": [
+      "F4:HIS",
+      "F4:Microsoft 365",
+      "F4:Active Directory and network core",
+      "BKP-03",
+      "BKP-04"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Restores fail or bring back infected data, and clinical staff work without a tested manual fallback.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Restore testing is Poor on Criticality A systems and the threat is active.",
+      "evidence": [
+       "F4:HIS",
+       "F4:Microsoft 365",
+       "F4:Active Directory and network core"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Failed restore stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Failed restore adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Failed restore triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Failed restore damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Failed restore delays or disrupts patient care."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RC.RP-02-02"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-RC.RP-02-01"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "RC.CO",
+   "keyMessage": {
+    "found": "No process tells patients, partners, and regulators how recovery is progressing.",
+    "closes": "Define the recovery communication process and approve a spokesperson."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-RC.CO-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No process to communicate during recovery",
+     "statement": "No process or spokesperson informs patients, referring hospitals, and regulators as services return.",
+     "supportingFacts": [
+      {
+       "fact": "No recovery communication process or approved spokesperson exists.",
+       "evidence": [
+        "RC.CO-03",
+        "RC.CO-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Existing stakeholder lists were not reviewed"
+     },
+     "linkedSubcategories": [
+      "RC.CO-03",
+      "RC.CO-04"
+     ],
+     "evidence": [
+      "RC.CO-03",
+      "RC.CO-04"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Recovery updates are informal and inconsistent, which prolongs loss of trust.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Process gap that needs an incident before harm.",
+      "evidence": [
+       "RC.CO-03",
+       "RC.CO-04"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Inconsistent updates damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [],
+      "prevent": [
+       "IMP-RC.CO-01-01"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-RC.RP-01-01",
+   "angle": "Fix",
+   "action": "Agree recovery objectives for HIS, PACS, and LIS and write a recovery plan with restore order",
+   "linkedGaps": [
+    "GAP-RC.RP-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "LIS"
+   ]
+  },
+  {
+   "id": "IMP-RC.RP-01-02",
+   "angle": "Find",
+   "action": "Evaluate a recovery site or cloud recovery option for HIS and Active Directory",
+   "linkedGaps": [
+    "GAP-RC.RP-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "Active Directory"
+   ]
+  },
+  {
+   "id": "IMP-RC.RP-02-01",
+   "angle": "Prevent",
+   "action": "Check backup integrity before every restore and verify restored systems before release",
+   "linkedGaps": [
+    "GAP-RC.RP-02"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RC.RP-02-02",
+   "angle": "Fix",
+   "action": "Document paper-based downtime procedures for the wards",
+   "linkedGaps": [
+    "GAP-RC.RP-02"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RC.CO-01-01",
+   "angle": "Prevent",
+   "action": "Define the recovery communication process and approve a spokesperson",
+   "linkedGaps": [
+    "GAP-RC.CO-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  }
+ ],
+ "verify": []
+}

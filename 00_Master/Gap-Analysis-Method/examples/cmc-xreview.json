@@ -1,0 +1,7 @@
+{
+  "schema": "csf-gap-xreview/1",
+  "proposals": [
+    { "id": "P01", "type": "MergeIMP", "targets": ["IMP-PR.AA-01-02", "IMP-GV.SC-01-01", "IMP-DE.CM-02-01"], "proposal": "Merge the three vendor remote access actions into one action.", "rationale": "All three require MFA and session logging for the same vendors on HIS and PACS (C7:HIS, C7:PACS, V2 Sample HIS vendor).", "change": { "keepImp": "IMP-PR.AA-01-02", "removeImps": ["IMP-GV.SC-01-01", "IMP-DE.CM-02-01"], "mergedAction": "Require MFA and session logging for vendor remote access, and remove unattended remote desktop tools.", "affectedGaps": ["GAP-PR.AA-01", "GAP-GV.SC-01", "GAP-DE.CM-02"] } },
+    { "id": "P02", "type": "SystemicRootCause", "targets": ["GAP-GV.RR-01", "GAP-PR.AA-02", "GAP-PR.AA-03", "GAP-RS.MA-01"], "proposal": "Record Ownership as a systemic root cause.", "rationale": "Ownership appears as a root cause in Gap Findings across GV, PR, and RS.", "change": { "systemicCause": "Ownership", "systemicStatement": "No executive owns cybersecurity at CMC, so each control depends on whoever in IT has time, and no one checks whether controls work across both hospitals.", "affectedGaps": ["GAP-GV.RR-01", "GAP-PR.AA-02", "GAP-PR.AA-03", "GAP-RS.MA-01"] } }
+  ]
+}

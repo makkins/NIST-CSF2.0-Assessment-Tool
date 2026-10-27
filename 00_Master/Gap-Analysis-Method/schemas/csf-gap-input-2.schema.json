@@ -1,0 +1,656 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "csf-gap-input/2",
+ "title": "Function input pack that the Gap Analysis HTML inserts into the Analyst prompt",
+ "description": "Built by the HTML from the Interview export (csf-interview/3), the Workshop risk criteria JSON, and the locked Current IT Landscape. Every value here is calculated or recorded; the AI treats it as evidence and does not recalculate it.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema",
+  "methodVersion",
+  "rubricVersion",
+  "engagement",
+  "function",
+  "riskCriteria",
+  "categories",
+  "systems",
+  "vendors",
+  "observations",
+  "landscape"
+ ],
+ "properties": {
+  "schema": {
+   "const": "csf-gap-input/2"
+  },
+  "methodVersion": {
+   "type": "string"
+  },
+  "rubricVersion": {
+   "type": "string"
+  },
+  "engagement": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "clientAlias",
+    "sector",
+    "scope",
+    "assessmentDate",
+    "obligations",
+    "threatContext"
+   ],
+   "properties": {
+    "clientAlias": {
+     "type": "string",
+     "description": "Real name or alias when the Anonymize toggle is on"
+    },
+    "sector": {
+     "type": "string"
+    },
+    "scope": {
+     "type": "string"
+    },
+    "assessmentDate": {
+     "type": "string"
+    },
+    "obligations": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "For example CII, PDPA sensitive data"
+    },
+    "threatContext": {
+     "type": "string",
+     "description": "Relevant threats and peer incidents stated by the client or recorded in the Workshop"
+    }
+   }
+  },
+  "function": {
+   "enum": [
+    "GV",
+    "ID",
+    "PR",
+    "DE",
+    "RS",
+    "RC"
+   ]
+  },
+  "riskCriteria": {
+   "type": "object",
+   "description": "Subset of the Workshop risk criteria JSON: likelihoodScale, impactScale, bandThresholds, appetiteBand",
+   "required": [
+    "likelihoodScale",
+    "impactScale"
+   ]
+  },
+  "categories": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "name",
+     "currentTier",
+     "targetTier",
+     "status",
+     "priority",
+     "mandates",
+     "tierDelta",
+     "dataQuality",
+     "subcategories"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "currentTier": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "targetTier": {
+      "type": "integer"
+     },
+     "status": {
+      "enum": [
+       "Gap",
+       "Meets target",
+       "Above target",
+       "Not assessed"
+      ]
+     },
+     "priority": {
+      "enum": [
+       "High",
+       "Medium",
+       "Low"
+      ]
+     },
+     "mandates": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "override": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "tierDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "current",
+       "target"
+      ],
+      "properties": {
+       "current": {
+        "type": "string"
+       },
+       "target": {
+        "type": "string"
+       }
+      }
+     },
+     "dataQuality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "notAssessed",
+       "countedLower",
+       "openRequests"
+      ],
+      "properties": {
+       "notAssessed": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "countedLower": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "openRequests": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "subcategories": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "id",
+        "outcome",
+        "status",
+        "countedTier",
+        "evidenceBasis"
+       ],
+       "properties": {
+        "id": {
+         "type": "string"
+        },
+        "outcome": {
+         "type": "string"
+        },
+        "status": {
+         "enum": [
+          "Strength",
+          "Meets with Observation",
+          "Gap",
+          "Not Assessed"
+         ]
+        },
+        "foundation": {
+         "type": "boolean"
+        },
+        "nextTierReady": {
+         "type": "boolean"
+        },
+        "gapType": {
+         "enum": [
+          "Governance",
+          "Process",
+          "Technology",
+          "Measurement",
+          "Evidence",
+          null
+         ]
+        },
+        "statedTier": {
+         "type": [
+          "integer",
+          "null"
+         ]
+        },
+        "countedTier": {
+         "type": [
+          "integer",
+          "null"
+         ]
+        },
+        "evidenceBasis": {
+         "enum": [
+          "Stated",
+          "Demonstrated",
+          "Documented",
+          null
+         ]
+        },
+        "coverage": {
+         "type": [
+          "object",
+          "null"
+         ]
+        },
+        "notes": {
+         "type": "string"
+        },
+        "assessorGapNote": {
+         "type": "string"
+        },
+        "evidenceRefs": {
+         "type": "string"
+        },
+        "technicalChecks": {
+         "type": "array"
+        },
+        "sampling": {
+         "type": "array"
+        },
+        "profileResults": {
+         "type": "array"
+        },
+        "documents": {
+         "type": "array"
+        },
+        "observations": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "systems": {
+   "type": "array",
+   "description": "All systems: name, criticality, sampled, origin, hosting (C10), data held (C11), impact by area (Workshop keys)"
+  },
+  "vendors": {
+   "type": "array"
+  },
+  "observations": {
+   "type": "array",
+   "description": "Technical observations of type Vulnerability. Incident indicators never enter the Gap Analysis."
+  },
+  "landscape": {
+   "title": "Current IT Landscape facts (Gap Analysis Stage 0)",
+   "description": "The locked Current IT Landscape facts (csf-gap-landscape-facts/1) plus the approved page key messages",
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "schema",
+    "source",
+    "asOf",
+    "blocks",
+    "securityTools",
+    "changesInFlight",
+    "priorAssessments",
+    "incidentHistory",
+    "keyMessages"
+   ],
+   "properties": {
+    "schema": {
+     "const": "csf-gap-landscape-facts/1"
+    },
+    "source": {
+     "type": "string",
+     "description": "Interview schema version, for example csf-interview/3"
+    },
+    "asOf": {
+     "type": "string",
+     "description": "Export date. within12Months is calculated from this date"
+    },
+    "blocks": {
+     "type": "object",
+     "additionalProperties": false,
+     "patternProperties": {
+      "^B([1-9]|1[0-4])$": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "name",
+        "facts"
+       ],
+       "properties": {
+        "name": {
+         "type": "string"
+        },
+        "facts": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+           "text",
+           "evidence"
+          ],
+          "properties": {
+           "text": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 400,
+            "description": "One fact, stated without rating words"
+           },
+           "evidence": {
+            "type": "array",
+            "items": {
+             "type": "string",
+             "minLength": 2
+            },
+            "description": "Evidence IDs: ENV:<key>, POP:<field>, <field>:<system>, SITE-, TOOL-, HIST-, CHG-, PRIOR-, OBS-, V<n>:<vendor>"
+           }
+          }
+         }
+        },
+        "assessorNote": {
+         "type": "string",
+         "maxLength": 600
+        }
+       }
+      }
+     },
+     "description": "B1 to B14. A block with no facts stays in the object with an empty list, so the reference check can see it"
+    },
+    "securityTools": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "id",
+       "capability",
+       "product",
+       "coverage",
+       "operatedBy",
+       "status"
+      ],
+      "properties": {
+       "id": {
+        "type": "string",
+        "pattern": "^TOOL-[0-9]{2}$"
+       },
+       "capability": {
+        "type": "string"
+       },
+       "product": {
+        "type": "string"
+       },
+       "coverage": {
+        "enum": [
+         "Full",
+         "Partial",
+         "None",
+         ""
+        ]
+       },
+       "operatedBy": {
+        "enum": [
+         "In-house",
+         "MSSP",
+         "Vendor",
+         "Nobody",
+         ""
+        ]
+       },
+       "status": {
+        "enum": [
+         "In use",
+         "Bought, not deployed",
+         "Planned",
+         ""
+        ]
+       },
+       "notes": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "changesInFlight": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "id",
+       "project",
+       "systems",
+       "targetDate",
+       "status",
+       "within12Months"
+      ],
+      "properties": {
+       "id": {
+        "type": "string",
+        "pattern": "^CHG-[0-9]{2}$"
+       },
+       "project": {
+        "type": "string"
+       },
+       "systems": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "targetDate": {
+        "type": "string"
+       },
+       "status": {
+        "type": "string"
+       },
+       "within12Months": {
+        "type": "boolean"
+       }
+      }
+     }
+    },
+    "priorAssessments": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "id",
+       "type",
+       "date",
+       "performedBy",
+       "findingsOpen",
+       "findingsClosed"
+      ],
+      "properties": {
+       "id": {
+        "type": "string",
+        "pattern": "^PRIOR-[0-9]{2}$"
+       },
+       "type": {
+        "type": "string"
+       },
+       "date": {
+        "type": "string"
+       },
+       "performedBy": {
+        "type": "string"
+       },
+       "findingsOpen": {
+        "type": [
+         "integer",
+         "null"
+        ]
+       },
+       "findingsClosed": {
+        "type": [
+         "integer",
+         "null"
+        ]
+       }
+      }
+     }
+    },
+    "incidentHistory": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "id",
+       "date",
+       "type",
+       "systems",
+       "impact",
+       "reported"
+      ],
+      "properties": {
+       "id": {
+        "type": "string",
+        "pattern": "^HIST-[0-9]{2}$"
+       },
+       "date": {
+        "type": "string"
+       },
+       "type": {
+        "type": "string"
+       },
+       "systems": {
+        "type": "string"
+       },
+       "impact": {
+        "type": "string"
+       },
+       "reported": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "keyMessages": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "page",
+       "keyMessage"
+      ],
+      "properties": {
+       "page": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4
+       },
+       "keyMessage": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "departmentConflicts": {
+     "type": "array",
+     "description": "Conflicts between department answers (S2C) and IT answers. Observed evidence that practice differs from what IT stated",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "id",
+       "department",
+       "type",
+       "detail",
+       "evidence"
+      ],
+      "properties": {
+       "id": {
+        "type": "string",
+        "pattern": "^DCF-[0-9]{2}$"
+       },
+       "department": {
+        "type": "string"
+       },
+       "type": {
+        "type": "string"
+       },
+       "detail": {
+        "type": "string"
+       },
+       "evidence": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "documentRegister": {
+   "type": "array",
+   "description": "Optional, added in method pack 1.3. The CSF Document Framework Register (id, title, hierarchy level T0 to T4, type code, Level). The Analyst may link only these IDs in a Gap Finding. Required by csf-gap-analyst/4.",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "title",
+     "hierarchy",
+     "type",
+     "level"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "title": {
+      "type": "string"
+     },
+     "hierarchy": {
+      "enum": [
+       "T0",
+       "T1",
+       "T2",
+       "T3",
+       "T4"
+      ]
+     },
+     "type": {
+      "type": "string"
+     },
+     "level": {
+      "enum": [
+       "Required",
+       "Expected",
+       "Optional"
+      ]
+     }
+    }
+   }
+  }
+ }
+}

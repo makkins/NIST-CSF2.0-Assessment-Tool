@@ -1,0 +1,6850 @@
+{
+ "v": 1,
+ "app": "csf-doc-audit",
+ "client": {
+  "name": "Sample: Chaophraya Medical Center (fictional)",
+  "assessor": "Sample Assessor, Senior Consultant",
+  "date": "2026-10-01",
+  "ref": "SAMPLE-001",
+  "scope": "Two hospitals, HIS, PACS, LIS, ERP, Microsoft 365. Fictional example data."
+ },
+ "profile": {
+  "cii": true,
+  "pdpa": true,
+  "cca": true,
+  "iso": false,
+  "size": "large",
+  "spec": "part",
+  "mssp": true,
+  "cloud": true,
+  "ai": true,
+  "ot": true,
+  "dev": false
+ },
+ "scope": {},
+ "docs": {
+  "GV-CHR-001": {
+   "status": "Exists",
+   "ev": "Sample: GV-CHR-001 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-STR-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-RPT-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-001": {
+   "status": "Partial",
+   "ev": "Sample: GV-REG-001 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-STM-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-FRM-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-CHR-002": {
+   "status": "Partial",
+   "ev": "Sample: GV-CHR-002 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-003": {
+   "status": "Partial",
+   "ev": "Sample: GV-REG-003 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "P",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-TPL-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-PLN-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-STD-001": {
+   "status": "Exists",
+   "ev": "Sample: GV-STD-001 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-FRM-002": {
+   "status": "Exists",
+   "ev": "Sample: GV-FRM-002 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-FRM-003": {
+   "status": "Exists",
+   "ev": "Sample: GV-FRM-003 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "P",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-POL-001": {
+   "status": "Exists",
+   "ev": "Sample: GV-POL-001 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-POL-003": {
+   "status": "Exists",
+   "ev": "Sample: GV-POL-003 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-FRM-004": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-004": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-POL-004": {
+   "status": "Exists",
+   "ev": "Sample: GV-POL-004 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-007": {
+   "status": "Exists",
+   "ev": "Sample: GV-REG-007 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f11": {
+     "r": "P",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-TPL-002": {
+   "status": "Exists",
+   "ev": "Sample: GV-TPL-002 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-004": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-TPL-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-005": {
+   "status": "Partial",
+   "ev": "Sample: GV-PRC-005 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-TPL-004": {
+   "status": "Partial",
+   "ev": "Sample: GV-TPL-004 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REC-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-008": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-TPL-005": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-007": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-TPL-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-POL-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-PRC-008": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-REG-009": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-FRM-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-STD-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "GV-FRM-007": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-STD-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-PRC-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-001": {
+   "status": "Exists",
+   "ev": "Sample: ID-REG-001 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "P",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-002": {
+   "status": "Partial",
+   "ev": "Sample: ID-REG-002 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-RPT-001": {
+   "status": "Partial",
+   "ev": "Sample: ID-RPT-001 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-004": {
+   "status": "Partial",
+   "ev": "Sample: ID-REG-004 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-RPT-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-FRM-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-005": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f11": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-RPT-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-STD-002": {
+   "status": "Partial",
+   "ev": "Sample: ID-STD-002 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "ID-PRC-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-PRC-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-FRM-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-PRC-004": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-PRC-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-REG-007": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "ID-PLN-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-POL-001": {
+   "status": "Partial",
+   "ev": "Sample: PR-POL-001 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-001": {
+   "status": "Partial",
+   "ev": "Sample: PR-STD-001 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-001": {
+   "status": "Exists",
+   "ev": "Sample: PR-PRC-001 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-FRM-001": {
+   "status": "Exists",
+   "ev": "Sample: PR-FRM-001 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f10": {
+     "r": "P",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-FRM-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-FRM-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f9": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-POL-002": {
+   "status": "Exists",
+   "ev": "Sample: PR-POL-002 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-003": {
+   "status": "Exists",
+   "ev": "Sample: PR-PRC-003 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-FRM-004": {
+   "status": "Exists",
+   "ev": "Sample: PR-FRM-004 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-PLN-001": {
+   "status": "Partial",
+   "ev": "Sample: PR-PLN-001 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-REG-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-REC-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-004": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-POL-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-005": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-006": {
+   "status": "Exists",
+   "ev": "Sample: PR-STD-006 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-005": {
+   "status": "Exists",
+   "ev": "Sample: PR-PRC-005 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-REC-003": {
+   "status": "Partial",
+   "ev": "Sample: PR-REC-003 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-007": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-008": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-009": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-010": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-006": {
+   "status": "Exists",
+   "ev": "Sample: PR-PRC-006 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-FRM-005": {
+   "status": "Exists",
+   "ev": "Sample: PR-FRM-005 v1.0, document portal",
+   "finding": "",
+   "rec": "",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "P",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-007": {
+   "status": "Partial",
+   "ev": "Sample: PR-PRC-007 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-011": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-012": {
+   "status": "Partial",
+   "ev": "Sample: PR-STD-012 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-REG-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-014": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-015": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-STD-016": {
+   "status": "Partial",
+   "ev": "Sample: PR-STD-016 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "PR-PRC-008": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "PR-FRM-006": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-STD-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-REG-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-GDL-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-PRC-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-STD-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-REG-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "DE-PRC-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-PLN-001": {
+   "status": "Partial",
+   "ev": "Sample: RS-PLN-001 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "RS-PLB-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-PLB-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-PLB-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-PLB-004": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-FRM-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-REG-002": {
+   "status": "Partial",
+   "ev": "Sample: RS-REG-002 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "P",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-changelog": {
+     "r": "P",
+     "c": ""
+    }
+   }
+  },
+  "RS-PRC-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-TPL-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-PRC-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RS-TPL-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-POL-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-compliance": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-PLN-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-PLN-002": {
+   "status": "Partial",
+   "ev": "Sample: RC-PLN-002 v1.0, document portal",
+   "finding": "Sample: draft exists but is not approved and lacks required sections.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "P",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "P",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "P",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "P",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "P",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-PRC-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-REC-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-FRM-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f3": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f4": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f5": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f6": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f7": {
+     "r": "F",
+     "c": ""
+    },
+    "c-f8": {
+     "r": "F",
+     "c": ""
+    },
+    "c-approval": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-PLN-003": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-PRC-002": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-comm": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-records": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  },
+  "RC-TPL-001": {
+   "status": "Missing",
+   "ev": "",
+   "finding": "Sample: no approved document or equivalent was provided.",
+   "rec": "Sample: develop or complete the document, obtain approval, and communicate it.",
+   "comment": "",
+   "checks": {
+    "ctl-owner": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-approve": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-version": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-review": {
+     "r": "F",
+     "c": ""
+    },
+    "ctl-rec": {
+     "r": "F",
+     "c": ""
+    },
+    "c-purpose": {
+     "r": "F",
+     "c": ""
+    },
+    "c-scope": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s1": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s2": {
+     "r": "F",
+     "c": ""
+    },
+    "c-s3": {
+     "r": "F",
+     "c": ""
+    }
+   }
+  }
+ },
+ "acts": {
+  "ACT-01": {
+   "r": "Y",
+   "e": "Sample: minutes on file"
+  },
+  "ACT-05": {
+   "r": "Y",
+   "e": "Sample: minutes on file"
+  },
+  "ACT-18": {
+   "r": "Y",
+   "e": "Sample: minutes on file"
+  },
+  "ACT-19": {
+   "r": "Y",
+   "e": "Sample: minutes on file"
+  },
+  "ACT-07": {
+   "r": "N",
+   "e": ""
+  },
+  "ACT-08": {
+   "r": "N",
+   "e": ""
+  },
+  "ACT-09": {
+   "r": "N",
+   "e": ""
+  },
+  "ACT-20": {
+   "r": "N",
+   "e": ""
+  }
+ },
+ "updated": "2026-10-25T10:57:55.540Z"
+}

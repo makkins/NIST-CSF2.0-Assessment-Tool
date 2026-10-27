@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "csf-p1-handoff-1.schema.json",
+  "title": "Information Gathering P1 handoff (csf-p1-handoff/1)",
+  "description": "Frozen result of Phase 1 information gathering, exported by Information-Gathering.html for Gap Analysis. Spec: Information Gathering Spec v2.0 Section 13.1.",
+  "type": "object",
+  "required": ["schema", "engagement", "subcategories", "categories", "systems", "vendors", "environment", "technicalChecks", "documents", "evidence", "observations", "requests", "landscape"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "csf-p1-handoff/1"},
+    "engagement": {
+      "type": "object",
+      "required": ["client", "alias", "reference", "cutoff", "scale", "industry", "flags", "appVersion", "rubricVersion", "stateSchema", "questionSetHash", "exported", "sourceHash", "aliased"],
+      "properties": {
+        "scale": {"enum": ["S", "M", "L"]},
+        "industry": {"enum": ["gen", "hc", "mfg", "fin", "hosp", "util", "pub"]},
+        "flags": {"type": "object", "additionalProperties": {"type": "boolean"}},
+        "stateSchema": {"const": "csf-ig/4"},
+        "aliased": {"type": "boolean"},
+        "questionSetHash": {"type": "string", "minLength": 1},
+        "sourceHash": {"type": "string", "minLength": 1}
+      }
+    },
+    "subcategories": {
+      "type": "array", "minItems": 106, "maxItems": 106,
+      "items": {
+        "type": "object",
+        "required": ["id", "function", "category", "statedTier", "countedTier", "evidenceLevel", "evidenceIds", "flags", "coverage", "statements", "conflict", "mandates", "references", "ratingPath"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-\\d{2}$"},
+          "function": {"enum": ["GV", "ID", "PR", "DE", "RS", "RC"]},
+          "statedTier": {"enum": ["0", "1", "2", "3", "4", "NA"]},
+          "countedTier": {"oneOf": [{"type": "integer", "minimum": 0, "maximum": 4}, {"const": "NA"}]},
+          "evidenceLevel": {"enum": ["", "S", "O", "D"]},
+          "evidenceIds": {"type": "array", "items": {"type": "string", "pattern": "^EV-[A-Z0-9]{1,8}-\\d{3,}$"}},
+          "flags": {"type": "object", "required": ["capped", "coverageCapped", "evidenceLinkMissing", "noCurrentCycleRecord"], "additionalProperties": {"type": "boolean"}},
+          "coverage": {"type": "object", "required": ["applicable", "band", "pct"]},
+          "statements": {"type": "array", "items": {"type": "object", "required": ["person", "stance", "text"], "properties": {"stance": {"enum": ["", "Y", "P", "N", "U"]}}}},
+          "ratingPath": {"enum": ["", "drill", "batch", "doc"]}
+        }
+      }
+    },
+    "categories": {
+      "type": "array", "minItems": 22, "maxItems": 22,
+      "items": {"type": "object", "required": ["id", "suggestedTier", "currentTier", "overridden", "overrideReason", "lowestTier", "cappedCount"]}
+    },
+    "systems": {"type": "array", "items": {"type": "object", "required": ["id", "name", "impact", "criticality", "sampled", "profile"]}},
+    "vendors": {"type": "array", "items": {"type": "object", "required": ["id", "name", "profile", "systems"]}},
+    "environment": {"type": "object", "required": ["fields", "tables"]},
+    "technicalChecks": {"type": "array", "items": {"type": "object", "required": ["id", "result"], "properties": {"result": {"enum": ["", "Y", "P", "N", "NA"]}}}},
+    "documents": {"type": "array", "items": {"type": "object", "required": ["id", "level", "status", "reviewDepth", "evidenceIds"], "properties": {"status": {"enum": ["", "Exists", "Partial", "Missing", "NA"]}, "reviewDepth": {"enum": ["Q", "F"]}}}},
+    "evidence": {"type": "array", "items": {"type": "object", "required": ["id", "kind", "title", "recordDate", "received", "confidentiality", "subcategories", "afterCutoff"], "properties": {"id": {"type": "string", "pattern": "^EV-[A-Z0-9]{1,8}-\\d{3,}$"}, "confidentiality": {"enum": ["N", "R"]}}}},
+    "observations": {"type": "array", "items": {"type": "object", "required": ["id", "description", "severity"]}},
+    "requests": {"type": "array", "items": {"type": "object", "required": ["item", "owner", "type", "status"]}},
+    "landscape": {
+      "type": "object", "required": ["locked", "lockedAt", "facts"],
+      "properties": {
+        "locked": {"const": true},
+        "facts": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "block", "text", "evidence"], "properties": {"block": {"enum": ["Systems", "Identity", "Backup", "Monitoring", "Suppliers", "Tools", "Incidents", "Changes", "Other"]}, "text": {"type": "string", "minLength": 1}}}}
+      }
+    }
+  }
+}

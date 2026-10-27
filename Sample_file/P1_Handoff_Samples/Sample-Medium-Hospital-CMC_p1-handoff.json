@@ -1,0 +1,6895 @@
+{
+ "schema": "csf-p1-handoff/1",
+ "engagement": {
+  "client": "Sample: Chaophraya Medical Center (fictional)",
+  "alias": "Client A",
+  "reference": "SAMPLE-001",
+  "assessor": "Sample Assessor, Senior Consultant",
+  "assessmentDate": "2026-10-05",
+  "cutoff": "2026-10-23",
+  "scope": "Two hospitals, HIS, PACS, LIS, ERP, Microsoft 365. Fictional example data.",
+  "scale": "M",
+  "industry": "hc",
+  "packOptions": [],
+  "flags": {
+   "cii": true,
+   "pdpa": true,
+   "cca": true,
+   "iso": false,
+   "cloud": true,
+   "mssp": true,
+   "ai": true,
+   "dev": false
+  },
+  "ot": true,
+  "employees": "1200",
+  "systemsInScope": "7",
+  "sites": "2",
+  "appVersion": "2.0.0",
+  "rubricVersion": "1.2",
+  "stateSchema": "csf-ig/4",
+  "questionSetHash": "37cced1a",
+  "exported": "2026-10-25T11:03:08.950Z",
+  "sourceHash": "e9da4fac",
+  "aliased": false
+ },
+ "subcategories": [
+  {
+   "id": "GV.OC-01",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OC-02",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OC-03",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S4",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-001"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "HC-PDPA26"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample DPO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OC-04",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OC-05",
+   "function": "GV",
+   "category": "GV.OC",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-01",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-02",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-03",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-04",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-05",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-06",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RM-07",
+   "function": "GV",
+   "category": "GV.RM",
+   "session": "S1",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RR-01",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RR-02",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RR-03",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.RR-04",
+   "function": "GV",
+   "category": "GV.RR",
+   "session": "S4",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.PO-01",
+   "function": "GV",
+   "category": "GV.PO",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [
+    {
+     "person": "Sample CIO",
+     "stance": "P",
+     "text": "Sample: IT Policy 2019 exists as an unsigned draft."
+    }
+   ],
+   "conflict": "",
+   "mandates": [
+    "CII-44"
+   ],
+   "references": [
+    "HC-HA"
+   ],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.PO-02",
+   "function": "GV",
+   "category": "GV.PO",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CII-44"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OV-01",
+   "function": "GV",
+   "category": "GV.OV",
+   "session": "S1",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CII-54"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OV-02",
+   "function": "GV",
+   "category": "GV.OV",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.OV-03",
+   "function": "GV",
+   "category": "GV.OV",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-01",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-02",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-03",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-04",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-05",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-40",
+    "OBL-01"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-06",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-07",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-08",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-09",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "GV.SC-10",
+   "function": "GV",
+   "category": "GV.SC",
+   "session": "S5",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-01",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-002"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "lg",
+    "pct": 75
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-02",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "lg",
+    "pct": 88
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-03",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "nm",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-04",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-05",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-07",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-39"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample DPO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.AM-08",
+   "function": "ID",
+   "category": "ID.AM",
+   "session": "S2",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-01",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-003"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 63
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-02",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-03",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-04",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-05",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CII-54"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-06",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-07",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-08",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S6",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-09",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.RA-10",
+   "function": "ID",
+   "category": "ID.RA",
+   "session": "S5",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.IM-01",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S3",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.IM-02",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CII-54"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.IM-03",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "ID.IM-04",
+   "function": "ID",
+   "category": "ID.IM",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AA-01",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-004"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 56
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AA-02",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-005"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AA-03",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 13
+   },
+   "statements": [
+    {
+     "person": "Sample CIO",
+     "stance": "Y",
+     "text": "Sample: MFA is on for all remote access."
+    },
+    {
+     "person": "Sample IT Infrastructure Manager",
+     "stance": "P",
+     "text": "Sample: MFA covers Microsoft 365 administrators only."
+    }
+   ],
+   "conflict": "Interviewees gave different answers.",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AA-04",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-006"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AA-05",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-007"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 13
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37S",
+    "HC-PDPA26",
+    "HC-NHA7"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AA-06",
+   "function": "PR",
+   "category": "PR.AA",
+   "session": "S9",
+   "statedTier": "3",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Facilities Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": ""
+  },
+  {
+   "id": "PR.AT-01",
+   "function": "PR",
+   "category": "PR.AT",
+   "session": "S4",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.AT-02",
+   "function": "PR",
+   "category": "PR.AT",
+   "session": "S4",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-008"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample HR Director"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.DS-01",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 33
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37S",
+    "HC-PDPA26",
+    "HC-NHA7"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.DS-02",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-009"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 33
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "PDPA-37S"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.DS-10",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-010"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.DS-11",
+   "function": "PR",
+   "category": "PR.DS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 25
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.PS-01",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-011"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.PS-02",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 33
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.PS-03",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.PS-04",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S7",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-012"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 25
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CCA-26"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.PS-05",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-013"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.PS-06",
+   "function": "PR",
+   "category": "PR.PS",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.IR-01",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-014"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 17
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.IR-02",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S9",
+   "statedTier": "3",
+   "countedTier": 3,
+   "evidenceLevel": "D",
+   "evidenceIds": [
+    "EV-SA-015"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Facilities Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": ""
+  },
+  {
+   "id": "PR.IR-03",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "PR.IR-04",
+   "function": "PR",
+   "category": "PR.IR",
+   "session": "S6",
+   "statedTier": "2",
+   "countedTier": 2,
+   "evidenceLevel": "O",
+   "evidenceIds": [
+    "EV-SA-016"
+   ],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.CM-01",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.CM-02",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S9",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Facilities Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.CM-03",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 50
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.CM-06",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.CM-09",
+   "function": "DE",
+   "category": "DE.CM",
+   "session": "S7",
+   "statedTier": "2",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": true,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "pt",
+    "pct": 43
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.AE-02",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.AE-03",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.AE-04",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.AE-06",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.AE-07",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "DE.AE-08",
+   "function": "DE",
+   "category": "DE.AE",
+   "session": "S7",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MA-01",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CII-57",
+    "PDPA-37B"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample Procurement Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MA-02",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MA-03",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MA-04",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MA-05",
+   "function": "RS",
+   "category": "RS.MA",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.AN-03",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.AN-06",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.AN-07",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "0",
+   "countedTier": 0,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.AN-08",
+   "function": "RS",
+   "category": "RS.AN",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.CO-02",
+   "function": "RS",
+   "category": "RS.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [
+    "CII-57",
+    "PDPA-37B",
+    "OBL-01"
+   ],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample DPO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.CO-03",
+   "function": "RS",
+   "category": "RS.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MI-01",
+   "function": "RS",
+   "category": "RS.MI",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RS.MI-02",
+   "function": "RS",
+   "category": "RS.MI",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.RP-01",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [
+    "HC-HA"
+   ],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.RP-02",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.RP-03",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": true,
+    "band": "none",
+    "pct": 0
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.RP-04",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.RP-05",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample IT Infrastructure Manager"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.RP-06",
+   "function": "RC",
+   "category": "RC.RP",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.CO-03",
+   "function": "RC",
+   "category": "RC.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  },
+  {
+   "id": "RC.CO-04",
+   "function": "RC",
+   "category": "RC.CO",
+   "session": "S8",
+   "statedTier": "1",
+   "countedTier": 1,
+   "evidenceLevel": "S",
+   "evidenceIds": [],
+   "flags": {
+    "capped": false,
+    "coverageCapped": false,
+    "evidenceLinkMissing": false,
+    "noCurrentCycleRecord": false
+   },
+   "coverage": {
+    "applicable": false,
+    "band": "",
+    "pct": null
+   },
+   "statements": [],
+   "conflict": "",
+   "mandates": [],
+   "references": [],
+   "ratingPath": "drill",
+   "answeredBy": [
+    "Sample CIO"
+   ],
+   "notes": "Sample: interviewee described the current practice with one example.",
+   "gap": "Sample: practice is not formally approved or applied consistently across both hospitals."
+  }
+ ],
+ "categories": [
+  {
+   "id": "GV.OC",
+   "function": "GV",
+   "subcategories": 5,
+   "rated": 5,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "P"
+  },
+  {
+   "id": "GV.RM",
+   "function": "GV",
+   "subcategories": 7,
+   "rated": 7,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "N"
+  },
+  {
+   "id": "GV.RR",
+   "function": "GV",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 1,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "GV.PO",
+   "function": "GV",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "GV.PO-01",
+    "GV.PO-02"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "GV.OV",
+   "function": "GV",
+   "subcategories": 3,
+   "rated": 3,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "GV.OV-01"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "GV.SC",
+   "function": "GV",
+   "subcategories": 10,
+   "rated": 10,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "GV.SC-05"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "ID.AM",
+   "function": "ID",
+   "subcategories": 7,
+   "rated": 7,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 1,
+   "mandatedBelowTier2": [
+    "ID.AM-07"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "ID.RA",
+   "function": "ID",
+   "subcategories": 10,
+   "rated": 10,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "ID.RA-05"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "ID.IM",
+   "function": "ID",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "ID.IM-02"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "PR.AA",
+   "function": "PR",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 2,
+   "currentTier": 2,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 2,
+   "mandatedBelowTier2": [],
+   "screening": "P"
+  },
+  {
+   "id": "PR.AT",
+   "function": "PR",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 2,
+   "currentTier": 2,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": "N"
+  },
+  {
+   "id": "PR.DS",
+   "function": "PR",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 2,
+   "currentTier": 2,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 2,
+   "mandatedBelowTier2": [
+    "PR.DS-01"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "PR.PS",
+   "function": "PR",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 2,
+   "currentTier": 2,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 2,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "PR.IR",
+   "function": "PR",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 2,
+   "currentTier": 2,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 1,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "DE.CM",
+   "function": "DE",
+   "subcategories": 5,
+   "rated": 5,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 1,
+   "mandatedBelowTier2": [],
+   "screening": "P"
+  },
+  {
+   "id": "DE.AE",
+   "function": "DE",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RS.MA",
+   "function": "RS",
+   "subcategories": 5,
+   "rated": 5,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "RS.MA-01"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "RS.AN",
+   "function": "RS",
+   "subcategories": 4,
+   "rated": 4,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 0,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RS.CO",
+   "function": "RS",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [
+    "RS.CO-02"
+   ],
+   "screening": ""
+  },
+  {
+   "id": "RS.MI",
+   "function": "RS",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RC.RP",
+   "function": "RC",
+   "subcategories": 6,
+   "rated": 6,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  },
+  {
+   "id": "RC.CO",
+   "function": "RC",
+   "subcategories": 2,
+   "rated": 2,
+   "suggestedTier": 1,
+   "currentTier": 1,
+   "overridden": false,
+   "overrideReason": "",
+   "lowestTier": 1,
+   "cappedCount": 0,
+   "mandatedBelowTier2": [],
+   "screening": ""
+  }
+ ],
+ "systems": [
+  {
+   "id": "SYS-01",
+   "name": "HIS",
+   "service": "Patient registration, orders, billing",
+   "owner": "Sample CIO",
+   "hosting": "onprem",
+   "data": "H",
+   "internet": "N",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "5",
+    "financial": "4",
+    "legal": "4",
+    "reputation": "4",
+    "healthSafety": "5",
+    "personalData": "5"
+   },
+   "tolerableDowntime": "4h",
+   "manualFallback": "N",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "cotsc",
+    "C2": "staff",
+    "C3": "local",
+    "C4": "none",
+    "C5": "many",
+    "C6": "no",
+    "C7": "always",
+    "C8": "late",
+    "C9": "online",
+    "F1": "bus",
+    "F2": "man",
+    "F3": "never",
+    "F4": "never",
+    "F5": "no",
+    "F6": "none",
+    "F7": "edr",
+    "F8": "some",
+    "F9": "no",
+    "F10": "flat",
+    "D1": "vend",
+    "D2": "vonly",
+    "D3": "two",
+    "D4": "inf",
+    "D5": "func",
+    "D6": "never",
+    "D7": "no",
+    "D8": "cfg",
+    "D9": "prod",
+    "D10": "none",
+    "D11": "heavy",
+    "D12": "jit",
+    "C11": "spd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-02",
+   "name": "PACS",
+   "service": "Medical imaging",
+   "owner": "Sample Radiology Head",
+   "hosting": "vendor",
+   "data": "H",
+   "internet": "N",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "5",
+    "financial": "3",
+    "legal": "3",
+    "reputation": "3",
+    "healthSafety": "4",
+    "personalData": "4"
+   },
+   "tolerableDowntime": "1d",
+   "manualFallback": "N",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "cots",
+    "C2": "staff",
+    "C3": "local",
+    "C4": "none",
+    "C5": "shared",
+    "C6": "no",
+    "C7": "always",
+    "C8": "eol",
+    "C9": "imm",
+    "F1": "it",
+    "F2": "noap",
+    "F3": "never",
+    "F4": "unk",
+    "F5": "unk",
+    "F6": "none",
+    "F7": "none",
+    "F8": "unk",
+    "F9": "unk",
+    "F10": "shared",
+    "C11": "spd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-03",
+   "name": "LIS",
+   "service": "Laboratory results",
+   "owner": "Sample Lab Manager",
+   "hosting": "vendor",
+   "data": "H",
+   "internet": "N",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "4",
+    "financial": "3",
+    "legal": "3",
+    "reputation": "3",
+    "healthSafety": "4",
+    "personalData": "4"
+   },
+   "tolerableDowntime": "1d",
+   "manualFallback": "Y",
+   "criticality": "B",
+   "sampled": false,
+   "profile": {
+    "C1": "cots",
+    "C2": "staff",
+    "C3": "local",
+    "C4": "none",
+    "C5": "many",
+    "C6": "no",
+    "C7": "sup",
+    "C8": "vend",
+    "C9": "vend",
+    "C11": "spd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-04",
+   "name": "ERP",
+   "service": "Finance, procurement, payroll",
+   "owner": "Sample CFO",
+   "hosting": "onprem",
+   "data": "M",
+   "internet": "N",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "2",
+    "financial": "4",
+    "legal": "3",
+    "reputation": "2",
+    "healthSafety": "1",
+    "personalData": "3"
+   },
+   "tolerableDowntime": "1w",
+   "manualFallback": "Y",
+   "criticality": "B",
+   "sampled": false,
+   "profile": {
+    "C1": "cotsc",
+    "C2": "staff",
+    "C3": "dir",
+    "C4": "none",
+    "C5": "named",
+    "C6": "no",
+    "C7": "vpn",
+    "C8": "late",
+    "C9": "online",
+    "D1": "vend",
+    "D11": "mod",
+    "C11": "pd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-05",
+   "name": "Microsoft 365",
+   "service": "Email, Teams, files",
+   "owner": "Sample IT Infrastructure Manager",
+   "hosting": "saas",
+   "data": "M",
+   "internet": "Y",
+   "vendor": "N",
+   "shared": "Y",
+   "impact": {
+    "operations": "3",
+    "financial": "3",
+    "legal": "2",
+    "reputation": "3",
+    "healthSafety": "1",
+    "personalData": "3"
+   },
+   "tolerableDowntime": "1d",
+   "manualFallback": "N",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "saas",
+    "C2": "staff",
+    "C3": "sso",
+    "C4": "adm",
+    "C5": "many",
+    "C7": "none",
+    "C9": "none",
+    "F1": "bus",
+    "F2": "man",
+    "F3": "never",
+    "F4": "never",
+    "F6": "cen",
+    "F8": "all",
+    "F9": "yes",
+    "C11": "pd"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-06",
+   "name": "Active Directory and network core",
+   "service": "Logon and connectivity for all systems",
+   "owner": "Sample IT Infrastructure Manager",
+   "hosting": "onprem",
+   "data": "M",
+   "internet": "N",
+   "vendor": "N",
+   "shared": "Y",
+   "impact": {
+    "operations": "5",
+    "financial": "4",
+    "legal": "2",
+    "reputation": "3",
+    "healthSafety": "4",
+    "personalData": "2"
+   },
+   "tolerableDowntime": "4h",
+   "manualFallback": "N",
+   "criticality": "A",
+   "sampled": true,
+   "profile": {
+    "C1": "cots",
+    "C2": "staff",
+    "C3": "dir",
+    "C4": "none",
+    "C5": "shared",
+    "C6": "no",
+    "C7": "none",
+    "C8": "late",
+    "C9": "online",
+    "F1": "it",
+    "F2": "man",
+    "F3": "never",
+    "F4": "never",
+    "F5": "no",
+    "F6": "cen",
+    "F7": "edr",
+    "F10": "flat",
+    "C11": "none"
+   },
+   "unconfirmed": []
+  },
+  {
+   "id": "SYS-07",
+   "name": "Hospital website",
+   "service": "Public information, appointment requests",
+   "owner": "Sample Communications Manager",
+   "hosting": "cloud",
+   "data": "L",
+   "internet": "Y",
+   "vendor": "Y",
+   "shared": "N",
+   "impact": {
+    "operations": "1",
+    "financial": "1",
+    "legal": "2",
+    "reputation": "3",
+    "healthSafety": "1",
+    "personalData": "2"
+   },
+   "tolerableDowntime": "gt",
+   "manualFallback": "Y",
+   "criticality": "B",
+   "sampled": false,
+   "profile": {
+    "C1": "out",
+    "C2": "pub",
+    "C3": "local",
+    "C4": "none",
+    "C5": "shared",
+    "C6": "direct",
+    "C7": "always",
+    "C8": "eol",
+    "C9": "less",
+    "D1": "vend",
+    "D2": "vonly",
+    "D3": "prod",
+    "D4": "direct",
+    "D5": "none",
+    "D6": "never",
+    "D7": "no",
+    "D8": "hard",
+    "D9": "noenv",
+    "D10": "none",
+    "D12": "perm",
+    "C11": "pd"
+   },
+   "unconfirmed": []
+  }
+ ],
+ "vendors": [
+  {
+   "id": "VEN-01",
+   "name": "Sample HIS vendor",
+   "profile": {
+    "V1": "sw",
+    "V2": "rem",
+    "V3": "spd",
+    "V4": "conf",
+    "V5": "no",
+    "V6": "once",
+    "V7": "A"
+   },
+   "systems": [
+    "SYS-01"
+   ],
+   "note": "Sample: support through AnyDesk."
+  },
+  {
+   "id": "VEN-02",
+   "name": "Sample PACS vendor",
+   "profile": {
+    "V1": "med",
+    "V2": "rem",
+    "V3": "spd",
+    "V4": "none",
+    "V5": "no",
+    "V6": "never",
+    "V7": "A"
+   },
+   "systems": [
+    "SYS-02"
+   ],
+   "note": ""
+  },
+  {
+   "id": "VEN-03",
+   "name": "Sample cloud provider",
+   "profile": {
+    "V1": "cloud",
+    "V2": "host",
+    "V3": "pd",
+    "V4": "full",
+    "V5": "yes",
+    "V6": "once",
+    "V7": "A"
+   },
+   "systems": [
+    "SYS-05"
+   ],
+   "note": ""
+  },
+  {
+   "id": "VEN-04",
+   "name": "Sample web agency",
+   "profile": {
+    "V1": "sw",
+    "V2": "rem",
+    "V3": "pd",
+    "V4": "none",
+    "V5": "no",
+    "V6": "never",
+    "V7": "B"
+   },
+   "systems": [
+    "SYS-07"
+   ],
+   "note": ""
+  }
+ ],
+ "environment": {
+  "fields": {
+   "dc": "Sample: server room at Hospital 1",
+   "dr": "untested",
+   "seg": "part",
+   "rem": "vpn",
+   "ws": "900",
+   "eol": "5to20",
+   "shws": "yes",
+   "otn": "150",
+   "otp": "shared",
+   "bka": "online",
+   "ith": "25",
+   "secr": "part",
+   "outs": [
+    "app"
+   ]
+  },
+  "evidence": {
+   "dr": "S",
+   "seg": "S",
+   "rem": "O",
+   "bka": "O",
+   "secr": "S"
+  },
+  "notes": {
+   "dr": "Sample: the Hospital 2 server room can host HIS. Failover has never been tested.",
+   "secr": "Sample: the IT Infrastructure Manager covers security alongside operations.",
+   "otp": "Sample: infusion pumps and imaging modalities share the clinical VLAN with workstations."
+  },
+  "tables": {
+   "sites": [
+    {
+     "id": "SITE-01",
+     "n": 1,
+     "name": "Sample: Hospital 1",
+     "type": "hosp",
+     "staff": "750"
+    },
+    {
+     "id": "SITE-02",
+     "n": 2,
+     "name": "Sample: Hospital 2",
+     "type": "hosp",
+     "staff": "450"
+    }
+   ],
+   "tools": [
+    {
+     "id": "TOOL-01",
+     "n": 1,
+     "cap": "fw",
+     "prod": "Sample: next-generation firewall",
+     "cov": "full",
+     "op": "inh",
+     "st": "use"
+    },
+    {
+     "id": "TOOL-02",
+     "n": 2,
+     "cap": "edr",
+     "prod": "Sample: EDR agent",
+     "cov": "part",
+     "op": "inh",
+     "st": "use",
+     "note": "Sample: servers only"
+    },
+    {
+     "id": "TOOL-03",
+     "n": 3,
+     "cap": "av",
+     "prod": "Sample: antivirus",
+     "cov": "full",
+     "op": "inh",
+     "st": "use",
+     "note": "Sample: workstations"
+    },
+    {
+     "id": "TOOL-04",
+     "n": 4,
+     "cap": "eml",
+     "prod": "Sample: Microsoft 365 email filtering",
+     "cov": "full",
+     "op": "vend",
+     "st": "use"
+    },
+    {
+     "id": "TOOL-05",
+     "n": 5,
+     "cap": "log",
+     "prod": "Sample: syslog server",
+     "cov": "part",
+     "op": "nobody",
+     "st": "use",
+     "note": "Sample: logs are collected but nobody reviews them"
+    },
+    {
+     "id": "TOOL-06",
+     "n": 6,
+     "cap": "mfa",
+     "prod": "Sample: Microsoft Entra ID MFA",
+     "cov": "part",
+     "op": "inh",
+     "st": "use",
+     "note": "Sample: Microsoft 365 administrators only"
+    },
+    {
+     "id": "TOOL-07",
+     "n": 7,
+     "cap": "vs",
+     "prod": "Sample: vulnerability scanner license",
+     "cov": "none",
+     "op": "nobody",
+     "st": "bnd",
+     "note": "Sample: bought in 2025, never installed"
+    },
+    {
+     "id": "TOOL-08",
+     "n": 8,
+     "cap": "pam",
+     "prod": "",
+     "cov": "none",
+     "op": "nobody",
+     "st": "plan"
+    },
+    {
+     "id": "TOOL-09",
+     "n": 9,
+     "cap": "bkp",
+     "prod": "Sample: backup software",
+     "cov": "part",
+     "op": "inh",
+     "st": "use"
+    }
+   ],
+   "hist": [
+    {
+     "id": "HIST-01",
+     "n": 1,
+     "date": "2025-03-12",
+     "type": "acc",
+     "sys": "Microsoft 365",
+     "imp": "Sample: one mailbox sent phishing email to patients for two hours",
+     "rep": "nr"
+    }
+   ],
+   "chg": [
+    {
+     "id": "CHG-01",
+     "n": 1,
+     "proj": "Sample: PACS replacement",
+     "sys": [
+      1
+     ],
+     "date": "2027-03-31",
+     "st": "contr"
+    },
+    {
+     "id": "CHG-02",
+     "n": 2,
+     "proj": "Sample: HIS major version upgrade",
+     "sys": [
+      0
+     ],
+     "date": "2028-01-31",
+     "st": "plan"
+    }
+   ],
+   "prior": [
+    {
+     "id": "PRIOR-01",
+     "n": 1,
+     "type": "ia",
+     "date": "2025-11-20",
+     "by": "Sample: CMC Internal Audit",
+     "open": "6",
+     "closed": "2"
+    },
+    {
+     "id": "PRIOR-02",
+     "n": 2,
+     "type": "pt",
+     "date": "2024-08-15",
+     "by": "Sample: external testing firm, hospital website",
+     "open": "4",
+     "closed": "1"
+    }
+   ]
+  }
+ },
+ "technicalChecks": [
+  {
+   "id": "AST-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-01"
+   ]
+  },
+  {
+   "id": "AST-02",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-01",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "AST-03",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-02",
+    "PR.PS-02"
+   ]
+  },
+  {
+   "id": "AST-04",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-02",
+    "ID.AM-04"
+   ]
+  },
+  {
+   "id": "IAM-01",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-03"
+   ]
+  },
+  {
+   "id": "IAM-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-01",
+    "GV.RR-04"
+   ]
+  },
+  {
+   "id": "IAM-03",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "IAM-04",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "IAM-06",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-01"
+   ]
+  },
+  {
+   "id": "IAM-07",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-03",
+    "PR.AA-04"
+   ]
+  },
+  {
+   "id": "IAM-08",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-02"
+   ]
+  },
+  {
+   "id": "EP-01",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-09",
+    "PR.PS-05"
+   ]
+  },
+  {
+   "id": "EP-03",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-01"
+   ]
+  },
+  {
+   "id": "EP-04",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-10"
+   ]
+  },
+  {
+   "id": "EP-05",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-01"
+   ]
+  },
+  {
+   "id": "EP-06",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "NET-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.IR-01",
+    "ID.RA-07"
+   ]
+  },
+  {
+   "id": "NET-03",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-03",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "NET-04",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.IR-01",
+    "PR.PS-01"
+   ]
+  },
+  {
+   "id": "NET-05",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-01"
+   ]
+  },
+  {
+   "id": "EML-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-02",
+    "DE.CM-09"
+   ]
+  },
+  {
+   "id": "EML-02",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-09",
+    "PR.PS-05"
+   ]
+  },
+  {
+   "id": "EML-03",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-09",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "EML-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AT-01",
+    "RS.MA-02"
+   ]
+  },
+  {
+   "id": "DATA-02",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-02"
+   ]
+  },
+  {
+   "id": "DATA-03",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-01",
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "DATA-04",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-01",
+    "PR.DS-02"
+   ]
+  },
+  {
+   "id": "DATA-05",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-08",
+    "PR.PS-03"
+   ]
+  },
+  {
+   "id": "BKP-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "BKP-02",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "BKP-03",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-11",
+    "RC.RP-03"
+   ]
+  },
+  {
+   "id": "BKP-04",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "VUL-01",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.RA-01"
+   ]
+  },
+  {
+   "id": "VUL-02",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-02",
+    "ID.RA-06"
+   ]
+  },
+  {
+   "id": "VUL-03",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.RA-01",
+    "ID.IM-02"
+   ]
+  },
+  {
+   "id": "VUL-04",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.RA-02",
+    "ID.RA-08"
+   ]
+  },
+  {
+   "id": "LOG-01",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-04"
+   ]
+  },
+  {
+   "id": "LOG-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-04"
+   ]
+  },
+  {
+   "id": "LOG-03",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-04",
+    "RS.AN-06"
+   ]
+  },
+  {
+   "id": "LOG-04",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-01",
+    "DE.AE-02",
+    "DE.AE-06"
+   ]
+  },
+  {
+   "id": "LOG-06",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-03",
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "CLD-01",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-03",
+    "PR.AA-05"
+   ]
+  },
+  {
+   "id": "CLD-02",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-01",
+    "DE.CM-09"
+   ]
+  },
+  {
+   "id": "CLD-03",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "GV.SC-02",
+    "PR.DS-11"
+   ]
+  },
+  {
+   "id": "APP-01",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-06"
+   ]
+  },
+  {
+   "id": "APP-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-06",
+    "ID.RA-01"
+   ]
+  },
+  {
+   "id": "APP-03",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-06",
+    "PR.IR-01"
+   ]
+  },
+  {
+   "id": "APP-04",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-06",
+    "GV.SC-09"
+   ]
+  },
+  {
+   "id": "SUP-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "GV.SC-04",
+    "DE.CM-06"
+   ]
+  },
+  {
+   "id": "SUP-02",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-06"
+   ]
+  },
+  {
+   "id": "SUP-03",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "GV.SC-10"
+   ]
+  },
+  {
+   "id": "OT-01",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-01",
+    "ID.AM-05"
+   ]
+  },
+  {
+   "id": "OT-03",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.PS-02",
+    "GV.SC-05"
+   ]
+  },
+  {
+   "id": "PHY-01",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-06"
+   ]
+  },
+  {
+   "id": "PHY-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "DE.CM-02"
+   ]
+  },
+  {
+   "id": "PHY-03",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.IR-02"
+   ]
+  },
+  {
+   "id": "IR-02",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "RS.MI-01"
+   ]
+  },
+  {
+   "id": "IR-03",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "RS.AN-07",
+    "RS.AN-06"
+   ]
+  },
+  {
+   "id": "IR-04",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.IM-02",
+    "ID.IM-04"
+   ]
+  },
+  {
+   "id": "IR-05",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "RS.CO-02",
+    "RS.MA-04"
+   ]
+  },
+  {
+   "id": "DATA-07",
+   "result": "N",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.DS-02",
+    "GV.PO-01"
+   ]
+  },
+  {
+   "id": "DATA-08",
+   "result": "NA",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-02",
+    "GV.PO-01",
+    "PR.DS-01"
+   ]
+  },
+  {
+   "id": "IAM-09",
+   "result": "Y",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "PR.AA-05",
+    "PR.AA-01"
+   ]
+  },
+  {
+   "id": "AST-06",
+   "result": "P",
+   "note": "Sample: answer from the IT Infrastructure Manager.",
+   "subcategories": [
+    "ID.AM-01",
+    "ID.RA-01"
+   ]
+  }
+ ],
+ "documents": [
+  {
+   "id": "GV-CHR-001",
+   "title": "Cybersecurity Governance Charter",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-STR-001",
+   "title": "Cybersecurity Strategy and Roadmap",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-RPT-001",
+   "title": "Organizational Context and ISMS Scope Statement",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-REG-001",
+   "title": "Legal, Regulatory, and Contractual Requirements Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-STM-001",
+   "title": "Risk Appetite and Tolerance Statement",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-002",
+   "title": "Cybersecurity Risk Management Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-PRC-001",
+   "title": "Risk Assessment and Treatment Methodology",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-FRM-001",
+   "title": "Risk Acceptance Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-CHR-002",
+   "title": "Information Security Steering Committee Terms of Reference",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-REG-003",
+   "title": "Cybersecurity Roles, Responsibilities, and RACI Matrix",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-TPL-001",
+   "title": "Cybersecurity Job Description Templates",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PLN-001",
+   "title": "Cybersecurity Budget and Resource Plan",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-STD-001",
+   "title": "Human Resources Security Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-FRM-002",
+   "title": "Confidentiality and Non-Disclosure Agreement",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-FRM-003",
+   "title": "Employee Offboarding Security Checklist",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-POL-001",
+   "title": "Information Security Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-PRC-002",
+   "title": "Document Control Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-003",
+   "title": "Acceptable Use Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-POL-005",
+   "title": "Generative AI Acceptable Use Policy",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-PRC-003",
+   "title": "Policy Exception Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-FRM-004",
+   "title": "Policy Exception Request Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-REG-004",
+   "title": "Policy Exception Register",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-REG-006",
+   "title": "CII Code of Practice Compliance Matrix",
+   "level": "Required",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-004",
+   "title": "Personal Data Protection Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-REG-007",
+   "title": "Record of Processing Activities (ROPA)",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-TPL-002",
+   "title": "Privacy Notice Template",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-PRC-004",
+   "title": "Data Protection Impact Assessment (DPIA) Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-TPL-003",
+   "title": "DPIA Template",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PRC-005",
+   "title": "Data Subject Rights Request Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-FRM-005",
+   "title": "Data Subject Request Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-TPL-004",
+   "title": "Data Processing Agreement Template",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "GV-PRC-006",
+   "title": "Management Review Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-REC-001",
+   "title": "Management Review Minutes",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-REG-008",
+   "title": "Cybersecurity Metrics Catalog (KPI and KRI)",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-TPL-005",
+   "title": "Board Cybersecurity Report Template",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PRC-007",
+   "title": "Internal Audit Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PLN-002",
+   "title": "Internal Audit Program",
+   "level": "Required",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-TPL-006",
+   "title": "Internal Audit Report Template",
+   "level": "Required",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-POL-006",
+   "title": "Third-Party and Supply Chain Security Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-PRC-008",
+   "title": "Third-Party Risk Management Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-REG-009",
+   "title": "Supplier Inventory and Criticality Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-FRM-006",
+   "title": "Vendor Security Assessment Questionnaire",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-STD-002",
+   "title": "Supplier Security Requirements Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "GV-STD-003",
+   "title": "Secure Acquisition Standard",
+   "level": "Expected",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "GV-FRM-007",
+   "title": "Supplier Offboarding Checklist",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-STD-001",
+   "title": "Asset Management Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-PRC-001",
+   "title": "Asset Lifecycle Management Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-REG-001",
+   "title": "Hardware Asset Inventory",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "ID-REG-002",
+   "title": "Software and Service Inventory",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-REG-003",
+   "title": "Data Inventory and Data Flow Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-RPT-001",
+   "title": "Network Architecture and Data Flow Diagram",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-REG-004",
+   "title": "OT and Medical Device Inventory",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-RPT-002",
+   "title": "Business Impact Analysis (BIA)",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-FRM-001",
+   "title": "Media Sanitization and Disposal Record",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-REG-005",
+   "title": "IT and Cybersecurity Risk Register",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-PLN-001",
+   "title": "Risk Treatment Plan",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "ID-RPT-003",
+   "title": "Cybersecurity Risk Assessment Report",
+   "level": "Required",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-STD-002",
+   "title": "Vulnerability Scanning and Remediation Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "ID-PRC-002",
+   "title": "Vulnerability Management Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-REG-006",
+   "title": "Vulnerability Remediation Tracker",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-PRC-003",
+   "title": "Penetration Testing Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-FRM-002",
+   "title": "Penetration Test Authorization and Rules of Engagement",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-PRC-004",
+   "title": "Threat Intelligence Procedure",
+   "level": "Expected",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-PRC-005",
+   "title": "Vulnerability Disclosure Handling Procedure",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "ID-PRC-006",
+   "title": "Continual Improvement and Corrective Action Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-REG-007",
+   "title": "Corrective Action and Improvement Register",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-PLN-002",
+   "title": "Cybersecurity Exercise and Testing Program",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "ID-TPL-001",
+   "title": "Lessons Learned Report Template",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-POL-001",
+   "title": "Access Control Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-STD-001",
+   "title": "Identity and Authentication Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-STD-002",
+   "title": "Privileged Access Management Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-STD-003",
+   "title": "Remote Access Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-PRC-001",
+   "title": "User Access Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-PRC-002",
+   "title": "User Access Review Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-FRM-001",
+   "title": "User Access Request Form",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-FRM-002",
+   "title": "Privileged Access Request Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-FRM-003",
+   "title": "Third-Party Remote Access Request Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-REC-001",
+   "title": "User Access Review Record",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-REG-001",
+   "title": "Privileged Account Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-POL-002",
+   "title": "Physical and Environmental Security Policy",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-PRC-003",
+   "title": "Physical Access Management Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-FRM-004",
+   "title": "Secure Area Access and Visitor Log",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-PLN-001",
+   "title": "Security Awareness and Training Program",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-REG-002",
+   "title": "Role-Based Training and Skills Matrix",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-REC-002",
+   "title": "Training Completion Record",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-PRC-004",
+   "title": "Phishing Simulation Procedure",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-POL-003",
+   "title": "Data Protection and Classification Policy",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-004",
+   "title": "Information Classification and Handling Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-STD-005",
+   "title": "Cryptography and Key Management Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-006",
+   "title": "Backup Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-PRC-005",
+   "title": "Backup and Restore Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-REC-003",
+   "title": "Backup and Restore Test Record",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-STD-007",
+   "title": "Data Retention and Disposal Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-008",
+   "title": "Data Loss Prevention Standard",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-009",
+   "title": "Mobile Device and BYOD Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-010",
+   "title": "Secure Configuration Baseline Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-PRC-006",
+   "title": "Change Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-FRM-005",
+   "title": "Change Request Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Exists",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "PR-PRC-007",
+   "title": "Patch Management Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-STD-011",
+   "title": "Logging Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-012",
+   "title": "Endpoint Protection Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-REG-003",
+   "title": "Approved Software Register",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-014",
+   "title": "Cloud Security Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-015",
+   "title": "OT and Medical Device Security Standard",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-016",
+   "title": "Network Security Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "PR-PRC-008",
+   "title": "Firewall Rule Management Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-FRM-006",
+   "title": "Firewall Rule Change Request Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "PR-STD-017",
+   "title": "Technology Resilience and Capacity Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "DE-STD-001",
+   "title": "Security Monitoring Standard",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-PRC-001",
+   "title": "Security Monitoring Operations Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "DE-REG-001",
+   "title": "Log Source and Monitoring Coverage Register",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-GDL-001",
+   "title": "Managed Security Service Provider (MSSP) Requirements Guideline",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-PRC-002",
+   "title": "Security Event Triage and Analysis Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-STD-002",
+   "title": "Incident Classification and Severity Standard",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-REG-002",
+   "title": "Detection Use Case Catalog",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "DE-PRC-003",
+   "title": "Threat Hunting Procedure",
+   "level": "Optional",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PLN-001",
+   "title": "Cybersecurity Incident Response Plan",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "RS-PRC-001",
+   "title": "Incident Handling Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "RS-PLB-001",
+   "title": "Ransomware Response Playbook",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PLB-002",
+   "title": "Phishing and Business Email Compromise Playbook",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PLB-003",
+   "title": "Personal Data Breach Response Playbook",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PLB-004",
+   "title": "Compromised Account Playbook",
+   "level": "Expected",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-FRM-001",
+   "title": "Incident Report Form",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-REG-001",
+   "title": "Incident Register",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "RS-REG-002",
+   "title": "Incident Response Contact List",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "RS-PRC-002",
+   "title": "Digital Forensics and Evidence Handling Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-FRM-002",
+   "title": "Evidence Chain of Custody Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": ""
+  },
+  {
+   "id": "RS-TPL-001",
+   "title": "Incident Investigation Report Template",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-PRC-003",
+   "title": "Incident Notification and Communication Procedure",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RS-TPL-002",
+   "title": "Regulatory Notification Templates",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-POL-001",
+   "title": "Business Continuity Management Policy",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-PLN-001",
+   "title": "Business Continuity Plan (BCP)",
+   "level": "Required",
+   "package": "Essential",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-PLN-002",
+   "title": "IT Disaster Recovery Plan (DRP)",
+   "level": "Expected",
+   "package": "Essential",
+   "status": "Partial",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: draft exists but is not approved and lacks required sections."
+  },
+  {
+   "id": "RC-PRC-001",
+   "title": "System Recovery Runbook Template",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-REC-001",
+   "title": "BCP and DR Exercise Report",
+   "level": "Required",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "F",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-FRM-001",
+   "title": "Recovery Completion and Sign-off Form",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-PLN-003",
+   "title": "Crisis Management Plan",
+   "level": "Expected",
+   "package": "Extended",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-PRC-002",
+   "title": "Crisis Communication Procedure",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  },
+  {
+   "id": "RC-TPL-001",
+   "title": "Public Statement and Stakeholder Update Templates",
+   "level": "Expected",
+   "package": "Core",
+   "status": "Missing",
+   "reviewDepth": "Q",
+   "evidenceIds": [],
+   "finding": "Sample: no approved document or equivalent was provided."
+  }
+ ],
+ "evidence": [
+  {
+   "id": "EV-SA-001",
+   "kind": "doc",
+   "title": "Sample: document supporting GV.OC-03",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "GV.OC-03"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-002",
+   "kind": "demo",
+   "title": "Sample: shown live for ID.AM-01",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "ID.AM-01"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-003",
+   "kind": "doc",
+   "title": "Sample: document supporting ID.RA-01",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "ID.RA-01"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-004",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.AA-01",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.AA-01"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-005",
+   "kind": "rec",
+   "title": "Sample: record supporting PR.AA-02",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.AA-02"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-006",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.AA-04",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.AA-04"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-007",
+   "kind": "doc",
+   "title": "Sample: document supporting PR.AA-05",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.AA-05"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-008",
+   "kind": "rec",
+   "title": "Sample: record supporting PR.AT-02",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.AT-02"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-009",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.DS-02",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.DS-02"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-010",
+   "kind": "doc",
+   "title": "Sample: document supporting PR.DS-10",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.DS-10"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-011",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.PS-01",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.PS-01"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-012",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.PS-04",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.PS-04"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-013",
+   "kind": "doc",
+   "title": "Sample: document supporting PR.PS-05",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.PS-05"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-014",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.IR-01",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.IR-01"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-015",
+   "kind": "rec",
+   "title": "Sample: record supporting PR.IR-02",
+   "clientRef": "Sample: record reference provided",
+   "recordDate": "2026-06-30",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.IR-02"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  },
+  {
+   "id": "EV-SA-016",
+   "kind": "demo",
+   "title": "Sample: shown live for PR.IR-04",
+   "clientRef": "",
+   "recordDate": "2026-10-06",
+   "received": "2026-10-06",
+   "providedBy": "",
+   "confidentiality": "N",
+   "subcategories": [
+    "PR.IR-04"
+   ],
+   "documents": [],
+   "checks": [],
+   "observations": [],
+   "systems": [],
+   "afterCutoff": false,
+   "note": ""
+  }
+ ],
+ "observations": [
+  {
+   "id": "OBS-01",
+   "type": "vuln",
+   "system": "Hospital website",
+   "description": "Sample: the admin login page is reachable from the internet and the server banner shows an unsupported PHP version. Observed only; not tested.",
+   "severity": "H",
+   "internet": "Y",
+   "subcategories": "PR.PS-02, ID.RA-01, PR.IR-01",
+   "status": "notified",
+   "date": "2026-10-07"
+  }
+ ],
+ "requests": [
+  {
+   "item": "GV-PRC-002 Document Control Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-FRM-001 Incident Report Form",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-REG-001 Incident Register",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-REG-001 Privileged Account Register",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-STD-001 Asset Management Standard",
+   "owner": "IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-REG-003 Data Inventory and Data Flow Register",
+   "owner": "Data Protection Officer (DPO)",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-REG-009 Supplier Inventory and Criticality Register",
+   "owner": "Procurement Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-RPT-002 Business Impact Analysis (BIA)",
+   "owner": "Business Continuity Management (BCM) Coordinator",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-STM-001 Risk Appetite and Tolerance Statement",
+   "owner": "Chief Risk Officer (CRO) or Enterprise Risk Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-POL-002 Cybersecurity Risk Management Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-PRC-001 Risk Assessment and Treatment Methodology",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-REG-005 IT and Cybersecurity Risk Register",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "ID-RPT-003 Cybersecurity Risk Assessment Report",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PLB-001 Ransomware Response Playbook",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-002 Privileged Access Management Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-003 Remote Access Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-REG-006 CII Code of Practice Compliance Matrix",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-POL-003 Data Protection and Classification Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-POL-006 Third-Party and Supply Chain Security Policy",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-PRC-003 Policy Exception Management Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-004 Information Classification and Handling Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-STD-011 Logging Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "PR-PRC-002 User Access Review Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "DE-STD-002 Incident Classification and Severity Standard",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PRC-001 Incident Handling Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PLB-003 Personal Data Breach Response Playbook",
+   "owner": "Data Protection Officer (DPO)",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RS-PRC-003 Incident Notification and Communication Procedure",
+   "owner": "Chief Information Security Officer (CISO) or Security Manager",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RC-PLN-001 Business Continuity Plan (BCP)",
+   "owner": "Business Continuity Management (BCM) Coordinator",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-PLN-002 Internal Audit Program",
+   "owner": "Head of Internal Audit",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "GV-TPL-006 Internal Audit Report Template",
+   "owner": "Head of Internal Audit",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "RC-REC-001 BCP and DR Exercise Report",
+   "owner": "Business Continuity Management (BCM) Coordinator",
+   "type": "doc",
+   "subcategories": [],
+   "status": "req"
+  },
+  {
+   "item": "HIS user list exported for the 2025 internal audit",
+   "owner": "Sample IT Infrastructure Manager",
+   "type": "doc",
+   "subcategories": [
+    "PR.AA-05"
+   ],
+   "status": "req"
+  }
+ ],
+ "landscape": {
+  "locked": true,
+  "lockedAt": "2026-10-23T17:00:00.000Z",
+  "facts": [
+   {
+    "id": "LF-01",
+    "block": "Systems",
+    "text": "7 business systems are listed; 4 are Criticality A (HIS, PACS, Microsoft 365, Active Directory and network core).",
+    "evidence": [
+     "EV-SA-001"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-02",
+    "block": "Identity",
+    "text": "Sample: Microsoft 365 administrators only",
+    "evidence": [
+     "TOOL-06"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-03",
+    "block": "Backup",
+    "text": "Sample: backups run on schedule; restore tests are not recorded for every critical system.",
+    "evidence": [
+     "EV-SA-003"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-04",
+    "block": "Monitoring",
+    "text": "Sample: logs are collected but nobody reviews them",
+    "evidence": [
+     "TOOL-05"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-05",
+    "block": "Suppliers",
+    "text": "4 suppliers with access to systems or data are recorded.",
+    "evidence": [
+     "EV-SA-005"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-06",
+    "block": "Tools",
+    "text": "Sample: vulnerability scanner license is bought but not deployed.",
+    "evidence": [
+     "TOOL-07"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-07",
+    "block": "Incidents",
+    "text": "Sample: one mailbox sent phishing email to patients for two hours",
+    "evidence": [
+     "HIST-01"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-08",
+    "block": "Changes",
+    "text": "Sample: PACS replacement, target 2027-03-31.",
+    "evidence": [
+     "CHG-01"
+    ],
+    "source": "manual"
+   },
+   {
+    "id": "LF-09",
+    "block": "Changes",
+    "text": "Sample: HIS major version upgrade, target 2028-01-31.",
+    "evidence": [
+     "CHG-02"
+    ],
+    "source": "manual"
+   }
+  ]
+ }
+}

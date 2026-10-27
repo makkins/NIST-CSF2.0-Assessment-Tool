@@ -1,0 +1,1406 @@
+{
+ "schema": "csf-gap-analyst/2",
+ "function": "GV",
+ "round": 1,
+ "categories": [
+  {
+   "categoryId": "GV.OC",
+   "keyMessage": {
+    "found": "CMC records some legal duties but not owners, and critical services and dependencies are not approved by management.",
+    "closes": "Assign owners to the register of legal duties and get the Criticality A list approved by the CIO and CEO."
+   },
+   "whatWorksToday": "CMC documents some legal and regulatory duties.",
+   "strengths": [
+    {
+     "id": "STR-GV.OC-03",
+     "type": "Foundation",
+     "statement": "CMC keeps a documented record of some legal and regulatory duties, a base for a maintained register.",
+     "evidence": [
+      "GV.OC-03"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-GV.OC-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Legal duties are documented but not maintained or assigned",
+     "statement": "CMC records some CII and PDPA duties but does not keep the list current or assign owners, so deadlines depend on individuals.",
+     "supportingFacts": [
+      {
+       "fact": "A record of legal and regulatory duties exists.",
+       "evidence": [
+        "GV.OC-03"
+       ]
+      },
+      {
+       "fact": "The record shows no named owner or review date.",
+       "evidence": [
+        "NOTE:GV.OC-03"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Contractual duties to insurers and payers were not reviewed"
+     },
+     "linkedSubcategories": [
+      "GV.OC-03"
+     ],
+     "evidence": [
+      "GV.OC-03",
+      "NOTE:GV.OC-03"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "A missed reporting deadline or failed audit brings regulator action against a CII operator and weakens CMC's position after an incident.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Governance gap that needs a second failure, such as an incident with an unmet duty, before harm.",
+      "evidence": [
+       "GV.OC-03",
+       "NOTE:GV.OC-03"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "A missed CII or PDPA duty adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "A missed CII or PDPA duty triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "A missed CII or PDPA duty damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "A missed CII or PDPA duty exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.OC-01-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-GV.OC-01-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-GV.OC-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Mission, stakeholder needs, and critical dependencies do not guide decisions",
+     "statement": "Management has not approved which services and dependencies are critical, so recovery and budget priorities rest on opinion.",
+     "supportingFacts": [
+      {
+       "fact": "The Quick BIA rates HIS, PACS, Microsoft 365, and Active Directory as Criticality A.",
+       "evidence": [
+        "GV.OC-04",
+        "GV.OC-05"
+       ]
+      },
+      {
+       "fact": "No executive has approved the list or linked it to stakeholder expectations.",
+       "evidence": [
+        "GV.OC-01",
+        "GV.OC-02"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Microsoft 365",
+       "Active Directory and network core"
+      ],
+      "likely": [],
+      "notChecked": "Dependencies of Criticality B systems were not mapped"
+     },
+     "linkedSubcategories": [
+      "GV.OC-01",
+      "GV.OC-02",
+      "GV.OC-04",
+      "GV.OC-05"
+     ],
+     "evidence": [
+      "GV.OC-04",
+      "GV.OC-05",
+      "GV.OC-01",
+      "GV.OC-02"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "In an incident, teams argue over what to restore first, and investment goes to systems that matter less than HIS.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Process gap that needs an incident before harm.",
+      "evidence": [
+       "GV.OC-04",
+       "GV.OC-05",
+       "GV.OC-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Disputed restore priorities stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Disputed restore priorities adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Disputed restore priorities triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Disputed restore priorities damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Disputed restore priorities delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Disputed restore priorities exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.OC-02-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "GV.RM",
+   "keyMessage": {
+    "found": "Risk is judged case by case with no approved appetite, method, or link to enterprise reporting, so executives cannot weigh cybersecurity against other spending.",
+    "closes": "Approve a risk appetite and one risk method, then start a shared risk register."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-GV.RM-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No approved risk objectives, risk method, or appetite",
+     "statement": "Risk decisions follow individual judgment rather than a method management approved, so executives cannot see which risks exceed tolerance.",
+     "supportingFacts": [
+      {
+       "fact": "IT rates risks case by case with no standard method.",
+       "evidence": [
+        "GV.RM-06"
+       ]
+      },
+      {
+       "fact": "No risk objectives or appetite statement were agreed with stakeholders.",
+       "evidence": [
+        "GV.RM-01",
+        "NOTE:GV.RM-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Finance and clinical risk processes were not reviewed"
+     },
+     "linkedSubcategories": [
+      "GV.RM-01",
+      "GV.RM-02",
+      "GV.RM-06"
+     ],
+     "evidence": [
+      "GV.RM-06",
+      "GV.RM-01",
+      "NOTE:GV.RM-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Skills"
+     ],
+     "consequence": "The CEO funds or declines security work without a view of risk, so large exposures stay open while small ones consume budget.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-b",
+      "rationale": "Practice is absent organization-wide and the peer hospital incident shows the threat is active.",
+      "evidence": [
+       "GV.RM-06",
+       "GV.RM-01",
+       "NOTE:GV.RM-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Funding without a risk view stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Funding without a risk view adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Funding without a risk view triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Funding without a risk view damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Funding without a risk view exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.RM-01-01",
+       "IMP-GV.RM-01-02"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-GV.RM-02",
+     "basis": "Inferred",
+     "confidence": "Medium",
+     "title": "Cyber risk is missing from enterprise risk reporting and strategy",
+     "statement": "Cybersecurity risk is probably outside enterprise risk reporting, so the board sees it as an IT cost rather than a business risk.",
+     "supportingFacts": [
+      {
+       "fact": "No enterprise risk report includes a cybersecurity risk item.",
+       "evidence": [
+        "GV.RM-03"
+       ]
+      },
+      {
+       "fact": "Lines of communication for cyber and supplier risk are not defined.",
+       "evidence": [
+        "GV.RM-05",
+        "GV.RM-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Enterprise risk reporting"
+      ],
+      "likely": [
+       "Board budget decisions"
+      ],
+      "notChecked": "Board papers of the past 12 months were not reviewed"
+     },
+     "linkedSubcategories": [
+      "GV.RM-03",
+      "GV.RM-04",
+      "GV.RM-05",
+      "GV.RM-07"
+     ],
+     "evidence": [
+      "GV.RM-03",
+      "GV.RM-05",
+      "GV.RM-04"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Security budget requests compete without risk evidence, and the board learns of exposure only after an incident.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-b",
+      "rationale": "Inferred with Medium confidence, so one level below the Observed equivalent.",
+      "evidence": [
+       "GV.RM-03",
+       "GV.RM-05",
+       "GV.RM-04"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Budget decisions without risk evidence adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "rep": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [],
+      "prevent": [
+       "IMP-GV.RM-02-01"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "GV.RR",
+   "keyMessage": {
+    "found": "Security has no accountable executive, the first Security Manager has no written authority, and PACS and Active Directory have no business owner.",
+    "closes": "Issue a mandate letter for the Security Manager and name a business owner for each Criticality A system."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-GV.RR-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No accountable executive or resourced security function",
+     "statement": "Security duties sit with IT staff beside operations, and the new Security Manager has no written mandate, authority, or budget.",
+     "supportingFacts": [
+      {
+       "fact": "No role description assigns security accountability to an executive.",
+       "evidence": [
+        "GV.RR-01"
+       ]
+      },
+      {
+       "fact": "The Security Manager reports to the CIO without a written mandate or budget.",
+       "evidence": [
+        "GV.RR-03"
+       ]
+      },
+      {
+       "fact": "The 25 IT staff perform security tasks beside operations.",
+       "evidence": [
+        "NOTE:GV.RR-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Roles in clinical departments were not reviewed"
+     },
+     "linkedSubcategories": [
+      "GV.RR-01",
+      "GV.RR-03"
+     ],
+     "evidence": [
+      "GV.RR-01",
+      "GV.RR-03",
+      "NOTE:GV.RR-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Budget"
+     ],
+     "consequence": "Risky changes proceed without a security decision, and no one can order containment or fund remediation during an incident.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-b",
+      "rationale": "No security function exists and the peer hospital incident shows the threat is active.",
+      "evidence": [
+       "GV.RR-01",
+       "GV.RR-03",
+       "NOTE:GV.RR-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Absent security authority stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Absent security authority adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Absent security authority triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Absent security authority damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Absent security authority delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Absent security authority exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.RR-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-GV.RR-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "System ownership and HR practices omit security duties",
+     "statement": "PACS and Active Directory have no named business owner, and HR practices carry no security duties, so risk on them has no accountable person.",
+     "supportingFacts": [
+      {
+       "fact": "PACS and Active Directory have an IT owner only.",
+       "evidence": [
+        "F1:PACS",
+        "F1:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "Security is not part of HR practices such as joiner and leaver steps.",
+       "evidence": [
+        "GV.RR-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "PACS",
+       "Active Directory and network core"
+      ],
+      "likely": [],
+      "notChecked": "Ownership of Criticality B systems was not profiled"
+     },
+     "linkedSubcategories": [
+      "GV.RR-02",
+      "GV.RR-04"
+     ],
+     "evidence": [
+      "F1:PACS",
+      "F1:Active Directory and network core",
+      "GV.RR-04"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Control changes on PACS and Active Directory stall, and risk acceptances are made without the people who bear the effect.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Ownership is Partial on two Criticality A systems.",
+      "evidence": [
+       "F1:PACS",
+       "F1:Active Directory and network core",
+       "GV.RR-04"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Unowned system risk stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Unowned system risk adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Unowned system risk triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Unowned system risk damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Unowned system risk delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Unowned system risk exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.RR-02-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-GV.RR-02-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "GV.PO",
+   "keyMessage": {
+    "found": "Only an unsigned 2019 draft exists and exceptions such as shared administrator accounts are accepted without a record.",
+    "closes": "Approve the security policy and introduce a recorded exception process."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-GV.PO-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No approved security policy covers current systems and duties",
+     "statement": "CMC has only an unsigned 2019 draft policy that staff never received, so no binding rule covers PDPA, CII, or current systems.",
+     "supportingFacts": [
+      {
+       "fact": "The IT Policy 2019 is an unsigned draft.",
+       "evidence": [
+        "DOC:IT-Policy-2019"
+       ]
+      },
+      {
+       "fact": "The draft was not communicated to staff or vendors.",
+       "evidence": [
+        "GV.PO-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Departmental procedures were not collected"
+     },
+     "linkedSubcategories": [
+      "GV.PO-01"
+     ],
+     "evidence": [
+      "DOC:IT-Policy-2019",
+      "GV.PO-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Staff and vendors cannot be held to any rule, and an auditor or regulator finds no approved basis for CMC's controls.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-b",
+      "rationale": "No approved policy exists organization-wide.",
+      "evidence": [
+       "DOC:IT-Policy-2019",
+       "GV.PO-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "No binding rule stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "No binding rule triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "No binding rule damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "No binding rule exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.PO-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-GV.PO-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Policy exceptions are accepted without a record or expiry",
+     "statement": "CMC has no exception process, so control bypasses such as shared administrator accounts continue without an owner, expiry, or visible risk.",
+     "supportingFacts": [
+      {
+       "fact": "PACS, Active Directory, and the website use shared or generic administrator accounts.",
+       "evidence": [
+        "C5:PACS",
+        "C5:Active Directory and network core",
+        "C5:Hospital website"
+       ]
+      },
+      {
+       "fact": "No exception log or expiry date exists.",
+       "evidence": [
+        "GV.PO-02"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "PACS",
+       "Active Directory and network core",
+       "Hospital website"
+      ],
+      "likely": [],
+      "notChecked": "Exceptions on network devices were not reviewed"
+     },
+     "linkedSubcategories": [
+      "GV.PO-02"
+     ],
+     "evidence": [
+      "C5:PACS",
+      "C5:Active Directory and network core",
+      "C5:Hospital website",
+      "GV.PO-02"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Accepted risks pile up unseen, and shared accounts prevent tracing who acted on patient systems after a breach.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Shared administrator accounts are Poor on Criticality A systems and no exception control exists.",
+      "evidence": [
+       "C5:PACS",
+       "C5:Active Directory and network core",
+       "C5:Hospital website"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Untracked bypasses stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Untracked bypasses adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Untracked bypasses triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Untracked bypasses damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Untracked bypasses delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Untracked bypasses exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [],
+      "prevent": [],
+      "exceptions": [
+       "IMP-GV.PO-02-01"
+      ],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "GV.OV",
+   "keyMessage": {
+    "found": "Leadership hears about security after events, with no metrics or forum to judge progress.",
+    "closes": "Set up a quarterly security steering committee with a baseline metric set."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-GV.OV-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Leadership receives no regular cybersecurity reporting",
+     "statement": "Executives hear about cybersecurity only after events, so they cannot judge progress or decide on resources.",
+     "supportingFacts": [
+      {
+       "fact": "No steering committee or scheduled security report exists.",
+       "evidence": [
+        "GV.OV-01",
+        "GV.OV-02"
+       ]
+      },
+      {
+       "fact": "No metric set is defined for leadership.",
+       "evidence": [
+        "NOTE:GV.OV-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Executive team"
+      ],
+      "likely": [],
+      "notChecked": "Board reporting channels were not reviewed"
+     },
+     "linkedSubcategories": [
+      "GV.OV-01",
+      "GV.OV-02",
+      "GV.OV-03"
+     ],
+     "evidence": [
+      "GV.OV-01",
+      "GV.OV-02",
+      "NOTE:GV.OV-01"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "The CEO cannot tell whether risk is falling, so funding decisions follow the latest incident and not program results.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Governance gap that needs a second failure before harm.",
+      "evidence": [
+       "GV.OV-01",
+       "GV.OV-02",
+       "NOTE:GV.OV-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Blind funding decisions adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Blind funding decisions damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.OV-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "GV.SC",
+   "keyMessage": {
+    "found": "Critical vendors work through unattended remote tools under contracts with no security duties or processing agreements.",
+    "closes": "Replace unattended vendor access and add security clauses to the HIS and PACS contracts."
+   },
+   "whatWorksToday": "The shared responsibility model for cloud services is documented, and IT lists suppliers with remote access.",
+   "strengths": [
+    {
+     "id": "STR-GV.SC-02",
+     "type": "Foundation",
+     "statement": "The shared responsibility model is documented for each critical cloud service.",
+     "evidence": [
+      "CLD-03"
+     ]
+    },
+    {
+     "id": "STR-GV.SC-04",
+     "type": "Foundation",
+     "statement": "IT keeps a list of suppliers with remote or privileged access, a base for ranking suppliers by criticality.",
+     "evidence": [
+      "SUP-01"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-GV.SC-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Critical vendor contracts carry no security duties or processing agreements",
+     "statement": "Contracts with critical vendors lack security duties and processing agreements, so CMC cannot require protection of patient data.",
+     "supportingFacts": [
+      {
+       "fact": "The HIS vendor contract covers confidentiality only, and due diligence ran at onboarding only.",
+       "evidence": [
+        "V4:Sample HIS vendor",
+        "V6:Sample HIS vendor"
+       ]
+      },
+      {
+       "fact": "The PACS vendor contract has no security clauses and no due diligence took place.",
+       "evidence": [
+        "V4:Sample PACS vendor",
+        "V6:Sample PACS vendor"
+       ]
+      },
+      {
+       "fact": "No data processing agreement is signed with the HIS, PACS, or web agency vendors.",
+       "evidence": [
+        "V5:Sample HIS vendor",
+        "V5:Sample PACS vendor",
+        "V5:Sample web agency"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Sample HIS vendor",
+       "Sample PACS vendor",
+       "Sample web agency"
+      ],
+      "likely": [],
+      "notChecked": "The cloud provider has good terms and other vendors were not profiled"
+     },
+     "linkedSubcategories": [
+      "GV.SC-01",
+      "GV.SC-03",
+      "GV.SC-05",
+      "GV.SC-06"
+     ],
+     "evidence": [
+      "V4:Sample HIS vendor",
+      "V6:Sample HIS vendor",
+      "V4:Sample PACS vendor",
+      "V6:Sample PACS vendor",
+      "V5:Sample HIS vendor",
+      "V5:Sample PACS vendor",
+      "V5:Sample web agency"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Vendor dependency"
+     ],
+     "consequence": "A breach at the HIS or PACS vendor reaches patient data with no contract duty to notify CMC or cooperate.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Vendor terms are Poor on Criticality A systems with remote access, and the sector threat is active.",
+      "evidence": [
+       "V4:Sample HIS vendor",
+       "V6:Sample HIS vendor",
+       "V4:Sample PACS vendor"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Vendor-side breach stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Vendor-side breach adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Vendor-side breach triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Vendor-side breach damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Vendor-side breach exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.SC-01-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-GV.SC-01-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-GV.SC-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Vendors reach critical systems through uncontrolled remote tools",
+     "statement": "Vendors connect through always-on remote tools that CMC does not control, and they take no part in incident planning or exit steps.",
+     "supportingFacts": [
+      {
+       "fact": "HIS, PACS, and the website vendors use always-on unattended remote tools.",
+       "evidence": [
+        "C7:HIS",
+        "C7:PACS",
+        "C7:Hospital website"
+       ]
+      },
+      {
+       "fact": "Vendor remote tools such as AnyDesk are not controlled.",
+       "evidence": [
+        "SUP-02"
+       ]
+      },
+      {
+       "fact": "Vendor remote access to HIS and PACS is not controlled or logged.",
+       "evidence": [
+        "vra:HIS",
+        "vra:PACS"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Hospital website"
+      ],
+      "likely": [
+       "LIS",
+       "ERP"
+      ],
+      "notChecked": "Vendor access to LIS and ERP is supervised or uses VPN without MFA"
+     },
+     "linkedSubcategories": [
+      "GV.SC-02",
+      "GV.SC-04",
+      "GV.SC-08",
+      "GV.SC-09",
+      "GV.SC-10"
+     ],
+     "evidence": [
+      "C7:HIS",
+      "C7:PACS",
+      "C7:Hospital website",
+      "SUP-02",
+      "vra:HIS",
+      "vra:PACS"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Vendor dependency"
+     ],
+     "consequence": "An attacker who takes over a vendor session reaches HIS or PACS directly, as in the attack path used against the peer hospital.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Vendor access is Poor on Criticality A systems and the threat is active in the sector.",
+      "evidence": [
+       "C7:HIS",
+       "C7:PACS",
+       "C7:Hospital website"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Vendor session takeover stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Vendor session takeover adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Vendor session takeover triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Vendor session takeover damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Vendor session takeover delays or disrupts patient care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Vendor session takeover exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-GV.SC-02-01"
+      ],
+      "find": [
+       "IMP-GV.SC-02-02"
+      ],
+      "prevent": [
+       "IMP-GV.SC-02-03"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-GV.OC-01-01",
+   "angle": "Fix",
+   "action": "Add an owner, review date, and deadline to each duty in the register of CII and PDPA requirements",
+   "linkedGaps": [
+    "GAP-GV.OC-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.OC-01-02",
+   "angle": "Prevent",
+   "action": "Review the register every year and after each law or regulator change",
+   "linkedGaps": [
+    "GAP-GV.OC-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.OC-02-01",
+   "angle": "Fix",
+   "action": "Present the Criticality A list to the CIO and CEO for approval and link it to recovery priorities",
+   "linkedGaps": [
+    "GAP-GV.OC-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.RM-01-01",
+   "angle": "Fix",
+   "action": "Approve a risk appetite statement and one risk method",
+   "linkedGaps": [
+    "GAP-GV.RM-01"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.RM-01-02",
+   "angle": "Fix",
+   "action": "Start a shared risk register that executives review",
+   "linkedGaps": [
+    "GAP-GV.RM-01"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-GV.RM-01-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.RM-02-01",
+   "angle": "Prevent",
+   "action": "Add cybersecurity risks to the enterprise risk report presented to the board each quarter",
+   "linkedGaps": [
+    "GAP-GV.RM-02"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-GV.RM-01-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.RR-01-01",
+   "angle": "Fix",
+   "action": "Issue a mandate letter for the Security Manager covering authority, reporting line, and budget, and name an accountable executive",
+   "linkedGaps": [
+    "GAP-GV.RR-01"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.RR-02-01",
+   "angle": "Fix",
+   "action": "Name a business owner for PACS and Active Directory and record the owner duties",
+   "linkedGaps": [
+    "GAP-GV.RR-02"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "PACS",
+    "Active Directory"
+   ]
+  },
+  {
+   "id": "IMP-GV.RR-02-02",
+   "angle": "Prevent",
+   "action": "Add security duties to job descriptions and joiner, mover, and leaver steps with HR",
+   "linkedGaps": [
+    "GAP-GV.RR-02"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.PO-01-01",
+   "angle": "Fix",
+   "action": "Approve the Information Security Policy and communicate it to all staff and vendors",
+   "linkedGaps": [
+    "GAP-GV.PO-01"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.PO-02-01",
+   "angle": "Handle exceptions",
+   "action": "Introduce a policy exception form with risk owner, compensating control, and expiry date",
+   "linkedGaps": [
+    "GAP-GV.PO-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-GV.PO-01-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.OV-01-01",
+   "angle": "Fix",
+   "action": "Set up a security steering committee that meets quarterly with a baseline metric set",
+   "linkedGaps": [
+    "GAP-GV.OV-01"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.SC-01-01",
+   "angle": "Fix",
+   "action": "Add security clauses and a data processing agreement to the HIS and PACS vendor contracts",
+   "linkedGaps": [
+    "GAP-GV.SC-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-GV.SC-01-02",
+   "angle": "Prevent",
+   "action": "Require security due diligence before every new critical vendor contract",
+   "linkedGaps": [
+    "GAP-GV.SC-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.SC-02-01",
+   "angle": "Fix",
+   "action": "Replace unattended vendor remote tools with a supervised access method protected by MFA",
+   "linkedGaps": [
+    "GAP-GV.SC-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-GV.SC-02-02",
+   "angle": "Find",
+   "action": "Rank all vendors by criticality and list the access each one holds",
+   "linkedGaps": [
+    "GAP-GV.SC-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-GV.SC-02-03",
+   "angle": "Prevent",
+   "action": "Include critical vendors in incident response planning and contract exit steps",
+   "linkedGaps": [
+    "GAP-GV.SC-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  }
+ ],
+ "verify": []
+}

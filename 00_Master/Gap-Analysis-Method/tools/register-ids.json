@@ -1,0 +1,2146 @@
+{
+ "register": "CSF Document Framework Register",
+ "version": "2.0",
+ "count": 142,
+ "note": "Single source of truth for core Register fields. Edit here, then run _Build-Source/gen_register_outputs.py. Never edit the xlsx, the Audit Tracker data, or the project doc by hand.",
+ "documents": {
+  "GV-CHR-001": {
+   "title": "Cybersecurity Governance Charter",
+   "th": "กฎบัตรการกำกับดูแลความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T0",
+   "type": "CHR",
+   "category": "GV.OC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-STR-001": {
+   "title": "Cybersecurity Strategy and Roadmap",
+   "th": "ยุทธศาสตร์และแผนงานด้านความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T0",
+   "type": "STR",
+   "category": "GV.OC",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-RPT-001": {
+   "title": "Organizational Context and ISMS Scope Statement",
+   "th": "เอกสารบริบทองค์กรและขอบเขตระบบบริหารจัดการความมั่นคงปลอดภัยสารสนเทศ",
+   "hierarchy": "T4",
+   "type": "RPT",
+   "category": "GV.OC",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W1",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-REG-001": {
+   "title": "Legal, Regulatory, and Contractual Requirements Register",
+   "th": "ทะเบียนข้อกำหนดด้านกฎหมาย ระเบียบ และสัญญา",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.OC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-REG-002": {
+   "title": "Stakeholder Requirements Register",
+   "th": "ทะเบียนความคาดหวังของผู้มีส่วนได้ส่วนเสีย",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.OC",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Extended",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-STM-001": {
+   "title": "Risk Appetite and Tolerance Statement",
+   "th": "แถลงการณ์ระดับความเสี่ยงที่ยอมรับได้และค่าเบี่ยงเบนที่ยอมรับได้",
+   "hierarchy": "T0",
+   "type": "STM",
+   "category": "GV.RM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-POL-002": {
+   "title": "Cybersecurity Risk Management Policy",
+   "th": "นโยบายการบริหารความเสี่ยงด้านความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "GV.RM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-001": {
+   "title": "Risk Assessment and Treatment Methodology",
+   "th": "ระเบียบวิธีการประเมินและจัดการความเสี่ยง",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.RM",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001",
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-FRM-001": {
+   "title": "Risk Acceptance Form",
+   "th": "แบบฟอร์มการยอมรับความเสี่ยง",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.RM",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-CHR-002": {
+   "title": "Information Security Steering Committee Terms of Reference",
+   "th": "ขอบเขตอำนาจหน้าที่คณะกรรมการกำกับดูแลความมั่นคงปลอดภัยสารสนเทศ",
+   "hierarchy": "T0",
+   "type": "CHR",
+   "category": "GV.RR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-REG-003": {
+   "title": "Cybersecurity Roles, Responsibilities, and RACI Matrix",
+   "th": "ตารางบทบาท หน้าที่ และความรับผิดชอบด้านความมั่นคงปลอดภัย (RACI)",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.RR",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001",
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-TPL-001": {
+   "title": "Cybersecurity Job Description Templates",
+   "th": "แม่แบบคำบรรยายลักษณะงานด้านความมั่นคงปลอดภัย",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "GV.RR",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-PLN-001": {
+   "title": "Cybersecurity Budget and Resource Plan",
+   "th": "แผนงบประมาณและทรัพยากรด้านความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "GV.RR",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-STD-001": {
+   "title": "Human Resources Security Standard",
+   "th": "มาตรฐานความมั่นคงปลอดภัยด้านทรัพยากรบุคคล",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "GV.RR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-FRM-002": {
+   "title": "Confidentiality and Non-Disclosure Agreement",
+   "th": "สัญญาการรักษาความลับ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.RR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-FRM-003": {
+   "title": "Employee Offboarding Security Checklist",
+   "th": "แบบตรวจสอบด้านความมั่นคงปลอดภัยเมื่อพนักงานพ้นสภาพหรือย้ายงาน",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.RR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-POL-001": {
+   "title": "Information Security Policy",
+   "th": "นโยบายความมั่นคงปลอดภัยสารสนเทศ",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "GV.PO",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-002": {
+   "title": "Document Control Procedure",
+   "th": "ระเบียบปฏิบัติการควบคุมเอกสาร",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-POL-003": {
+   "title": "Acceptable Use Policy",
+   "th": "นโยบายการใช้งานทรัพย์สินสารสนเทศที่ยอมรับได้",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-POL-005": {
+   "title": "Generative AI Acceptable Use Policy",
+   "th": "นโยบายการใช้งาน Generative AI",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "GV.PO",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-003": {
+   "title": "Policy Exception Management Procedure",
+   "th": "ระเบียบปฏิบัติการขอยกเว้นการปฏิบัติตามนโยบาย",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-FRM-004": {
+   "title": "Policy Exception Request Form",
+   "th": "แบบฟอร์มขอยกเว้นการปฏิบัติตามนโยบาย",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-REG-004": {
+   "title": "Policy Exception Register",
+   "th": "ทะเบียนข้อยกเว้นการปฏิบัติตามนโยบาย",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-REG-005": {
+   "title": "Statement of Applicability (SoA)",
+   "th": "เอกสารแสดงการนำมาตรการควบคุมไปใช้ (SoA)",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.PO",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Extended",
+   "wave": "W2",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-REG-006": {
+   "title": "CII Code of Practice Compliance Matrix",
+   "th": "ตารางการปฏิบัติตามประมวลแนวทางปฏิบัติสำหรับหน่วยงานโครงสร้างพื้นฐานสำคัญทางสารสนเทศ (CII)",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.PO",
+   "level": "Required",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Extended",
+   "wave": "W2",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-POL-004": {
+   "title": "Personal Data Protection Policy",
+   "th": "นโยบายการคุ้มครองข้อมูลส่วนบุคคล",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-REG-007": {
+   "title": "Record of Processing Activities (ROPA)",
+   "th": "บันทึกรายการกิจกรรมการประมวลผลข้อมูลส่วนบุคคล (ROPA)",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.PO",
+   "level": "Required",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-TPL-002": {
+   "title": "Privacy Notice Template",
+   "th": "แม่แบบประกาศความเป็นส่วนตัว",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "GV.PO",
+   "level": "Required",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-004": {
+   "title": "Data Protection Impact Assessment (DPIA) Procedure",
+   "th": "ระเบียบปฏิบัติการประเมินผลกระทบด้านการคุ้มครองข้อมูลส่วนบุคคล (DPIA)",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-TPL-003": {
+   "title": "DPIA Template",
+   "th": "แม่แบบการประเมินผลกระทบด้านการคุ้มครองข้อมูลส่วนบุคคล (DPIA)",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-005": {
+   "title": "Data Subject Rights Request Procedure",
+   "th": "ระเบียบปฏิบัติการจัดการคำขอใช้สิทธิของเจ้าของข้อมูลส่วนบุคคล",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-FRM-005": {
+   "title": "Data Subject Request Form",
+   "th": "แบบคำขอใช้สิทธิของเจ้าของข้อมูลส่วนบุคคล",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.PO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-TPL-004": {
+   "title": "Data Processing Agreement Template",
+   "th": "แม่แบบข้อตกลงการประมวลผลข้อมูลส่วนบุคคล (DPA)",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "GV.PO",
+   "level": "Required",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-006": {
+   "title": "Management Review Procedure",
+   "th": "ระเบียบปฏิบัติการทบทวนโดยฝ่ายบริหาร",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.OV",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-REC-001": {
+   "title": "Management Review Minutes",
+   "th": "บันทึกการประชุมทบทวนโดยฝ่ายบริหาร",
+   "hierarchy": "T4",
+   "type": "REC",
+   "category": "GV.OV",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-REG-008": {
+   "title": "Cybersecurity Metrics Catalog (KPI and KRI)",
+   "th": "บัญชีตัวชี้วัดผลการดำเนินงานและตัวชี้วัดความเสี่ยงด้านไซเบอร์ (KPI และ KRI)",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.OV",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-TPL-005": {
+   "title": "Board Cybersecurity Report Template",
+   "th": "แม่แบบรายงานด้านความมั่นคงปลอดภัยไซเบอร์ต่อคณะกรรมการ",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "GV.OV",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-007": {
+   "title": "Internal Audit Procedure",
+   "th": "ระเบียบปฏิบัติการตรวจสอบภายในด้านความมั่นคงปลอดภัยสารสนเทศ",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.OV",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001",
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-PLN-002": {
+   "title": "Internal Audit Program",
+   "th": "แผนการตรวจสอบภายในประจำปี",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "GV.OV",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001",
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "GV-TPL-006": {
+   "title": "Internal Audit Report Template",
+   "th": "แม่แบบรายงานผลการตรวจสอบภายใน",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "GV.OV",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001",
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-POL-006": {
+   "title": "Third-Party and Supply Chain Security Policy",
+   "th": "นโยบายความมั่นคงปลอดภัยด้านผู้ให้บริการภายนอกและห่วงโซ่อุปทาน",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-PRC-008": {
+   "title": "Third-Party Risk Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารความเสี่ยงผู้ให้บริการภายนอก",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-REG-009": {
+   "title": "Supplier Inventory and Criticality Register",
+   "th": "ทะเบียนผู้ให้บริการและระดับความสำคัญ",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "GV-FRM-006": {
+   "title": "Vendor Security Assessment Questionnaire",
+   "th": "แบบสอบถามประเมินความมั่นคงปลอดภัยของผู้ให้บริการ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-STD-002": {
+   "title": "Supplier Security Requirements Standard",
+   "th": "มาตรฐานข้อกำหนดความมั่นคงปลอดภัยในสัญญาผู้ให้บริการ",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-STD-003": {
+   "title": "Secure Acquisition Standard",
+   "th": "มาตรฐานการจัดหาระบบและผลิตภัณฑ์อย่างมั่นคงปลอดภัย",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "GV-FRM-007": {
+   "title": "Supplier Offboarding Checklist",
+   "th": "แบบตรวจสอบการยุติความสัมพันธ์กับผู้ให้บริการ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "GV.SC",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-STD-001": {
+   "title": "Asset Management Standard",
+   "th": "มาตรฐานการบริหารจัดการทรัพย์สินสารสนเทศ",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-PRC-001": {
+   "title": "Asset Lifecycle Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารวงจรชีวิตทรัพย์สิน",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-REG-001": {
+   "title": "Hardware Asset Inventory",
+   "th": "ทะเบียนทรัพย์สินฮาร์ดแวร์",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-REG-002": {
+   "title": "Software and Service Inventory",
+   "th": "ทะเบียนซอฟต์แวร์และบริการ",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-REG-003": {
+   "title": "Data Inventory and Data Flow Register",
+   "th": "ทะเบียนข้อมูลและการไหลของข้อมูล",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "ID-RPT-001": {
+   "title": "Network Architecture and Data Flow Diagram",
+   "th": "แผนผังสถาปัตยกรรมเครือข่ายและการไหลของข้อมูล",
+   "hierarchy": "T4",
+   "type": "RPT",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-REG-004": {
+   "title": "OT and Medical Device Inventory",
+   "th": "ทะเบียนอุปกรณ์เทคโนโลยีปฏิบัติการ (OT) และอุปกรณ์การแพทย์",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.AM",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W1",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-RPT-002": {
+   "title": "Business Impact Analysis (BIA)",
+   "th": "การวิเคราะห์ผลกระทบทางธุรกิจ (BIA)",
+   "hierarchy": "T4",
+   "type": "RPT",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "ID-FRM-001": {
+   "title": "Media Sanitization and Disposal Record",
+   "th": "บันทึกการทำลายข้อมูลและการจำหน่ายอุปกรณ์",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "ID.AM",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-REG-005": {
+   "title": "IT and Cybersecurity Risk Register",
+   "th": "ทะเบียนความเสี่ยงด้าน IT และความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.RA",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001",
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "ID-PLN-001": {
+   "title": "Risk Treatment Plan",
+   "th": "แผนการจัดการความเสี่ยง",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "ID.RA",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "ID-RPT-003": {
+   "title": "Cybersecurity Risk Assessment Report",
+   "th": "รายงานผลการประเมินความเสี่ยงด้านความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T4",
+   "type": "RPT",
+   "category": "ID.RA",
+   "level": "Required",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W1",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "ID-STD-002": {
+   "title": "Vulnerability Scanning and Remediation Standard",
+   "th": "มาตรฐานการสแกนและแก้ไขช่องโหว่",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "ID.RA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "ID-PRC-002": {
+   "title": "Vulnerability Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารจัดการช่องโหว่",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "ID.RA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "ID-REG-006": {
+   "title": "Vulnerability Remediation Tracker",
+   "th": "ทะเบียนติดตามการแก้ไขช่องโหว่",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.RA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-PRC-003": {
+   "title": "Penetration Testing Procedure",
+   "th": "ระเบียบปฏิบัติการทดสอบเจาะระบบ",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "ID.RA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "ID-FRM-002": {
+   "title": "Penetration Test Authorization and Rules of Engagement",
+   "th": "แบบอนุมัติและกติกาการทดสอบเจาะระบบ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "ID.RA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "ID-PRC-004": {
+   "title": "Threat Intelligence Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารข้อมูลข่าวกรองภัยคุกคาม",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "ID.RA",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "ID-PRC-005": {
+   "title": "Vulnerability Disclosure Handling Procedure",
+   "th": "ระเบียบปฏิบัติการรับแจ้งช่องโหว่จากภายนอก",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "ID.RA",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "ID-PRC-006": {
+   "title": "Continual Improvement and Corrective Action Procedure",
+   "th": "ระเบียบปฏิบัติการปรับปรุงอย่างต่อเนื่องและการแก้ไขข้อบกพร่อง",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "ID.IM",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-REG-007": {
+   "title": "Corrective Action and Improvement Register",
+   "th": "ทะเบียนการแก้ไขข้อบกพร่องและการปรับปรุง",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "ID.IM",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "IT"
+  },
+  "ID-PLN-002": {
+   "title": "Cybersecurity Exercise and Testing Program",
+   "th": "แผนการฝึกซ้อมและทดสอบด้านความมั่นคงปลอดภัยไซเบอร์",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "ID.IM",
+   "level": "Expected",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "ID-TPL-001": {
+   "title": "Lessons Learned Report Template",
+   "th": "แม่แบบรายงานบทเรียนที่ได้รับ",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "ID.IM",
+   "level": "Expected",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-POL-001": {
+   "title": "Access Control Policy",
+   "th": "นโยบายการควบคุมการเข้าถึง",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-STD-001": {
+   "title": "Identity and Authentication Standard",
+   "th": "มาตรฐานการบริหารตัวตนและการยืนยันตัวตน",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "GUIDED"
+  },
+  "PR-STD-002": {
+   "title": "Privileged Access Management Standard",
+   "th": "มาตรฐานการบริหารจัดการสิทธิ์ระดับสูง",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "B",
+   "cap": "GUIDED"
+  },
+  "PR-STD-003": {
+   "title": "Remote Access Standard",
+   "th": "มาตรฐานการเข้าถึงระยะไกล",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "B",
+   "cap": "GUIDED"
+  },
+  "PR-PRC-001": {
+   "title": "User Access Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารจัดการสิทธิ์ผู้ใช้งาน",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-PRC-002": {
+   "title": "User Access Review Procedure",
+   "th": "ระเบียบปฏิบัติการทบทวนสิทธิ์ผู้ใช้งาน",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-FRM-001": {
+   "title": "User Access Request Form",
+   "th": "แบบฟอร์มขอสิทธิ์เข้าใช้งานระบบ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-FRM-002": {
+   "title": "Privileged Access Request Form",
+   "th": "แบบฟอร์มขอสิทธิ์ระดับสูง",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-FRM-003": {
+   "title": "Third-Party Remote Access Request Form",
+   "th": "แบบฟอร์มขอเข้าถึงระยะไกลสำหรับบุคคลภายนอก",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-REC-001": {
+   "title": "User Access Review Record",
+   "th": "บันทึกผลการทบทวนสิทธิ์ผู้ใช้งาน",
+   "hierarchy": "T4",
+   "type": "REC",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-REG-001": {
+   "title": "Privileged Account Register",
+   "th": "ทะเบียนบัญชีสิทธิ์ระดับสูง",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "PR-POL-002": {
+   "title": "Physical and Environmental Security Policy",
+   "th": "นโยบายความมั่นคงปลอดภัยทางกายภาพและสภาพแวดล้อม",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-PRC-003": {
+   "title": "Physical Access Management Procedure",
+   "th": "ระเบียบปฏิบัติการควบคุมการเข้าถึงพื้นที่",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-FRM-004": {
+   "title": "Secure Area Access and Visitor Log",
+   "th": "แบบบันทึกการเข้าพื้นที่ควบคุมและผู้มาติดต่อ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "PR.AA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-PLN-001": {
+   "title": "Security Awareness and Training Program",
+   "th": "แผนการสร้างความตระหนักรู้และการฝึกอบรมด้านความมั่นคงปลอดภัย",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "PR.AT",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-REG-002": {
+   "title": "Role-Based Training and Skills Matrix",
+   "th": "ตารางทักษะและการฝึกอบรมตามบทบาท",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "PR.AT",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-REC-002": {
+   "title": "Training Completion Record",
+   "th": "บันทึกการเข้ารับการฝึกอบรม",
+   "hierarchy": "T4",
+   "type": "REC",
+   "category": "PR.AT",
+   "level": "Required",
+   "trigger": [
+    "ISO 27001"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-PRC-004": {
+   "title": "Phishing Simulation Procedure",
+   "th": "ระเบียบปฏิบัติการทดสอบฟิชชิ่งจำลอง",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.AT",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-POL-003": {
+   "title": "Data Protection and Classification Policy",
+   "th": "นโยบายการจัดชั้นและการปกป้องข้อมูล",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-STD-004": {
+   "title": "Information Classification and Handling Standard",
+   "th": "มาตรฐานการจัดชั้นความลับและการจัดการข้อมูล",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-STD-005": {
+   "title": "Cryptography and Key Management Standard",
+   "th": "มาตรฐานการเข้ารหัสและการบริหารจัดการกุญแจ",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "PR-STD-006": {
+   "title": "Backup Standard",
+   "th": "มาตรฐานการสำรองข้อมูล",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "PR-PRC-005": {
+   "title": "Backup and Restore Procedure",
+   "th": "ระเบียบปฏิบัติการสำรองและกู้คืนข้อมูล",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "PR-REC-003": {
+   "title": "Backup and Restore Test Record",
+   "th": "บันทึกผลการทดสอบการกู้คืนข้อมูล",
+   "hierarchy": "T4",
+   "type": "REC",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "PR-STD-007": {
+   "title": "Data Retention and Disposal Standard",
+   "th": "มาตรฐานการเก็บรักษาและการทำลายข้อมูล",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-STD-008": {
+   "title": "Data Loss Prevention Standard",
+   "th": "มาตรฐานการป้องกันข้อมูลรั่วไหล",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.DS",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "PR-STD-009": {
+   "title": "Mobile Device and BYOD Standard",
+   "th": "มาตรฐานอุปกรณ์เคลื่อนที่และอุปกรณ์ส่วนตัว (BYOD)",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.DS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-STD-010": {
+   "title": "Secure Configuration Baseline Standard",
+   "th": "มาตรฐานการตั้งค่าระบบอย่างมั่นคงปลอดภัย",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-PRC-006": {
+   "title": "Change Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารการเปลี่ยนแปลง",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-FRM-005": {
+   "title": "Change Request Form",
+   "th": "แบบฟอร์มขอเปลี่ยนแปลงระบบ",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-PRC-007": {
+   "title": "Patch Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารจัดการแพตช์",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-STD-011": {
+   "title": "Logging Standard",
+   "th": "มาตรฐานการบันทึกข้อมูลจราจรทางคอมพิวเตอร์และเหตุการณ์ (Logging)",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "CCA"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-STD-012": {
+   "title": "Endpoint Protection Standard",
+   "th": "มาตรฐานการป้องกันอุปกรณ์ปลายทาง",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "B",
+   "cap": "GUIDED"
+  },
+  "PR-REG-003": {
+   "title": "Approved Software Register",
+   "th": "ทะเบียนซอฟต์แวร์ที่อนุญาตให้ใช้งาน",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-STD-013": {
+   "title": "Secure Software Development Standard",
+   "th": "มาตรฐานการพัฒนาซอฟต์แวร์อย่างมั่นคงปลอดภัย",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "PR-STD-014": {
+   "title": "Cloud Security Standard",
+   "th": "มาตรฐานความมั่นคงปลอดภัยบนระบบคลาวด์",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.PS",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "PR-STD-015": {
+   "title": "OT and Medical Device Security Standard",
+   "th": "มาตรฐานความมั่นคงปลอดภัยของ OT และอุปกรณ์การแพทย์",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.PS",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "PR-STD-016": {
+   "title": "Network Security Standard",
+   "th": "มาตรฐานความมั่นคงปลอดภัยเครือข่าย",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.IR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "PR-PRC-008": {
+   "title": "Firewall Rule Management Procedure",
+   "th": "ระเบียบปฏิบัติการบริหารจัดการกฎไฟร์วอลล์",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "PR.IR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-FRM-006": {
+   "title": "Firewall Rule Change Request Form",
+   "th": "แบบฟอร์มขอเปลี่ยนแปลงกฎไฟร์วอลล์",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "PR.IR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "PR-STD-017": {
+   "title": "Technology Resilience and Capacity Standard",
+   "th": "มาตรฐานความยืดหยุ่นและขีดความสามารถของระบบเทคโนโลยี",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "PR.IR",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "DE-STD-001": {
+   "title": "Security Monitoring Standard",
+   "th": "มาตรฐานการเฝ้าระวังความมั่นคงปลอดภัย",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "DE.CM",
+   "level": "Expected",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "DE-PRC-001": {
+   "title": "Security Monitoring Operations Procedure",
+   "th": "ระเบียบปฏิบัติการดำเนินงานเฝ้าระวังความมั่นคงปลอดภัย",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "DE.CM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "DE-REG-001": {
+   "title": "Log Source and Monitoring Coverage Register",
+   "th": "ทะเบียนแหล่งข้อมูล Log และขอบเขตการเฝ้าระวัง",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "DE.CM",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "DE-GDL-001": {
+   "title": "Managed Security Service Provider (MSSP) Requirements Guideline",
+   "th": "แนวทางกำหนดข้อกำหนดบริการผู้ให้บริการความมั่นคงปลอดภัยแบบบริหารจัดการ (MSSP)",
+   "hierarchy": "T3",
+   "type": "GDL",
+   "category": "DE.CM",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "DE-PRC-002": {
+   "title": "Security Event Triage and Analysis Procedure",
+   "th": "ระเบียบปฏิบัติการคัดกรองและวิเคราะห์เหตุการณ์ความมั่นคงปลอดภัย",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "DE.AE",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "DE-STD-002": {
+   "title": "Incident Classification and Severity Standard",
+   "th": "มาตรฐานการจำแนกประเภทและระดับความรุนแรงของเหตุการณ์",
+   "hierarchy": "T2",
+   "type": "STD",
+   "category": "DE.AE",
+   "level": "Expected",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "DE-REG-002": {
+   "title": "Detection Use Case Catalog",
+   "th": "บัญชีกรณีการตรวจจับ (Detection Use Case)",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "DE.AE",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "DE-PRC-003": {
+   "title": "Threat Hunting Procedure",
+   "th": "ระเบียบปฏิบัติการค้นหาภัยคุกคามเชิงรุก (Threat Hunting)",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "DE.AE",
+   "level": "Optional",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-PLN-001": {
+   "title": "Cybersecurity Incident Response Plan",
+   "th": "แผนการรับมือเหตุการณ์ภัยคุกคามทางไซเบอร์",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "RS.MA",
+   "level": "Required",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "SPEC"
+  },
+  "RS-PRC-001": {
+   "title": "Incident Handling Procedure",
+   "th": "ระเบียบปฏิบัติการจัดการเหตุการณ์ความมั่นคงปลอดภัย",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-PLB-001": {
+   "title": "Ransomware Response Playbook",
+   "th": "คู่มือการรับมือแรนซัมแวร์ (Ransomware)",
+   "hierarchy": "T3",
+   "type": "PLB",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W1",
+   "track": "B",
+   "cap": "SPEC"
+  },
+  "RS-PLB-002": {
+   "title": "Phishing and Business Email Compromise Playbook",
+   "th": "คู่มือการรับมือฟิชชิ่งและการหลอกลวงทางอีเมลธุรกิจ (BEC)",
+   "hierarchy": "T3",
+   "type": "PLB",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-PLB-003": {
+   "title": "Personal Data Breach Response Playbook",
+   "th": "คู่มือการรับมือเหตุละเมิดข้อมูลส่วนบุคคล",
+   "hierarchy": "T3",
+   "type": "PLB",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "PDPA"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RS-PLB-004": {
+   "title": "Compromised Account Playbook",
+   "th": "คู่มือการรับมือบัญชีผู้ใช้ถูกยึด",
+   "hierarchy": "T3",
+   "type": "PLB",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-FRM-001": {
+   "title": "Incident Report Form",
+   "th": "แบบฟอร์มรายงานเหตุการณ์ความมั่นคงปลอดภัย",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "RS-REG-001": {
+   "title": "Incident Register",
+   "th": "ทะเบียนเหตุการณ์ความมั่นคงปลอดภัย",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "RS.MA",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "RS-REG-002": {
+   "title": "Incident Response Contact List",
+   "th": "รายชื่อผู้ติดต่อในการรับมือเหตุการณ์",
+   "hierarchy": "T4",
+   "type": "REG",
+   "category": "RS.MA",
+   "level": "Required",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W0",
+   "track": "B",
+   "cap": "IT"
+  },
+  "RS-PRC-002": {
+   "title": "Digital Forensics and Evidence Handling Procedure",
+   "th": "ระเบียบปฏิบัติการพิสูจน์หลักฐานดิจิทัลและการจัดการพยานหลักฐาน",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "RS.AN",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-FRM-002": {
+   "title": "Evidence Chain of Custody Form",
+   "th": "แบบบันทึกการส่งมอบพยานหลักฐาน (Chain of Custody)",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "RS.AN",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-TPL-001": {
+   "title": "Incident Investigation Report Template",
+   "th": "แม่แบบรายงานการสอบสวนเหตุการณ์",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "RS.AN",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RS-PRC-003": {
+   "title": "Incident Notification and Communication Procedure",
+   "th": "ระเบียบปฏิบัติการแจ้งเหตุและการสื่อสารระหว่างเหตุการณ์",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "RS.CO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA",
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RS-TPL-002": {
+   "title": "Regulatory Notification Templates",
+   "th": "แม่แบบการแจ้งเหตุต่อหน่วยงานกำกับดูแล",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "RS.CO",
+   "level": "Expected",
+   "trigger": [
+    "PDPA",
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RC-POL-001": {
+   "title": "Business Continuity Management Policy",
+   "th": "นโยบายการบริหารความต่อเนื่องทางธุรกิจ",
+   "hierarchy": "T1",
+   "type": "POL",
+   "category": "RC.RP",
+   "level": "Expected",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W2",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RC-PLN-001": {
+   "title": "Business Continuity Plan (BCP)",
+   "th": "แผนความต่อเนื่องทางธุรกิจ (BCP)",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "RC.RP",
+   "level": "Required",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "SPEC"
+  },
+  "RC-PLN-002": {
+   "title": "IT Disaster Recovery Plan (DRP)",
+   "th": "แผนการกู้คืนระบบสารสนเทศ (DRP)",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "RC.RP",
+   "level": "Expected",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Essential",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RC-PRC-001": {
+   "title": "System Recovery Runbook Template",
+   "th": "แม่แบบคู่มือขั้นตอนการกู้คืนระบบ (Runbook)",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "RC.RP",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "RC-REC-001": {
+   "title": "BCP and DR Exercise Report",
+   "th": "รายงานผลการฝึกซ้อม BCP และ DR",
+   "hierarchy": "T4",
+   "type": "REC",
+   "category": "RC.RP",
+   "level": "Required",
+   "trigger": [
+    "CII"
+   ],
+   "package": "Core",
+   "wave": "W4",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RC-FRM-001": {
+   "title": "Recovery Completion and Sign-off Form",
+   "th": "แบบฟอร์มยืนยันการกู้คืนระบบเสร็จสมบูรณ์",
+   "hierarchy": "T4",
+   "type": "FRM",
+   "category": "RC.RP",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  },
+  "RC-PLN-003": {
+   "title": "Crisis Management Plan",
+   "th": "แผนการบริหารภาวะวิกฤต",
+   "hierarchy": "T3",
+   "type": "PLN",
+   "category": "RC.CO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Extended",
+   "wave": "W5",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RC-PRC-002": {
+   "title": "Crisis Communication Procedure",
+   "th": "ระเบียบปฏิบัติการสื่อสารในภาวะวิกฤต",
+   "hierarchy": "T3",
+   "type": "PRC",
+   "category": "RC.CO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "GUIDED"
+  },
+  "RC-TPL-001": {
+   "title": "Public Statement and Stakeholder Update Templates",
+   "th": "แม่แบบแถลงการณ์และการแจ้งความคืบหน้าต่อผู้มีส่วนได้ส่วนเสีย",
+   "hierarchy": "T4",
+   "type": "TPL",
+   "category": "RC.CO",
+   "level": "Expected",
+   "trigger": [
+    "All"
+   ],
+   "package": "Core",
+   "wave": "W3",
+   "track": "A",
+   "cap": "IT"
+  }
+ }
+}

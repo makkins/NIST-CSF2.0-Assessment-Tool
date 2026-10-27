@@ -1,0 +1,741 @@
+{
+ "schema": "csf-gap-analyst/2",
+ "function": "ID",
+ "round": 2,
+ "categories": [
+  {
+   "categoryId": "ID.AM",
+   "keyMessage": {
+    "found": "CMC lists hardware and medical devices but not software, cloud services, or data flows, and assets lack owners and criticality.",
+    "closes": "Build a software and cloud inventory and map patient data flows."
+   },
+   "whatWorksToday": "Hardware and medical device inventories exist, and cloud applications are partly known.",
+   "strengths": [
+    {
+     "id": "STR-ID.AM-01",
+     "type": "Foundation",
+     "statement": "Hardware and medical device inventories exist, and the hardware inventory was demonstrated.",
+     "evidence": [
+      "AST-01",
+      "OT-01",
+      "ID.AM-01"
+     ]
+    },
+    {
+     "id": "STR-ID.AM-02",
+     "type": "Foundation",
+     "statement": "Cloud and SaaS applications are partly known, a start for a full software inventory.",
+     "evidence": [
+      "AST-04"
+     ]
+    },
+    {
+     "id": "STR-ID.AM-05",
+     "type": "Foundation",
+     "statement": "The medical device inventory records operating system version and network location, a base for criticality ranking.",
+     "evidence": [
+      "OT-01"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-ID.AM-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Software, cloud, and data-flow inventories are missing",
+     "statement": "CMC lists hardware and medical devices but not software, cloud services, or data flows, so exposure and breach scope cannot be mapped.",
+     "supportingFacts": [
+      {
+       "fact": "No software inventory shows versions and support status.",
+       "evidence": [
+        "AST-03"
+       ]
+      },
+      {
+       "fact": "Cloud and SaaS applications bought by departments are only partly known.",
+       "evidence": [
+        "AST-04"
+       ]
+      },
+      {
+       "fact": "Network and data flow diagrams were not confirmed.",
+       "evidence": [
+        "AST-05",
+        "DATA-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Software inventory",
+       "Data flow maps"
+      ],
+      "likely": [
+       "Cloud services"
+      ],
+      "notChecked": "Number of unlisted cloud services is unknown"
+     },
+     "linkedSubcategories": [
+      "ID.AM-02",
+      "ID.AM-03",
+      "ID.AM-04",
+      "ID.AM-07"
+     ],
+     "evidence": [
+      "AST-03",
+      "AST-04",
+      "AST-05",
+      "DATA-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Tooling"
+     ],
+     "consequence": "Unlisted software stays unpatched, and after a breach CMC cannot say which patient records left the hospital.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Inventory is Weak on Criticality A systems.",
+      "evidence": [
+       "AST-03",
+       "AST-04",
+       "AST-05"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Unscoped breach stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Unscoped breach adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Unscoped breach triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Unscoped breach damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Unscoped breach delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Unscoped breach exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [
+       "IMP-ID.AM-01-01",
+       "IMP-ID.AM-01-02"
+      ],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-ID.AM-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Asset ownership, criticality, and disposal are not managed",
+     "statement": "Assets lack owners and criticality in the inventory, and devices leave CMC without disk sanitization.",
+     "supportingFacts": [
+      {
+       "fact": "Unknown devices connecting to the network are handled informally.",
+       "evidence": [
+        "AST-02"
+       ]
+      },
+      {
+       "fact": "Disks and devices are not sanitized before disposal or vendor return.",
+       "evidence": [
+        "DATA-05"
+       ]
+      },
+      {
+       "fact": "PACS and Active Directory have an IT owner only.",
+       "evidence": [
+        "F1:PACS",
+        "F1:Active Directory and network core"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Hardware inventory",
+       "PACS"
+      ],
+      "likely": [],
+      "notChecked": "Disposal records were not reviewed"
+     },
+     "linkedSubcategories": [
+      "ID.AM-01",
+      "ID.AM-05",
+      "ID.AM-08"
+     ],
+     "evidence": [
+      "AST-02",
+      "DATA-05",
+      "F1:PACS",
+      "F1:Active Directory and network core"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Patient data on a returned disk reaches a third party, and unknown devices join the network unnoticed.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Controls are Partial on Criticality A assets.",
+      "evidence": [
+       "AST-02",
+       "DATA-05",
+       "F1:PACS"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Data on a returned disk stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "rep": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Data on a returned disk exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-ID.AM-02-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-ID.AM-02-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "ID.RA",
+   "keyMessage": {
+    "found": "Internal systems are not scanned, the exposed website runs an unsupported PHP version, and threat information plays no part in risk ratings.",
+    "closes": "Run monthly authenticated scans on Criticality A systems and the website, and write ransomware threat scenarios."
+   },
+   "whatWorksToday": "Applications are code-scanned before go-live.",
+   "strengths": [
+    {
+     "id": "STR-ID.RA-01",
+     "type": "Foundation",
+     "statement": "Application code is scanned and tested before go-live, and a vulnerability process is documented.",
+     "evidence": [
+      "APP-02",
+      "ID.RA-01"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-ID.RA-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Internal systems are not scanned and the website carries a known weakness",
+     "statement": "CMC does not scan its internal systems for vulnerabilities, so known flaws stay open until an outsider finds them.",
+     "supportingFacts": [
+      {
+       "fact": "No authenticated vulnerability scans run on internal systems.",
+       "evidence": [
+        "VUL-01"
+       ]
+      },
+      {
+       "fact": "The hospital website shows an unsupported PHP version and an internet-reachable admin login.",
+       "evidence": [
+        "OBS-01"
+       ]
+      },
+      {
+       "fact": "Vendor advisories and exploited-flaw alerts are tracked only in part.",
+       "evidence": [
+        "VUL-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Internal systems",
+       "Hospital website"
+      ],
+      "likely": [
+       "HIS",
+       "PACS"
+      ],
+      "notChecked": "Scan coverage of LIS and ERP was not confirmed"
+     },
+     "linkedSubcategories": [
+      "ID.RA-01",
+      "ID.RA-06",
+      "ID.RA-07",
+      "ID.RA-08"
+     ],
+     "evidence": [
+      "VUL-01",
+      "OBS-01",
+      "VUL-04"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Capacity"
+     ],
+     "consequence": "Attackers use a known flaw on the website or an internal server to gain a foothold and move toward HIS.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "No scanning exists on Criticality A systems, an internet-facing weakness is open, and the threat is active.",
+      "evidence": [
+       "VUL-01",
+       "OBS-01",
+       "VUL-04"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Exploited known flaw stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Exploited known flaw adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Exploited known flaw triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Exploited known flaw damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Exploited known flaw delays or disrupts patient care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Exploited known flaw exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-ID.RA-01-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-ID.RA-01-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-ID.RA-02",
+     "basis": "Inferred",
+     "confidence": "Medium",
+     "title": "Threats and risk responses are not recorded or tracked",
+     "statement": "CMC likely rates risks without sector threat information, so it has not judged its exposure to the ransomware that hit a peer hospital.",
+     "supportingFacts": [
+      {
+       "fact": "No record lists internal and external threats.",
+       "evidence": [
+        "ID.RA-03"
+       ]
+      },
+      {
+       "fact": "Threat intelligence is received only informally.",
+       "evidence": [
+        "ID.RA-02"
+       ]
+      },
+      {
+       "fact": "Third-party components in HIS and the website are not tracked.",
+       "evidence": [
+        "D7:HIS",
+        "D7:Hospital website"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Risk ratings"
+      ],
+      "likely": [
+       "Control selection"
+      ],
+      "notChecked": "Use of threat feeds by IT was not reviewed"
+     },
+     "linkedSubcategories": [
+      "ID.RA-02",
+      "ID.RA-03",
+      "ID.RA-05",
+      "ID.RA-09",
+      "ID.RA-10"
+     ],
+     "evidence": [
+      "ID.RA-03",
+      "ID.RA-02",
+      "D7:HIS",
+      "D7:Hospital website"
+     ],
+     "rootCause": [
+      "Skills",
+      "Ownership"
+     ],
+     "consequence": "Controls are chosen without a view of the likely attack path, so spending misses the routes attackers actually use.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-b",
+      "rationale": "Inferred with Medium confidence from three missing records.",
+      "evidence": [
+       "ID.RA-03",
+       "ID.RA-02",
+       "D7:HIS"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Misdirected controls stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Misdirected controls adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Misdirected controls triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Misdirected controls damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Misdirected controls delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Misdirected controls exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [
+       "IMP-ID.RA-02-01"
+      ],
+      "prevent": [
+       "IMP-ID.RA-02-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "ID.IM",
+   "keyMessage": {
+    "found": "No exercise or review feeds improvements, and plans are not updated from lessons.",
+    "closes": "Hold a first ransomware tabletop exercise and open an improvement register."
+   },
+   "whatWorksToday": "IT reports penetration testing on critical systems.",
+   "strengths": [
+    {
+     "id": "STR-ID.IM-02",
+     "type": "Foundation",
+     "statement": "IT reports penetration testing on critical and internet-facing systems, a base for tracking findings.",
+     "evidence": [
+      "VUL-03"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-ID.IM-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No exercises or reviews drive improvement",
+     "statement": "CMC runs no exercises and does not update its plans from operational lessons, so weaknesses are found only in real events.",
+     "supportingFacts": [
+      {
+       "fact": "No tabletop or technical incident exercise is run.",
+       "evidence": [
+        "IR-04"
+       ]
+      },
+      {
+       "fact": "Plans are not updated from operational lessons.",
+       "evidence": [
+        "ID.IM-03",
+        "ID.IM-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Results of earlier audits were not collected"
+     },
+     "linkedSubcategories": [
+      "ID.IM-01",
+      "ID.IM-02",
+      "ID.IM-03",
+      "ID.IM-04"
+     ],
+     "evidence": [
+      "IR-04",
+      "ID.IM-03",
+      "ID.IM-04"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Weak response plans and repeated findings first appear during a real attack or at the next audit.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Exercises are absent for Criticality A systems.",
+      "evidence": [
+       "IR-04",
+       "ID.IM-03",
+       "ID.IM-04"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Untested response stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Untested response adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Untested response triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Untested response damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Untested response delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Untested response exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [
+       "IMP-ID.IM-01-01"
+      ],
+      "prevent": [
+       "IMP-ID.IM-01-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-ID.AM-01-01",
+   "angle": "Find",
+   "action": "Build a software and cloud service inventory with version and support status, Criticality A systems first",
+   "linkedGaps": [
+    "GAP-ID.AM-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.AM-01-02",
+   "angle": "Find",
+   "action": "Map network and patient data flows for HIS, PACS, LIS, and ERP and start the Record of Processing Activities (ROPA)",
+   "linkedGaps": [
+    "GAP-ID.AM-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.AM-02-01",
+   "angle": "Fix",
+   "action": "Assign an owner and criticality to every hardware and medical device record",
+   "linkedGaps": [
+    "GAP-ID.AM-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.AM-02-02",
+   "angle": "Prevent",
+   "action": "Require inventory update in change approval and reconcile it every six months",
+   "linkedGaps": [
+    "GAP-ID.AM-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-ID.AM-02-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.RA-01-01",
+   "angle": "Fix",
+   "action": "Run authenticated vulnerability scans monthly on Criticality A systems and the hospital website and track findings to closure",
+   "linkedGaps": [
+    "GAP-ID.RA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Hospital website"
+   ]
+  },
+  {
+   "id": "IMP-ID.RA-01-02",
+   "angle": "Prevent",
+   "action": "Set remediation timelines by severity and report them to the steering committee",
+   "linkedGaps": [
+    "GAP-ID.RA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-ID.RA-01-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.RA-02-01",
+   "angle": "Find",
+   "action": "Write ransomware and third-party access threat scenarios from the peer hospital incident",
+   "linkedGaps": [
+    "GAP-ID.RA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.RA-02-02",
+   "angle": "Prevent",
+   "action": "Subscribe to a sector threat advisory source and review it monthly",
+   "linkedGaps": [
+    "GAP-ID.RA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.IM-01-01",
+   "angle": "Find",
+   "action": "Run a first tabletop exercise on ransomware and record the improvements",
+   "linkedGaps": [
+    "GAP-ID.IM-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-ID.IM-01-02",
+   "angle": "Prevent",
+   "action": "Open an improvement register fed by exercises, audits, and incidents",
+   "linkedGaps": [
+    "GAP-ID.IM-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  }
+ ],
+ "verify": []
+}

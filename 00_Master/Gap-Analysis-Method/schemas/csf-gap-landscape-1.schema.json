@@ -1,0 +1,121 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "csf-gap-landscape/1",
+ "title": "AI draft of the Current IT Landscape key messages (Gap Analysis Stage 0b)",
+ "description": "Key message per page and one line per block, drafted from csf-gap-landscape-facts/1. Facts only: no rating words, no gaps, no recommendations. The assessor approves; the Landscape locks when verify is empty.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema",
+  "round",
+  "pages",
+  "blockLines",
+  "verify"
+ ],
+ "properties": {
+  "schema": {
+   "const": "csf-gap-landscape/1"
+  },
+  "round": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 2,
+   "description": "1 first draft, 2 after assessor comments"
+  },
+  "pages": {
+   "type": "array",
+   "minItems": 4,
+   "maxItems": 4,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "page",
+     "title",
+     "keyMessage",
+     "evidence"
+    ],
+    "properties": {
+     "page": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+     },
+     "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "12 words or fewer. Reading the title alone tells what the page shows"
+     },
+     "keyMessage": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "description": "35 words or fewer. The main fact pattern of the page, stated without judgment"
+     },
+     "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "minLength": 2
+      }
+     }
+    }
+   }
+  },
+  "blockLines": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "block",
+     "text",
+     "evidence"
+    ],
+    "properties": {
+     "block": {
+      "type": "string",
+      "pattern": "^B([1-9]|1[0-4])$"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 240,
+      "description": "30 words or fewer. One line that summarizes the block"
+     },
+     "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "minLength": 2
+      }
+     }
+    }
+   }
+  },
+  "verify": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "ref",
+     "question"
+    ],
+    "properties": {
+     "ref": {
+      "type": "string"
+     },
+     "question": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 400
+     }
+    }
+   }
+  }
+ }
+}

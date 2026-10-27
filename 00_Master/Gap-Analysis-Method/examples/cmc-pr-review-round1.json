@@ -1,0 +1,23 @@
+{
+  "schema": "csf-gap-review/1",
+  "function": "PR",
+  "reviewedRound": 1,
+  "checks": [
+    { "check": "C01", "target": "GAP-PR.AA-01", "result": "Fail", "note": "The statement cites no evidence IDs.", "requiredChange": "Cite the sampling results, profile answers, and technical checks that support the statement." },
+    { "check": "C02", "target": "GAP-PR.AA-01", "result": "Fail", "note": "NET-03 says remote access uses MFA while IAM-01 says MFA is not enforced for remote access.", "requiredChange": "Add a verify item that asks whether the VPN requires MFA for staff and for vendors." },
+    { "check": "C03", "target": "GAP-PR.AA-01", "result": "Fail", "note": "The statement repeats the sampling row and has no consequence.", "requiredChange": "State what the missing MFA means for the organization and the threat it enables." },
+    { "check": "C04", "target": "GAP-PR.AA-01", "result": "Fail", "note": "The Core profile shows no MFA on LIS, ERP, and the hospital website, but the draft covers sampled systems only.", "requiredChange": "Add the extent across all profiled systems and decide whether an Inferred finding is needed." },
+    { "check": "C08", "target": "GAP-PR.AA-01", "result": "Fail", "note": "Only the Fix angle is covered.", "requiredChange": "Cover Find, Prevent, and Handle exceptions, or give a reason for each." },
+    { "check": "C09", "target": "IMP-PR.AA-04-01", "result": "Fail", "note": "PR.AA-06 is an Evidence gap, but the action installs new badge readers.", "requiredChange": "Change the action to keeping access logs and review records." },
+    { "check": "C05", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C06", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C07", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C10", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C11", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C12", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C13", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C14", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" },
+    { "check": "C15", "target": "ALL", "result": "Pass", "note": "", "requiredChange": "" }
+  ],
+  "verdict": "Revise"
+}

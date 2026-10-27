@@ -1,0 +1,671 @@
+{
+ "schema": "csf-gap-landscape-facts/1",
+ "source": "csf-interview/3",
+ "asOf": "2026-10-17",
+ "blocks": {
+  "B1": {
+   "name": "Business and regulatory context",
+   "facts": [
+    {
+     "text": "The organization operates 2 sites: Sample: Hospital 1 and Sample: Hospital 2, with about 1200 staff.",
+     "evidence": [
+      "SITE-01",
+      "SITE-02"
+     ]
+    },
+    {
+     "text": "Assessment scope: Two hospitals, HIS, PACS, LIS, ERP, Microsoft 365. Fictional example data.",
+     "evidence": [
+      "Summary:Scope"
+     ]
+    }
+   ]
+  },
+  "B2": {
+   "name": "Critical services to systems",
+   "facts": [
+    {
+     "text": "HIS supports Patient registration, orders, billing, Criticality A, tolerable downtime Under 4 hours.",
+     "evidence": [
+      "BIA:HIS"
+     ]
+    },
+    {
+     "text": "PACS supports Medical imaging, Criticality A, tolerable downtime 4 hours to 1 day.",
+     "evidence": [
+      "BIA:PACS"
+     ]
+    },
+    {
+     "text": "Microsoft 365 supports Email, Teams, files, Criticality A, tolerable downtime 4 hours to 1 day.",
+     "evidence": [
+      "BIA:Microsoft 365"
+     ]
+    },
+    {
+     "text": "Active Directory and network core supports Logon and connectivity for all systems, Criticality A, tolerable downtime Under 4 hours.",
+     "evidence": [
+      "BIA:Active Directory and network core"
+     ]
+    }
+   ]
+  },
+  "B3": {
+   "name": "Application landscape",
+   "facts": [
+    {
+     "text": "7 systems listed: 4 Criticality A, 3 B, 0 C.",
+     "evidence": [
+      "POP:systems"
+     ]
+    },
+    {
+     "text": "Origin: 3 standard commercial software, 2 customized commercial software, 1 SaaS and 1 outsourced custom build.",
+     "evidence": [
+      "POP:C1"
+     ]
+    },
+    {
+     "text": "Hosting: 3 on-premises data center, 2 vendor-hosted, 1 SaaS and 1 public cloud.",
+     "evidence": [
+      "POP:C10"
+     ]
+    },
+    {
+     "text": "Department interviews found 3 systems or apps not on the IT list: Sample: diet order sheet on Google Sheets (Sample: Food and Beverage), Sample: Canva (Sample: Marketing and PR) and Sample: Facebook Business Suite (Sample: Marketing and PR).",
+     "evidence": [
+      "U1:Sample: Food and Beverage",
+      "U1:Sample: Marketing and PR"
+     ]
+    }
+   ]
+  },
+  "B4": {
+   "name": "Infrastructure and connectivity",
+   "facts": [
+    {
+     "text": "Primary data center: Sample: server room at Hospital 1.",
+     "evidence": [
+      "ENV:dc"
+     ]
+    },
+    {
+     "text": "Disaster recovery site: Yes, not tested.",
+     "evidence": [
+      "ENV:dr"
+     ]
+    },
+    {
+     "text": "Network segmentation: Partly segmented.",
+     "evidence": [
+      "ENV:seg"
+     ]
+    },
+    {
+     "text": "Staff remote access: VPN without MFA.",
+     "evidence": [
+      "ENV:rem"
+     ]
+    },
+    {
+     "text": "Workstations: 900.",
+     "evidence": [
+      "ENV:ws"
+     ]
+    },
+    {
+     "text": "Workstations on end-of-life operating systems: 5 to 20 percent.",
+     "evidence": [
+      "ENV:eol"
+     ]
+    },
+    {
+     "text": "Networked medical devices and OT: 150.",
+     "evidence": [
+      "ENV:otn"
+     ]
+    },
+    {
+     "text": "Medical device and OT network placement: Shared with the corporate network.",
+     "evidence": [
+      "ENV:otp"
+     ]
+    },
+    {
+     "text": "Backup architecture: Online copy only.",
+     "evidence": [
+      "ENV:bka"
+     ]
+    },
+    {
+     "text": "1 system directly exposed to the internet: Hospital website.",
+     "evidence": [
+      "C6:Hospital website"
+     ]
+    }
+   ]
+  },
+  "B5": {
+   "name": "Identity landscape",
+   "facts": [
+    {
+     "text": "Authentication: Local accounts in the application (4), Directory, such as Active Directory or LDAP (2) and Single sign-on through SAML or OpenID Connect (1).",
+     "evidence": [
+      "POP:C3"
+     ]
+    },
+    {
+     "text": "Multi-factor authentication (MFA): None (6) and Administrators and remote access only (1).",
+     "evidence": [
+      "POP:C4"
+     ]
+    },
+    {
+     "text": "Administrator accounts: Named but too many (3), Shared or generic (3) and Named and limited (1).",
+     "evidence": [
+      "POP:C5"
+     ]
+    },
+    {
+     "text": "Shared workstations in operational areas: Yes.",
+     "evidence": [
+      "ENV:shws"
+     ]
+    },
+    {
+     "text": "Departments reporting shared accounts or passwords: Sample: Outpatient Nursing (Named accounts, but passwords are shared sometimes), Sample: Food and Beverage (Shared account for the team or shift) and Sample: Marketing and PR (Named accounts, but passwords are shared sometimes).",
+     "evidence": [
+      "U2:Sample: Outpatient Nursing",
+      "U2:Sample: Food and Beverage",
+      "U2:Sample: Marketing and PR"
+     ]
+    },
+    {
+     "text": "Shared computers stay logged in all shift in Sample: Outpatient Nursing and Sample: Food and Beverage.",
+     "evidence": [
+      "U3:Sample: Outpatient Nursing",
+      "U3:Sample: Food and Beverage"
+     ]
+    }
+   ]
+  },
+  "B6": {
+   "name": "Existing security capability",
+   "facts": [
+    {
+     "text": "Firewall: Sample: next-generation firewall, coverage full, operated by in-house, in use.",
+     "evidence": [
+      "TOOL-01"
+     ]
+    },
+    {
+     "text": "Endpoint detection and response (EDR): Sample: EDR agent, coverage partial, operated by in-house, in use.",
+     "evidence": [
+      "TOOL-02"
+     ]
+    },
+    {
+     "text": "Antivirus: Sample: antivirus, coverage full, operated by in-house, in use.",
+     "evidence": [
+      "TOOL-03"
+     ]
+    },
+    {
+     "text": "Email security: Sample: Microsoft 365 email filtering, coverage full, operated by vendor, in use.",
+     "evidence": [
+      "TOOL-04"
+     ]
+    },
+    {
+     "text": "Central logging or SIEM: Sample: syslog server, coverage partial, operated by nobody, in use.",
+     "evidence": [
+      "TOOL-05"
+     ]
+    },
+    {
+     "text": "MFA provider: Sample: Microsoft Entra ID MFA, coverage partial, operated by in-house, in use.",
+     "evidence": [
+      "TOOL-06"
+     ]
+    },
+    {
+     "text": "Vulnerability scanning: Sample: vulnerability scanner license, coverage none, operated by nobody, bought, not deployed.",
+     "evidence": [
+      "TOOL-07"
+     ]
+    },
+    {
+     "text": "Privileged access management (PAM): no product named, coverage none, operated by nobody, planned.",
+     "evidence": [
+      "TOOL-08"
+     ]
+    },
+    {
+     "text": "Backup: Sample: backup software, coverage partial, operated by in-house, in use.",
+     "evidence": [
+      "TOOL-09"
+     ]
+    }
+   ]
+  },
+  "B7": {
+   "name": "Third-party landscape",
+   "facts": [
+    {
+     "text": "4 vendors with system or data access: Software vendor (2), Medical device vendor (1) and Cloud or SaaS provider (1).",
+     "evidence": [
+      "POP:V1"
+     ]
+    },
+    {
+     "text": "3 vendors connect remotely: Sample HIS vendor, Sample PACS vendor and Sample web agency.",
+     "evidence": [
+      "V2:Sample HIS vendor",
+      "V2:Sample PACS vendor",
+      "V2:Sample web agency"
+     ]
+    },
+    {
+     "text": "Criticality A vendors: Sample HIS vendor, Sample PACS vendor and Sample cloud provider.",
+     "evidence": [
+      "V7:Sample HIS vendor",
+      "V7:Sample PACS vendor",
+      "V7:Sample cloud provider"
+     ]
+    }
+   ]
+  },
+  "B8": {
+   "name": "Data landscape",
+   "facts": [
+    {
+     "text": "Sensitive personal data sits in 3 systems: HIS, PACS and LIS.",
+     "evidence": [
+      "C11:HIS",
+      "C11:PACS",
+      "C11:LIS"
+     ]
+    },
+    {
+     "text": "Personal data sits in 3 more systems: ERP, Microsoft 365 and Hospital website.",
+     "evidence": [
+      "C11:ERP",
+      "C11:Microsoft 365",
+      "C11:Hospital website"
+     ]
+    },
+    {
+     "text": "Vendors with access to sensitive personal data: Sample HIS vendor and Sample PACS vendor.",
+     "evidence": [
+      "V3:Sample HIS vendor",
+      "V3:Sample PACS vendor"
+     ]
+    },
+    {
+     "text": "Departments that move work data through personal channels: Sample: Outpatient Nursing (Personal LINE or other chat app, Photos on personal phones), Sample: Food and Beverage (Personal LINE or other chat app), Sample: Finance (USB drive) and Sample: Marketing and PR (Personal cloud storage, Personal email).",
+     "evidence": [
+      "U4:Sample: Outpatient Nursing",
+      "U4:Sample: Food and Beverage",
+      "U4:Sample: Finance",
+      "U4:Sample: Marketing and PR"
+     ]
+    }
+   ]
+  },
+  "B9": {
+   "name": "IT organization and operating model",
+   "facts": [
+    {
+     "text": "IT headcount: 25.",
+     "evidence": [
+      "ENV:ith"
+     ]
+    },
+    {
+     "text": "Security role: Part-time, held by an IT role.",
+     "evidence": [
+      "ENV:secr"
+     ]
+    },
+    {
+     "text": "Outsourced IT functions: Application support.",
+     "evidence": [
+      "ENV:outs"
+     ]
+    },
+    {
+     "text": "Security training within 12 months: 1 of 4 departments interviewed.",
+     "evidence": [
+      "POP:U6"
+     ]
+    }
+   ]
+  },
+  "B10": {
+   "name": "Control coverage snapshot",
+   "facts": [
+    {
+     "text": "C3 Authentication: 3 Good, 4 Weak, 0 Poor, 0 Unknown of 7 systems answered (Criticality A: 2 Good of 4).",
+     "evidence": [
+      "POP:C3"
+     ]
+    },
+    {
+     "text": "C4 Multi-factor authentication (MFA): 0 Good, 1 Weak, 6 Poor, 0 Unknown of 7 systems answered (Criticality A: 0 Good of 4).",
+     "evidence": [
+      "POP:C4"
+     ]
+    },
+    {
+     "text": "C5 Administrator accounts: 1 Good, 3 Weak, 3 Poor, 0 Unknown of 7 systems answered (Criticality A: 0 Good of 4).",
+     "evidence": [
+      "POP:C5"
+     ]
+    },
+    {
+     "text": "C6 Internet exposure: 5 Good, 0 Weak, 1 Poor, 0 Unknown of 6 systems answered (Criticality A: 3 Good of 3).",
+     "evidence": [
+      "POP:C6"
+     ]
+    },
+    {
+     "text": "C7 Vendor remote access: 0 Good, 2 Weak, 3 Poor, 0 Unknown of 5 systems answered (Criticality A: 0 Good of 2).",
+     "evidence": [
+      "POP:C7"
+     ]
+    },
+    {
+     "text": "C8 Platform support and patching: 0 Good, 3 Weak, 2 Poor, 1 Unknown of 6 systems answered (Criticality A: 0 Good of 3).",
+     "evidence": [
+      "POP:C8"
+     ]
+    },
+    {
+     "text": "C9 Backup: 1 Good, 4 Weak, 1 Poor, 1 Unknown of 7 systems answered (Criticality A: 1 Good of 4).",
+     "evidence": [
+      "POP:C9"
+     ]
+    }
+   ]
+  },
+  "B11": {
+   "name": "Assessment basis",
+   "facts": [
+    {
+     "text": "Assessment date 2026-10-05. 7 systems listed, 4 sampled.",
+     "evidence": [
+      "Summary:Assessment date",
+      "POP:systems"
+     ]
+    },
+    {
+     "text": "6 profile answers recorded as Unknown.",
+     "evidence": [
+      "POP:unknown"
+     ]
+    },
+    {
+     "text": "Technical observations (vulnerabilities): 1 High. Details stay in the Technical Observation Register.",
+     "evidence": [
+      "OBS-01"
+     ]
+    },
+    {
+     "text": "4 departments interviewed in S2C. 6 answers conflict with what IT stated.",
+     "evidence": [
+      "POP:departments",
+      "DCF-01",
+      "DCF-02",
+      "DCF-03",
+      "DCF-04",
+      "DCF-05",
+      "DCF-06"
+     ]
+    }
+   ]
+  },
+  "B12": {
+   "name": "Threat context",
+   "facts": [
+    {
+     "text": "Staff do not know how to report a suspicious event in Sample: Food and Beverage.",
+     "evidence": [
+      "U7:Sample: Food and Beverage"
+     ]
+    },
+    {
+     "text": "2025-03-12: account compromise or phishing affecting Microsoft 365. Sample: one mailbox sent phishing email to patients for two hours.",
+     "evidence": [
+      "HIST-01"
+     ]
+    }
+   ]
+  },
+  "B13": {
+   "name": "Changes in flight",
+   "facts": [
+    {
+     "text": "Sample: PACS replacement: PACS, target 2027-03-31, contracted, within 12 months.",
+     "evidence": [
+      "CHG-01"
+     ]
+    },
+    {
+     "text": "Sample: HIS major version upgrade: HIS, target 2028-01-31, planned.",
+     "evidence": [
+      "CHG-02"
+     ]
+    }
+   ]
+  },
+  "B14": {
+   "name": "Prior assessments and audits",
+   "facts": [
+    {
+     "text": "Internal audit on 2025-11-20 by Sample: CMC Internal Audit: 6 findings open, 2 closed.",
+     "evidence": [
+      "PRIOR-01"
+     ]
+    },
+    {
+     "text": "Penetration test on 2024-08-15 by Sample: external testing firm, hospital website: 4 findings open, 1 closed.",
+     "evidence": [
+      "PRIOR-02"
+     ]
+    }
+   ]
+  }
+ },
+ "securityTools": [
+  {
+   "id": "TOOL-01",
+   "capability": "Firewall",
+   "product": "Sample: next-generation firewall",
+   "coverage": "Full",
+   "operatedBy": "In-house",
+   "status": "In use",
+   "notes": ""
+  },
+  {
+   "id": "TOOL-02",
+   "capability": "Endpoint detection and response (EDR)",
+   "product": "Sample: EDR agent",
+   "coverage": "Partial",
+   "operatedBy": "In-house",
+   "status": "In use",
+   "notes": "Sample: servers only"
+  },
+  {
+   "id": "TOOL-03",
+   "capability": "Antivirus",
+   "product": "Sample: antivirus",
+   "coverage": "Full",
+   "operatedBy": "In-house",
+   "status": "In use",
+   "notes": "Sample: workstations"
+  },
+  {
+   "id": "TOOL-04",
+   "capability": "Email security",
+   "product": "Sample: Microsoft 365 email filtering",
+   "coverage": "Full",
+   "operatedBy": "Vendor",
+   "status": "In use",
+   "notes": ""
+  },
+  {
+   "id": "TOOL-05",
+   "capability": "Central logging or SIEM",
+   "product": "Sample: syslog server",
+   "coverage": "Partial",
+   "operatedBy": "Nobody",
+   "status": "In use",
+   "notes": "Sample: logs are collected but nobody reviews them"
+  },
+  {
+   "id": "TOOL-06",
+   "capability": "MFA provider",
+   "product": "Sample: Microsoft Entra ID MFA",
+   "coverage": "Partial",
+   "operatedBy": "In-house",
+   "status": "In use",
+   "notes": "Sample: Microsoft 365 administrators only"
+  },
+  {
+   "id": "TOOL-07",
+   "capability": "Vulnerability scanning",
+   "product": "Sample: vulnerability scanner license",
+   "coverage": "None",
+   "operatedBy": "Nobody",
+   "status": "Bought, not deployed",
+   "notes": "Sample: bought in 2025, never installed"
+  },
+  {
+   "id": "TOOL-08",
+   "capability": "Privileged access management (PAM)",
+   "product": "",
+   "coverage": "None",
+   "operatedBy": "Nobody",
+   "status": "Planned",
+   "notes": ""
+  },
+  {
+   "id": "TOOL-09",
+   "capability": "Backup",
+   "product": "Sample: backup software",
+   "coverage": "Partial",
+   "operatedBy": "In-house",
+   "status": "In use",
+   "notes": ""
+  }
+ ],
+ "changesInFlight": [
+  {
+   "id": "CHG-01",
+   "project": "Sample: PACS replacement",
+   "systems": [
+    "PACS"
+   ],
+   "targetDate": "2027-03-31",
+   "status": "Contracted",
+   "within12Months": true
+  },
+  {
+   "id": "CHG-02",
+   "project": "Sample: HIS major version upgrade",
+   "systems": [
+    "HIS"
+   ],
+   "targetDate": "2028-01-31",
+   "status": "Planned",
+   "within12Months": false
+  }
+ ],
+ "priorAssessments": [
+  {
+   "id": "PRIOR-01",
+   "type": "Internal audit",
+   "date": "2025-11-20",
+   "performedBy": "Sample: CMC Internal Audit",
+   "findingsOpen": 6,
+   "findingsClosed": 2
+  },
+  {
+   "id": "PRIOR-02",
+   "type": "Penetration test",
+   "date": "2024-08-15",
+   "performedBy": "Sample: external testing firm, hospital website",
+   "findingsOpen": 4,
+   "findingsClosed": 1
+  }
+ ],
+ "departmentConflicts": [
+  {
+   "id": "DCF-01",
+   "department": "Sample: Food and Beverage",
+   "type": "shadow",
+   "detail": "Sample: Food and Beverage uses Sample: diet order sheet on Google Sheets, which is not on the IT system list.",
+   "evidence": [
+    "U1:Sample: Food and Beverage"
+   ]
+  },
+  {
+   "id": "DCF-02",
+   "department": "Sample: Food and Beverage",
+   "type": "cred",
+   "detail": "Sample: Food and Beverage reports \"Shared account for the team or shift\" while IT rated authentication Good on ERP.",
+   "evidence": [
+    "U2:Sample: Food and Beverage",
+    "C3:ERP"
+   ]
+  },
+  {
+   "id": "DCF-03",
+   "department": "Sample: Food and Beverage",
+   "type": "bia",
+   "detail": "Sample: Food and Beverage says work stops when the system fails. The Quick BIA records a manual workaround for ERP.",
+   "evidence": [
+    "U8:Sample: Food and Beverage",
+    "BIA:ERP"
+   ]
+  },
+  {
+   "id": "DCF-04",
+   "department": "Sample: Marketing and PR",
+   "type": "shadow",
+   "detail": "Sample: Marketing and PR uses Sample: Canva, which is not on the IT system list.",
+   "evidence": [
+    "U1:Sample: Marketing and PR"
+   ]
+  },
+  {
+   "id": "DCF-05",
+   "department": "Sample: Marketing and PR",
+   "type": "shadow",
+   "detail": "Sample: Marketing and PR uses Sample: Facebook Business Suite, which is not on the IT system list.",
+   "evidence": [
+    "U1:Sample: Marketing and PR"
+   ]
+  },
+  {
+   "id": "DCF-06",
+   "department": "Sample: Marketing and PR",
+   "type": "cred",
+   "detail": "Sample: Marketing and PR reports \"Named accounts, but passwords are shared sometimes\" while IT rated authentication Good on Microsoft 365.",
+   "evidence": [
+    "U2:Sample: Marketing and PR",
+    "C3:Microsoft 365"
+   ]
+  }
+ ],
+ "incidentHistory": [
+  {
+   "id": "HIST-01",
+   "date": "2025-03-12",
+   "type": "Account compromise or phishing",
+   "systems": "Microsoft 365",
+   "impact": "Sample: one mailbox sent phishing email to patients for two hours",
+   "reported": "Not required"
+  }
+ ]
+}

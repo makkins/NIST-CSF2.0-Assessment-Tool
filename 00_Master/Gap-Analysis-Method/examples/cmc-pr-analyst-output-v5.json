@@ -1,0 +1,2220 @@
+{
+ "schema": "csf-gap-analyst/5",
+ "function": "PR",
+ "round": 3,
+ "categories": [
+  {
+   "categoryId": "PR.AA",
+   "keyMessage": {
+    "found": "Privileged and vendor paths need only a password, and no one reviews access, although staff VPN and single sign-on already work.",
+    "closes": "Enforce MFA on administrator and vendor access to Criticality A systems, then run the first access review."
+   },
+   "whatWorksToday": "Staff use single sign-on, remote access runs through VPN with no exposed remote desktop, and administrators use separate accounts.",
+   "strengths": [
+    {
+     "id": "STR-PR.AA-01",
+     "type": "Foundation",
+     "statement": "IT runs a working identity management practice that it demonstrated, a base for a formal joiner, mover, and leaver process.",
+     "evidence": [
+      "PR.AA-01",
+      "NOTE:PR.AA-01"
+     ]
+    },
+    {
+     "id": "STR-PR.AA-02",
+     "type": "Foundation",
+     "statement": "IT documents identity proofing for new accounts, but the service desk does not verify identity before resets.",
+     "evidence": [
+      "PR.AA-02",
+      "IAM-08"
+     ]
+    },
+    {
+     "id": "STR-PR.AA-03",
+     "type": "Foundation",
+     "statement": "Staff use single sign-on, and remote access runs through VPN with no remote desktop exposed to the internet.",
+     "evidence": [
+      "IAM-07",
+      "NET-03"
+     ]
+    },
+    {
+     "id": "STR-PR.AA-05",
+     "type": "Foundation",
+     "statement": "Administrators use separate admin accounts and a written password standard exists, but administrator numbers are not limited.",
+     "evidence": [
+      "IAM-03",
+      "IAM-07"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-PR.AA-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Privileged and vendor access relies on passwords alone",
+     "statement": "CMC controls who holds an account but not how it proves identity, so its most powerful access paths have the weakest protection.",
+     "supportingFacts": [
+      {
+       "fact": "Administrators sign in to HIS, PACS, and Active Directory without multi-factor authentication (MFA).",
+       "evidence": [
+        "mfa:HIS",
+        "mfa:PACS",
+        "mfa:Active Directory and network core",
+        "IAM-01"
+       ]
+      },
+      {
+       "fact": "Vendors connect to HIS and PACS through unattended remote tools.",
+       "evidence": [
+        "C7:HIS",
+        "C7:PACS"
+       ]
+      },
+      {
+       "fact": "Microsoft 365 has MFA for administrators and remote access only.",
+       "evidence": [
+        "C4:Microsoft 365",
+        "CLD-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Active Directory and network core"
+      ],
+      "likely": [
+       "LIS",
+       "ERP",
+       "Hospital website"
+      ],
+      "notChecked": "Systems outside the profiled seven were not checked"
+     },
+     "linkedSubcategories": [
+      "PR.AA-03"
+     ],
+     "evidence": [
+      "mfa:HIS",
+      "mfa:PACS",
+      "mfa:Active Directory and network core",
+      "IAM-01",
+      "C7:HIS",
+      "C7:PACS",
+      "C4:Microsoft 365",
+      "CLD-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Tooling"
+     ],
+     "consequence": "One stolen administrator or vendor password lets ransomware encrypt HIS and Active Directory, which tolerate under four hours of downtime.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "MFA is absent on three Criticality A systems, vendor remote access is open, and a peer hospital suffered ransomware.",
+      "evidence": [
+       "mfa:HIS",
+       "mfa:PACS",
+       "mfa:Active Directory and network core"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Stolen privileged password stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Stolen privileged password adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Stolen privileged password triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Stolen privileged password damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Stolen privileged password delays or disrupts patient care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Stolen privileged password exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.AA-01-01",
+       "IMP-PR.AA-01-02"
+      ],
+      "find": [
+       "IMP-PR.AA-01-03"
+      ],
+      "prevent": [
+       "IMP-PR.AA-01-04"
+      ],
+      "exceptions": [
+       "IMP-PR.AA-01-05"
+      ],
+      "validate": [
+       "IMP-PR.AA-01-06"
+      ],
+      "sustain": [
+       "IMP-PR.AA-01-07"
+      ],
+      "stageStatus": {
+       "fix": "Required",
+       "find": "Required",
+       "prevent": "Required",
+       "exceptions": "Required",
+       "validate": "Required",
+       "sustain": "Required"
+      },
+      "notApplicable": {}
+     },
+     "landscapeRefs": [
+      "B2",
+      "B5",
+      "B7",
+      "B10",
+      "B12"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-STD-001",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-STD-003",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-STD-002",
+       "status": "Not verified"
+      },
+      {
+       "id": "ID-REG-002",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": [
+      "MFA coverage review record"
+     ]
+    },
+    {
+     "id": "GAP-PR.AA-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Access is not controlled across the account life cycle",
+     "statement": "Access rights depend on individuals instead of a governed process, so no one limits, reviews, or removes access consistently.",
+     "supportingFacts": [
+      {
+       "fact": "No access review ran on HIS, PACS, Microsoft 365, or Active Directory in the past 12 months.",
+       "evidence": [
+        "uar:HIS",
+        "uar:PACS",
+        "uar:Microsoft 365",
+        "uar:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "PACS, Active Directory, and the website use shared or generic administrator accounts.",
+       "evidence": [
+        "C5:PACS",
+        "C5:Active Directory and network core",
+        "C5:Hospital website"
+       ]
+      },
+      {
+       "fact": "PACS accounts are created on request without approval.",
+       "evidence": [
+        "F2:PACS"
+       ]
+      },
+      {
+       "fact": "Server room access is only partly restricted and logged.",
+       "evidence": [
+        "PHY-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Microsoft 365",
+       "Active Directory and network core"
+      ],
+      "likely": [],
+      "notChecked": "Criticality B systems were not sampled"
+     },
+     "linkedSubcategories": [
+      "PR.AA-01",
+      "PR.AA-02",
+      "PR.AA-05",
+      "PR.AA-06"
+     ],
+     "evidence": [
+      "uar:HIS",
+      "uar:PACS",
+      "uar:Microsoft 365",
+      "uar:Active Directory and network core",
+      "C5:PACS",
+      "C5:Active Directory and network core",
+      "C5:Hospital website",
+      "F2:PACS",
+      "PHY-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Former staff or vendors keep access to patient data unnoticed, and a stolen shared account gives wide reach.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Process gap that needs a leaver or a compromised account before harm.",
+      "evidence": [
+       "uar:HIS",
+       "uar:PACS",
+       "uar:Microsoft 365"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Lingering access stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Lingering access adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Lingering access triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Lingering access damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Lingering access delays or disrupts patient care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Lingering access exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.AA-02-01",
+       "IMP-PR.AA-02-04"
+      ],
+      "find": [
+       "IMP-PR.AA-02-02"
+      ],
+      "prevent": [
+       "IMP-PR.AA-02-03"
+      ],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.AA-02-05"
+      ],
+      "sustain": [
+       "IMP-PR.AA-02-06"
+      ],
+      "stageStatus": {
+       "fix": "Required",
+       "find": "Required",
+       "prevent": "Required",
+       "validate": "Required",
+       "sustain": "Required",
+       "exceptions": "Not applicable"
+      },
+      "notApplicable": {
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     },
+     "landscapeRefs": [
+      "B5",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-PRC-001",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-PRC-002",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-REC-001",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-PRC-003",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-FRM-004",
+       "status": "Not verified"
+      },
+      {
+       "id": "GV-FRM-003",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": []
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "PR.AT",
+   "keyMessage": {
+    "found": "Staff can report phishing and specialized roles receive training, but no record shows an annual program with completion tracking.",
+    "closes": "Record completion of an annual awareness program for all staff."
+   },
+   "whatWorksToday": "Users can report phishing with one click, phishing simulations run, and specialized roles receive role-based training.",
+   "strengths": [
+    {
+     "id": "STR-PR.AT-01",
+     "type": "Foundation",
+     "statement": "Users can report suspicious email with one click, and phishing simulations are run.",
+     "evidence": [
+      "EML-04"
+     ]
+    },
+    {
+     "id": "STR-PR.AT-02",
+     "type": "Strength",
+     "statement": "Staff in specialized roles receive documented, role-specific training.",
+     "evidence": [
+      "PR.AT-02"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-PR.AT-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Awareness training is not evidenced beyond phishing reporting",
+     "statement": "Users can report phishing and simulations run, but no record shows an annual program with completion tracking for all staff.",
+     "supportingFacts": [
+      {
+       "fact": "Users can report suspicious email with one click, and phishing simulations are run.",
+       "evidence": [
+        "EML-04"
+       ]
+      },
+      {
+       "fact": "No completion record for general awareness training was provided.",
+       "evidence": [
+        "PR.AT-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Completion records were requested but not received"
+     },
+     "linkedSubcategories": [
+      "PR.AT-01"
+     ],
+     "evidence": [
+      "EML-04",
+      "PR.AT-01"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Staff untrained in general tasks click a phishing link, and CMC cannot show an auditor that training took place.",
+     "likelihood": {
+      "value": 2,
+      "anchor": "L2-b",
+      "rationale": "Evidence gap only: practice is described but records are missing.",
+      "evidence": [
+       "EML-04",
+       "PR.AT-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Untrained staff stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Untrained staff damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Untrained staff exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.AT-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.AT-01-02"
+      ],
+      "sustain": [],
+      "stageStatus": {
+       "fix": "Required",
+       "validate": "Required",
+       "find": "Not applicable",
+       "prevent": "Not applicable",
+       "exceptions": "Not applicable",
+       "sustain": "Beyond Target Tier"
+      },
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control.",
+       "sustain": "Target Tier 2 does not require a recurring review cycle."
+      }
+     },
+     "landscapeRefs": [
+      "B5",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-PLN-001",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-REC-002",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": []
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "PR.DS",
+   "keyMessage": {
+    "found": "Only PACS has an immutable backup, no restore was tested on critical systems, and the HIS database is not encrypted.",
+    "closes": "Add offline backups for HIS, ERP, Active Directory, and Microsoft 365, then test a restore."
+   },
+   "whatWorksToday": "Backups follow a 3-2-1 approach with an immutable PACS copy, and data loss prevention and email authentication are active.",
+   "strengths": [
+    {
+     "id": "STR-PR.DS-01",
+     "type": "Foundation",
+     "statement": "Data loss prevention detects sensitive data leaving by email, web, or USB.",
+     "evidence": [
+      "DATA-04"
+     ]
+    },
+    {
+     "id": "STR-PR.DS-02",
+     "type": "Foundation",
+     "statement": "Email authentication (SPF, DKIM, DMARC) is configured and data loss prevention is active.",
+     "evidence": [
+      "EML-01",
+      "DATA-04"
+     ]
+    },
+    {
+     "id": "STR-PR.DS-11",
+     "type": "Foundation",
+     "statement": "Backups follow a 3-2-1 approach, and the PACS backup has an immutable copy.",
+     "evidence": [
+      "BKP-01",
+      "C9:PACS"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-PR.DS-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Backups of core systems cannot be shown to survive ransomware",
+     "statement": "Only the PACS backup has an offline or immutable copy, and no restore test has run on HIS, Microsoft 365, or Active Directory.",
+     "supportingFacts": [
+      {
+       "fact": "HIS, ERP, and Active Directory back up daily to online storage only.",
+       "evidence": [
+        "C9:HIS",
+        "C9:ERP",
+        "C9:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "No restore test ran in the past 12 months on HIS, Microsoft 365, or Active Directory.",
+       "evidence": [
+        "F4:HIS",
+        "F4:Microsoft 365",
+        "F4:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "Microsoft 365 has no backup.",
+       "evidence": [
+        "C9:Microsoft 365"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "ERP",
+       "Active Directory and network core",
+       "Microsoft 365"
+      ],
+      "likely": [
+       "LIS"
+      ],
+      "notChecked": "LIS backup is vendor-managed and not verified"
+     },
+     "linkedSubcategories": [
+      "PR.DS-11"
+     ],
+     "evidence": [
+      "C9:HIS",
+      "C9:ERP",
+      "C9:Active Directory and network core",
+      "F4:HIS",
+      "F4:Microsoft 365",
+      "F4:Active Directory and network core",
+      "C9:Microsoft 365"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Budget"
+     ],
+     "consequence": "Ransomware encrypts data and online backups together, so HIS cannot be restored and care continues on paper for an extended period.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Backups are Weak or Poor on Criticality A systems, with online-only copies, and the threat is active.",
+      "evidence": [
+       "C9:HIS",
+       "C9:ERP",
+       "C9:Active Directory and network core"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Encrypted backups stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Encrypted backups adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Encrypted backups triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Encrypted backups damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Encrypted backups delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Encrypted backups exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.DS-01-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-PR.DS-01-04"
+      ],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.DS-01-02"
+      ],
+      "sustain": [
+       "IMP-PR.DS-01-03"
+      ],
+      "stageStatus": {
+       "fix": "Required",
+       "prevent": "Required",
+       "validate": "Required",
+       "sustain": "Required",
+       "find": "Not applicable",
+       "exceptions": "Not applicable"
+      },
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     },
+     "landscapeRefs": [
+      "B8",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-STD-006",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-PRC-005",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-REC-003",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": []
+    },
+    {
+     "id": "GAP-PR.DS-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Patient data is not encrypted and test copies hold production data",
+     "statement": "Protection of patient data depends on the system, so HIS stores and sends records without full encryption and keeps live copies in test.",
+     "supportingFacts": [
+      {
+       "fact": "The HIS database is not encrypted at rest.",
+       "evidence": [
+        "F9:HIS"
+       ]
+      },
+      {
+       "fact": "HIS encrypts only some connections.",
+       "evidence": [
+        "F8:HIS",
+        "DATA-02"
+       ]
+      },
+      {
+       "fact": "HIS test environments hold copies of production personal data.",
+       "evidence": [
+        "D9:HIS"
+       ]
+      },
+      {
+       "fact": "Laptop disk encryption is partial.",
+       "evidence": [
+        "EP-05"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS"
+      ],
+      "likely": [
+       "PACS"
+      ],
+      "notChecked": "Encryption status of PACS is unknown"
+     },
+     "linkedSubcategories": [
+      "PR.DS-01",
+      "PR.DS-02",
+      "PR.DS-10"
+     ],
+     "evidence": [
+      "F9:HIS",
+      "F8:HIS",
+      "DATA-02",
+      "D9:HIS",
+      "EP-05"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Ownership"
+     ],
+     "consequence": "A stolen disk, laptop, or intercepted connection exposes sensitive health records and triggers PDPA breach notification.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Encryption is Poor on HIS but needs a second event, such as device loss, before harm.",
+      "evidence": [
+       "F9:HIS",
+       "F8:HIS",
+       "DATA-02"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Exposed health records adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Exposed health records triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Exposed health records damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Exposed health records exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.DS-02-01",
+       "IMP-PR.DS-02-02"
+      ],
+      "find": [
+       "IMP-PR.DS-02-03"
+      ],
+      "prevent": [],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.DS-02-04"
+      ],
+      "sustain": [
+       "IMP-PR.DS-02-05"
+      ],
+      "stageStatus": {
+       "fix": "Required",
+       "find": "Required",
+       "validate": "Required",
+       "sustain": "Required",
+       "prevent": "Not applicable",
+       "exceptions": "Not applicable"
+      },
+      "notApplicable": {
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     },
+     "landscapeRefs": [
+      "B8",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-STD-005",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-POL-003",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": [
+      "Test data masking check record"
+     ]
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "PR.PS",
+   "keyMessage": {
+    "found": "PACS and the website run end-of-life platforms, other servers are patched late, and legacy medical devices have no compensating control.",
+    "closes": "Upgrade or isolate PACS and the website host, then isolate legacy medical devices."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-PR.PS-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Critical servers and the website run end-of-life or late-patched software",
+     "statement": "Platform support is not managed against a patch schedule, so end-of-life and late-patched systems stay in service.",
+     "supportingFacts": [
+      {
+       "fact": "PACS and the hospital website run end-of-life platforms.",
+       "evidence": [
+        "C8:PACS",
+        "C8:Hospital website"
+       ]
+      },
+      {
+       "fact": "HIS, ERP, and Active Directory are patched late or ad hoc.",
+       "evidence": [
+        "C8:HIS",
+        "C8:ERP",
+        "C8:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "The website shows an unsupported PHP version.",
+       "evidence": [
+        "OBS-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "PACS",
+       "Hospital website",
+       "HIS",
+       "ERP",
+       "Active Directory and network core"
+      ],
+      "likely": [
+       "LIS"
+      ],
+      "notChecked": "LIS patch status is vendor-managed and unknown"
+     },
+     "linkedSubcategories": [
+      "PR.PS-02"
+     ],
+     "evidence": [
+      "C8:PACS",
+      "C8:Hospital website",
+      "C8:HIS",
+      "C8:ERP",
+      "C8:Active Directory and network core",
+      "OBS-01"
+     ],
+     "rootCause": [
+      "Capacity",
+      "Vendor dependency"
+     ],
+     "consequence": "Attackers use a known flaw on PACS or an end-of-life host to enter and spread ransomware inside the network.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Patching is Poor on a Criticality A system with an exposed host, and the threat is active.",
+      "evidence": [
+       "C8:PACS",
+       "C8:Hospital website",
+       "C8:HIS"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Exploited unpatched platform stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Exploited unpatched platform adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Exploited unpatched platform triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Exploited unpatched platform damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Exploited unpatched platform delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Exploited unpatched platform exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.PS-01-01"
+      ],
+      "find": [
+       "IMP-PR.PS-01-02"
+      ],
+      "prevent": [
+       "IMP-PR.PS-01-03"
+      ],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.PS-01-04"
+      ],
+      "sustain": [],
+      "stageStatus": {
+       "fix": "Required",
+       "find": "Required",
+       "prevent": "Required",
+       "validate": "Required",
+       "exceptions": "Not applicable",
+       "sustain": "Beyond Target Tier"
+      },
+      "notApplicable": {
+       "exceptions": "No system is known to be unable to meet the control.",
+       "sustain": "Target Tier 2 does not require a recurring review cycle."
+      }
+     },
+     "landscapeRefs": [
+      "B5",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-PRC-007",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-STD-010",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": [
+      "End-of-life software review record"
+     ]
+    },
+    {
+     "id": "GAP-PR.PS-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Legacy medical devices have no compensating protection",
+     "statement": "Devices that cannot be patched receive no isolation or monitoring, so one infected device can reach clinical systems.",
+     "supportingFacts": [
+      {
+       "fact": "No protection or vendor patching duty exists for unpatchable or legacy devices.",
+       "evidence": [
+        "OT-03"
+       ]
+      },
+      {
+       "fact": "Disks and devices are not sanitized before disposal or vendor return.",
+       "evidence": [
+        "DATA-05"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Legacy medical devices"
+      ],
+      "likely": [
+       "Imaging devices"
+      ],
+      "notChecked": "Devices outside the medical device inventory were not counted"
+     },
+     "linkedSubcategories": [
+      "PR.PS-03"
+     ],
+     "evidence": [
+      "OT-03",
+      "DATA-05"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Vendor dependency"
+     ],
+     "consequence": "One infected medical device spreads inside a flat network, and loss of imaging delays diagnosis and treatment.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Unsupported devices sit on a flat network and the threat is active.",
+      "evidence": [
+       "OT-03",
+       "DATA-05"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Infected medical device stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Infected medical device adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Infected medical device triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Infected medical device damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Infected medical device delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Infected medical device exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [],
+      "prevent": [
+       "IMP-PR.PS-02-02"
+      ],
+      "exceptions": [
+       "IMP-PR.PS-02-01"
+      ],
+      "validate": [
+       "IMP-PR.PS-02-03"
+      ],
+      "sustain": [],
+      "stageStatus": {
+       "prevent": "Required",
+       "exceptions": "Required",
+       "validate": "Required",
+       "fix": "Not applicable",
+       "find": "Not applicable",
+       "sustain": "Beyond Target Tier"
+      },
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "find": "The affected systems or units are already identified.",
+       "sustain": "Target Tier 2 does not require a recurring review cycle."
+      }
+     },
+     "landscapeRefs": [
+      "B5",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-STD-015",
+       "status": "Not verified"
+      },
+      {
+       "id": "ID-REG-004",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-PRC-008",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": []
+    }
+   ],
+   "observations": [
+    {
+     "subcategory": "PR.PS-01",
+     "statement": "Secure configuration baselines apply to part of the platforms. Endpoints, network devices, and the cloud tenant are only partly baselined.",
+     "evidence": [
+      "EP-03",
+      "NET-04",
+      "CLD-02"
+     ]
+    },
+    {
+     "subcategory": "PR.PS-04",
+     "statement": "Logs are generated and retained, but HIS and PACS produce no security logs and system clocks are not synchronized.",
+     "evidence": [
+      "F6:HIS",
+      "F6:PACS",
+      "LOG-03"
+     ]
+    },
+    {
+     "subcategory": "PR.PS-05",
+     "statement": "Software control is documented, but the email gateway does not scan attachments or sandbox files.",
+     "evidence": [
+      "EML-02"
+     ]
+    }
+   ]
+  },
+  {
+   "categoryId": "PR.IR",
+   "keyMessage": {
+    "found": "HIS and Active Directory sit on a flat network and will not recover within tolerable downtime.",
+    "closes": "Segment the network around critical systems and test recovery against tolerable downtime."
+   },
+   "whatWorksToday": "Host firewalls use default-deny rules, no remote desktop is exposed, and environmental protection is documented.",
+   "strengths": [
+    {
+     "id": "STR-PR.IR-01",
+     "type": "Foundation",
+     "statement": "Host firewalls use default-deny rules on servers and endpoints, and no remote desktop is exposed to the internet.",
+     "evidence": [
+      "EP-06",
+      "NET-03"
+     ]
+    },
+    {
+     "id": "STR-PR.IR-02",
+     "type": "Strength",
+     "statement": "Environmental protection of technology assets is documented.",
+     "evidence": [
+      "PR.IR-02"
+     ]
+    },
+    {
+     "id": "STR-PR.IR-04",
+     "type": "Foundation",
+     "statement": "Capacity to keep systems available was demonstrated in the interview.",
+     "evidence": [
+      "PR.IR-04"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-PR.IR-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "The network is flat around critical systems",
+     "statement": "HIS and Active Directory share a flat network, so any compromised device can reach the systems that run the hospital.",
+     "supportingFacts": [
+      {
+       "fact": "HIS and Active Directory sit on a flat network.",
+       "evidence": [
+        "F10:HIS",
+        "F10:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "PACS shares a server segment.",
+       "evidence": [
+        "F10:PACS"
+       ]
+      },
+      {
+       "fact": "Segmentation and access filtering is absent on HIS and Active Directory.",
+       "evidence": [
+        "seg:HIS",
+        "seg:Active Directory and network core"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "Active Directory and network core",
+       "PACS"
+      ],
+      "likely": [
+       "LIS",
+       "ERP"
+      ],
+      "notChecked": "Medical device and guest Wi-Fi zones were not confirmed"
+     },
+     "linkedSubcategories": [
+      "PR.IR-01"
+     ],
+     "evidence": [
+      "F10:HIS",
+      "F10:Active Directory and network core",
+      "F10:PACS",
+      "seg:HIS",
+      "seg:Active Directory and network core"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Capacity"
+     ],
+     "consequence": "Ransomware that enters through any workstation or vendor session spreads to HIS and Active Directory within hours.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Segmentation is Poor on Criticality A systems and the threat is active.",
+      "evidence": [
+       "F10:HIS",
+       "F10:Active Directory and network core",
+       "F10:PACS"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Lateral spread stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Lateral spread adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Lateral spread triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Lateral spread damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Lateral spread delays or disrupts patient care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Lateral spread exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.IR-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.IR-01-02"
+      ],
+      "sustain": [
+       "IMP-PR.IR-01-03"
+      ],
+      "stageStatus": {
+       "fix": "Required",
+       "validate": "Required",
+       "sustain": "Required",
+       "find": "Not applicable",
+       "prevent": "Not applicable",
+       "exceptions": "Not applicable"
+      },
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     },
+     "landscapeRefs": [
+      "B5",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "PR-STD-016",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-PRC-008",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-FRM-006",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": [
+      "Zone-to-zone access test record"
+     ]
+    },
+    {
+     "id": "GAP-PR.IR-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Critical systems will not recover within tolerable downtime",
+     "statement": "Recovery capacity is not matched to downtime tolerance, so HIS and Active Directory cannot return in the time the hospital can bear.",
+     "supportingFacts": [
+      {
+       "fact": "HIS and Active Directory will not meet the tolerable downtime.",
+       "evidence": [
+        "F5:HIS",
+        "F5:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "Recovery for PACS is unknown.",
+       "evidence": [
+        "F5:PACS"
+       ]
+      },
+      {
+       "fact": "A recovery site or cloud option was not confirmed.",
+       "evidence": [
+        "BKP-05"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "Active Directory and network core"
+      ],
+      "likely": [
+       "PACS"
+      ],
+      "notChecked": "Recovery of LIS and ERP was not profiled"
+     },
+     "linkedSubcategories": [
+      "PR.IR-03",
+      "PR.IR-04"
+     ],
+     "evidence": [
+      "F5:HIS",
+      "F5:Active Directory and network core",
+      "F5:PACS",
+      "BKP-05"
+     ],
+     "rootCause": [
+      "Budget",
+      "Tooling"
+     ],
+     "consequence": "A failure or attack on HIS stops registration, ordering, and medication records beyond the four-hour tolerance.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Resilience is Poor on Criticality A systems.",
+      "evidence": [
+       "F5:HIS",
+       "F5:Active Directory and network core",
+       "F5:PACS"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "HIS outage beyond tolerance stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "HIS outage beyond tolerance adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "HIS outage beyond tolerance triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "HIS outage beyond tolerance damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "HIS outage beyond tolerance delays or disrupts patient care."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.IR-02-02"
+      ],
+      "find": [
+       "IMP-PR.IR-02-01"
+      ],
+      "prevent": [],
+      "exceptions": [],
+      "validate": [
+       "IMP-PR.IR-02-03"
+      ],
+      "sustain": [
+       "IMP-PR.IR-02-04"
+      ],
+      "stageStatus": {
+       "fix": "Required",
+       "find": "Required",
+       "validate": "Required",
+       "sustain": "Required",
+       "prevent": "Not applicable",
+       "exceptions": "Not applicable"
+      },
+      "notApplicable": {
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     },
+     "landscapeRefs": [
+      "B5",
+      "B10"
+     ],
+     "repeatFinding": {
+      "value": false,
+      "priorRef": null
+     },
+     "documents": [
+      {
+       "id": "RC-PLN-002",
+       "status": "Not verified"
+      },
+      {
+       "id": "RC-REC-001",
+       "status": "Not verified"
+      },
+      {
+       "id": "PR-STD-017",
+       "status": "Not verified"
+      }
+     ],
+     "documentGaps": []
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-PR.AA-01-01",
+   "stage": "Fix",
+   "action": "Enforce MFA through the existing Microsoft Entra ID MFA service for all administrator accounts and staff remote access on HIS, PACS, Active Directory, and Microsoft 365.",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-001"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": "TOOL-06"
+  },
+  {
+   "id": "IMP-PR.AA-01-02",
+   "stage": "Fix",
+   "action": "Require MFA and session logging for vendor remote access and remove unattended remote tools",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-003"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-01-03",
+   "stage": "Find",
+   "action": "List every system with its authentication method and MFA status, Criticality A and B first",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "ID-REG-002"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-01-04",
+   "stage": "Prevent",
+   "action": "Approve an authentication standard that requires MFA for new systems",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-001"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-01-05",
+   "stage": "Handle exceptions",
+   "action": "Place systems that cannot support MFA behind a jump host with session logging and a time-limited risk acceptance",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-002"
+   ],
+   "prerequisites": [
+    "IMP-PR.AA-01-04"
+   ],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-01-06",
+   "stage": "Validate",
+   "action": "Retest MFA on every system that received a Fix and compare the result with the system list from the Find action.",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-01-07",
+   "stage": "Sustain",
+   "action": "Review MFA coverage each quarter against the system list and record the result with a named owner.",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Measurement",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-02-01",
+   "stage": "Fix",
+   "action": "Run a first access review on Criticality A systems, privileged accounts first",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [
+    "PR-REC-001"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-02-02",
+   "stage": "Find",
+   "action": "Identify shared and generic administrator accounts on PACS, Active Directory, and the website",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "PACS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Both"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-02-03",
+   "stage": "Prevent",
+   "action": "Link joiner, mover, and leaver steps to HR and set a six-month review cycle",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-001",
+    "GV-FRM-003"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-02-04",
+   "stage": "Fix",
+   "action": "Keep server room access logs and review the access list each quarter",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-003",
+    "PR-FRM-004"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-02-05",
+   "stage": "Validate",
+   "action": "Compare HR leaver records with account lists for the last quarter and confirm that access ended within the agreed time.",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AA-02-06",
+   "stage": "Sustain",
+   "action": "Run the access review every six months and file the signed review record.",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Measurement",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-002",
+    "PR-REC-001"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AT-01-01",
+   "stage": "Fix",
+   "action": "Record completion of an annual awareness program for all staff",
+   "linkedGaps": [
+    "GAP-PR.AT-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [
+    "PR-PLN-001",
+    "PR-REC-002"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.AT-01-02",
+   "stage": "Validate",
+   "action": "Check the completion records against the staff list and report which staff have not completed the program.",
+   "linkedGaps": [
+    "GAP-PR.AT-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [
+    "PR-REC-002"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-01-01",
+   "stage": "Fix",
+   "action": "Add an offline or immutable backup copy for HIS, ERP, Active Directory, and Microsoft 365 data",
+   "linkedGaps": [
+    "GAP-PR.DS-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "ERP",
+    "Active Directory"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-01-02",
+   "stage": "Validate",
+   "action": "Run and record a restore test on HIS, Microsoft 365, and Active Directory with recovery time measured",
+   "linkedGaps": [
+    "GAP-PR.DS-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-REC-003"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "Active Directory"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-01-03",
+   "stage": "Sustain",
+   "action": "Set a restore test schedule for Criticality A systems",
+   "linkedGaps": [
+    "GAP-PR.DS-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-005"
+   ],
+   "prerequisites": [
+    "IMP-PR.DS-01-02"
+   ],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-01-04",
+   "stage": "Prevent",
+   "action": "Approve a backup standard that requires an offline or immutable copy for every Criticality A system.",
+   "linkedGaps": [
+    "GAP-PR.DS-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-006"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-02-01",
+   "stage": "Fix",
+   "action": "Encrypt the HIS database and enforce TLS on all HIS connections",
+   "linkedGaps": [
+    "GAP-PR.DS-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-005"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-02-02",
+   "stage": "Fix",
+   "action": "Replace production personal data in test with masked data",
+   "linkedGaps": [
+    "GAP-PR.DS-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-02-03",
+   "stage": "Find",
+   "action": "Confirm the encryption status of PACS, LIS, and ERP",
+   "linkedGaps": [
+    "GAP-PR.DS-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "PACS",
+    "LIS",
+    "ERP"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Both"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-02-04",
+   "stage": "Validate",
+   "action": "Scan the HIS test environment for production personal data after masking and record the result.",
+   "linkedGaps": [
+    "GAP-PR.DS-02"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.DS-02-05",
+   "stage": "Sustain",
+   "action": "Check each quarter that new test copies of Criticality A systems use masked data.",
+   "linkedGaps": [
+    "GAP-PR.DS-02"
+   ],
+   "gapType": "Measurement",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-01-01",
+   "stage": "Fix",
+   "action": "Segment the network so HIS, PACS, Active Directory, medical devices, and guest Wi-Fi sit in separate zones with filtered access",
+   "linkedGaps": [
+    "GAP-PR.IR-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-016"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-01-02",
+   "stage": "Validate",
+   "action": "Test from the guest Wi-Fi and medical device zones that access to HIS and Active Directory is blocked except by approved rules.",
+   "linkedGaps": [
+    "GAP-PR.IR-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "Active Directory"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-01-03",
+   "stage": "Sustain",
+   "action": "Review the firewall rules between zones every six months and record the review.",
+   "linkedGaps": [
+    "GAP-PR.IR-01"
+   ],
+   "gapType": "Measurement",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-008"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-02-01",
+   "stage": "Find",
+   "action": "Test whether HIS and Active Directory can recover within tolerable downtime",
+   "linkedGaps": [
+    "GAP-PR.IR-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "Active Directory"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-02-02",
+   "stage": "Fix",
+   "action": "Design a failover or recovery option for the HIS database",
+   "linkedGaps": [
+    "GAP-PR.IR-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-017"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-02-03",
+   "stage": "Validate",
+   "action": "Repeat the recovery test on HIS after the failover option is built and compare it with the downtime tolerance.",
+   "linkedGaps": [
+    "GAP-PR.IR-02"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [
+    "RC-REC-001"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.IR-02-04",
+   "stage": "Sustain",
+   "action": "Test the recovery of Criticality A systems each year and file the exercise report.",
+   "linkedGaps": [
+    "GAP-PR.IR-02"
+   ],
+   "gapType": "Measurement",
+   "buildsOn": [],
+   "documents": [
+    "RC-REC-001"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-01-01",
+   "stage": "Fix",
+   "action": "Upgrade or isolate the end-of-life PACS platform and the website host",
+   "linkedGaps": [
+    "GAP-PR.PS-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "PACS",
+    "Hospital website"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-01-02",
+   "stage": "Find",
+   "action": "List all systems past end of support with their owners",
+   "linkedGaps": [
+    "GAP-PR.PS-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-01-03",
+   "stage": "Prevent",
+   "action": "Set patch timelines by severity and track compliance monthly",
+   "linkedGaps": [
+    "GAP-PR.PS-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-007"
+   ],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-01-04",
+   "stage": "Validate",
+   "action": "Rescan the upgraded or isolated hosts and confirm that no end-of-life software remains.",
+   "linkedGaps": [
+    "GAP-PR.PS-01"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "PACS",
+    "Hospital website"
+   ],
+   "changeInFlight": {
+    "ref": "CHG-01",
+    "appliesTo": "Current system"
+   },
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-02-01",
+   "stage": "Handle exceptions",
+   "action": "Isolate legacy medical devices in a dedicated segment and restrict their traffic",
+   "linkedGaps": [
+    "GAP-PR.PS-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-008"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "Legacy medical devices"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-02-02",
+   "stage": "Prevent",
+   "action": "Add patching and support terms to medical device vendor contracts",
+   "linkedGaps": [
+    "GAP-PR.PS-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [],
+   "changeInFlight": null,
+   "existingTool": null
+  },
+  {
+   "id": "IMP-PR.PS-02-03",
+   "stage": "Validate",
+   "action": "Test that traffic from the medical device segment to other zones is limited to the approved flows.",
+   "linkedGaps": [
+    "GAP-PR.PS-02"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "Legacy medical devices"
+   ],
+   "changeInFlight": null,
+   "existingTool": null
+  }
+ ],
+ "verify": []
+}

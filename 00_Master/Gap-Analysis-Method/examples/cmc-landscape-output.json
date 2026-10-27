@@ -1,0 +1,180 @@
+{
+ "schema": "csf-gap-landscape/1",
+ "round": 2,
+ "pages": [
+  {
+   "page": 1,
+   "title": "Two hospitals run 24/7 with security held part-time by IT",
+   "keyMessage": "CMC runs two hospitals with about 1,200 staff. A team of 25 runs IT, and the IT Infrastructure Manager covers security part-time. One Microsoft 365 account compromise occurred in 2025.",
+   "evidence": [
+    "SITE-01",
+    "SITE-02",
+    "ENV:ith",
+    "ENV:secr",
+    "HIST-01"
+   ]
+  },
+  {
+   "page": 2,
+   "title": "Four Criticality A systems carry patient care and daily operations",
+   "keyMessage": "HIS, PACS, Microsoft 365, and Active Directory are Criticality A. HIS, PACS, and LIS hold sensitive health data, and the HIS and PACS vendors can reach that data remotely.",
+   "evidence": [
+    "BIA:HIS",
+    "BIA:PACS",
+    "BIA:Microsoft 365",
+    "BIA:Active Directory and network core",
+    "C11:HIS",
+    "C11:PACS",
+    "C11:LIS",
+    "V3:Sample HIS vendor",
+    "V3:Sample PACS vendor"
+   ]
+  },
+  {
+   "page": 3,
+   "title": "Systems share a partly segmented network with vendor and staff remote access",
+   "keyMessage": "Medical devices share the corporate network, staff connect through a virtual private network (VPN) without multi-factor authentication (MFA), and three vendors connect remotely. Nine security tools are listed, and one is bought but not deployed.",
+   "evidence": [
+    "ENV:otp",
+    "ENV:seg",
+    "ENV:rem",
+    "V2:Sample HIS vendor",
+    "V2:Sample PACS vendor",
+    "V2:Sample web agency",
+    "TOOL-07"
+   ]
+  },
+  {
+   "page": 4,
+   "title": "Coverage across seven systems, with a PACS replacement due in 2027",
+   "keyMessage": "No Criticality A system is rated Good for MFA or administrator accounts. The PACS replacement is contracted for March 2027. The 2025 internal audit left six findings open.",
+   "evidence": [
+    "POP:C4",
+    "POP:C5",
+    "CHG-01",
+    "PRIOR-01"
+   ]
+  }
+ ],
+ "blockLines": [
+  {
+   "block": "B1",
+   "text": "CMC operates Hospital 1 and Hospital 2 with about 1,200 staff.",
+   "evidence": [
+    "SITE-01",
+    "SITE-02"
+   ]
+  },
+  {
+   "block": "B2",
+   "text": "HIS and Active Directory tolerate under four hours of downtime. PACS and Microsoft 365 tolerate up to one day.",
+   "evidence": [
+    "BIA:HIS",
+    "BIA:Active Directory and network core",
+    "BIA:PACS",
+    "BIA:Microsoft 365"
+   ]
+  },
+  {
+   "block": "B3",
+   "text": "Seven systems are listed: four Criticality A and three Criticality B, with three hosted on premises.",
+   "evidence": [
+    "POP:systems",
+    "POP:C10"
+   ]
+  },
+  {
+   "block": "B4",
+   "text": "A disaster recovery site exists but has not been tested, and backups have an online copy only.",
+   "evidence": [
+    "ENV:dr",
+    "ENV:bka"
+   ]
+  },
+  {
+   "block": "B5",
+   "text": "Four systems use local application accounts, and six systems have no MFA.",
+   "evidence": [
+    "POP:C3",
+    "POP:C4"
+   ]
+  },
+  {
+   "block": "B6",
+   "text": "Firewall, antivirus, and email filtering cover all users. The vulnerability scanner license is bought but not deployed.",
+   "evidence": [
+    "TOOL-01",
+    "TOOL-03",
+    "TOOL-04",
+    "TOOL-07"
+   ]
+  },
+  {
+   "block": "B7",
+   "text": "Four vendors have system or data access, and three of them are Criticality A.",
+   "evidence": [
+    "POP:V1",
+    "V7:Sample HIS vendor",
+    "V7:Sample PACS vendor",
+    "V7:Sample cloud provider"
+   ]
+  },
+  {
+   "block": "B8",
+   "text": "Sensitive health data sits in HIS, PACS, and LIS.",
+   "evidence": [
+    "C11:HIS",
+    "C11:PACS",
+    "C11:LIS"
+   ]
+  },
+  {
+   "block": "B9",
+   "text": "IT has 25 staff, security is a part-time duty, and application support is outsourced.",
+   "evidence": [
+    "ENV:ith",
+    "ENV:secr",
+    "ENV:outs"
+   ]
+  },
+  {
+   "block": "B10",
+   "text": "For MFA, 0 of 4 Criticality A systems are rated Good, and 6 of 7 systems are rated Poor.",
+   "evidence": [
+    "POP:C4"
+   ]
+  },
+  {
+   "block": "B11",
+   "text": "Seven systems were listed and four sampled. Six profile answers are Unknown.",
+   "evidence": [
+    "POP:systems",
+    "POP:unknown"
+   ]
+  },
+  {
+   "block": "B12",
+   "text": "In March 2025, one compromised Microsoft 365 mailbox sent phishing email to patients for two hours.",
+   "evidence": [
+    "HIST-01"
+   ]
+  },
+  {
+   "block": "B13",
+   "text": "The PACS replacement is contracted for March 2027. The HIS upgrade is planned for January 2028.",
+   "evidence": [
+    "CHG-01",
+    "CHG-02"
+   ]
+  },
+  {
+   "block": "B14",
+   "text": "The 2025 internal audit has six findings open, and the 2024 website penetration test has four.",
+   "evidence": [
+    "PRIOR-01",
+    "PRIOR-02"
+   ]
+  }
+ ],
+ "verify": []
+}

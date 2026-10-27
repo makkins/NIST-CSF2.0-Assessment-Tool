@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "csf-gap-input/1",
+  "title": "Function input pack that the Gap Analysis HTML inserts into the Analyst prompt",
+  "description": "Built by the HTML from the Interview export (csf-interview/2) and the Workshop risk criteria JSON. Every value here is calculated or recorded; the AI treats it as evidence and does not recalculate it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "methodVersion", "rubricVersion", "engagement", "function", "riskCriteria", "categories", "systems", "vendors", "observations"],
+  "properties": {
+    "schema": { "const": "csf-gap-input/1" },
+    "methodVersion": { "type": "string" },
+    "rubricVersion": { "type": "string" },
+    "engagement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clientAlias", "sector", "scope", "assessmentDate", "obligations", "threatContext"],
+      "properties": {
+        "clientAlias": { "type": "string", "description": "Real name or alias when the Anonymize toggle is on" },
+        "sector": { "type": "string" },
+        "scope": { "type": "string" },
+        "assessmentDate": { "type": "string" },
+        "obligations": { "type": "array", "items": { "type": "string" }, "description": "For example CII, PDPA sensitive data" },
+        "threatContext": { "type": "string", "description": "Relevant threats and peer incidents stated by the client or recorded in the Workshop" }
+      }
+    },
+    "function": { "enum": ["GV", "ID", "PR", "DE", "RS", "RC"] },
+    "riskCriteria": {
+      "type": "object",
+      "description": "Subset of the Workshop risk criteria JSON: likelihoodScale, impactScale, bandThresholds, appetiteBand",
+      "required": ["likelihoodScale", "impactScale"]
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "currentTier", "targetTier", "status", "priority", "mandates", "tierDelta", "dataQuality", "subcategories"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "currentTier": { "type": ["integer", "null"] },
+          "targetTier": { "type": "integer" },
+          "status": { "enum": ["Gap", "Meets target", "Above target", "Not assessed"] },
+          "priority": { "enum": ["High", "Medium", "Low"] },
+          "mandates": { "type": "array", "items": { "type": "string" } },
+          "override": { "type": ["string", "null"] },
+          "tierDelta": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["current", "target"],
+            "properties": { "current": { "type": "string" }, "target": { "type": "string" } }
+          },
+          "dataQuality": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["notAssessed", "countedLower", "openRequests"],
+            "properties": {
+              "notAssessed": { "type": "array", "items": { "type": "string" } },
+              "countedLower": { "type": "array", "items": { "type": "string" } },
+              "openRequests": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "subcategories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "outcome", "status", "countedTier", "evidenceBasis"],
+              "properties": {
+                "id": { "type": "string" },
+                "outcome": { "type": "string" },
+                "status": { "enum": ["Strength", "Meets with Observation", "Gap", "Not Assessed"] },
+                "foundation": { "type": "boolean" },
+                "nextTierReady": { "type": "boolean" },
+                "gapType": { "enum": ["Governance", "Process", "Technology", "Measurement", "Evidence", null] },
+                "statedTier": { "type": ["integer", "null"] },
+                "countedTier": { "type": ["integer", "null"] },
+                "evidenceBasis": { "enum": ["Stated", "Demonstrated", "Documented", null] },
+                "coverage": { "type": ["object", "null"] },
+                "notes": { "type": "string" },
+                "assessorGapNote": { "type": "string" },
+                "evidenceRefs": { "type": "string" },
+                "technicalChecks": { "type": "array" },
+                "sampling": { "type": "array" },
+                "profileResults": { "type": "array" },
+                "documents": { "type": "array" },
+                "observations": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "systems": { "type": "array", "description": "All systems: name, criticality, sampled, origin, impact by area (Workshop keys)" },
+    "vendors": { "type": "array" },
+    "observations": { "type": "array", "description": "Technical observations of type Vulnerability. Incident indicators never enter the Gap Analysis." }
+  }
+}

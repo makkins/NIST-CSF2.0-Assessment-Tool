@@ -1,0 +1,787 @@
+<title>CSF 2.0 Document Map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: header, sticky filter bar, view tabs; each view is a different cut of the same 142 documents; detail drawer on the right */
+:root{
+  --bg:#f4f5f8; --surface:#ffffff; --ink:#1b2333; --muted:#5b6578; --line:#d7dce6; --accent:#2f4f8f; --accent-soft:#e4eaf6; --chip:#eef1f6;
+  --gv:#6b4fa0; --id:#2f6fb0; --pr:#2e8a6a; --de:#b7791f; --rs:#b2453c; --rc:#3d7f8c;
+  --req:#b42318; --req-soft:#fbe9e7; --exp:#1d4ed8; --exp-soft:#e6edfd; --opt:#8a93a3; --opt-soft:#f3f4f6; --on-block:#ffffff;
+  --cap-it:#2e7d4f; --cap-g:#b26a00; --cap-s:#8a2f8f; --edge:#9aa4b5; --edge2:#b26a00; --dep:#8a2f8f;
+  --f-body:"IBM Plex Sans Thai",system-ui,"Segoe UI",Tahoma,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11151d; --surface:#19202b; --ink:#e6eaf1; --muted:#9aa4b5; --line:#2c3545; --accent:#8fb0ec; --accent-soft:#223050; --chip:#222a38;
+  --gv:#a68ad8; --id:#6fa8e0; --pr:#5fc29d; --de:#e0a84f; --rs:#e47f75; --rc:#6fbcc9;
+  --req:#e5534b; --req-soft:#3a1f1f; --exp:#5b8def; --exp-soft:#1d2a45; --opt:#7d8696; --opt-soft:#232a35; --on-block:#ffffff;
+  --cap-it:#4fbf82; --cap-g:#e2a23b; --cap-s:#d07ad6; --edge:#5d6779; --edge2:#e2a23b; --dep:#d07ad6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151d; --surface:#19202b; --ink:#e6eaf1; --muted:#9aa4b5; --line:#2c3545; --accent:#8fb0ec; --accent-soft:#223050; --chip:#222a38;
+  --gv:#a68ad8; --id:#6fa8e0; --pr:#5fc29d; --de:#e0a84f; --rs:#e47f75; --rc:#6fbcc9;
+  --req:#e5534b; --req-soft:#3a1f1f; --exp:#5b8def; --exp-soft:#1d2a45; --opt:#7d8696; --opt-soft:#232a35; --on-block:#ffffff;
+  --cap-it:#4fbf82; --cap-g:#e2a23b; --cap-s:#d07ad6; --edge:#5d6779; --edge2:#e2a23b; --dep:#d07ad6; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;margin:0}
+.wrap{max-width:1400px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:14px}
+h1{font-size:clamp(22px,3vw,30px);line-height:1.2;margin:0;text-wrap:balance;font-weight:700}
+.sub{color:var(--muted);margin:4px 0 0;max-width:75ch}
+.hbtns{display:flex;gap:8px;align-items:center}
+.btn{font:600 13px var(--f-body);padding:6px 12px;border:1px solid var(--ink);border-radius:4px;background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--ink);color:var(--bg)}
+.btn.sm{font-size:12px;padding:3px 9px;border-color:var(--line)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lang{display:flex;border:1px solid var(--ink);border-radius:4px;overflow:hidden}
+.lang button{font:600 13px var(--f-body);padding:6px 14px;border:0;background:var(--surface);color:var(--ink);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.stats{display:flex;flex-wrap:wrap;gap:8px 28px;margin:16px 0;font-variant-numeric:tabular-nums}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-size:22px;font-weight:700}
+.stats span{font-size:11px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.controls input[type=search],.controls select{font:13px var(--f-body);padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);min-width:0;max-width:100%}
+.controls input[type=search]{flex:1 1 200px}
+.controls label.ck{font-size:12px;color:var(--muted);display:flex;gap:4px;align-items:center}
+.tabs{display:flex;gap:4px;margin:18px 0 10px;flex-wrap:wrap}
+.tabs button{font:600 14px var(--f-body);padding:7px 13px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:4px;cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hint{color:var(--muted);font-size:13px;margin:0 0 10px;max-width:110ch}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--muted);margin:10px 0}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.scroll{overflow-x:auto}
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--chip);border-radius:3px;padding:2px 6px 2px 2px;font-size:12px;cursor:pointer;color:var(--ink);text-align:left;max-width:100%;width:100%;font-family:var(--f-body);line-height:1.35}
+.chip[data-level="Required"]{background:var(--req-soft);border-color:color-mix(in srgb,var(--req) 35%,var(--line))}
+.chip[data-level="Expected"]{background:var(--exp-soft);border-color:color-mix(in srgb,var(--exp) 30%,var(--line))}
+.chip[data-level="Optional"]{background:var(--opt-soft);border-style:dashed}
+.lv{flex:none;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:2px;font:600 11px var(--f-mono);color:var(--on-block)}
+.lv.Required{background:var(--req)} .lv.Expected{background:var(--exp)} .lv.Optional{background:var(--opt)}
+.chip .id{font-family:var(--f-mono);font-weight:500;white-space:nowrap}
+.chip .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
+.cap{flex:none;font:600 10px var(--f-mono);padding:0 4px;border-radius:2px;border:1px solid currentColor;line-height:15px}
+.cap.IT{color:var(--cap-it)} .cap.GUIDED{color:var(--cap-g)} .cap.SPEC{color:var(--cap-s);background:color-mix(in srgb,var(--cap-s) 14%,transparent)}
+body.nocap .chip .cap{display:none}
+.chip.dim{opacity:.22}
+.hidefilter .chip.dim{display:none}
+.chip.sel{outline:2px solid var(--accent);outline-offset:1px}
+.inline .chip,.links .chip{width:auto}
+.links{display:flex;flex-wrap:wrap;gap:4px}
+.seq{font:600 11px var(--f-mono);color:var(--muted);min-width:26px;display:inline-block;text-align:right}
+.pill{font:600 11px var(--f-body);padding:1px 8px;border-radius:10px;border:1px solid currentColor;display:inline-block;white-space:nowrap}
+.tagp{font-size:11px;padding:1px 7px;border-radius:10px;background:var(--chip);border:1px solid var(--line);color:var(--muted);white-space:nowrap;cursor:pointer;font-family:var(--f-body)}
+.tagp[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* tier map */
+table.map{border-collapse:collapse;width:100%;min-width:1000px}
+table.map th,table.map td{border-bottom:1px solid var(--line);vertical-align:top;padding:8px}
+table.map thead th{font-size:13px;text-align:left;background:var(--surface)}
+table.map thead th .bar{display:block;height:4px;border-radius:2px;margin-bottom:6px}
+table.map tbody th{width:150px;text-align:left;font-size:13px;color:var(--muted);font-weight:600}
+table.map tbody th b{display:block;color:var(--ink);font-family:var(--f-mono);font-size:14px}
+.cell{display:flex;flex-direction:column;gap:4px}
+/* tree diagram */
+.tbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.diag{position:relative;overflow:auto;max-height:78vh;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.diag svg{position:absolute;left:0;top:0;pointer-events:none}
+.tn{position:absolute;display:flex;align-items:center;gap:4px}
+.tn .chip{width:236px}
+.tn .tog{font:600 12px var(--f-mono);border:1px solid var(--line);background:var(--bg);color:var(--ink);width:22px;height:22px;border-radius:3px;cursor:pointer;padding:0;flex:none}
+.tn .mp{font:600 10px var(--f-mono);color:var(--edge2);border:1px dashed var(--edge2);border-radius:2px;padding:0 3px}
+.tn.fade{opacity:.25}
+.colhead{position:absolute;top:6px;font:600 11px var(--f-mono);color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+/* order view */
+.wavegrid{display:grid;grid-template-columns:150px repeat(6,minmax(240px,1fr));min-width:1600px}
+.wavegrid>div{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:8px;min-width:0}
+.wavegrid .wh{background:var(--surface);position:relative}
+.wavegrid .wh b{display:block;font-size:14px}
+.wavegrid .wh small{color:var(--muted);font-size:12px;display:block}
+.wavegrid .th{font-weight:600;font-size:13px;color:var(--muted);background:var(--surface)}
+.wavegrid .trB{background:color-mix(in srgb,var(--cap-g) 7%,var(--bg))}
+.actlist{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
+.act{font:500 12px var(--f-body);text-align:left;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--surface);color:var(--ink);border-radius:3px;padding:3px 6px;cursor:pointer}
+.act .an{font-family:var(--f-mono);color:var(--muted);font-size:11px;margin-right:4px}
+.ord{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ord .row{display:grid;grid-template-columns:26px minmax(0,1fr);gap:4px;align-items:center;min-width:0}
+.ord .row .chip{width:100%;min-width:0}
+.cellw{display:flex;flex-direction:column;gap:8px;min-width:0;overflow:hidden}
+.runfirst{border:1px solid var(--line);border-radius:4px;background:var(--surface);min-width:0}
+.runfirst summary{cursor:pointer;font:600 12px var(--f-body);padding:4px 8px;color:var(--muted)}
+.runfirst .cnt{font-family:var(--f-mono);background:var(--accent-soft);color:var(--ink);border-radius:8px;padding:0 6px;margin-left:4px}
+.runfirst .actlist{padding:0 6px 6px;margin:0}
+.act{width:100%;overflow-wrap:anywhere}
+.chip{min-width:0}
+.pk{display:none;flex:none;font:600 10px var(--f-mono);padding:0 4px;border-radius:2px;line-height:15px;border:1px solid var(--ink);color:var(--ink)}
+.pk.Essential{background:var(--ink);color:var(--bg)} .pk.Extended{border-style:dashed;color:var(--muted);border-color:var(--muted)}
+body.showpkg .chip .pk,.modal .pk,.drawer .pk{display:inline-block}
+.howto{border:1px solid var(--line);border-radius:6px;background:var(--surface);margin:0 0 10px;font-size:13px}
+.howto>summary{cursor:pointer;font-weight:600;padding:6px 10px;color:var(--accent)}
+.howto dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:0;padding:4px 12px 12px}
+.howto dt{color:var(--muted);font-weight:600}
+.howto dd{margin:0;max-width:95ch}
+@media (max-width:560px){.howto dl{grid-template-columns:1fr}}
+.callout.need{background:var(--chip);border-left:3px solid var(--accent)}
+.audseg button{font-size:12px;padding:6px 10px}
+.audrow{color:var(--accent)!important}
+.bseq{font:500 10px var(--f-mono);color:var(--muted);background:var(--chip);border-radius:8px;padding:0 6px;margin-left:6px;white-space:nowrap}
+.svcbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-bottom:10px}
+.svc{text-align:left;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);padding:8px 10px;cursor:pointer;font-family:var(--f-body)}
+.svc b{display:block;font-size:13px}.svc span{font-size:11px;color:var(--muted)}
+.svc.on{border-color:var(--accent);background:var(--accent-soft)}
+.svccard{border:1px dashed var(--accent);border-radius:4px;padding:6px 8px;font-size:12px;display:flex;flex-direction:column;gap:4px}
+.svcgrp{display:flex;flex-direction:column;gap:4px;min-width:0}
+.sg{font:600 11px var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.sg .cnt{font-family:var(--f-mono);background:var(--accent-soft);color:var(--ink);border-radius:8px;padding:0 6px;margin-left:4px}
+.fade2{opacity:.22}
+.lane-top.th{border-left:4px solid var(--cap-s)} .lane-mid.th{border-left:4px solid var(--cap-g)} .lane-low.th{border-left:4px solid var(--cap-it)}
+.capbars{display:flex;flex-direction:column;gap:4px;margin:4px 0 0}
+.cb{display:flex;height:8px;border-radius:2px;overflow:hidden;background:var(--chip)}
+.cb i{display:block;height:100%}
+.steplist{display:flex;flex-direction:column;gap:14px}
+.steplist h3{margin:6px 0 2px;font-size:16px}
+.steplist table{border-collapse:collapse;width:100%;min-width:900px;font-size:13px}
+.steplist td,.steplist th{border-bottom:1px solid var(--line);padding:6px;vertical-align:top;text-align:left}
+.steplist th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.mini{font-size:12px;color:var(--muted)}
+.idl2{font-family:var(--f-mono);font-size:12px}
+/* flows */
+.flow{padding:12px;margin-bottom:12px}
+.flow h3{margin:0;font-size:16px}
+.flow p{margin:2px 0 10px;color:var(--muted);font-size:13px}
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.step{display:flex;flex-direction:column;gap:4px;width:200px;border:1px solid var(--line);border-radius:4px;padding:6px;background:var(--bg)}
+.step .lb{font:600 12px var(--f-body)}
+.step .lb i{font:600 11px var(--f-mono);color:var(--muted);font-style:normal;margin-right:4px}
+.arrow{align-self:center;color:var(--muted);font:600 16px var(--f-mono)}
+/* owners and themes */
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.grid3>section{padding:12px;min-width:0}
+.grid3 h3{margin:0 0 2px;font-size:15px}
+.grid3 h4{margin:10px 0 4px;font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.tagbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+/* outline */
+.tree{padding:12px;overflow-x:auto}
+.tree ul{list-style:none;margin:0;padding-left:22px;border-left:1px dashed var(--line)}
+.tree>ul{border-left:0;padding-left:0}
+.tree li{margin:3px 0}
+.node{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tog2{font:600 12px var(--f-mono);border:1px solid var(--line);background:var(--bg);color:var(--ink);width:22px;height:20px;border-radius:3px;cursor:pointer;padding:0}
+.tier{font:500 11px var(--f-mono);color:var(--muted)}
+/* drawer */
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(480px,100%);background:var(--surface);border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.14);padding:calc(18px + env(safe-area-inset-top,0px)) 20px calc(18px + env(safe-area-inset-bottom,0px));overflow-y:auto;z-index:10}
+.drawer h2{font-size:19px;margin:6px 0 4px;text-wrap:balance}
+.drawer h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px;border-top:1px solid var(--line);padding-top:12px}
+.drawer .idl{font-family:var(--f-mono);color:var(--muted);font-size:13px}
+.drawer dl{display:grid;grid-template-columns:130px 1fr;gap:6px 12px;font-size:13px;margin:10px 0}
+.drawer dt{color:var(--muted)}
+.drawer dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.drawer ol,.drawer ul{margin:4px 0;padding-left:20px;font-size:13px}
+.drawer details{border:1px solid var(--line);border-radius:4px;padding:6px 8px;margin:6px 0;font-size:13px}
+.drawer summary{cursor:pointer;font-weight:600}
+.close{float:right}
+.callout{font-size:13px;background:var(--accent-soft);border-radius:4px;padding:8px 10px;margin:8px 0}
+.capbox{border:1px solid var(--line);border-radius:4px;padding:8px 10px;font-size:13px}
+.note{font-size:12px;color:var(--muted);margin-top:24px;max-width:100ch}
+@media (min-width:1100px){body.has-drawer .wrap{margin-right:490px;max-width:none}}
+@media (max-width:560px){.drawer dl{grid-template-columns:1fr}.stats b{font-size:18px}}
+/* help */
+.modal{position:fixed;inset:0;background:rgba(10,14,22,.55);z-index:20;display:flex;justify-content:center;align-items:flex-start;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 24px;overflow-y:auto}
+.modal .panel{background:var(--surface);color:var(--ink);border-radius:8px;max-width:860px;width:100%;padding:22px 24px;border:1px solid var(--line)}
+.modal h2{margin:0 0 4px;font-size:22px}
+.modal h3{margin:20px 0 6px;font-size:15px}
+.modal p,.modal li{font-size:14px;max-width:80ch}
+.modal table{border-collapse:collapse;width:100%;font-size:13px}
+.modal td,.modal th{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.modal .lg{display:flex;gap:6px;align-items:center}
+@media (prefers-reduced-motion:no-preference){.chip,.tn{transition:opacity .15s,background .15s}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="t-title">CSF 2.0 Document Map</h1>
+      <p class="sub" id="t-sub"></p>
+    </div>
+    <div class="hbtns">
+      <div class="lang audseg" role="group" aria-label="Audience" id="audseg"><button data-aud="all" aria-pressed="true">All</button><button data-aud="inh" aria-pressed="false">In-house</button><button data-aud="con" aria-pressed="false">Consultant</button></div>
+      <button class="btn pri" id="b-help" aria-haspopup="dialog">Help</button>
+      <div class="lang" role="group" aria-label="Language">
+        <button id="b-th" aria-pressed="false">ไทย</button>
+        <button id="b-en" aria-pressed="true">EN</button>
+      </div>
+    </div>
+  </header>
+  <div class="stats" id="stats"></div>
+  <div class="controls">
+    <input id="q" type="search" aria-label="Search">
+    <select id="f-fn" aria-label="Function"></select>
+    <select id="f-theme" aria-label="Theme"></select>
+    <select id="f-tag" aria-label="Tag"></select>
+    <select id="f-lvl" aria-label="Level"></select>
+    <select id="f-cap" aria-label="Capability"></select>
+    <select id="f-wave" aria-label="Wave"></select>
+    <select id="f-pkg" aria-label="Package"></select>
+    <label class="ck"><input type="checkbox" id="o-cap" checked> <span id="l-ocap"></span></label>
+    <label class="ck"><input type="checkbox" id="o-pkg"> <span id="l-opkg"></span></label>
+    <label class="ck"><input type="checkbox" id="o-hide"> <span id="l-ohide"></span></label>
+    <button class="btn sm" id="b-reset"></button>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="legend" id="legend"></div>
+
+  <section id="v-map"><p class="hint" id="h-map"></p><details class="howto" id="hw-map"></details><div class="box scroll"><table class="map" id="map"></table></div></section>
+  <section id="v-tree" hidden>
+    <p class="hint" id="h-tree"></p><details class="howto" id="hw-tree"></details>
+    <div class="tbar">
+      <button class="btn sm" id="t-exp"></button><button class="btn sm" id="t-col"></button><button class="btn sm" id="t-pol"></button>
+      <label class="ck mini"><input type="checkbox" id="t-deps" checked> <span id="l-tdeps"></span></label>
+    </div>
+    <div class="diag" id="diag"></div>
+  </section>
+  <section id="v-order" hidden>
+    <p class="hint" id="h-order"></p><details class="howto" id="hw-order"></details>
+    <div class="tbar"><button class="btn sm" id="o-board" aria-pressed="true"></button><button class="btn sm" id="o-list" aria-pressed="false"></button></div>
+    <div id="order"></div>
+  </section>
+  <section id="v-flow" hidden><p class="hint" id="h-flow"></p><details class="howto" id="hw-flow"></details><div id="flows"></div></section>
+  <section id="v-owner" hidden><p class="hint" id="h-owner"></p><details class="howto" id="hw-owner"></details><div class="grid3" id="owners"></div></section>
+  <section id="v-theme" hidden><p class="hint" id="h-theme"></p><details class="howto" id="hw-theme"></details><div class="tagbar" id="tagbar"></div><div class="grid3" id="themes"></div></section>
+  <section id="v-split" hidden><p class="hint" id="h-split"></p><details class="howto" id="hw-split"></details><div id="split"></div></section>
+  <section id="v-outline" hidden><p class="hint" id="h-outline"></p><details class="howto" id="hw-outline"></details><div class="tree box" id="outline"></div></section>
+  <p class="note" id="note"></p>
+</div>
+<aside class="drawer" id="drawer" hidden aria-live="polite"></aside>
+<div class="modal" id="help" hidden role="dialog" aria-modal="true" aria-labelledby="help-h"><div class="panel" id="help-body"></div></div>
+
+<script>
+const DATA = __DATA__;
+const D = DATA.docs, M = DATA.meta, A = DATA.acts, BY = Object.fromEntries(D.map(d=>[d.id,d]));
+const FN=["GV","ID","PR","DE","RS","RC"], TIERS=["T0","T1","T2","T3","T4"], WAVES=Object.keys(M.waves), CAPK=["IT","GUIDED","SPEC"], THEMES=Object.keys(M.themes), TAGK=Object.keys(M.tags);
+const LV={Required:"R",Expected:"E",Optional:"O"}, CAPL={IT:"IT",GUIDED:"G",SPEC:"S"};
+const T = {
+ EN:{title:"CSF 2.0 Document Map",sub:"The full set of controlled documents an organization needs under NIST CSF 2.0, from the Board charter down to forms and records, with the order to build them and the skills each one needs. Click any document or activity for details.",
+  help:"Help",docs:"Documents",cats:"CSF Categories",subs:"Subcategories covered",req:"Required",spec:"Need a specialist",acts:"Prerequisite activities",
+  search:"Search ID or title",all:"All",fn:"Function",theme:"ISO theme",tag:"Tag",lvl:"Level",cap:"Capability",wave:"Wave",pkg:"Package",ocap:"Show capability",opkg:"Show package",legPk:"Package tag",ohide:"Hide non-matching",reset:"Clear filters",
+  tabs:{map:"Tier map",tree:"Tree diagram",order:"Recommended order",flow:"Process flows",owner:"Owners (RACI)",theme:"ISO themes",outline:"Outline",split:"Org and Consultant"},
+  hMap:"Rows are document tiers: direction at the top, evidence at the bottom. Columns are the six CSF 2.0 Functions.",
+  hTree:"How direction cascades from the charter down to records. Solid lines link a document to its main parent. Dashed amber lines show a second parent. Click a document to highlight its lineage; purple dotted lines then show its prerequisites.",
+  hOrder:"Suggested build order for an organization that is starting cybersecurity governance from scratch or has only IT policies. Track A builds governance in waves that overlap. Track B runs threat-driven quick wins in parallel from day one. Each wave lists the activities to run before writing its documents.",
+  hFlow:"How documents connect in day-to-day operation. Each chain reads left to right: one document's output becomes the next one's input.",
+  hOwner:"R = owns and maintains the document. A = approves it. C = takes part in the prerequisite activities.",
+  hTheme:"Primary grouping uses the four control themes of ISO/IEC 27002:2022. Secondary tags add cross-cutting views. Click a tag to filter every view.",
+  hOutline:"The cascade as an indented list. Click + to expand.",hSplit:"Who holds the pen in each wave: a specialist, IT with specialist review, or the organization alone. Click a service to see what it touches.",
+  exp:"Expand all",col:"Collapse all",pol:"Show to policy level",deps:"Show prerequisites of the selected document",board:"Board view",list:"Step list",
+  trackRow:"Track",capDemand:"Capability demand",actsIn:"Run first",
+  stepCols:["#","Document","Track","Capability","Run first","Depends on"],
+  legLv:"Level block",legCap:"Capability tag",legLines:"Tree lines",lineMain:"Main parent",lineSec:"Second parent",lineDep:"Prerequisite",
+  roleOwns:"Owns (R)",roleApproves:"Approves (A)",roleActs:"Takes part in (C)",
+  purpose:"Purpose",tier:"Tier",type:"Type",cat:"Category",level:"Level",trigger:"Trigger",basis:"Basis",cmc:"Level for CMC",pkg2:"Package",owner:"Owner",approver:"Approver",review:"Review",
+  themeL:"ISO theme",tagsL:"Tags",themeBasis:"Derived from control",themeClause:"Management system clause (Organizational)",themeOv:"Assigned by the framework author",
+  csf:"CSF subcategories",iso:"ISO/IEC 27001:2022",nist:"NIST SP 800-53",parents:"Parent documents",children:"Child documents",file:"File",verify:"Items to verify",close:"Close",none:"None",
+  guide:"Implementation guidance",needL:"Do we need this?",evidL:"Evidence to request",evidHint:"Ask for these items during fieldwork. The full check list with Pass and Fail is in the Audit Tracker.",evidApproval:"Approved and current version, with approval evidence and revision history",evidRecords:"Proof of communication, or the latest entries for a form or register",waveL:"Wave",trackL:"Track",seqL:"Build order",capL:"Capability",whyL:"Why",srcL:"Who can produce it",prereqL:"Run these activities first",depsL:"Needs these documents first",unlocksL:"Unlocks",alignL:"Interim: align later to",flowsL:"Appears in process flows",mistakesL:"Common mistakes",
+  agenda:"Agenda",roles:"Participants",inputs:"Inputs",duration:"Duration",freq:"Frequency",facil:"Who should facilitate",first:"First time in this organization",outputs:"Produces or feeds",activity:"Activity",
+  note:"References as of October 2026. Items marked VERIFY must be confirmed against current Thai regulations. Sample material, not legal advice. Build order, capability flags, and activity durations are practitioner guidance; adjust them to each organization."},
+ TH:{title:"แผนที่เอกสารตาม CSF 2.0",sub:"เอกสารควบคุมทั้งหมดที่องค์กรควรมีตาม NIST CSF 2.0 ตั้งแต่กฎบัตรระดับคณะกรรมการจนถึงแบบฟอร์มและบันทึก พร้อมลำดับการจัดทำและทักษะที่แต่ละฉบับต้องใช้ คลิกเอกสารหรือกิจกรรมเพื่อดูรายละเอียด",
+  help:"วิธีใช้",docs:"เอกสาร",cats:"CSF Category",subs:"Subcategory ที่ครอบคลุม",req:"Required",spec:"ต้องใช้ผู้เชี่ยวชาญ",acts:"กิจกรรมที่ต้องทำก่อน",
+  search:"ค้นหารหัสหรือชื่อเอกสาร",all:"ทั้งหมด",fn:"Function",theme:"ISO theme",tag:"Tag",lvl:"ระดับ",cap:"ขีดความสามารถ",wave:"ระลอก",pkg:"ชุดเอกสาร",ocap:"แสดงขีดความสามารถ",opkg:"แสดงชุดเอกสาร",legPk:"ป้ายชุดเอกสาร",ohide:"ซ่อนรายการที่ไม่ตรง",reset:"ล้างตัวกรอง",
+  tabs:{map:"แผนที่ตามชั้น",tree:"แผนภาพต้นไม้",order:"ลำดับที่แนะนำ",flow:"ลำดับกระบวนการ",owner:"ผู้รับผิดชอบ (RACI)",theme:"ISO themes",outline:"โครงร่าง",split:"องค์กรและที่ปรึกษา"},
+  hMap:"แถวคือชั้นเอกสาร: ทิศทางอยู่ด้านบน หลักฐานอยู่ด้านล่าง คอลัมน์คือ 6 Function ของ CSF 2.0",
+  hTree:"การถ่ายทอดทิศทางจากกฎบัตรลงไปถึงบันทึก เส้นทึบเชื่อมเอกสารกับเอกสารแม่หลัก เส้นประสีส้มแสดงเอกสารแม่ลำดับที่สอง คลิกเอกสารเพื่อเน้นสายความสัมพันธ์ แล้วเส้นจุดสีม่วงจะแสดงเอกสารที่ต้องมีก่อน",
+  hOrder:"ลำดับการจัดทำที่แนะนำสำหรับองค์กรที่เริ่มระบบกำกับดูแลด้านไซเบอร์จากศูนย์ หรือมีเพียงนโยบาย IT Track A สร้างระบบกำกับดูแลเป็นระลอกที่ทับซ้อนกันได้ Track B ทำงานเร่งด่วนตามภัยคุกคามคู่ขนานตั้งแต่วันแรก แต่ละระลอกแสดงกิจกรรมที่ต้องทำก่อนเขียนเอกสาร",
+  hFlow:"ความเชื่อมโยงของเอกสารในการปฏิบัติงานจริง อ่านจากซ้ายไปขวา ผลลัพธ์ของเอกสารหนึ่งเป็นข้อมูลนำเข้าของเอกสารถัดไป",
+  hOwner:"R = เป็นเจ้าของและดูแลเอกสาร A = เป็นผู้อนุมัติ C = มีส่วนร่วมในกิจกรรมที่ต้องทำก่อน",
+  hTheme:"การจัดกลุ่มหลักใช้ 4 control themes ของ ISO/IEC 27002:2022 และมี tag รองสำหรับมุมมองข้ามหมวด คลิก tag เพื่อกรองทุกมุมมอง",
+  hOutline:"การถ่ายทอดในรูปแบบรายการย่อหน้า คลิก + เพื่อขยาย",hSplit:"ใครถือปากกาในแต่ละระลอก: ผู้เชี่ยวชาญ ทีม IT โดยมีผู้เชี่ยวชาญทบทวน หรือองค์กรทำเอง คลิกบริการเพื่อดูสิ่งที่บริการนั้นแตะ",
+  exp:"ขยายทั้งหมด",col:"ยุบทั้งหมด",pol:"แสดงถึงระดับนโยบาย",deps:"แสดงเอกสารที่ต้องมีก่อนของเอกสารที่เลือก",board:"มุมมองกระดาน",list:"รายการตามลำดับ",
+  trackRow:"Track",capDemand:"ความต้องการทักษะ",actsIn:"ทำก่อน",
+  stepCols:["#","เอกสาร","Track","ขีดความสามารถ","ทำก่อน","ต้องมีก่อน"],
+  legLv:"บล็อกระดับ",legCap:"ป้ายขีดความสามารถ",legLines:"เส้นในแผนภาพต้นไม้",lineMain:"เอกสารแม่หลัก",lineSec:"เอกสารแม่ลำดับที่สอง",lineDep:"ต้องมีก่อน",
+  roleOwns:"เป็นเจ้าของ (R)",roleApproves:"อนุมัติ (A)",roleActs:"มีส่วนร่วม (C)",
+  purpose:"วัตถุประสงค์",tier:"ชั้น",type:"ประเภท",cat:"Category",level:"ระดับ",trigger:"Trigger",basis:"แหล่งอ้างอิง",cmc:"ระดับสำหรับ CMC",pkg2:"ชุดเอกสาร",owner:"เจ้าของ",approver:"ผู้อนุมัติ",review:"รอบทบทวน",
+  themeL:"ISO theme",tagsL:"Tag",themeBasis:"กำหนดจาก control",themeClause:"ข้อกำหนดระบบบริหาร (Organizational)",themeOv:"กำหนดโดยผู้จัดทำกรอบ",
+  csf:"CSF Subcategory",iso:"ISO/IEC 27001:2022",nist:"NIST SP 800-53",parents:"เอกสารแม่",children:"เอกสารลูก",file:"ไฟล์",verify:"รายการที่ต้องตรวจสอบ",close:"ปิด",none:"ไม่มี",
+  guide:"แนวทางการนำไปใช้",needL:"ต้องมีหรือไม่:",evidL:"หลักฐานที่ต้องขอ",evidHint:"ขอรายการเหล่านี้ระหว่างการตรวจ รายการตรวจฉบับเต็มพร้อมผ่านและไม่ผ่านอยู่ใน Audit Tracker",evidApproval:"ฉบับที่ได้รับอนุมัติและเป็นปัจจุบัน พร้อมหลักฐานการอนุมัติและประวัติการแก้ไข",evidRecords:"หลักฐานการสื่อสาร หรือรายการล่าสุดของแบบฟอร์มหรือทะเบียน",waveL:"ระลอก",trackL:"Track",seqL:"ลำดับการจัดทำ",capL:"ขีดความสามารถ",whyL:"เหตุผล",srcL:"ผู้ที่จัดทำได้",prereqL:"กิจกรรมที่ต้องทำก่อน",depsL:"เอกสารที่ต้องมีก่อน",unlocksL:"เปิดทางให้",alignL:"ฉบับชั่วคราว: ปรับให้สอดคล้องภายหลังกับ",flowsL:"อยู่ในลำดับกระบวนการ",mistakesL:"ข้อผิดพลาดที่พบบ่อย",
+  agenda:"หัวข้อการประชุม",roles:"ผู้เข้าร่วม",inputs:"ข้อมูลนำเข้า",duration:"ระยะเวลา",freq:"ความถี่",facil:"ผู้ที่ควรดำเนินการ",first:"กรณีองค์กรไม่เคยทำมาก่อน",outputs:"เอกสารที่ได้หรือได้รับข้อมูล",activity:"กิจกรรม",
+  note:"ข้อมูลอ้างอิง ณ ตุลาคม 2569 (2026) รายการที่ระบุ VERIFY ต้องตรวจสอบกับกฎระเบียบไทยฉบับปัจจุบัน เป็นเอกสารตัวอย่าง ไม่ใช่คำปรึกษาทางกฎหมาย ลำดับการจัดทำ ขีดความสามารถ และระยะเวลากิจกรรมเป็นแนวทางจากผู้ปฏิบัติงาน ควรปรับตามแต่ละองค์กร"}
+};
+const HELP = {
+EN:`<h2 id="help-h">How to use this map</h2>
+<p>This page shows 142 sample controlled documents aligned with NIST Cybersecurity Framework (CSF) 2.0. Every view below shows the same documents, cut a different way. Click any document chip to open its detail panel on the right.</p>
+__VIEWS__
+<h3>Reading a document chip</h3><table>
+<tr><th>Level block</th><td><span class="lg"><span class="lv Required">R</span> Required: mandated by law or a certifiable standard when its trigger applies (for example PDPA, CII, or ISO/IEC 27001 certification).</span><span class="lg"><span class="lv Expected">E</span> Expected: not mandated, but auditors, regulators, or customers expect it.</span><span class="lg"><span class="lv Optional">O</span> Optional: adds value at higher maturity.</span></td></tr>
+<tr><th>Capability tag</th><td><span class="lg"><span class="cap IT">IT</span> IT-ready: in-house IT can produce it from the template.</span><span class="lg"><span class="cap GUIDED">G</span> Specialist-guided: IT drafts, a cybersecurity specialist facilitates or reviews.</span><span class="lg"><span class="cap SPEC">S</span> Specialist-required: needs a security FTE, consultant, or managed service.</span></td></tr>
+<tr><th>Package tag</th><td><span class="lg"><span class="pk Essential">ES</span> Essential: start here.</span><span class="lg"><span class="pk Core">CO</span> Core: the rest of the baseline, built on Essential.</span><span class="lg"><span class="pk Extended">EX</span> Extended: higher maturity or a specific context.</span> Shown when Show package is ticked. See the Level and Package section below.</td></tr><tr><th>Document ID</th><td>[Function]-[Type]-[Number]. Types: CHR charter, STR strategy, STM statement, POL policy, STD standard, PRC procedure, PLN plan, PLB playbook, GDL guideline, FRM form, REG register, REC record, RPT report, TPL template.</td></tr></table>
+__LVPK____CAP__<h3>Filters</h3><p>Filters apply to every view. Non-matching documents fade; tick <b>Hide non-matching</b> to remove them. Untick <b>Show capability</b> for a cleaner picture.</p>
+<h3>Recommended order: how to read it</h3><ul>
+<li><b>Waves overlap.</b> W0 Mandate, W1 Understand, W2 Direct, W3 Standardize, W4 Operate and Prove, W5 Optimize. Start the next wave when its inputs exist, not when the previous wave is complete.</li>
+<li><b>Track B does not wait.</b> Incident response, backup, multi-factor authentication, and privileged access start on day one as interim documents and are aligned to their parent policy later.</li>
+<li><b>Activities come before documents.</b> Each wave lists the meetings and workshops that produce the input. Click an activity for its agenda, participants, duration, and first-time guidance.</li>
+<li><b>Capability flags drive the staffing case.</b> Count the S documents in your scope: if none of your staff can produce them, you need a security hire or an external provider.</li></ul>
+<h3>Where the classifications come from</h3><ul>
+<li>Level, trigger, and basis: the framework's document register, citing laws and standards. Items marked VERIFY need confirmation against current Thai notifications.</li>
+<li>ISO theme: the first ISO/IEC 27001:2022 Annex A control mapped to the document (A.5 Organizational, A.6 People, A.7 Physical, A.8 Technological). Documents mapped only to management system clauses count as Organizational. NIST does not publish a theme grouping; SP 800-53 Rev. 3 control classes were retired in Rev. 4.</li>
+<li>Build order, capability, sourcing, and activities: practitioner guidance from the framework author, not a requirement of NIST or ISO.</li></ul>`,
+TH:`<h2 id="help-h">วิธีใช้แผนที่นี้</h2>
+<p>หน้านี้แสดงเอกสารควบคุมตัวอย่าง 142 ฉบับที่สอดคล้องกับ NIST Cybersecurity Framework (CSF) 2.0 ทุกมุมมองแสดงเอกสารชุดเดียวกันแต่จัดกลุ่มต่างกัน คลิกเอกสารเพื่อเปิดรายละเอียดทางด้านขวา</p>
+__VIEWS__
+<h3>การอ่านป้ายเอกสาร</h3><table>
+<tr><th>บล็อกระดับ</th><td><span class="lg"><span class="lv Required">R</span> Required: บังคับตามกฎหมายหรือมาตรฐานที่ขอรับรองได้ เมื่อเข้าเงื่อนไข Trigger (เช่น PDPA, CII หรือการขอรับรอง ISO/IEC 27001)</span><span class="lg"><span class="lv Expected">E</span> Expected: ไม่ได้บังคับ แต่ผู้ตรวจสอบ หน่วยงานกำกับ หรือลูกค้าคาดหวังให้มี</span><span class="lg"><span class="lv Optional">O</span> Optional: เพิ่มคุณค่าเมื่อองค์กรมีความพร้อมสูงขึ้น</span></td></tr>
+<tr><th>ป้ายขีดความสามารถ</th><td><span class="lg"><span class="cap IT">IT</span> ทีม IT ทำได้เอง: ทีม IT ภายในจัดทำได้จากแม่แบบ</span><span class="lg"><span class="cap GUIDED">G</span> ต้องมีผู้เชี่ยวชาญแนะนำ: ทีม IT ร่าง ผู้เชี่ยวชาญด้านไซเบอร์ช่วยดำเนินการหรือทบทวน</span><span class="lg"><span class="cap SPEC">S</span> ต้องใช้ผู้เชี่ยวชาญ: ต้องมีพนักงานประจำด้านความมั่นคงปลอดภัย ที่ปรึกษา หรือบริการ managed service</span></td></tr>
+<tr><th>ป้ายชุดเอกสาร</th><td><span class="lg"><span class="pk Essential">ES</span> Essential: เริ่มที่ชุดนี้</span><span class="lg"><span class="pk Core">CO</span> Core: ส่วนที่เหลือของ baseline ต่อยอดจาก Essential</span><span class="lg"><span class="pk Extended">EX</span> Extended: ความพร้อมระดับสูงหรือบริบทเฉพาะ</span> แสดงเมื่อเลือก แสดงชุดเอกสาร ดูหัวข้อ Level และ Package ด้านล่าง</td></tr><tr><th>รหัสเอกสาร</th><td>[Function]-[ประเภท]-[ลำดับ] ประเภท: CHR กฎบัตร, STR ยุทธศาสตร์, STM แถลงการณ์, POL นโยบาย, STD มาตรฐาน, PRC ระเบียบปฏิบัติ, PLN แผน, PLB Playbook, GDL แนวทาง, FRM แบบฟอร์ม, REG ทะเบียน, REC บันทึก, RPT รายงาน, TPL แม่แบบ</td></tr></table>
+__LVPK____CAP__<h3>ตัวกรอง</h3><p>ตัวกรองมีผลกับทุกมุมมอง เอกสารที่ไม่ตรงจะจางลง เลือก <b>ซ่อนรายการที่ไม่ตรง</b> เพื่อนำออก และยกเลิก <b>แสดงขีดความสามารถ</b> หากต้องการภาพที่เรียบขึ้น</p>
+<h3>วิธีอ่านลำดับที่แนะนำ</h3><ul>
+<li><b>ระลอกทับซ้อนกันได้</b> W0 มอบอำนาจ, W1 ทำความเข้าใจ, W2 กำหนดทิศทาง, W3 กำหนดมาตรฐาน, W4 ปฏิบัติและพิสูจน์ผล, W5 ยกระดับ เริ่มระลอกถัดไปเมื่อมีข้อมูลนำเข้าพร้อม ไม่ต้องรอให้ระลอกก่อนหน้าเสร็จทั้งหมด</li>
+<li><b>Track B ไม่ต้องรอ</b> การรับมือเหตุการณ์ การสำรองข้อมูล MFA และสิทธิ์ระดับสูง เริ่มตั้งแต่วันแรกในรูปเอกสารชั่วคราว แล้วปรับให้สอดคล้องกับนโยบายแม่ภายหลัง</li>
+<li><b>กิจกรรมมาก่อนเอกสาร</b> แต่ละระลอกแสดงการประชุมและ workshop ที่ให้ข้อมูลนำเข้า คลิกกิจกรรมเพื่อดูหัวข้อ ผู้เข้าร่วม ระยะเวลา และคำแนะนำกรณีไม่เคยทำมาก่อน</li>
+<li><b>ป้ายขีดความสามารถใช้ประกอบการขออัตรากำลัง</b> นับเอกสาร S ในขอบเขต หากไม่มีบุคลากรที่จัดทำได้ องค์กรต้องจ้างผู้เชี่ยวชาญหรือใช้ผู้ให้บริการภายนอก</li></ul>
+<h3>ที่มาของการจัดประเภท</h3><ul>
+<li>ระดับ Trigger และแหล่งอ้างอิง: มาจากทะเบียนเอกสารของกรอบนี้ ซึ่งอ้างอิงกฎหมายและมาตรฐาน รายการที่ระบุ VERIFY ต้องตรวจสอบกับประกาศของไทยฉบับปัจจุบัน</li>
+<li>ISO theme: ใช้ control ใน Annex A ของ ISO/IEC 27001:2022 ตัวแรกที่จับคู่กับเอกสาร (A.5 องค์กร, A.6 บุคลากร, A.7 กายภาพ, A.8 เทคโนโลยี) เอกสารที่จับคู่เฉพาะข้อกำหนดระบบบริหารนับเป็น Organizational ทั้งนี้ NIST ไม่ได้กำหนดการจัดกลุ่มแบบ theme โดย control class ของ SP 800-53 Rev. 3 ถูกยกเลิกตั้งแต่ Rev. 4</li>
+<li>ลำดับการจัดทำ ขีดความสามารถ ผู้จัดทำ และกิจกรรม: เป็นแนวทางจากผู้จัดทำกรอบ ไม่ใช่ข้อกำหนดของ NIST หรือ ISO</li></ul>`};
+
+/* ---------- explanatory content: packages, level vs package, capability comparison, view guides ---------- */
+const PKL={Essential:"ES",Core:"CO",Extended:"EX"};
+const PKG={
+ Essential:["Start here. The smallest self-contained set that gives an organization working governance, PDPA compliance, and ransomware readiness. Every organization should have these documents, whatever its size; a small organization can merge some of them.",
+            "เริ่มที่ชุดนี้ เป็นชุดเล็กที่สุดที่ใช้งานได้ด้วยตัวเอง ทำให้องค์กรมีระบบกำกับดูแล ปฏิบัติตาม PDPA และพร้อมรับมือ ransomware ทุกองค์กรควรมีไม่ว่าขนาดใด องค์กรเล็กรวมบางฉบับเข้าด้วยกันได้"],
+ Core:["The rest of the full baseline. Every Core document sits under an Essential document in the cascade, so the Essential documents above it come first. Mid-sized and larger organizations should complete Core within about two years.",
+       "ส่วนที่เหลือของ baseline ฉบับเต็ม เอกสาร Core ทุกฉบับอยู่ใต้เอกสาร Essential ในสายการถ่ายทอด จึงต้องมีเอกสาร Essential ที่อยู่เหนือขึ้นไปก่อน องค์กรขนาดกลางขึ้นไปควรทำ Core ให้ครบภายในประมาณ 2 ปี"],
+ Extended:["Higher maturity or a specific context, such as ISO/IEC 27001 certification, OT and medical devices, generative AI, or threat hunting. Adopt when the organization's profile, a regulator, or a customer calls for it.",
+           "สำหรับความพร้อมระดับสูงหรือบริบทเฉพาะ เช่น การขอรับรอง ISO/IEC 27001 อุปกรณ์ OT และอุปกรณ์การแพทย์ Generative AI หรือ threat hunting ให้ทำเมื่อลักษณะองค์กร หน่วยงานกำกับ หรือลูกค้ากำหนด"]};
+const PKGNOTE=["Core does not mean more important than Essential. The baseline is split in two: Essential is the first slice, Core is the remaining slice. Packages are cumulative: Essential, then Essential plus Core, then all three.",
+ "Core ไม่ได้แปลว่าสำคัญกว่า Essential baseline ถูกแบ่งเป็น 2 ส่วน Essential คือส่วนแรก Core คือส่วนที่เหลือ ชุดเอกสารสะสมต่อกัน: Essential แล้วจึง Essential + Core แล้วจึงครบทั้ง 3 ชุด"];
+const NEED={
+ Required:["Required when its trigger applies ({trig}). If the trigger applies to you, you must have this document, whatever its package.","Required เมื่อเข้าเงื่อนไข Trigger ({trig}) หากองค์กรเข้าเงื่อนไข ต้องมีเอกสารนี้ไม่ว่าจะอยู่ในชุดใด"],
+ Expected:["Expected: no law or certifiable standard demands this document, but auditors, regulators, or customers will look for it.","Expected: ไม่มีกฎหมายหรือมาตรฐานที่ขอรับรองได้บังคับ แต่ผู้ตรวจสอบ หน่วยงานกำกับ หรือลูกค้าจะมองหา"],
+ Optional:["Optional: adds value at higher maturity.","Optional: เพิ่มคุณค่าเมื่อองค์กรมีความพร้อมสูงขึ้น"],
+ Essential:["Package Essential: build it in the first year.","ชุด Essential: จัดทำในปีแรก"],
+ Core:["Package Core: build it once the Essential documents it depends on exist; mid-sized and larger organizations complete Core within about two years.","ชุด Core: จัดทำเมื่อมีเอกสาร Essential ที่ต้องใช้แล้ว องค์กรขนาดกลางขึ้นไปทำ Core ให้ครบภายในประมาณ 2 ปี"],
+ Extended:["Package Extended: adopt only when your profile, a regulator, or a customer calls for it.","ชุด Extended: จัดทำเมื่อลักษณะองค์กร หน่วยงานกำกับ หรือลูกค้ากำหนด"]};
+function needText(d,Li){let s=NEED[d.level][Li].replace("{trig}",d.trigger.join(", "));return s+" "+NEED[d.pkg][Li];}
+function lpMatrix(Li){const lv=["Required","Expected","Optional"],pk=["Essential","Core","Extended"];
+  return `<table><tr><th>${Li?"ระดับ \\ ชุด":"Level \\ Package"}</th>${pk.map(p=>`<th>${p}</th>`).join("")}<th>${Li?"รวม":"Total"}</th></tr>`+
+  lv.map(l=>`<tr><th><span class="lv ${l}">${LV[l]}</span> ${l}</th>${pk.map(p=>`<td>${D.filter(d=>d.level===l&&d.pkg===p).length}</td>`).join("")}<td>${D.filter(d=>d.level===l).length}</td></tr>`).join("")+
+  `<tr><th>${Li?"รวม":"Total"}</th>${pk.map(p=>`<td>${D.filter(d=>d.pkg===p).length}</td>`).join("")}<td>${D.length}</td></tr></table>`;}
+const LVPK={
+EN:`<h3>Level, Package, and Wave answer different questions</h3>
+<table><tr><th></th><th>Question it answers</th><th>Values</th><th>Decided by</th></tr>
+<tr><th>Level</th><td>Must we have this document?</td><td>Required, Expected, Optional</td><td>A law, a regulator, or a certifiable standard, and whether its trigger (PDPA, CII, CCA, ISO certification) applies</td></tr>
+<tr><th>Package</th><td>How much should we adopt for our size?</td><td>Essential, Core, Extended</td><td>Organization size and maturity</td></tr>
+<tr><th>Wave</th><td>When should we write it?</td><td>W0 to W5, Track A or B</td><td>Dependencies between documents and threat pressure</td></tr></table>
+<h3>Do we need this document? Apply the rules in order</h3><ol>
+<li><b>Required and its trigger applies:</b> must have it, whatever the package. Example: the Statement of Applicability is Extended but Required for ISO/IEC 27001 certification.</li>
+<li><b>Essential:</b> yes, start now.</li>
+<li><b>Core:</b> yes for mid-sized and larger organizations; a small organization may merge or defer with a documented reason.</li>
+<li><b>Extended:</b> only when the profile, a regulator, or a customer calls for it.</li></ol>
+<h3>The packages</h3><table>
+<tr><th><span class="pk Essential">ES</span> Essential</th><td>${PKG.Essential[0]}</td></tr>
+<tr><th><span class="pk Core">CO</span> Core</th><td>${PKG.Core[0]}</td></tr>
+<tr><th><span class="pk Extended">EX</span> Extended</th><td>${PKG.Extended[0]}</td></tr></table>
+<p>${PKGNOTE[0]}</p>
+<p><b>Can we have Core without Essential?</b> No. Every Core document sits under an Essential document in the cascade, and most need one as direct input. A Core procedure without its Essential policy has no authority to rely on.</p>
+<p><b>Why the package is not inside the level block:</b> the two answer different questions. One combined block would hide the cases that matter most, such as a Required document in the Extended package. Tick <b>Show package</b> to add a separate package tag to every document.</p>
+<h3>How the 142 documents spread across Level and Package</h3>__LPM_EN__`,
+TH:`<h3>Level, Package และ Wave ตอบคำถามคนละข้อ</h3>
+<table><tr><th></th><th>คำถามที่ตอบ</th><th>ค่า</th><th>ตัดสินจาก</th></tr>
+<tr><th>Level (ระดับ)</th><td>ต้องมีเอกสารนี้หรือไม่</td><td>Required, Expected, Optional</td><td>กฎหมาย หน่วยงานกำกับ หรือมาตรฐานที่ขอรับรองได้ และองค์กรเข้าเงื่อนไข Trigger (PDPA, CII, CCA, การขอรับรอง ISO) หรือไม่</td></tr>
+<tr><th>Package (ชุด)</th><td>ควรมีมากแค่ไหนตามขนาดองค์กร</td><td>Essential, Core, Extended</td><td>ขนาดและความพร้อมขององค์กร</td></tr>
+<tr><th>Wave (ระลอก)</th><td>ควรเขียนเมื่อใด</td><td>W0 ถึง W5, Track A หรือ B</td><td>ความเชื่อมโยงระหว่างเอกสารและแรงกดดันจากภัยคุกคาม</td></tr></table>
+<h3>ต้องมีเอกสารนี้หรือไม่: ใช้กฎตามลำดับ</h3><ol>
+<li><b>Required และเข้าเงื่อนไข Trigger:</b> ต้องมี ไม่ว่าอยู่ในชุดใด ตัวอย่าง: Statement of Applicability อยู่ในชุด Extended แต่เป็น Required เมื่อขอรับรอง ISO/IEC 27001</li>
+<li><b>Essential:</b> ต้องมี เริ่มทันที</li>
+<li><b>Core:</b> ควรมีสำหรับองค์กรขนาดกลางขึ้นไป องค์กรเล็กรวมหรือเลื่อนออกไปได้โดยบันทึกเหตุผล</li>
+<li><b>Extended:</b> ทำเมื่อลักษณะองค์กร หน่วยงานกำกับ หรือลูกค้ากำหนดเท่านั้น</li></ol>
+<h3>ชุดเอกสาร</h3><table>
+<tr><th><span class="pk Essential">ES</span> Essential</th><td>${PKG.Essential[1]}</td></tr>
+<tr><th><span class="pk Core">CO</span> Core</th><td>${PKG.Core[1]}</td></tr>
+<tr><th><span class="pk Extended">EX</span> Extended</th><td>${PKG.Extended[1]}</td></tr></table>
+<p>${PKGNOTE[1]}</p>
+<p><b>มี Core โดยไม่มี Essential ได้หรือไม่:</b> ไม่ได้ เอกสาร Core ทุกฉบับอยู่ใต้เอกสาร Essential ในสายการถ่ายทอด และส่วนใหญ่ใช้เอกสาร Essential เป็นข้อมูลนำเข้าโดยตรง ระเบียบปฏิบัติใน Core ที่ไม่มีนโยบาย Essential รองรับจะไม่มีอำนาจอ้างอิง</p>
+<p><b>ทำไมไม่รวม Package ไว้ในบล็อกระดับ:</b> ทั้งสองตอบคำถามคนละข้อ หากรวมเป็นบล็อกเดียวจะซ่อนกรณีที่สำคัญที่สุด เช่น เอกสาร Required ที่อยู่ในชุด Extended เลือก <b>แสดงชุดเอกสาร</b> เพื่อเพิ่มป้ายชุดแยกบนทุกเอกสาร</p>
+<h3>การกระจายของเอกสาร 142 ฉบับตาม Level และ Package</h3>__LPM_TH__`};
+const CAPCMP={
+EN:`<h3>Specialist-guided (G) versus Specialist-required (S)</h3><table>
+<tr><th></th><th><span class="cap GUIDED">G</span> Specialist-guided</th><th><span class="cap SPEC">S</span> Specialist-required</th></tr>
+<tr><th>Who holds the pen</th><td>IT or the document owner drafts</td><td>The specialist writes it or leads the work</td></tr>
+<tr><th>What the specialist does</th><td>Facilitates one workshop or reviews the draft</td><td>Designs the method, makes the technical judgments, and often runs the activity</td></tr>
+<tr><th>Typical specialist time</th><td>A few hours to two days per document</td><td>Several days per document, or an ongoing service</td></tr>
+<tr><th>If no specialist is involved</th><td>The document exists but has blind spots; usually fixable at the next review</td><td>The document is wrong or cannot be produced, for example risk scores that cannot be compared, or an incident plan no one can execute</td></tr>
+<tr><th>Typical sourcing</th><td>Part-time consultant review, peer review, DPO service</td><td>Security FTE, consultant engagement, MSSP, incident response retainer, co-sourced audit</td></tr>
+<tr><th>Examples</th><td>Governance Charter, Access Control Policy, Network Security Standard</td><td>Risk Methodology, BIA, Incident Response Plan, Security Monitoring Standard, Penetration Testing</td></tr>
+<tr><th>Test question</th><td>Could IT write a credible draft if someone experienced checks it? Yes.</td><td>Would an IT draft still be wrong after a review? Yes.</td></tr></table>
+<p class="mini">Time estimates are practitioner guidance for planning, not a standard.</p>`,
+TH:`<h3>Specialist-guided (G) เทียบกับ Specialist-required (S)</h3><table>
+<tr><th></th><th><span class="cap GUIDED">G</span> ต้องมีผู้เชี่ยวชาญแนะนำ</th><th><span class="cap SPEC">S</span> ต้องใช้ผู้เชี่ยวชาญ</th></tr>
+<tr><th>ใครเป็นผู้เขียน</th><td>ทีม IT หรือเจ้าของเอกสารเป็นผู้ร่าง</td><td>ผู้เชี่ยวชาญเป็นผู้เขียนหรือนำงาน</td></tr>
+<tr><th>ผู้เชี่ยวชาญทำอะไร</th><td>ดำเนิน workshop หนึ่งครั้ง หรือทบทวนร่าง</td><td>ออกแบบวิธีการ ตัดสินใจเชิงเทคนิค และมักเป็นผู้ดำเนินกิจกรรมเอง</td></tr>
+<tr><th>เวลาของผู้เชี่ยวชาญโดยประมาณ</th><td>ไม่กี่ชั่วโมงถึง 2 วันต่อฉบับ</td><td>หลายวันต่อฉบับ หรือเป็นบริการต่อเนื่อง</td></tr>
+<tr><th>หากไม่มีผู้เชี่ยวชาญ</th><td>มีเอกสาร แต่มีจุดบอด ส่วนใหญ่แก้ได้ในการทบทวนรอบถัดไป</td><td>เอกสารผิดหรือจัดทำไม่ได้ เช่น คะแนนความเสี่ยงเปรียบเทียบกันไม่ได้ หรือแผนรับมือเหตุการณ์ที่ไม่มีใครปฏิบัติได้จริง</td></tr>
+<tr><th>แหล่งบุคลากรที่ใช้บ่อย</th><td>ที่ปรึกษาทบทวนแบบบางเวลา peer review บริการ DPO</td><td>พนักงานประจำด้านความมั่นคงปลอดภัย โครงการที่ปรึกษา MSSP บริการรับมือเหตุการณ์แบบ retainer การตรวจสอบร่วมกับภายนอก</td></tr>
+<tr><th>ตัวอย่าง</th><td>กฎบัตรการกำกับดูแล นโยบายการควบคุมการเข้าถึง มาตรฐานความมั่นคงปลอดภัยเครือข่าย</td><td>วิธีการประเมินความเสี่ยง BIA แผนรับมือเหตุการณ์ มาตรฐานการเฝ้าระวัง การทดสอบเจาะระบบ</td></tr>
+<tr><th>คำถามทดสอบ</th><td>ทีม IT เขียนร่างที่น่าเชื่อถือได้หรือไม่ ถ้ามีผู้มีประสบการณ์ตรวจให้ ได้</td><td>ร่างจากทีม IT ยังผิดอยู่หรือไม่แม้ผ่านการทบทวนแล้ว ผิด</td></tr></table>
+<p class="mini">ระยะเวลาเป็นแนวทางจากผู้ปฏิบัติงานสำหรับการวางแผน ไม่ใช่มาตรฐาน</p>`};
+const CAPSHORT={GUIDED:["Specialist-guided: IT drafts it; a specialist facilitates or reviews (hours to two days). Without one, the document has blind spots.","ต้องมีผู้เชี่ยวชาญแนะนำ: ทีม IT ร่าง ผู้เชี่ยวชาญดำเนินการหรือทบทวน (ไม่กี่ชั่วโมงถึง 2 วัน) หากไม่มีผู้เชี่ยวชาญ เอกสารจะมีจุดบอด"],
+ SPEC:["Specialist-required: a specialist writes it or leads the work (several days or an ongoing service). Without one, the document is wrong or cannot be produced.","ต้องใช้ผู้เชี่ยวชาญ: ผู้เชี่ยวชาญเป็นผู้เขียนหรือนำงาน (หลายวันหรือบริการต่อเนื่อง) หากไม่มีผู้เชี่ยวชาญ เอกสารจะผิดหรือจัดทำไม่ได้"],
+ IT:["IT-ready: in-house IT can produce it from the template with management input.","ทีม IT ทำได้เอง: ทีม IT จัดทำได้จากแม่แบบโดยมีข้อมูลจากผู้บริหาร"]};
+const FLOWNOTE={risk:["Can a small organization start at step 3 because it is Required? No. Step 1 still has to happen, because the methodology needs risk acceptance criteria approved by management (ISO/IEC 27001:2022 Clause 6.1.2). What can change is the paperwork: a small organization can write the appetite as an approved section inside step 3 instead of a separate statement. Skip the document, not the decision.",
+ "องค์กรเล็กเริ่มที่ขั้นที่ 3 เพราะเป็น Required ได้หรือไม่ ไม่ได้ ขั้นที่ 1 ยังต้องเกิดขึ้น เพราะวิธีการประเมินต้องมีเกณฑ์การยอมรับความเสี่ยงที่ผู้บริหารอนุมัติ (ISO/IEC 27001:2022 ข้อ 6.1.2) สิ่งที่ปรับได้คือรูปแบบเอกสาร องค์กรเล็กเขียนระดับความเสี่ยงที่ยอมรับได้เป็นหัวข้อที่ได้รับอนุมัติภายในเอกสารขั้นที่ 3 แทนการทำเอกสารแยก ข้ามเอกสารได้ แต่ข้ามการตัดสินใจไม่ได้"],
+ continuity:["Backup steps (3 to 5) start on day one in Track B, before the BIA and the continuity policy exist. Align backup frequency to the RTO and RPO once the BIA is approved.",
+ "ขั้นการสำรองข้อมูล (3 ถึง 5) เริ่มตั้งแต่วันแรกใน Track B ก่อนมี BIA และนโยบายความต่อเนื่อง เมื่อ BIA ได้รับอนุมัติแล้ว ให้ปรับความถี่การสำรองข้อมูลให้ตรงกับ RTO และ RPO"]};
+const HOWTO={
+ map:{EN:{what:"All 142 documents on one page. Rows are tiers: T0 sets direction (charter, strategy, risk appetite), T1 policies state what must happen, T2 standards make it measurable, T3 procedures, plans, and playbooks state how, and T4 forms, registers, records, and reports are the evidence. Columns are the six CSF Functions.",
+   how:"Read down a column to see how a Board decision becomes evidence an auditor can check. Read across a row to compare Functions at the same tier. Documents inside each cell follow the recommended build order.",
+   use:"Opening picture for a client workshop. A quick check of which tiers a client's existing documents cover: a Function with policies but no T4 records usually means controls exist on paper only.",
+   watch:"Position on the map is not priority. Use Recommended order for sequence and the level block for obligation."},
+  TH:{what:"เอกสารทั้ง 142 ฉบับในหน้าเดียว แถวคือชั้นเอกสาร: T0 กำหนดทิศทาง (กฎบัตร ยุทธศาสตร์ ระดับความเสี่ยงที่ยอมรับได้) T1 นโยบายระบุสิ่งที่ต้องเกิด T2 มาตรฐานทำให้วัดผลได้ T3 ระเบียบปฏิบัติ แผน และ playbook ระบุวิธีทำ T4 แบบฟอร์ม ทะเบียน บันทึก และรายงานคือหลักฐาน คอลัมน์คือ 6 Function ของ CSF",
+   how:"อ่านลงตามคอลัมน์เพื่อดูว่าการตัดสินใจของคณะกรรมการกลายเป็นหลักฐานที่ผู้ตรวจสอบตรวจได้อย่างไร อ่านข้ามแถวเพื่อเปรียบเทียบ Function ในชั้นเดียวกัน เอกสารในแต่ละช่องเรียงตามลำดับการจัดทำที่แนะนำ",
+   use:"ภาพเปิดสำหรับ workshop กับลูกค้า และใช้ตรวจเร็วว่าเอกสารที่ลูกค้ามีอยู่ครอบคลุมชั้นใด Function ที่มีนโยบายแต่ไม่มีบันทึก T4 มักหมายถึงมาตรการมีแค่บนกระดาษ",
+   watch:"ตำแหน่งบนแผนที่ไม่ใช่ลำดับความสำคัญ ใช้ลำดับที่แนะนำเพื่อดูลำดับ และใช้บล็อกระดับเพื่อดูภาระบังคับ"}},
+ tree:{EN:{what:"The cascade as a diagram. Each document hangs under its main parent, from the Cybersecurity Governance Charter (Level 0) down to records. Levels here are steps away from the charter, not tiers.",
+   how:"Click + or − to open or close a branch, or use Expand all, Collapse all, and Show to policy level. Click a document to highlight its full lineage; everything else fades. Solid grey lines link a document to its main parent. Dashed amber lines show a second parent, which means the document also implements another document. Purple dotted lines show prerequisites of the selected document. A +1P tag marks a document with a second parent.",
+   use:"Show a client why a procedure cannot be approved before its policy, or trace any form back to the policy that requires it.",
+   watch:"The tree shows authority, not writing order. Track B documents are written before their parent as interim documents and aligned later."},
+  TH:{what:"สายการถ่ายทอดในรูปแผนภาพ เอกสารแต่ละฉบับอยู่ใต้เอกสารแม่หลัก ตั้งแต่กฎบัตรการกำกับดูแลด้านไซเบอร์ (ระดับ 0) ลงไปถึงบันทึก ระดับในมุมมองนี้คือระยะห่างจากกฎบัตร ไม่ใช่ชั้นเอกสาร",
+   how:"คลิก + หรือ − เพื่อเปิดหรือปิดกิ่ง หรือใช้ปุ่มขยายทั้งหมด ยุบทั้งหมด และแสดงถึงระดับนโยบาย คลิกเอกสารเพื่อเน้นสายความสัมพันธ์ทั้งหมด เอกสารอื่นจะจางลง เส้นทึบสีเทาเชื่อมเอกสารกับเอกสารแม่หลัก เส้นประสีส้มคือเอกสารแม่ลำดับที่สอง หมายถึงเอกสารนี้นำเอกสารอื่นไปปฏิบัติด้วย เส้นจุดสีม่วงคือเอกสารที่ต้องมีก่อนของเอกสารที่เลือก ป้าย +1P หมายถึงเอกสารที่มีเอกสารแม่ลำดับที่สอง",
+   use:"อธิบายลูกค้าว่าทำไมอนุมัติระเบียบปฏิบัติก่อนนโยบายไม่ได้ หรือย้อนรอยแบบฟอร์มใดก็ได้กลับไปหานโยบายที่กำหนด",
+   watch:"แผนภาพต้นไม้แสดงสายอำนาจ ไม่ใช่ลำดับการเขียน เอกสาร Track B เขียนก่อนเอกสารแม่ในรูปฉบับชั่วคราวแล้วปรับภายหลัง"}},
+ order:{EN:{what:"A suggested build sequence for an organization with no security function or only IT policies. Track A builds governance in six overlapping waves (W0 to W5). Track B runs threat-driven quick wins from day one. Numbers 1 to 142 are the build order.",
+   how:"Board view: each column is a wave with its timing, goal, and a capability bar (green IT-ready, amber specialist-guided, purple specialist-required). Open Run first to see the meetings and workshops that produce the input, and click one for its agenda. Step list: the same order as a table with prerequisites and dependencies, ready to hand to a client.",
+   use:"Build a 12 to 18 month roadmap. Show management which waves need a specialist before the budget is set. Schedule workshops before assigning writers.",
+   watch:"Waves overlap: start the next wave when its inputs exist. The order is practitioner guidance, not a NIST or ISO requirement. Reorder for the client's top risks and deadlines, such as a regulator inspection."},
+  TH:{what:"ลำดับการจัดทำที่แนะนำสำหรับองค์กรที่ไม่มีหน่วยงานความมั่นคงปลอดภัยหรือมีเพียงนโยบาย IT Track A สร้างระบบกำกับดูแลเป็น 6 ระลอกที่ทับซ้อนกันได้ (W0 ถึง W5) Track B ทำงานเร่งด่วนตามภัยคุกคามตั้งแต่วันแรก ตัวเลข 1 ถึง 142 คือลำดับการจัดทำ",
+   how:"มุมมองกระดาน: แต่ละคอลัมน์คือระลอก พร้อมช่วงเวลา เป้าหมาย และแถบขีดความสามารถ (เขียว IT ทำได้เอง ส้ม ต้องมีผู้เชี่ยวชาญแนะนำ ม่วง ต้องใช้ผู้เชี่ยวชาญ) เปิด ทำก่อน เพื่อดูการประชุมและ workshop ที่ให้ข้อมูลนำเข้า และคลิกเพื่อดูหัวข้อ รายการตามลำดับ: ลำดับเดียวกันในรูปตาราง พร้อมกิจกรรมและเอกสารที่ต้องมีก่อน ส่งให้ลูกค้าได้ทันที",
+   use:"วางแผนงาน 12 ถึง 18 เดือน แสดงผู้บริหารว่าระลอกใดต้องใช้ผู้เชี่ยวชาญก่อนกำหนดงบประมาณ และนัด workshop ก่อนมอบหมายผู้เขียน",
+   watch:"ระลอกทับซ้อนกันได้ เริ่มระลอกถัดไปเมื่อมีข้อมูลนำเข้า ลำดับนี้เป็นแนวทางจากผู้ปฏิบัติงาน ไม่ใช่ข้อกำหนดของ NIST หรือ ISO ปรับตามความเสี่ยงหลักและกำหนดเวลาของลูกค้า เช่น การตรวจของหน่วยงานกำกับ"}},
+ flow:{EN:{what:"Twelve operating chains that show how documents work together in daily operation, such as the user access lifecycle, incident handling, or the risk management cycle.",
+   how:"Read each chain left to right. The bold label is the action at that step; the chip under it is the document that governs or records the action. The grey build # tag shows where that document sits in the build order, which often differs from the flow order. Click a chip for detail.",
+   use:"Walk a process owner through their process end to end. During an audit, look for broken links, such as a request form with no procedure or a procedure with no record.",
+   watch:"Step order is the operating sequence, not the build order and not importance. The level block shows whether a law or certifiable standard demands the document itself; it does not mean the step is optional. A small organization can merge several steps into one document, but should not drop the step."},
+  TH:{what:"12 ห่วงโซ่การปฏิบัติงานที่แสดงว่าเอกสารทำงานร่วมกันอย่างไรในงานประจำวัน เช่น วงจรสิทธิ์การเข้าถึง การจัดการเหตุการณ์ หรือวงจรการบริหารความเสี่ยง",
+   how:"อ่านแต่ละห่วงโซ่จากซ้ายไปขวา ข้อความตัวหนาคือการกระทำในขั้นนั้น ป้ายเอกสารด้านล่างคือเอกสารที่กำกับหรือบันทึกการกระทำนั้น ป้ายสีเทา จัดทำ # แสดงตำแหน่งของเอกสารในลำดับการจัดทำ ซึ่งมักต่างจากลำดับใน flow คลิกป้ายเพื่อดูรายละเอียด",
+   use:"พาเจ้าของกระบวนการไล่กระบวนการของตนตั้งแต่ต้นจนจบ ระหว่างการตรวจสอบให้มองหาจุดที่ขาด เช่น มีแบบฟอร์มคำขอแต่ไม่มีระเบียบปฏิบัติ หรือมีระเบียบปฏิบัติแต่ไม่มีบันทึก",
+   watch:"ลำดับขั้นคือลำดับการปฏิบัติงาน ไม่ใช่ลำดับการจัดทำและไม่ใช่ความสำคัญ บล็อกระดับบอกเพียงว่ากฎหมายหรือมาตรฐานบังคับให้มีเอกสารนั้นหรือไม่ ไม่ได้แปลว่าขั้นนั้นข้ามได้ องค์กรเล็กรวมหลายขั้นไว้ในเอกสารเดียวได้ แต่ไม่ควรตัดขั้นทิ้ง"}},
+ owner:{EN:{what:"Documents and activities grouped by role. R means the role owns and maintains the document. A means it approves the document. C means it takes part in the activities that produce it.",
+   how:"Each card is one role, sorted by the number of documents owned. The counts under the role name show the workload. Click a document or activity for detail.",
+   use:"Before the governance workshop, show each department head what they will own. Check that no single role carries too much, and that every charter, policy, standard, and procedure is approved by someone other than its owner. Forms and registers are approved by the process owner by design.",
+   watch:"Role names are generic. Map them to the client's real positions; in smaller organizations one person often holds several roles. Informed (I) is not shown."},
+  TH:{what:"เอกสารและกิจกรรมจัดกลุ่มตามบทบาท R คือบทบาทที่เป็นเจ้าของและดูแลเอกสาร A คือผู้อนุมัติเอกสาร C คือผู้มีส่วนร่วมในกิจกรรมที่ทำให้ได้เอกสารนั้น",
+   how:"แต่ละการ์ดคือหนึ่งบทบาท เรียงตามจำนวนเอกสารที่เป็นเจ้าของ ตัวเลขใต้ชื่อบทบาทแสดงภาระงาน คลิกเอกสารหรือกิจกรรมเพื่อดูรายละเอียด",
+   use:"ก่อน workshop ด้านการกำกับดูแล ให้หัวหน้าแต่ละหน่วยงานเห็นว่าตนจะเป็นเจ้าของเอกสารใด ตรวจว่าไม่มีบทบาทใดรับภาระมากเกินไป และกฎบัตร นโยบาย มาตรฐาน และระเบียบปฏิบัติทุกฉบับได้รับอนุมัติจากผู้ที่ไม่ใช่เจ้าของเอกสาร ส่วนแบบฟอร์มและทะเบียนให้เจ้าของกระบวนการอนุมัติตามการออกแบบ",
+   watch:"ชื่อบทบาทเป็นชื่อกลาง ต้องจับคู่กับตำแหน่งจริงของลูกค้า องค์กรเล็กมักให้คนเดียวถือหลายบทบาท มุมมองนี้ไม่แสดงบทบาท Informed (I)"}},
+ theme:{EN:{what:"Documents grouped by the four control themes of ISO/IEC 27002:2022: Organizational (A.5), People (A.6), Physical (A.7), and Technological (A.8). The tags above the columns give cross-cutting views.",
+   how:"Click a tag to filter every view, for example Privacy for the DPO's set, Third Party for Procurement, or Evidence for audit preparation. Click the same tag again to clear it.",
+   use:"Align the pack with an ISO/IEC 27001 project or a Statement of Applicability, or hand each team its own subset.",
+   watch:"The theme comes from the first Annex A control mapped to the document. One document can touch several themes; its full ISO control list is in the detail panel."},
+  TH:{what:"เอกสารจัดกลุ่มตาม 4 control themes ของ ISO/IEC 27002:2022: องค์กร (A.5) บุคลากร (A.6) กายภาพ (A.7) และเทคโนโลยี (A.8) Tag ด้านบนใช้ดูข้ามหมวด",
+   how:"คลิก tag เพื่อกรองทุกมุมมอง เช่น Privacy สำหรับชุดของ DPO, Third Party สำหรับฝ่ายจัดซื้อ หรือ Evidence สำหรับเตรียมรับการตรวจ คลิก tag เดิมอีกครั้งเพื่อล้าง",
+   use:"ใช้เทียบกับโครงการ ISO/IEC 27001 หรือ Statement of Applicability หรือแบ่งชุดเอกสารให้แต่ละทีม",
+   watch:"Theme มาจาก control ใน Annex A ตัวแรกที่จับคู่กับเอกสาร เอกสารหนึ่งฉบับเกี่ยวข้องได้หลาย theme ดูรายการ control ทั้งหมดในแผงรายละเอียด"}},
+ outline:{EN:{what:"The same cascade as the tree diagram, shown as an indented list.",
+   how:"Click + to expand a branch. Faster to scan on a phone than the diagram.",
+   use:"Copy the structure into a proposal or a document index.",
+   watch:"Each document appears once, under its main parent."},
+  TH:{what:"สายการถ่ายทอดเดียวกับแผนภาพต้นไม้ ในรูปแบบรายการย่อหน้า",
+   how:"คลิก + เพื่อขยายกิ่ง อ่านบนโทรศัพท์ได้เร็วกว่าแผนภาพ",
+   use:"คัดลอกโครงสร้างไปใส่ในข้อเสนอโครงการหรือดัชนีเอกสาร",
+   watch:"เอกสารแต่ละฉบับปรากฏครั้งเดียว ใต้เอกสารแม่หลัก"}}};
+const HOWL={EN:{sum:"How to use this view",what:"What it shows",how:"How to read and use it",use:"Use it to",watch:"Watch out"},TH:{sum:"วิธีใช้มุมมองนี้",what:"แสดงอะไร",how:"วิธีอ่านและใช้งาน",use:"ใช้เพื่อ",watch:"ข้อควรระวัง"}};
+
+/* ---------- audience lens (All / In-house / Consultant), flow vs build order, Org and Consultant view ---------- */
+const AUDL={EN:{label:"Audience",all:"All",inh:"In-house",con:"Consultant",inhRow:"For in-house teams",conRow:"For consultants"},
+            TH:{label:"มุมมองผู้ใช้",all:"ทั้งหมด",inh:"องค์กร",con:"ที่ปรึกษา",inhRow:"สำหรับทีมในองค์กร",conRow:"สำหรับที่ปรึกษา"}};
+HOWTO.split={EN:{what:"Who holds the pen for each document and activity in each wave: the organization, a specialist, or both. The top lane is work for a specialist (a consultant or a qualified security FTE), the middle lane is shared work where IT drafts and a specialist reviews or facilitates, and the bottom lane is work the organization does alone.",
+   how:"Read each column top to bottom to see the split in that wave. Click a service in the bar above the board to highlight every document and activity it touches, and the process flows it affects. Click the same service again to clear it.",
+   use:"Agree the scope of consultant support with management, size a statement of work, or plan the handover so the organization owns every document after its first review.",
+   watch:"The specialist lane does not mean outsourcing is mandatory. If the organization has a qualified security FTE, top-lane work moves in-house. The split is derived from the capability flags and is practitioner guidance."},
+  TH:{what:"ใครเป็นผู้ถือปากกาสำหรับเอกสารและกิจกรรมในแต่ละระลอก: องค์กร ผู้เชี่ยวชาญ หรือทำร่วมกัน แถวบนคืองานของผู้เชี่ยวชาญ (ที่ปรึกษาหรือพนักงานประจำด้านความมั่นคงปลอดภัยที่มีทักษะ) แถวกลางคืองานร่วมที่ทีม IT ร่างและผู้เชี่ยวชาญทบทวนหรือดำเนินการ แถวล่างคืองานที่องค์กรทำเอง",
+   how:"อ่านแต่ละคอลัมน์จากบนลงล่างเพื่อดูการแบ่งงานในระลอกนั้น คลิกบริการในแถบด้านบนเพื่อเน้นเอกสารและกิจกรรมทั้งหมดที่บริการนั้นแตะ และลำดับกระบวนการที่ได้รับผลกระทบ คลิกบริการเดิมอีกครั้งเพื่อล้าง",
+   use:"ตกลงขอบเขตงานที่ปรึกษากับผู้บริหาร ประมาณขอบเขตงานในสัญญา หรือวางแผนส่งมอบเพื่อให้องค์กรเป็นเจ้าของเอกสารทุกฉบับหลังการทบทวนรอบแรก",
+   watch:"แถวผู้เชี่ยวชาญไม่ได้แปลว่าต้องจ้างภายนอกเสมอ หากองค์กรมีพนักงานประจำด้านความมั่นคงปลอดภัยที่มีทักษะ งานในแถวบนย้ายมาทำภายในได้ การแบ่งงานนี้คำนวณจาก capability flag และเป็นแนวทางจากผู้ปฏิบัติงาน"}};
+const HOWTO_AUD={
+ map:{EN:{inh:"Mark which documents already exist to see your gaps by tier; a Function with policies but no T4 records needs work first.",con:"Open a kickoff or an assessment read-out with this view; it shows the client the whole target in one picture before you discuss gaps."},
+      TH:{inh:"ทำเครื่องหมายเอกสารที่มีอยู่แล้วเพื่อดูช่องว่างตามชั้น Function ที่มีนโยบายแต่ไม่มีบันทึก T4 ต้องแก้ก่อน",con:"ใช้เปิด kickoff หรือการนำเสนอผลประเมิน ให้ลูกค้าเห็นเป้าหมายทั้งหมดในภาพเดียวก่อนคุยเรื่องช่องว่าง"}},
+ tree:{EN:{inh:"Before approving any procedure, check that its parent policy is approved; the tree shows the chain of authority you will be asked about in an audit.",con:"Use it to explain why a client's orphan procedure, one with no parent policy, is a finding even when the procedure itself is well written."},
+       TH:{inh:"ก่อนอนุมัติระเบียบปฏิบัติใด ให้ตรวจว่านโยบายแม่ได้รับอนุมัติแล้ว แผนภาพนี้แสดงสายอำนาจที่ผู้ตรวจสอบจะถาม",con:"ใช้อธิบายว่าทำไมระเบียบปฏิบัติที่ไม่มีนโยบายแม่รองรับจึงเป็นข้อตรวจพบ แม้เนื้อหาจะเขียนดี"}},
+ order:{EN:{inh:"This is your work plan. Book the Run first workshops before you assign writers, and put the purple capability demand into the budget request.",con:"Turn the waves into the client roadmap and the Run first activities into your workshop schedule. Note where the client's current documents let you skip ahead."},
+        TH:{inh:"นี่คือแผนงานของคุณ นัด workshop ในส่วน ทำก่อน ก่อนมอบหมายผู้เขียน และนำความต้องการทักษะสีม่วงไปใส่ในคำของบประมาณ",con:"แปลงระลอกเป็น roadmap ของลูกค้า และแปลงกิจกรรมในส่วน ทำก่อน เป็นตาราง workshop ระบุจุดที่เอกสารปัจจุบันของลูกค้าทำให้ข้ามขั้นได้"}},
+ flow:{EN:{inh:"While drafting a document, open its flow and confirm what it receives from the step before and hands to the step after. When all documents in a flow exist, walk the flow in a tabletop.",con:"Assess in flow order: pick one real case, such as a recent leaver or a phishing report, and trace it through every step. Broken handoffs make stronger findings than missing documents."},
+       TH:{inh:"ขณะร่างเอกสาร ให้เปิด flow ของเอกสารนั้นและยืนยันว่ารับอะไรจากขั้นก่อนหน้าและส่งอะไรให้ขั้นถัดไป เมื่อเอกสารใน flow ครบแล้วให้ไล่ flow ด้วย tabletop",con:"ประเมินตามลำดับ flow: เลือกกรณีจริงหนึ่งกรณี เช่น พนักงานที่เพิ่งลาออก หรือการแจ้ง phishing แล้วไล่ทุกขั้น รอยต่อที่ขาดเป็นข้อตรวจพบที่มีน้ำหนักกว่าเอกสารที่ไม่มี"}},
+ owner:{EN:{inh:"Use the cards in the governance workshop to agree owners. Watch for one person owning documents in several Functions with no backup.",con:"Check the client's real org chart against the R and A columns; owner and approver being the same person for a policy is a common finding."},
+        TH:{inh:"ใช้การ์ดใน workshop ด้านการกำกับดูแลเพื่อตกลงเจ้าของเอกสาร ระวังคนเดียวเป็นเจ้าของเอกสารหลาย Function โดยไม่มีผู้ทำหน้าที่แทน",con:"เทียบผังองค์กรจริงของลูกค้ากับคอลัมน์ R และ A เจ้าของและผู้อนุมัติของนโยบายเป็นคนเดียวกันเป็นข้อตรวจพบที่พบบ่อย"}},
+ theme:{EN:{inh:"Use tags to hand each department its subset, for example Privacy to the DPO and Third Party to Procurement.",con:"Use the themes to map the pack to an ISO/IEC 27001 Statement of Applicability when the client is heading for certification."},
+        TH:{inh:"ใช้ tag แบ่งชุดเอกสารให้แต่ละหน่วยงาน เช่น Privacy ให้ DPO และ Third Party ให้ฝ่ายจัดซื้อ",con:"ใช้ theme จับคู่ชุดเอกสารกับ Statement of Applicability ของ ISO/IEC 27001 เมื่อลูกค้าจะขอรับรอง"}},
+ outline:{EN:{inh:"Copy the outline into your document register as the starting index.",con:"Paste the outline into a proposal to show the client the full document structure."},
+          TH:{inh:"คัดลอกโครงร่างไปใช้เป็นดัชนีเริ่มต้นของทะเบียนเอกสาร",con:"วางโครงร่างในข้อเสนอโครงการเพื่อแสดงโครงสร้างเอกสารทั้งหมดให้ลูกค้าเห็น"}},
+ split:{EN:{inh:"Use the top lane to decide what to buy and what to build. Insist that every consultant-written document names an internal owner who maintains it from the first review.",con:"Use the services bar to scope the statement of work and to show the client where your role ends; a clear exit point builds trust."},
+        TH:{inh:"ใช้แถวบนตัดสินใจว่างานใดซื้อบริการและงานใดทำเอง และกำหนดให้เอกสารทุกฉบับที่ที่ปรึกษาเขียนมีเจ้าของภายในที่ดูแลตั้งแต่การทบทวนรอบแรก",con:"ใช้แถบบริการกำหนดขอบเขตงานในสัญญา และแสดงให้ลูกค้าเห็นว่าบทบาทของคุณสิ้นสุดที่ใด จุดสิ้นสุดที่ชัดเจนช่วยสร้างความเชื่อมั่น"}}};
+let aud="all";try{const a=localStorage.getItem("csfmap-aud");if(["all","inh","con"].includes(a))aud=a;}catch(e){}
+function howtoHtml(k,lg){const h=HOWTO[k][lg],l=HOWL[lg],a=HOWTO_AUD[k]&&HOWTO_AUD[k][lg],al=AUDL[lg];
+  return `<dl><dt>${l.what}</dt><dd>${h.what}</dd><dt>${l.how}</dt><dd>${h.how}</dd><dt>${l.use}</dt><dd>${h.use}</dd><dt>${l.watch}</dt><dd>${h.watch}</dd>`+
+   (a&&aud!=="con"?`<dt class="audrow">${al.inhRow}</dt><dd>${a.inh}</dd>`:"")+(a&&aud!=="inh"?`<dt class="audrow">${al.conRow}</dt><dd>${a.con}</dd>`:"")+`</dl>`;}
+/* flow order versus build order */
+function flowBuildTable(Li){const f=M.flows.find(z=>z.id==="incident");
+  return `<table><tr><th>${Li?"ขั้นใน flow":"Flow step"}</th><th>${Li?"เอกสาร":"Document"}</th><th>${Li?"ลำดับการจัดทำ":"Build order"}</th><th>Track</th></tr>`+
+   f.steps.map((s,i)=>{const d=BY[s[0]];return `<tr><td>${i+1} ${esc(s[1+Li])}</td><td class="mono">${d.id}</td><td><b>#${d.seq}</b></td><td>${d.track}</td></tr>`;}).join("")+`</table>`;}
+const FLOWBUILD={
+EN:`<h3>Flow order versus build order</h3>
+<p>The two orders answer different questions. <b>Flow order</b> is how work runs: who does what first when an event happens. <b>Build order</b> is which document must exist first so that another document can rely on it. Think of a house: people walk from the front door to the living room to the kitchen, but builders pour the foundation before the walls and the roof.</p>
+<p>The incident flow shows the difference. Triage (step 2) runs before severity classification (step 3), but the triage procedure says "classify per DE-STD-002", so the severity standard has to be written first. Reporting, the ransomware playbook, and the incident register are written in the first weeks (Track B) even though they sit in the middle of the flow, because a new program receives its first incidents from users and vendors long before it can detect them itself.</p>
+__FBT__
+<h3>What goes wrong if you use the wrong order</h3><table>
+<tr><th>Write in flow order</th><td>Procedures cite documents that do not exist yet and must be rewritten later; auditors raise document control findings; each analyst judges severity differently in the meantime.</td></tr>
+<tr><th>Build in order but never walk the flow</th><td>Each document is correct on its own, but the handoffs break: a form says "send to the incident team" while no procedure says who receives it, within how long, or where it is recorded.</td></tr>
+<tr><th>No cover for the gap period</th><td>Between month 1 and month 9 the flow runs with missing steps. Without interim content, nobody knows which events must reach management.</td></tr></table>
+<h3>The rule: write in build order, design and test in flow order</h3><ol>
+<li><b>Plan</b> with Recommended order; it already respects dependencies and threat pressure.</li>
+<li><b>While drafting</b> each document, open its flow and confirm three things: what it receives from the step before, what it hands to the step after, and who hands over, within how long, recorded where.</li>
+<li><b>Cover the gap</b> with interim content in a document that already exists. Example: put a simple three-level severity table in the escalation section of the interim incident response plan (#__IRP__) until DE-STD-002 (#__SEV__) is approved, then replace the table with a reference. The detail panel lists these links under "Interim: align later to".</li>
+<li><b>Test</b> each flow end to end with a walkthrough or tabletop once its documents exist. A step you cannot walk through is a broken handoff.</li></ol>
+<p>In Process flows, the grey "build #" beside each step shows where that document sits in the build order.</p>`,
+TH:`<h3>ลำดับใน flow กับลำดับการจัดทำ</h3>
+<p>ลำดับทั้งสองตอบคำถามคนละข้อ <b>ลำดับใน flow</b> คือวิธีที่งานเกิดขึ้นจริง ใครทำอะไรก่อนเมื่อมีเหตุการณ์ <b>ลำดับการจัดทำ</b> คือเอกสารใดต้องมีก่อนเพื่อให้เอกสารอื่นอ้างอิงได้ เปรียบกับบ้าน: คนเดินจากประตูหน้าไปห้องนั่งเล่นแล้วไปห้องครัว แต่ช่างต้องทำฐานรากก่อนผนังและหลังคา</p>
+<p>flow การจัดการเหตุการณ์แสดงความต่างชัดเจน การคัดกรอง (ขั้นที่ 2) เกิดก่อนการจัดระดับความรุนแรง (ขั้นที่ 3) แต่ระเบียบปฏิบัติการคัดกรองเขียนว่า "จัดระดับตาม DE-STD-002" จึงต้องเขียนมาตรฐานระดับความรุนแรงก่อน ส่วนการรับแจ้ง playbook ransomware และทะเบียนเหตุการณ์เขียนในสัปดาห์แรก ๆ (Track B) แม้จะอยู่กลาง flow เพราะแผนงานที่เพิ่งเริ่มจะได้รับแจ้งเหตุการณ์แรกจากผู้ใช้และผู้ให้บริการ นานก่อนที่จะตรวจจับได้เอง</p>
+__FBT__
+<h3>ถ้าใช้ลำดับผิดจะเกิดอะไร</h3><table>
+<tr><th>เขียนตามลำดับใน flow</th><td>ระเบียบปฏิบัติอ้างเอกสารที่ยังไม่มีและต้องแก้ภายหลัง ผู้ตรวจสอบพบเป็นข้อบกพร่องด้านการควบคุมเอกสาร และระหว่างนั้นแต่ละคนตัดสินระดับความรุนแรงต่างกัน</td></tr>
+<tr><th>เขียนตามลำดับการจัดทำแต่ไม่เคยไล่ flow</th><td>เอกสารแต่ละฉบับถูกต้องในตัวเอง แต่รอยต่อขาด เช่น แบบฟอร์มเขียนว่า "ส่งให้ทีมรับมือ" แต่ไม่มีระเบียบปฏิบัติระบุว่าใครรับ ภายในกี่ชั่วโมง และบันทึกที่ใด</td></tr>
+<tr><th>ไม่มีสิ่งรองรับช่วงรอยต่อ</th><td>ระหว่างเดือนที่ 1 ถึง 9 flow ทำงานโดยขาดบางขั้น หากไม่มีเนื้อหาชั่วคราว จะไม่มีใครรู้ว่าเหตุการณ์ใดต้องแจ้งผู้บริหาร</td></tr></table>
+<h3>หลักการ: เขียนตามลำดับการจัดทำ ออกแบบและทดสอบตามลำดับใน flow</h3><ol>
+<li><b>วางแผน</b> ด้วยลำดับที่แนะนำ ซึ่งคำนึงถึงเอกสารที่ต้องมีก่อนและแรงกดดันจากภัยคุกคามแล้ว</li>
+<li><b>ขณะร่าง</b> เอกสารแต่ละฉบับ ให้เปิด flow ของเอกสารนั้นและยืนยัน 3 เรื่อง: รับอะไรจากขั้นก่อนหน้า ส่งอะไรให้ขั้นถัดไป และใครส่งต่อ ภายในเวลาเท่าใด บันทึกที่ใด</li>
+<li><b>รองรับช่วงรอยต่อ</b> ด้วยเนื้อหาชั่วคราวในเอกสารที่มีอยู่แล้ว เช่น ใส่ตารางระดับความรุนแรงแบบง่าย 3 ระดับไว้ในหัวข้อการยกระดับของแผนรับมือเหตุการณ์ฉบับชั่วคราว (#__IRP__) จนกว่า DE-STD-002 (#__SEV__) จะได้รับอนุมัติ แล้วแทนตารางด้วยการอ้างอิง แผงรายละเอียดแสดงความเชื่อมโยงนี้ในหัวข้อ "ฉบับชั่วคราว: ปรับให้สอดคล้องภายหลังกับ"</li>
+<li><b>ทดสอบ</b> แต่ละ flow ตั้งแต่ต้นจนจบด้วย walkthrough หรือ tabletop เมื่อเอกสารครบ ขั้นที่ไล่ผ่านไม่ได้คือรอยต่อที่ขาด</li></ol>
+<p>ในมุมมองลำดับกระบวนการ ป้ายสีเทา "จัดทำ #" ข้างแต่ละขั้นแสดงตำแหน่งของเอกสารนั้นในลำดับการจัดทำ</p>`};
+const AUDHELP={
+EN:{inh:`<h3>Using this map in-house</h3><ul><li>Start with Recommended order as your plan, and book the Run first workshops before assigning writers.</li><li>Use the Org and Consultant view to decide what to buy and what to build, and put the specialist demand into the budget.</li><li>While drafting, check each document's flow; when a flow is complete, walk it in a tabletop.</li><li>Every document needs an internal owner, including those a consultant writes.</li></ul>`,
+    con:`<h3>Using this map as a consultant</h3><ul><li>Baseline with the Audit Tracker, then use the Tier map to show the client the whole target.</li><li>Assess in flow order with one real case per flow; broken handoffs are stronger findings than missing documents.</li><li>Build the roadmap from Recommended order and scope your services with the Org and Consultant view.</li><li>In the detail panel, the Evidence to request list gives the items to ask for during fieldwork.</li></ul>`},
+TH:{inh:`<h3>การใช้แผนที่นี้ภายในองค์กร</h3><ul><li>เริ่มจากลำดับที่แนะนำเป็นแผนงาน และนัด workshop ในส่วน ทำก่อน ก่อนมอบหมายผู้เขียน</li><li>ใช้มุมมององค์กรและที่ปรึกษาตัดสินใจว่างานใดซื้อบริการและงานใดทำเอง และนำความต้องการผู้เชี่ยวชาญไปใส่ในงบประมาณ</li><li>ขณะร่างให้ตรวจ flow ของเอกสารแต่ละฉบับ เมื่อ flow ครบให้ไล่ด้วย tabletop</li><li>เอกสารทุกฉบับต้องมีเจ้าของภายใน รวมถึงฉบับที่ที่ปรึกษาเขียน</li></ul>`,
+    con:`<h3>การใช้แผนที่นี้ในฐานะที่ปรึกษา</h3><ul><li>ประเมินสภาพตั้งต้นด้วย Audit Tracker แล้วใช้แผนที่ตามชั้นแสดงเป้าหมายทั้งหมดให้ลูกค้าเห็น</li><li>ประเมินตามลำดับ flow โดยใช้กรณีจริงหนึ่งกรณีต่อ flow รอยต่อที่ขาดเป็นข้อตรวจพบที่มีน้ำหนักกว่าเอกสารที่ไม่มี</li><li>สร้าง roadmap จากลำดับที่แนะนำ และกำหนดขอบเขตบริการด้วยมุมมององค์กรและที่ปรึกษา</li><li>ในแผงรายละเอียด รายการหลักฐานที่ต้องขอใช้เป็นรายการสิ่งที่ต้องขอระหว่างการตรวจ</li></ul>`}};
+/* Org and Consultant view */
+const SVC={
+ baseline:["Baseline assessment","ประเมินสภาพตั้งต้น","Measure the current state before W0 with the Audit Tracker and a CSF profile gap analysis.","วัดสภาพปัจจุบันก่อน W0 ด้วย Audit Tracker และการวิเคราะห์ช่องว่างตาม CSF Profile"],
+ facilitate:["Facilitate","ดำเนิน workshop","Run the workshops that need specialist judgment, such as the BIA and the risk appetite workshop.","ดำเนิน workshop ที่ต้องใช้วิจารณญาณของผู้เชี่ยวชาญ เช่น BIA และ workshop ระดับความเสี่ยงที่ยอมรับได้"],
+ author:["Author","เขียนเอกสาร","Write or lead the specialist-required documents.","เขียนหรือนำการจัดทำเอกสารที่ต้องใช้ผู้เชี่ยวชาญ"],
+ review:["Review","ทบทวน","Review drafts that IT writes and facilitate light workshops.","ทบทวนร่างที่ทีม IT เขียน และดำเนิน workshop ขนาดเล็ก"],
+ validate:["Validate","ทดสอบและตรวจสอบ","Test and audit: tabletop, continuity exercise, penetration test, co-sourced internal audit.","ทดสอบและตรวจสอบ: tabletop การฝึกซ้อมความต่อเนื่อง การทดสอบเจาะระบบ การตรวจสอบภายในร่วมกับภายนอก"],
+ managed:["Managed service","บริการต่อเนื่อง","Ongoing services such as MSSP monitoring or an incident response retainer.","บริการต่อเนื่อง เช่น การเฝ้าระวังโดย MSSP หรือบริการรับมือเหตุการณ์แบบ retainer"]};
+const VALIDATE_ACTS=["ACT-20","ACT-21","ACT-25","ACT-26"];
+function docSvc(d){if(d.cap==="SPEC"){if(d.src[0]==="MSSP"||(d.src[0]==="IRR"&&["PRC","FRM"].includes(d.type)))return"managed";if(d.src[0]==="IAEXT")return"validate";return"author";}if(d.cap==="GUIDED")return"review";return null;}
+function actSvc(k){if(k==="ACT-11")return"baseline";if(VALIDATE_ACTS.includes(k))return"validate";const c=A[k].cap;return c==="SPEC"?"facilitate":c==="GUIDED"?"review":null;}
+function docLane(d){return d.cap==="SPEC"?"top":d.cap==="GUIDED"?"mid":"low";}
+function actLane(k){const s=actSvc(k);return s==="review"?"mid":s?"top":"low";}
+let svcSel="";
+function svcItems(s){const docs=D.filter(d=>docSvc(d)===s),acts=Object.keys(A).filter(k=>actSvc(k)===s);return{docs,acts};}
+function renderSplit(){const x=t(),Li=L(),lg=lang;
+  const lanes=[["top",Li?"ผู้เชี่ยวชาญ (ที่ปรึกษาหรือ FTE ด้านความมั่นคงปลอดภัย)":"Specialist (consultant or security FTE)",Li?"เขียน นำ workshop ทดสอบ หรือให้บริการต่อเนื่อง":"Writes, leads workshops, tests, or runs an ongoing service"],
+    ["mid",Li?"งานร่วม":"Shared",Li?"ทีม IT ร่าง ผู้เชี่ยวชาญทบทวนหรือดำเนินการ":"IT drafts; a specialist reviews or facilitates"],
+    ["low",Li?"องค์กร":"In-house",Li?"องค์กรทำเองและเป็นเจ้าของเอกสารทุกฉบับ":"The organization does it and owns every document"]];
+  const bar=Object.entries(SVC).map(([k,v])=>{const it=svcItems(k);return `<button class="svc${svcSel===k?" on":""}" data-svc="${k}" aria-pressed="${svcSel===k}"><b>${esc(v[Li])}</b><span>${it.docs.length} ${Li?"เอกสาร":"docs"} · ${it.acts.length} ${Li?"กิจกรรม":"activities"}</span></button>`;}).join("");
+  let info="";if(svcSel){const it=svcItems(svcSel);const ids=new Set(it.docs.map(d=>d.id));const fl=M.flows.map(f=>({f,n:f.steps.filter(s=>ids.has(s[0])).length})).filter(z=>z.n).sort((a,b)=>b.n-a.n);
+    info=`<div class="callout"><b>${esc(SVC[svcSel][Li])}:</b> ${esc(SVC[svcSel][2+Li])}<div style="margin-top:6px"><b>${Li?"ลำดับกระบวนการที่แตะ":"Process flows touched"}:</b> ${fl.map(z=>`${esc(Li?z.f.th:z.f.en)} (${z.n})`).join(", ")||"-"}</div></div>`;}
+  const actsInWave=w=>{const s=[];D.filter(d=>d.wave===w).forEach(d=>d.acts.forEach(a=>{if(!s.includes(a))s.push(a)}));return s;};
+  const hl=(svc)=>svcSel&&svc!==svcSel?" fade2":"";
+  const cell=(lane,w)=>{let h="";
+    if(lane==="top"&&w==="W0")h+=`<div class="svccard${hl("baseline")}"><b>${esc(SVC.baseline[Li])}</b><div class="mini">${esc(SVC.baseline[2+Li])}</div>${actBtn("ACT-11")}</div>`;
+    const acts=actsInWave(w).filter(k=>actLane(k)===lane&&k!=="ACT-11");
+    const docs=D.filter(d=>d.wave===w&&docLane(d)===lane).sort((a,b)=>a.seq-b.seq);
+    if(lane==="top"){for(const s of ["facilitate","validate","author","managed"]){const as=acts.filter(k=>actSvc(k)===s),ds=docs.filter(d=>docSvc(d)===s);if(!as.length&&!ds.length)continue;
+        h+=`<div class="svcgrp${hl(s)}"><div class="sg">${esc(SVC[s][Li])} <span class="cnt">${as.length+ds.length}</span></div>${as.length?`<div class="actlist">${as.map(actBtn).join("")}</div>`:""}${ds.length?`<div class="ord">${ds.map(d=>`<div class="row"><span class="seq">${d.seq}</span>${chip(d)}</div>`).join("")}</div>`:""}</div>`;}}
+    else{h+=`<div class="svcgrp${lane==="mid"?hl("review"):(svcSel?" fade2":"")}">${acts.length?`<div class="actlist">${acts.map(actBtn).join("")}</div>`:""}${docs.length?`<div class="ord">${docs.map(d=>`<div class="row"><span class="seq">${d.seq}</span>${chip(d)}</div>`).join("")}</div>`:""}</div>`;}
+    if(lane==="top"&&w==="W5")h+=`<div class="svccard"><b>${Li?"ส่งมอบและสิ้นสุดบทบาท":"Exit and handover"}</b><div class="mini">${Li?"ที่ปรึกษาร่างฉบับ 1.0 เจ้าของภายในดูแลตั้งแต่การทบทวนรอบแรก ผู้เชี่ยวชาญทบทวนปีละครั้งหากจำเป็น":"The consultant drafts version 1.0; the internal owner maintains it from the first review; a specialist reviews it once a year if needed."}</div></div>`;
+    return `<div class="cellw lane-${lane}">${h||'<span class="mini">-</span>'}</div>`;};
+  let g=`<div class="box scroll"><div class="wavegrid"><div class="th"></div>`+WAVES.map(w=>`<div class="wh"><b>${w} ${esc(M.waves[w][Li])}</b><small>${esc(M.waves[w][2+Li])}</small></div>`).join("");
+  for(const [k,lab,sub] of lanes){g+=`<div class="th lane-${k}">${esc(lab)}<div class="mini" style="font-weight:400;margin-top:4px">${esc(sub)}</div></div>`+WAVES.map(w=>cell(k,w)).join("");}
+  g+=`</div></div>`;
+  $("split").innerHTML=`<div class="svcbar">${bar}</div>${info}<div class="callout">${Li?"แถวบนไม่ได้แปลว่าต้องจ้างภายนอกเสมอ หากองค์กรมีพนักงานประจำด้านความมั่นคงปลอดภัยที่มีทักษะ งานในแถวบนย้ายมาทำภายในได้ การแบ่งงานคำนวณจาก capability flag และเป็นแนวทางจากผู้ปฏิบัติงาน":"The top lane does not mean outsourcing is mandatory. If the organization has a qualified security FTE, top-lane work moves in-house. The split is derived from the capability flags and is practitioner guidance."}</div>${g}`;}
+
+let scrollSel=false, lang="EN", sel=null, selAct=null, view="map", orderMode="board", tagSel="", open=new Set(["GV-CHR-001","GV-POL-001"]), topen=new Set();
+try{const s=localStorage.getItem("csfmap-lang"); if(s==="TH"||s==="EN") lang=s;}catch(e){}
+const $=id=>document.getElementById(id);
+const L=()=>lang==="TH"?1:0;
+const t=()=>T[lang];
+const nm=d=>lang==="TH"?d.th:d.en;
+const fnName=f=>M.functions[f][L()];
+const role=k=>(M.roles[k]||[k,k])[L()];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function opts(el,label,vals,fmt){const cur=el.value;el.innerHTML=`<option value="">${esc(label)}: ${t().all}</option>`+vals.map(v=>`<option value="${v}">${esc(fmt(v))}</option>`).join("");el.value=cur;}
+function pass(d){const q=$("q").value.trim().toLowerCase();
+  if(q && !(d.id.toLowerCase().includes(q)||d.en.toLowerCase().includes(q)||d.th.includes(q))) return false;
+  if($("f-fn").value && d.fn!==$("f-fn").value) return false;
+  if($("f-theme").value && d.theme!==$("f-theme").value) return false;
+  const tg=$("f-tag").value; if(tg && !d.tags.includes(tg)) return false;
+  if($("f-lvl").value && d.level!==$("f-lvl").value) return false;
+  if($("f-cap").value && d.cap!==$("f-cap").value) return false;
+  if($("f-wave").value && d.wave!==$("f-wave").value) return false;
+  if($("f-pkg").value && d.pkg!==$("f-pkg").value) return false; return true;}
+function chip(d,extra=""){return `<button class="chip${sel===d.id?" sel":""}${pass(d)?"":" dim"}${extra}" data-id="${d.id}" data-level="${d.level}" title="${esc(d.id+" "+nm(d)+" | "+d.level+" | "+d.pkg+" | "+M.caps[d.cap][L()])}"><span class="lv ${d.level}">${LV[d.level]}</span><span class="id">${d.id}</span><span class="nm">${esc(nm(d))}</span><span class="pk ${d.pkg}">${PKL[d.pkg]}</span><span class="cap ${d.cap}">${CAPL[d.cap]}</span></button>`;}
+function capTag(c){return `<span class="cap ${c}">${CAPL[c]}</span> ${esc(M.caps[c][L()])}`;}
+
+function renderStatic(){const x=t();document.documentElement.lang=lang==="TH"?"th":"en";
+  $("t-title").textContent=x.title;$("t-sub").textContent=x.sub;$("q").placeholder=x.search;$("b-help").textContent=x.help;
+  $("b-th").setAttribute("aria-pressed",lang==="TH");$("b-en").setAttribute("aria-pressed",lang==="EN");
+  $("l-ocap").textContent=x.ocap;document.querySelectorAll("[data-aud]").forEach(b=>{b.textContent=AUDL[lang][b.dataset.aud];b.setAttribute("aria-pressed",b.dataset.aud===aud);});$("audseg").setAttribute("aria-label",AUDL[lang].label);$("l-opkg").textContent=x.opkg;$("l-ohide").textContent=x.ohide;$("b-reset").textContent=x.reset;
+  ["map","tree","order","flow","owner","theme","outline","split"].forEach(k=>{const h=$("h-"+k);if(h)h.textContent=x["h"+k[0].toUpperCase()+k.slice(1)];const w=$("hw-"+k);if(w)w.innerHTML=`<summary>${HOWL[lang].sum}</summary>`+howtoHtml(k,lang);});
+  $("t-exp").textContent=x.exp;$("t-col").textContent=x.col;$("t-pol").textContent=x.pol;$("l-tdeps").textContent=x.deps;$("o-board").textContent=x.board;$("o-list").textContent=x.list;
+  $("note").textContent=x.note;
+  $("tabs").innerHTML=Object.entries(x.tabs).map(([k,v])=>`<button role="tab" data-tab="${k}" aria-selected="${view===k}">${esc(v)}</button>`).join("");
+  opts($("f-fn"),x.fn,FN,f=>`${f} ${fnName(f)}`);opts($("f-theme"),x.theme,THEMES,v=>M.themes[v][L()]);opts($("f-tag"),x.tag,TAGK,v=>M.tags[v][L()]);
+  opts($("f-lvl"),x.lvl,["Required","Expected","Optional"],v=>v);opts($("f-cap"),x.cap,CAPK,v=>M.caps[v][L()]);
+  opts($("f-wave"),x.wave,WAVES,v=>`${v} ${M.waves[v][L()]}`);opts($("f-pkg"),x.pkg,["Essential","Core","Extended"],v=>v);
+  const cov=new Set(D.flatMap(d=>d.csf)).size;
+  $("stats").innerHTML=[[D.length,x.docs],[Object.keys(M.categories).length,x.cats],[`${cov}/${Object.keys(M.subcats).length}`,x.subs],[D.filter(d=>d.level==="Required").length,x.req],[D.filter(d=>d.cap==="SPEC").length,x.spec],[Object.keys(A).length,x.acts]].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("");
+  $("legend").innerHTML=`<span><b>${x.legLv}</b></span>`+["Required","Expected","Optional"].map(l=>`<span><span class="lv ${l}">${LV[l]}</span>${l}</span>`).join("")+
+   `<span style="margin-left:10px"><b>${x.legCap}</b></span>`+CAPK.map(c=>`<span>${capTag(c)}</span>`).join("")+
+   ($("o-pkg").checked?`<span style="margin-left:10px"><b>${x.legPk}</b></span>`+["Essential","Core","Extended"].map(p=>`<span><span class="pk ${p}">${PKL[p]}</span>${p}</span>`).join(""):"")+
+   (view==="tree"?`<span style="margin-left:10px"><b>${x.legLines}</b></span><span><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" stroke="var(--edge)" stroke-width="2"/></svg>${x.lineMain}</span><span><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" stroke="var(--edge2)" stroke-width="2" stroke-dasharray="6 4"/></svg>${x.lineSec}</span><span><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" stroke="var(--dep)" stroke-width="2" stroke-dasharray="2 3"/></svg>${x.lineDep}</span>`:"");
+  document.body.classList.toggle("nocap",!$("o-cap").checked);document.body.classList.toggle("hidefilter",$("o-hide").checked);document.body.classList.toggle("showpkg",$("o-pkg").checked);}
+
+function renderMap(){let h=`<thead><tr><th></th>${FN.map(f=>`<th><span class="bar" style="background:var(--${f.toLowerCase()})"></span>${f} ${esc(fnName(f))}</th>`).join("")}</tr></thead><tbody>`;
+  for(const ti of TIERS){const tn=M.tiers[ti][L()].split(":")[1]||"";h+=`<tr><th><b>${ti}</b>${esc(tn.trim())}</th>`;
+    for(const f of FN){h+=`<td><div class="cell">${D.filter(d=>d.tier===ti&&d.fn===f).sort((a,b)=>a.seq-b.seq).map(d=>chip(d)).join("")}</div></td>`;} h+="</tr>";}
+  $("map").innerHTML=h+"</tbody>";}
+
+/* ---------- tree diagram ---------- */
+const KIDS={};D.forEach(d=>KIDS[d.id]=D.filter(c=>c.parents[0]===d.id).map(c=>c.id).sort((a,b)=>BY[a].seq-BY[b].seq));
+const ROOTS=D.filter(d=>!d.parents.length).map(d=>d.id);
+function depthOf(id){let n=0,p=BY[id].parents[0];while(p){n++;p=BY[p].parents[0];}return n;}
+D.forEach(d=>{if(depthOf(d.id)<1)topen.add(d.id);});
+function lineage(id){const s=new Set([id]);const up=x=>BY[x].parents.forEach(p=>{if(!s.has(p)){s.add(p);up(p);}});const dn=x=>BY[x].children.forEach(c=>{if(!s.has(c)){s.add(c);dn(c);}});up(id);dn(id);return s;}
+function renderTree(){
+  const NW=270,CW=300,RH=34,TOP=30,LEFT=12;let row=0;const pos={};const vis=[];
+  function walk(id,dep){vis.push(id);const ks=topen.has(id)?KIDS[id]:[];let y;
+    if(!ks.length){y=TOP+row*RH;row++;} else {const ys=ks.map(k=>walk(k,dep+1));y=(ys[0]+ys[ys.length-1])/2;}
+    pos[id]={x:LEFT+dep*CW,y};return y;}
+  ROOTS.forEach(r=>walk(r,0));
+  const maxDep=Math.max(...vis.map(v=>(pos[v].x-LEFT)/CW));const W=LEFT+(maxDep+1)*CW+20,H=TOP+row*RH+10;
+  const lin=sel&&BY[sel]?lineage(sel):null;
+  let svg=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">`;
+  const curve=(a,b,st)=>{const x1=a.x+NW-4,y1=a.y+11,x2=b.x,y2=b.y+11,mx=(x1+x2)/2;return `<path d="M${x1} ${y1} C${mx} ${y1},${mx} ${y2},${x2} ${y2}" fill="none" ${st}/>`;};
+  const curveAny=(a,b,st)=>{const x1=a.x+(a.x<b.x?NW-4:0),y1=a.y+11,x2=b.x+(a.x<b.x?0:NW-4),y2=b.y+11,mx=(x1+x2)/2+(a.x===b.x?60:0);return `<path d="M${x1} ${y1} C${mx} ${y1},${mx} ${y2},${x2} ${y2}" fill="none" ${st}/>`;};
+  vis.forEach(id=>{const p=BY[id].parents[0];if(p&&pos[p]){const on=!lin||(lin.has(id)&&lin.has(p));svg+=curve(pos[p],pos[id],`stroke="var(--edge)" stroke-width="${on&&lin?2.2:1.4}" opacity="${on?1:.2}"`);}});
+  vis.forEach(id=>BY[id].parents.slice(1).forEach(p=>{if(pos[p]){const on=!lin||(lin.has(id)&&lin.has(p));svg+=curveAny(pos[p],pos[id],`stroke="var(--edge2)" stroke-width="2" stroke-dasharray="6 4" opacity="${on?1:.25}"`);}}));
+  if(sel&&$("t-deps").checked&&pos[sel]){BY[sel].deps.forEach(dp=>{if(pos[dp]&&!BY[sel].parents.includes(dp))svg+=curveAny(pos[dp],pos[sel],`stroke="var(--dep)" stroke-width="2" stroke-dasharray="2 3"`);});
+    BY[sel].unlocks.forEach(u=>{if(pos[u]&&!BY[u].parents.includes(sel))svg+=curveAny(pos[sel],pos[u],`stroke="var(--dep)" stroke-width="1.6" stroke-dasharray="2 3" opacity=".7"`);});}
+  svg+="</svg>";
+  let heads="";for(let i=0;i<=maxDep;i++)heads+=`<div class="colhead" style="left:${LEFT+i*CW+30}px">${lang==="TH"?"ระดับ":"Level"} ${i}</div>`;
+  let nodes=vis.map(id=>{const d=BY[id],k=KIDS[id].length,o=topen.has(id);const fade=lin&&!lin.has(id);const extra=d.parents.length>1?`<span class="mp" title="${esc(d.parents.slice(1).join(", "))}">+${d.parents.length-1}P</span>`:"";
+    return `<div class="tn${fade?" fade":""}" style="left:${pos[id].x}px;top:${pos[id].y}px">${chip(d)}${k?`<button class="tog" data-ttog="${id}" aria-expanded="${o}" title="${k}">${o?"−":"+"}</button>`:""}${extra}</div>`;}).join("");
+  $("diag").innerHTML=`<div style="position:relative;width:${W}px;height:${H}px">${svg}${heads}${nodes}</div>`;
+  if(sel&&pos[sel]&&scrollSel){const dg=$("diag");dg.scrollTo({top:Math.max(0,pos[sel].y-dg.clientHeight/2),left:Math.max(0,pos[sel].x-dg.clientWidth/3)});scrollSel=false;}}
+
+/* ---------- recommended order ---------- */
+function actBtn(k){return `<button class="act" data-act="${k}"><span class="an">${k.replace("ACT-","A")}</span>${esc(A[k][lang==="TH"?"th":"en"])}</button>`;}
+function capBar(ds){const n=ds.length||1;const c=k=>ds.filter(d=>d.cap===k).length;return `<div class="cb" title="IT ${c("IT")} / G ${c("GUIDED")} / S ${c("SPEC")}"><i style="width:${c("IT")/n*100}%;background:var(--cap-it)"></i><i style="width:${c("GUIDED")/n*100}%;background:var(--cap-g)"></i><i style="width:${c("SPEC")/n*100}%;background:var(--cap-s)"></i></div><div class="mini">IT ${c("IT")} · G ${c("GUIDED")} · S ${c("SPEC")}</div>`;}
+function renderOrder(){const x=t(),Li=L();$("o-board").setAttribute("aria-pressed",orderMode==="board");$("o-list").setAttribute("aria-pressed",orderMode==="list");
+  const byWT=(w,tr)=>D.filter(d=>d.wave===w&&d.track===tr).sort((a,b)=>a.seq-b.seq);
+  const actsOf=ds=>{const s=[];ds.forEach(d=>d.acts.forEach(a=>{if(!s.includes(a))s.push(a)}));return s;};
+  if(orderMode==="board"){
+    let h=`<div class="box scroll"><div class="wavegrid"><div class="th"></div>`+WAVES.map(w=>{const ds=D.filter(d=>d.wave===w);return `<div class="wh"><b>${w} ${esc(M.waves[w][Li])}</b><small>${esc(M.waves[w][2+Li])}</small><small>${esc(M.waves[w][4+Li])}</small><div class="capbars"><span class="mini">${x.capDemand}</span>${capBar(ds)}</div></div>`;}).join("");
+    for(const tr of ["A","B"]){h+=`<div class="th${tr==="B"?" trB":""}">${esc(M.tracks[tr][Li])}<div class="mini" style="font-weight:400;margin-top:4px">${esc(M.tracks[tr][2+Li])}</div></div>`;
+      for(const w of WAVES){const ds=byWT(w,tr);const as=actsOf(ds);
+        h+=`<div class="cellw${tr==="B"?" trB":""}">${as.length?`<details class="runfirst"><summary>${x.actsIn} <span class="cnt">${as.length}</span></summary><div class="actlist">${as.map(actBtn).join("")}</div></details>`:""}${ds.length?`<div class="ord">${ds.map(d=>`<div class="row"><span class="seq">${d.seq}</span>${chip(d)}</div>`).join("")}</div>`:`<span class="mini">-</span>`}</div>`;}}
+    $("order").innerHTML=h+"</div></div>";
+  } else {
+    let h=`<div class="steplist">`;
+    for(const w of WAVES){const ds=D.filter(d=>d.wave===w).sort((a,b)=>a.seq-b.seq);
+      h+=`<section class="box" style="padding:12px"><h3>${w} ${esc(M.waves[w][Li])} <span class="mini">${esc(M.waves[w][2+Li])}</span></h3><p class="mini" style="margin:0 0 8px">${esc(M.waves[w][4+Li])}</p><div class="scroll"><table><thead><tr>${x.stepCols.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>`+
+      ds.map(d=>`<tr><td class="seq">${d.seq}</td><td class="inline">${chip(d)}</td><td>${d.track}</td><td>${capTag(d.cap)}</td><td>${d.acts.map(a=>`<div><button class="act" data-act="${a}" style="border-left-width:3px">${esc(A[a][Li?"th":"en"])}</button></div>`).join("")||"<span class='mini'>-</span>"}</td><td class="idl2">${d.deps.join(", ")||"-"}${d.align.length?`<div class="mini">${x.alignL}: ${d.align.join(", ")}</div>`:""}</td></tr>`).join("")+`</tbody></table></div></section>`;}
+    $("order").innerHTML=h+"</div>";}}
+
+/* ---------- flows ---------- */
+function renderFlows(){const Li=L();$("flows").innerHTML=M.flows.map(f=>`<section class="box flow"><h3>${esc(Li?f.th:f.en)}</h3><p>${esc(Li?f.d_th:f.d_en)}</p>${FLOWNOTE[f.id]?`<div class="callout">${esc(FLOWNOTE[f.id][Li])}</div>`:""}<div class="chain">`+
+  f.steps.map((s,i)=>`${i?'<span class="arrow" aria-hidden="true">→</span>':""}<div class="step"><span class="lb"><i>${i+1}</i>${esc(s[1+Li])}<span class="bseq">${Li?"จัดทำ":"build"} #${BY[s[0]].seq}</span></span>${chip(BY[s[0]])}</div>`).join("")+`</div></section>`).join("");}
+
+/* ---------- owners ---------- */
+function renderOwners(){const x=t();const keys=Object.keys(M.roles);
+  const rows=keys.map(k=>({k,own:D.filter(d=>d.owner_k===k),apr:D.filter(d=>d.approver_k===k),acts:Object.keys(A).filter(a=>A[a].roles.includes(k))})).filter(r=>r.own.length||r.apr.length||r.acts.length).sort((a,b)=>b.own.length-a.own.length||b.apr.length-a.apr.length);
+  $("owners").innerHTML=rows.map(r=>`<section class="box"><h3>${esc(role(r.k))}</h3><div class="mini">R ${r.own.length} · A ${r.apr.length} · C ${r.acts.length}</div>`+
+   (r.own.length?`<h4>${x.roleOwns}</h4><div class="cell">${r.own.sort((a,b)=>a.seq-b.seq).map(d=>chip(d)).join("")}</div>`:"")+
+   (r.apr.length?`<h4>${x.roleApproves}</h4><div class="cell">${r.apr.sort((a,b)=>a.seq-b.seq).map(d=>chip(d)).join("")}</div>`:"")+
+   (r.acts.length?`<h4>${x.roleActs}</h4><div class="actlist">${r.acts.map(actBtn).join("")}</div>`:"")+`</section>`).join("");}
+
+/* ---------- themes ---------- */
+function renderThemes(){const Li=L();const cur=$("f-tag").value;
+  $("tagbar").innerHTML=TAGK.map(k=>`<button class="tagp" data-tag="${k}" aria-pressed="${cur===k}">${esc(M.tags[k][Li])} ${D.filter(d=>d.tags.includes(k)).length}</button>`).join("");
+  $("themes").innerHTML=THEMES.map(k=>{const ds=D.filter(d=>d.theme===k).sort((a,b)=>a.seq-b.seq);return `<section class="box"><h3>${esc(M.themes[k][Li])} <span class="tier">ISO/IEC 27002 ${M.themes[k][2]} · ${ds.length}</span></h3><div class="cell" style="margin-top:8px">${ds.map(d=>chip(d)).join("")}</div></section>`;}).join("");}
+
+/* ---------- outline ---------- */
+function treeNode(id,seen){seen.add(id);const d=BY[id];const kids=d.children.filter(k=>!seen.has(k));const isOpen=open.has(id);
+  let h=`<li><span class="node">${kids.length?`<button class="tog2" data-tog="${id}" aria-expanded="${isOpen}">${isOpen?"−":"+"}</button>`:`<span style="width:22px;display:inline-block"></span>`}<span class="tier">${d.tier}</span><span class="inline">${chip(d)}</span></span>`;
+  if(kids.length&&isOpen){h+="<ul>"+kids.map(k=>treeNode(k,seen)).join("")+"</ul>";} else kids.forEach(k=>markSeen(k,seen));
+  return h+"</li>";}
+function markSeen(id,seen){seen.add(id);BY[id].children.forEach(k=>{if(!seen.has(k))markSeen(k,seen)});}
+function renderOutline(){const seen=new Set();$("outline").innerHTML="<ul>"+ROOTS.map(r=>treeNode(r,seen)).join("")+"</ul>";}
+
+/* ---------- drawer ---------- */
+function linkChips(ids){return ids.length?`<div class="links">${ids.map(i=>chip(BY[i])).join("")}</div>`:t().none;}
+function actDetail(k,openIt){const a=A[k],x=t(),Li=L();return `<details${openIt?" open":""}><summary>${k} ${esc(Li?a.th:a.en)}</summary><p>${esc(a.purpose[Li])}</p>
+  <b>${x.agenda}</b><ol>${a.agenda[Li].map(s=>`<li>${esc(s)}</li>`).join("")}</ol>
+  <dl><dt>${x.roles}</dt><dd>${a.roles.map(role).map(esc).join(", ")}</dd><dt>${x.inputs}</dt><dd>${esc(a.inputs[Li])}</dd><dt>${x.duration}</dt><dd>${esc(a.duration[Li])}</dd><dt>${x.freq}</dt><dd>${esc(a.freq[Li])}</dd><dt>${x.facil}</dt><dd>${capTag(a.cap)}</dd></dl>
+  <div class="callout"><b>${x.first}:</b> ${esc(a.first[Li])}</div></details>`;}
+function renderDrawer(){const dr=$("drawer");const on=!!(sel||selAct);document.body.classList.toggle("has-drawer",on);if(!on){dr.hidden=true;return;}dr.hidden=false;const x=t(),Li=L();
+  if(selAct){const a=A[selAct];dr.innerHTML=`<button class="btn sm close" id="close">${x.close}</button><div class="idl">${selAct} · ${x.activity}</div><h2>${esc(Li?a.th:a.en)}</h2>${actDetail(selAct,true)}<h3>${x.outputs}</h3>${linkChips(a.outputs)}`;$("close").onclick=closeDrawer;return;}
+  const d=BY[sel];
+  const tb=d.theme_basis==="override"?x.themeOv:d.theme_basis==="clause"?x.themeClause:`${x.themeBasis} ${d.theme_basis}`;
+  const head=`<button class="btn sm close" id="close">${x.close}</button><div class="idl">${d.id} · ${M.types[d.type][Li]}</div><h2>${esc(nm(d))}</h2>
+  <span class="lv ${d.level}">${LV[d.level]}</span> <span class="pill">${d.level}</span> <span class="pill" style="color:var(--${d.fn.toLowerCase()})">${d.fn} ${esc(fnName(d.fn))}</span> <span class="cap ${d.cap}">${CAPL[d.cap]}</span>
+  <p>${esc(d.purpose[Li])}</p><div class="callout need"><b>${x.needL}</b> ${esc(needText(d,Li))}</div>`;
+  const guide=`<h3>${x.guide}</h3>
+  <dl><dt>${x.seqL}</dt><dd><b>#${d.seq}</b> / ${D.length}</dd><dt>${x.waveL}</dt><dd>${d.wave} ${esc(M.waves[d.wave][Li])} (${esc(M.waves[d.wave][2+Li])})</dd><dt>${x.trackL}</dt><dd>${esc(M.tracks[d.track][Li])}</dd></dl>
+  ${d.note?`<div class="callout">${esc(d.note[Li])}</div>`:""}
+  <div class="capbox"><b>${x.capL}:</b> ${capTag(d.cap)}<div class="mini">${esc(CAPSHORT[d.cap][Li])}</div><b>${x.whyL}:</b><ul>${d.reasons.map(r=>`<li>${esc(M.reasons[r][Li])}</li>`).join("")}</ul><b>${x.srcL}:</b> ${d.src.map(s=>esc(M.sourcing[s][Li])).join(" / ")}${docSvc(d)?`<div class="mini" style="margin-top:4px">${Li?"บริการในมุมมององค์กรและที่ปรึกษา":"Service in the Org and Consultant view"}: <b>${esc(SVC[docSvc(d)][Li])}</b></div>`:""}</div>
+  ${d.acts.length?`<p style="margin:12px 0 4px"><b>${x.prereqL}</b></p>${d.acts.map(a=>actDetail(a,false)).join("")}`:""}
+  <dl><dt>${x.depsL}</dt><dd>${linkChips(d.deps)}</dd><dt>${x.unlocksL}</dt><dd>${linkChips(d.unlocks)}</dd>${d.align.length?`<dt>${x.alignL}</dt><dd>${linkChips(d.align)}</dd>`:""}
+  ${d.flows.length?`<dt>${x.flowsL}</dt><dd>${d.flows.map(f=>esc((M.flows.find(z=>z.id===f)||{})[Li?"th":"en"])).join(", ")}</dd>`:""}</dl>`;
+  const evid=`<h3>${x.evidL}</h3><p class="mini">${x.evidHint}</p><ul>${[x.evidApproval,x.evidRecords].concat(d.chk.map(c=>c[Li])).map(c=>`<li>${esc(c)}</li>`).join("")}</ul>`;
+  const mist=d.mistakes.length?`<h3>${x.mistakesL}</h3><ul>${d.mistakes.map(m=>`<li>${esc(m[Li])}</li>`).join("")}</ul>`:"";
+  const lvl=`<h3>${x.level}</h3><dl>
+  <dt>${x.cat}</dt><dd>${d.cat} ${esc(M.categories[d.cat][Li])}</dd><dt>${x.tier}</dt><dd>${esc(M.tiers[d.tier][Li])}</dd>
+  <dt>${x.trigger}</dt><dd>${esc(d.trigger.join(", "))}</dd><dt>${x.basis}</dt><dd>${esc(Li?d.basis_th:d.basis)}</dd><dt>${x.cmc}</dt><dd>${esc(d.cmc)}</dd>
+  <dt>${x.themeL}</dt><dd>${esc(M.themes[d.theme][Li])} <span class="mini">(${esc(tb)})</span></dd><dt>${x.tagsL}</dt><dd>${d.tags.map(g=>`<span class="tagp">${esc(M.tags[g][Li])}</span>`).join(" ")}</dd>
+  <dt>${x.pkg2}</dt><dd><span class="pk ${d.pkg}">${PKL[d.pkg]}</span> ${d.pkg}<div class="mini">${esc(PKG[d.pkg][Li])}</div></dd><dt>${x.owner}</dt><dd>${esc(role(d.owner_k))}</dd><dt>${x.approver}</dt><dd>${esc(role(d.approver_k))}</dd><dt>${x.review}</dt><dd>${esc(Li?d.review_th:d.review)}</dd>
+  <dt>${x.csf}</dt><dd>${d.csf.map(c=>`<div><b style="font-family:var(--f-mono)">${c}</b> ${esc(Li?M.subcats_th[c]:M.subcats[c])}</div>`).join("")}${Li?`<div class="mini">คำแปลภาษาไทยไม่เป็นทางการ</div>`:""}</dd>
+  <dt>${x.iso}</dt><dd>${esc(d.iso.join(", "))}</dd><dt>${x.nist}</dt><dd>${esc(d.nist.join(", "))}</dd>
+  <dt>${x.parents}</dt><dd>${linkChips(d.parents)}</dd><dt>${x.children}</dt><dd>${linkChips(d.children)}</dd>
+  ${d.verify?`<dt>${x.verify}</dt><dd>${d.verify}</dd>`:""}<dt>${x.file}</dt><dd style="font-family:var(--f-mono);font-size:12px">${esc(d.path)}</dd></dl>`;
+  const evidFold=`<details class="howto" style="margin-top:14px"><summary>${x.evidL}</summary><div style="padding:0 12px 8px">${evid.replace(/<h3>.*?<\/h3>/,"")}</div></details>`;
+  dr.innerHTML=head+(aud==="con"?evid+mist+lvl+guide:aud==="inh"?guide+lvl+mist:guide+lvl+evidFold+mist);
+  $("close").onclick=closeDrawer;}
+function closeDrawer(){sel=null;selAct=null;renderView();renderDrawer();}
+
+/* ---------- wiring ---------- */
+const RENDER={map:renderMap,tree:renderTree,order:renderOrder,flow:renderFlows,owner:renderOwners,theme:renderThemes,split:renderSplit,outline:renderOutline};
+function renderView(){Object.keys(RENDER).forEach(k=>{$("v-"+k).hidden=k!==view;});RENDER[view]();}
+function renderAll(){renderStatic();renderView();renderDrawer();}
+function setView(v){view=v;try{if(location.hash!=="#"+v)history.replaceState(null,"","#"+v)}catch(e){}renderStatic();renderView();}
+document.addEventListener("click",e=>{
+  const tb=e.target.closest("[data-tab]");if(tb){setView(tb.dataset.tab);return;}
+  const au=e.target.closest("[data-aud]");if(au){aud=au.dataset.aud;try{localStorage.setItem("csfmap-aud",aud)}catch(err){}renderStatic();renderView();renderDrawer();if(!$("help").hidden)$("help-body").innerHTML=helpHtml()+`<p><button class="btn" id="help-close">${t().close}</button></p>`;return;}
+  const sv=e.target.closest("[data-svc]");if(sv){svcSel=svcSel===sv.dataset.svc?"":sv.dataset.svc;renderSplit();return;}
+  const c=e.target.closest(".chip[data-id]");if(c){sel=c.dataset.id;selAct=null;if(view==="tree"){let p=BY[sel].parents[0];while(p){topen.add(p);p=BY[p].parents[0];}scrollSel=!!c.closest(".drawer");}renderView();renderDrawer();return;}
+  const a=e.target.closest("[data-act]");if(a){selAct=a.dataset.act;sel=null;renderView();renderDrawer();return;}
+  const g=e.target.closest("[data-tog]");if(g){const id=g.dataset.tog;open.has(id)?open.delete(id):open.add(id);renderOutline();return;}
+  const tt=e.target.closest("[data-ttog]");if(tt){const id=tt.dataset.ttog;topen.has(id)?topen.delete(id):topen.add(id);renderTree();return;}
+  const tg=e.target.closest(".tagbar [data-tag]");if(tg){$("f-tag").value=$("f-tag").value===tg.dataset.tag?"":tg.dataset.tag;renderView();return;}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("help").hidden){closeHelp();return;}if(sel||selAct)closeDrawer();}});
+["q","f-fn","f-theme","f-tag","f-lvl","f-cap","f-wave","f-pkg"].forEach(i=>$(i).addEventListener("input",renderView));
+$("o-cap").addEventListener("change",()=>document.body.classList.toggle("nocap",!$("o-cap").checked));
+$("o-pkg").addEventListener("change",()=>{renderStatic();});
+$("o-hide").addEventListener("change",()=>document.body.classList.toggle("hidefilter",$("o-hide").checked));
+$("b-reset").onclick=()=>{["q","f-fn","f-theme","f-tag","f-lvl","f-cap","f-wave","f-pkg"].forEach(i=>$(i).value="");renderView();};
+$("t-exp").onclick=()=>{D.forEach(d=>{if(KIDS[d.id].length)topen.add(d.id)});renderTree();};
+$("t-col").onclick=()=>{topen.clear();renderTree();};
+$("t-pol").onclick=()=>{topen.clear();D.forEach(d=>{if(["T0"].includes(d.tier)||d.id==="GV-POL-001")topen.add(d.id)});renderTree();};
+$("t-deps").addEventListener("change",renderTree);
+$("o-board").onclick=()=>{orderMode="board";renderOrder();};$("o-list").onclick=()=>{orderMode="list";renderOrder();};
+function setLang(l){lang=l;try{localStorage.setItem("csfmap-lang",l)}catch(e){}renderAll();if(!$("help").hidden)$("help-body").innerHTML=helpHtml()+`<p><button class="btn" id="help-close">${t().close}</button></p>`;}
+$("b-th").onclick=()=>setLang("TH");$("b-en").onclick=()=>setLang("EN");
+let lastFocus=null;
+function helpHtml(){const lg=lang,Li=lg==="TH"?1:0;const views=`<h3>${Li?"มุมมองทั้ง 8 แบบ":"The eight views"}</h3>`+Object.keys(HOWTO).map(k=>`<details class="howto"><summary>${esc(T[lg].tabs[k])}</summary>${howtoHtml(k,lg)}</details>`).join("");const fb=FLOWBUILD[lg].replace("__FBT__",flowBuildTable(Li)).replace("__IRP__",BY["RS-PLN-001"].seq).replace("__SEV__",BY["DE-STD-002"].seq);const ah=(aud!=="con"?AUDHELP[lg].inh:"")+(aud!=="inh"?AUDHELP[lg].con:"");return HELP[lg].replace("__VIEWS__",ah+views+fb).replace("__LVPK__",LVPK[lg].replace("__LPM_EN__",lpMatrix(0)).replace("__LPM_TH__",lpMatrix(1))).replace("__CAP__",CAPCMP[lg]);}
+function openHelp(){lastFocus=document.activeElement;$("help-body").innerHTML=helpHtml()+`<p><button class="btn" id="help-close">${t().close}</button></p>`;$("help").hidden=false;$("help-close").focus();}
+function closeHelp(){$("help").hidden=true;if(lastFocus)lastFocus.focus();}
+$("b-help").onclick=openHelp;
+$("help").addEventListener("click",e=>{if(e.target.id==="help"||e.target.id==="help-close")closeHelp();});
+try{const h=location.hash.replace("#","");if(RENDER[h])view=h;}catch(e){}
+renderAll();
+</script>

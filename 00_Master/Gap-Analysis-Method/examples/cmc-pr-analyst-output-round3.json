@@ -1,0 +1,634 @@
+{
+ "schema": "csf-gap-analyst/2",
+ "function": "PR",
+ "round": 3,
+ "categories": [
+  {
+   "categoryId": "PR.AA",
+   "keyMessage": {
+    "found": "CMC controls who holds an account but not how accounts prove who they are, so administrators and vendors can reach HIS, PACS, and Active Directory with a password alone, which is the entry path used against the peer hospital.",
+    "closes": "Enforce multi-factor authentication (MFA) for all administrator and remote access to Criticality A systems, starting with vendor connections."
+   },
+   "whatWorksToday": "Administrators use separate admin accounts, staff use single sign-on (SSO) for Microsoft 365, and staff remote access through the virtual private network (VPN) already requires MFA.",
+   "strengths": [
+    {
+     "id": "STR-PR.AA-01",
+     "type": "Foundation",
+     "statement": "IT runs a working identity management practice that it demonstrated live, which gives a base for a formal joiner, mover, and leaver process.",
+     "evidence": [
+      "PR.AA-01",
+      "NOTE:PR.AA-01"
+     ]
+    },
+    {
+     "id": "STR-PR.AA-02",
+     "type": "Foundation",
+     "statement": "IT documents identity proofing for new accounts, but the service desk does not verify identity before password or MFA resets.",
+     "evidence": [
+      "PR.AA-02",
+      "IAM-08"
+     ]
+    },
+    {
+     "id": "STR-PR.AA-05",
+     "type": "Foundation",
+     "statement": "Administrators use dedicated admin accounts and a written password standard, but the number of administrators is not limited and access is never reviewed.",
+     "evidence": [
+      "IAM-03",
+      "IAM-07",
+      "C5:HIS",
+      "F3:HIS"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-PR.AA-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Privileged and vendor access to critical systems relies on passwords alone",
+     "statement": "CMC controls who holds an account but not how the account proves identity, so the most powerful access paths have the weakest protection.",
+     "supportingFacts": [
+      {
+       "fact": "Administrators sign in to HIS, PACS, and Active Directory without multi-factor authentication (MFA).",
+       "evidence": [
+        "mfa:HIS",
+        "mfa:PACS",
+        "mfa:Active Directory and network core",
+        "IAM-01"
+       ]
+      },
+      {
+       "fact": "Vendors connect to HIS and PACS through unattended remote desktop sessions.",
+       "evidence": [
+        "C7:HIS",
+        "C7:PACS"
+       ]
+      },
+      {
+       "fact": "Microsoft 365 already enforces MFA for administrators and remote access.",
+       "evidence": [
+        "CLD-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Active Directory and network core"
+      ],
+      "likely": [],
+      "notChecked": "Microsoft 365 enforces MFA for administrators and remote access only"
+     },
+     "linkedSubcategories": [
+      "PR.AA-03"
+     ],
+     "evidence": [
+      "mfa:HIS",
+      "mfa:PACS",
+      "mfa:Active Directory and network core",
+      "C7:HIS",
+      "C7:PACS",
+      "IAM-01",
+      "CLD-01"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Tooling"
+     ],
+     "consequence": "A ransomware operator who obtains one administrator or vendor password can encrypt HIS and Active Directory, which tolerate under four hours of downtime with no manual workaround.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "MFA is Poor on three Criticality A systems, vendor remote access is open, and a peer hospital suffered ransomware through the same path.",
+      "evidence": [
+       "mfa:HIS",
+       "C7:HIS",
+       "IAM-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "HIS and Active Directory down beyond tolerance stops patient registration and logon across both hospitals."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Quick BIA rates HIS financial impact at 4."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "An incident on CII systems with sensitive health data triggers mandatory reporting duties. Timelines follow the Workshop regulatory verification."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Quick BIA rates HIS reputation impact at 4."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Loss of HIS delays clinical orders and results for patients in care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "HIS holds more than 100,000 sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.AA-01-01",
+       "IMP-PR.AA-01-02"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "Covered by GAP-PR.AA-02 for systems outside the sample.",
+       "prevent": "Covered by GAP-PR.AA-02.",
+       "exceptions": "Covered by GAP-PR.AA-02."
+      }
+     }
+    },
+    {
+     "id": "GAP-PR.AA-02",
+     "basis": "Inferred",
+     "confidence": "High",
+     "title": "MFA is not a required control, and nobody tracks its coverage",
+     "statement": "No standard makes MFA mandatory and nobody owns its coverage, so systems outside the sample are likely password-only and new systems can go live without MFA.",
+     "supportingFacts": [
+      {
+       "fact": "The LIS, ERP, and hospital website profiles show no MFA.",
+       "evidence": [
+        "C4:LIS",
+        "C4:ERP",
+        "C4:Hospital website"
+       ]
+      },
+      {
+       "fact": "No approved standard requires MFA.",
+       "evidence": [
+        "GV-POL-001"
+       ]
+      },
+      {
+       "fact": "IT keeps no record of which systems use MFA.",
+       "evidence": [
+        "PR.AA-03"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "LIS",
+       "ERP",
+       "Hospital website"
+      ],
+      "likely": [],
+      "notChecked": "Systems not yet named in the S2 system list"
+     },
+     "linkedSubcategories": [
+      "PR.AA-03"
+     ],
+     "evidence": [
+      "C4:LIS",
+      "C4:ERP",
+      "C4:Hospital website",
+      "GV-POL-001",
+      "PR.AA-03"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Each new or unlisted system adds another password-only entry point that nobody tracks, so the exposure grows with every system change.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-b",
+      "rationale": "Inferred with High confidence: the profile shows no MFA on every listed system, but systems outside the list are not confirmed.",
+      "evidence": [
+       "C4:LIS",
+       "C4:ERP"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "LIS down beyond tolerance delays laboratory results."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Quick BIA rates ERP financial impact at 4."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Same reporting duties as GAP-PR.AA-01."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Quick BIA rates LIS and the hospital website at 3."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Quick BIA rates LIS health and safety impact at 4."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "LIS holds sensitive health records at scale."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [
+       "IMP-PR.AA-02-01"
+      ],
+      "prevent": [
+       "IMP-PR.AA-02-02"
+      ],
+      "exceptions": [
+       "IMP-PR.AA-02-03"
+      ],
+      "notApplicable": {
+       "fix": "Fix actions for sampled systems sit in GAP-PR.AA-01. Other systems are fixed after the Find action confirms them."
+      }
+     }
+    },
+    {
+     "id": "GAP-PR.AA-03",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Access is not controlled across the account life cycle",
+     "statement": "Access rights depend on individuals rather than a governed process, so nobody limits, reviews, or removes access on critical systems in a consistent way.",
+     "supportingFacts": [
+      {
+       "fact": "No access review ran on HIS, PACS, or Microsoft 365 in the past 12 months.",
+       "evidence": [
+        "uar:HIS",
+        "uar:PACS",
+        "uar:Microsoft 365"
+       ]
+      },
+      {
+       "fact": "The number of Active Directory administrators is not limited.",
+       "evidence": [
+        "priv:Active Directory and network core",
+        "IAM-04"
+       ]
+      },
+      {
+       "fact": "Leaver and reset steps depend on individuals, and the service desk does not verify identity before resets.",
+       "evidence": [
+        "F2:HIS",
+        "IAM-08"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Microsoft 365",
+       "Active Directory and network core"
+      ],
+      "likely": [],
+      "notChecked": "Full profile not collected for Criticality B and C systems"
+     },
+     "linkedSubcategories": [
+      "PR.AA-01",
+      "PR.AA-02",
+      "PR.AA-05"
+     ],
+     "evidence": [
+      "uar:HIS",
+      "uar:PACS",
+      "uar:Microsoft 365",
+      "priv:Active Directory and network core",
+      "F2:HIS",
+      "IAM-08",
+      "IAM-04"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Former staff or vendors can keep access to patient data, and a misused account would not be detected through any review.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Harm needs a second event, such as a leaver or a compromised account, and separate admin accounts limit part of the path.",
+      "evidence": [
+       "uar:HIS",
+       "IAM-03"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Misuse of an administrator account on Active Directory can disrupt logon for all systems."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Fraud or misuse through ERP access stays within the moderate band."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Unauthorized access to sensitive health data may require notification under the PDPA."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Local coverage is the likely outcome."
+      },
+      "safety": {
+       "value": null,
+       "rationale": "No direct effect on patient care from this gap alone."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "HIS and PACS access exposes more than 100,000 sensitive records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.AA-03-01"
+      ],
+      "find": [
+       "IMP-PR.AA-03-02"
+      ],
+      "prevent": [
+       "IMP-PR.AA-03-03"
+      ],
+      "exceptions": [
+       "IMP-PR.AA-03-04"
+      ],
+      "notApplicable": {}
+     }
+    },
+    {
+     "id": "GAP-PR.AA-04",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Server room access cannot be evidenced",
+     "statement": "CMC relies on a client-stated physical access control that leaves no record, so it cannot prove who entered the rooms that hold critical systems.",
+     "supportingFacts": [
+      {
+       "fact": "IT states that server room access is controlled but provides no access log.",
+       "evidence": [
+        "PR.AA-06",
+        "PHY-01"
+       ]
+      },
+      {
+       "fact": "No access review record exists for the server rooms at either hospital.",
+       "evidence": [
+        "PHY-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Server rooms at both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Network closets not observed"
+     },
+     "linkedSubcategories": [
+      "PR.AA-06"
+     ],
+     "evidence": [
+      "PR.AA-06",
+      "PHY-01"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "After a physical incident, CMC could not identify who had access, which weakens both investigation and accountability.",
+     "likelihood": {
+      "value": 2,
+      "anchor": "L2-b",
+      "rationale": "Evidence gap only: the practice is client-stated and card access exists in part.",
+      "evidence": [
+       "PHY-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Physical damage to the server room would take HIS and Active Directory down beyond tolerance."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Hardware replacement and recovery cost."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Minor non-compliance with internal rules."
+      },
+      "rep": {
+       "value": 2,
+       "rationale": "Limited external awareness."
+      },
+      "safety": {
+       "value": null,
+       "rationale": "Not applicable."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Theft of a server disk would expose sensitive records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-PR.AA-04-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The rooms in scope are known.",
+       "prevent": "IMP-PR.AA-04-01 includes the quarterly review that prevents recurrence.",
+       "exceptions": "No room is unable to keep access records."
+      }
+     }
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-PR.AA-01-01",
+   "angle": "Fix",
+   "action": "Enforce MFA for all administrator accounts and staff remote access on HIS, PACS, Active Directory, and Microsoft 365.",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [
+    "STR-PR.AA-05"
+   ],
+   "documents": [
+    "PR-STD-001"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Active Directory and network core",
+    "Microsoft 365"
+   ]
+  },
+  {
+   "id": "IMP-PR.AA-01-02",
+   "angle": "Fix",
+   "action": "Require MFA and session logging for vendor remote access, and remove unattended remote desktop tools.",
+   "linkedGaps": [
+    "GAP-PR.AA-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-001"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-PR.AA-02-01",
+   "angle": "Find",
+   "action": "List every system with its authentication method and MFA status, starting with Criticality A and B systems.",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "ID-REG-002"
+   ],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-PR.AA-02-02",
+   "angle": "Prevent",
+   "action": "Approve the Identity and Authentication Standard and add an MFA check to system onboarding and change approval.",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-001"
+   ],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-PR.AA-02-03",
+   "angle": "Handle exceptions",
+   "action": "Place systems that cannot support MFA behind an MFA gateway or jump host and record a time-bound risk acceptance for each.",
+   "linkedGaps": [
+    "GAP-PR.AA-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-001"
+   ],
+   "prerequisites": [
+    "IMP-PR.AA-02-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-PR.AA-03-01",
+   "angle": "Fix",
+   "action": "Run a first access review on Criticality A systems, privileged accounts first.",
+   "linkedGaps": [
+    "GAP-PR.AA-03"
+   ],
+   "gapType": "Process",
+   "buildsOn": [
+    "STR-PR.AA-05"
+   ],
+   "documents": [
+    "PR-REG-001"
+   ],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS",
+    "Microsoft 365",
+    "Active Directory and network core"
+   ]
+  },
+  {
+   "id": "IMP-PR.AA-03-02",
+   "angle": "Find",
+   "action": "Identify privileged, service, and shared accounts on all systems.",
+   "linkedGaps": [
+    "GAP-PR.AA-03"
+   ],
+   "gapType": "Process",
+   "buildsOn": [
+    "STR-PR.AA-05"
+   ],
+   "documents": [
+    "PR-REG-001"
+   ],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-PR.AA-03-03",
+   "angle": "Prevent",
+   "action": "Link joiner, mover, and leaver steps to HR records, set a six-month review cycle, and document service desk identity checks before resets.",
+   "linkedGaps": [
+    "GAP-PR.AA-03"
+   ],
+   "gapType": "Process",
+   "buildsOn": [
+    "STR-PR.AA-01",
+    "STR-PR.AA-02"
+   ],
+   "documents": [
+    "PR-STD-002"
+   ],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-PR.AA-03-04",
+   "angle": "Handle exceptions",
+   "action": "Store passwords of accounts that cannot be named or removed in a vault with a named owner.",
+   "linkedGaps": [
+    "GAP-PR.AA-03"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [
+    "PR-STD-002"
+   ],
+   "prerequisites": [
+    "IMP-PR.AA-03-02"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-PR.AA-04-01",
+   "angle": "Fix",
+   "action": "Keep server room access logs and record a quarterly access list review.",
+   "linkedGaps": [
+    "GAP-PR.AA-04"
+   ],
+   "gapType": "Evidence",
+   "buildsOn": [],
+   "documents": [
+    "PR-PRC-003"
+   ],
+   "prerequisites": [],
+   "systems": []
+  }
+ ],
+ "verify": []
+}

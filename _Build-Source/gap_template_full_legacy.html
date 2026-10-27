@@ -1,0 +1,859 @@
+<title>CSF Gap Analysis</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+__CSS__
+<style>
+.stage{display:inline-block;font:600 11px var(--f-body);padding:1px 8px;border-radius:10px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.stage.s1,.stage.s2{background:var(--warn-soft);color:var(--warn)} .stage.s3{background:var(--accent-soft);color:var(--accent)} .stage.lk{background:var(--ok-soft);color:var(--ok)}
+.band{display:inline-block;font:600 11px var(--f-body);padding:1px 8px;border-radius:10px;color:#fff;white-space:nowrap}
+.band.C{background:var(--bad)} .band.H{background:var(--warn)} .band.M{background:#4d7ea8} .band.L{background:var(--na)} .band.none{background:var(--chip);color:var(--muted)}
+.fcard{border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;background:var(--surface)}
+.fcard .fh{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fcard .fh b.id{font-family:var(--f-mono)}
+.fcard .stmt{font-size:14px;font-weight:600;line-height:1.5;margin:6px 0}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:4px 12px;font-size:13px;margin:6px 0}
+.kv>span:nth-child(odd){color:var(--muted)}
+@media (max-width:640px){.kv{grid-template-columns:1fr}}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:8px 0}
+.rgrid label{font-size:12px;color:var(--muted);display:block}
+.rgrid select{width:100%}
+.ai{font-size:11px;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.step2{border:1px solid var(--line);border-radius:6px;padding:10px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.step2.done{border-color:var(--ok)} .step2.cur{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.step2 .sn2{font:600 11px var(--f-mono);color:var(--muted)}
+.msgs{font-size:12px;margin:6px 0;padding-left:18px} .msgs li.err{color:var(--bad)} .msgs li.warn{color:var(--warn)}
+textarea.json{font-family:var(--f-mono);font-size:12px;min-height:140px}
+.gst{font-size:13px;line-height:1.45;margin-top:2px} ul.facts{margin:0;padding-left:18px} ul.facts li{margin:2px 0}
+.km{border-left:4px solid var(--accent);background:var(--accent-soft);padding:8px 12px;border-radius:4px;margin:8px 0;font-size:13px}
+.km b{display:block}
+table.t td.mono{white-space:nowrap}
+.lspage{border:1px solid var(--line);border-radius:6px;background:var(--surface);margin:12px 0;overflow:hidden}
+.lspage>.ph{padding:10px 14px;background:var(--chip);border-bottom:1px solid var(--line)} .lspage>.ph h2{margin:0;font-size:16px}
+.lspage .km{font-weight:600;margin-top:4px} .lspage .kmx{font-size:13px;color:var(--muted)}
+.lsblk{padding:10px 14px;border-bottom:1px solid var(--line)} .lsblk:last-child{border-bottom:0}
+.lsblk h3{margin:0 0 4px;font-size:14px} .lsblk ul{margin:4px 0;padding-left:18px;font-size:13px} .lsblk .line{font-size:13px;font-style:italic;margin:2px 0 6px}
+.lsblk textarea{width:100%;min-height:44px;margin-top:4px} .lsblk .refs{font-size:12px;color:var(--muted)} .lsblk .refs.none{color:var(--warn)}
+.lsdiag img{max-width:100%;border:1px solid var(--line);border-radius:4px;margin-top:6px}
+.flow{display:flex;flex-wrap:wrap;margin:6px 0 2px}
+.chev{flex:1 1 118px;min-width:104px;padding:6px 16px 6px 22px;margin-right:-8px;background:var(--chip);color:var(--muted);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%,12px 50%);display:flex;flex-direction:column;gap:1px}
+.chev:first-child{clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%);padding-left:12px}
+.chev b{font:600 12px var(--f-body);color:inherit} .chev span{font:500 11px var(--f-body)}
+.chev.req{background:var(--accent-soft);color:var(--accent)} .chev.inp{background:var(--ok-soft);color:var(--ok)}
+.chev.nap span,.chev.bey span{font-style:italic}
+.sc-st{margin:4px 0} table.gd2{min-width:520px}
+.defl{display:grid;grid-template-columns:200px 1fr;gap:8px 16px;margin:10px 0 0;font-size:13px;line-height:1.5} .defl dt{font-weight:600} .defl dd{margin:0}
+details.defs>summary{cursor:pointer;font-size:15px}
+@media (max-width:640px){.defl{grid-template-columns:1fr;gap:2px}}
+.spider{max-width:620px;margin:0 auto} .spider svg{width:100%;height:auto;display:block}
+.sp-leg{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:12px;margin-top:4px} .sp-k{display:inline-flex;align-items:center;gap:5px}
+.sp-k i{display:inline-block;width:10px;height:10px;border-radius:2px} .sp-k i.sp-cur{background:var(--accent);opacity:.7} .sp-k i.sp-tgt{background:none;border-top:2px dashed var(--warn);height:0;width:14px;border-radius:0}
+tr.rg{cursor:pointer} tr.rg:hover>td,tr.rg.on>td{background:var(--accent-soft)} tr.rg:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.sidecard{position:fixed;top:0;right:0;bottom:0;width:min(540px,100vw);background:var(--surface);color:var(--text,inherit);border-left:1px solid var(--line);box-shadow:-10px 0 28px rgba(0,0,0,.2);z-index:70;overflow:auto;padding:14px 18px 28px}
+.sidecard[hidden]{display:none!important}
+.sidecard .sc-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;position:sticky;top:-14px;background:var(--surface);padding:6px 0;z-index:1}
+.sidecard h2{font-size:17px;line-height:1.35;margin:4px 0} .sidecard h3{font-size:13px;margin:14px 0 4px;color:var(--muted);text-transform:none}
+@media (min-width:1280px){body.sc-open .wrap{margin-left:16px;margin-right:556px}}
+@media print{.sidecard{display:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="t-title">CSF Gap Analysis</h1>
+      <div class="eng" id="eng"></div>
+    </div>
+    <div class="hbtns">
+      <button class="btn" id="b-help"></button>
+      <button class="btn" id="b-open"></button><input type="file" id="file" accept=".json,application/json" hidden>
+      <button class="btn" id="b-save"></button>
+      <button class="btn" id="b-print"></button>
+      <button class="btn pri" id="b-xlsx"></button>
+      <div class="lang" role="group" aria-label="Language"><button id="b-th" aria-pressed="false">ไทย</button><button id="b-en" aria-pressed="true">EN</button></div>
+    </div>
+  </header>
+  <p class="savebar" id="savebar"></p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <section id="v-setup"></section>
+  <section id="v-land" hidden></section>
+  <section id="v-tier" hidden></section>
+  <section id="v-str" hidden></section>
+  <section id="v-gap" hidden></section>
+  <section id="v-ai" hidden></section>
+  <section id="v-reg" hidden></section>
+</div>
+<input type="file" id="f-xlsx" accept=".xlsx" hidden><input type="file" id="f-diag" accept="image/png,image/jpeg,image/svg+xml" hidden><input type="file" id="f-ws" accept=".json,application/json" hidden>
+<div id="printArea"></div>
+<div class="modal" id="help" hidden role="dialog" aria-modal="true"><div class="panel" id="help-body"></div></div>
+<div class="toast" id="toast" hidden></div>
+<aside class="sidecard" id="sidecard" hidden role="dialog" aria-modal="false"></aside>
+
+<script>
+const DATA = __DATA__;
+const M=DATA.meta, RUB=DATA.rubric, COV=new Set(DATA.coverage), DOCM=DATA.docs, P=DATA.prompts, SCH=DATA.schemas;
+const FN=["GV","ID","PR","DE","RS","RC"], CATS=Object.keys(M.categories), SUBS=Object.keys(M.subcats);
+const catOf=s=>s.split("-")[0], fnOf=s=>s.slice(0,2);
+const PFN=Object.fromEntries(DATA.profile.map(f=>[f.id,f]));
+const AREAS=["ops","fin","legal","rep","safety","data"];
+const IV_AREA={ops:"Operations",fin:"Financial",legal:"Legal or regulatory",rep:"Reputation",safety:"Health and safety",data:"Personal data"};
+const BAND_ORDER={C:0,H:1,M:2,L:3};
+const ROOTS=["Ownership","Capacity","Skills","Budget","Tooling","Vendor dependency"];
+const GTYPES=["Governance","Process","Technology","Measurement","Evidence"];
+const LSB=[["B1","Business and regulatory context"],["B2","Critical services to systems"],["B3","Application landscape"],["B4","Infrastructure and connectivity"],["B5","Identity landscape"],["B6","Existing security capability"],["B7","Third-party landscape"],["B8","Data landscape"],["B9","IT organization and operating model"],["B10","Control coverage snapshot"],["B11","Assessment basis"],["B12","Threat context"],["B13","Changes in flight"],["B14","Prior assessments and audits"]];
+const LSP=[{p:1,b:["B1","B12","B9"]},{p:2,b:["B2","B3","B8"]},{p:3,b:["B4","B5","B7","B6"]},{p:4,b:["B10","B13","B14","B11"]}];
+const DFD=DATA.deptFields||[];
+const KEY="csf-gap:"+location.pathname;
+const T={
+EN:{title:"CSF Gap Analysis",help:"Help",open:"Open file",save:"Save file",print:"Print report",xlsx:"Export Excel",
+ ls:{gate:"Stage 1 starts after the Current IT Landscape is locked. The locked Landscape becomes the context in every Analyst prompt.",legacy:"This engagement started before the Landscape step existed. Lock the Landscape to add it to the remaining prompts.",
+  hint:"Facts only, before any rating. The HTML builds every fact from the Interview export and the engagement context. The AI drafts one key message per page and one line per block. You review, comment, and lock. Assessor notes become part of the facts.",
+  st0:"Stage 0b",s1:"Draft key messages",s2:"Review and comment",s3:"Lock the Landscape",copy:"Copy Landscape prompt",copyF:"Copy follow-up with comments",
+  pages:{1:"Business, regulation, and threats",2:"Critical services and systems",3:"Infrastructure, identity, and third parties",4:"Coverage, changes, and assessment basis"},
+  b:{B1:"Business and regulatory context",B2:"Critical services to systems",B3:"Application landscape",B4:"Infrastructure and connectivity",B5:"Identity landscape",B6:"Existing security capability",B7:"Third-party landscape",B8:"Data landscape",B9:"IT organization and operating model",B10:"Control coverage snapshot",B11:"Assessment basis",B12:"Threat context",B13:"Changes in flight",B14:"Prior assessments and audits"},
+  noFacts:"No facts. Collect them in the Interview or state in the note why this block does not apply.",note:"Assessor note (becomes a fact)",phNote:"[PLACEHOLDER: fact the assessor confirms, for example sector threats or the regulator]",cm:"Comment for the AI",phCm:"[PLACEHOLDER: what to change]",
+  refs:"Landscape",refBy:"Referenced by",refNone:"Not referenced yet",repeat:"Repeat finding",cif:"Change in flight",tool:"Existing tool",
+  k:{facts:"Facts",blocks:"Blocks with facts",dcf:"Department conflicts",ref:"Blocks referenced"},locked:"Landscape locked",lockB:"Lock Landscape",unlockB:"Unlock",phUnlock:"[PLACEHOLDER: reason for unlocking]",
+  needs:"Lock needs: an imported draft without errors, no open verify items.",bNo:"Import a draft first",bErr:"Fix the errors in the latest draft",bVer:"Open verify items",unlockWarn:"Function outputs already used the locked Landscape. Re-check them after you change it.",
+  diag:"Context diagram",diagUp:"Upload diagram",diagRm:"Remove diagram",diagBig:"Image is larger than 2 MB.",verifyT:"Verify items from the AI",phVans:"[PLACEHOLDER: answer]",
+  l2T:"Landscape reference check (rule L2)",l2H:"Every Landscape block needs at least one Gap Finding or Improvement Action that relies on it, or a reason why it stays in the report.",l2Ok:"All blocks are referenced or explained.",phL2:"[PLACEHOLDER: reason the block stays]",
+  printT:"Current IT Landscape",sheet:"Landscape",ivOld:"Interview export csf-interview/2 has no Environment Profile, so several blocks will be empty."},
+ tabs:{setup:"Setup",land:"Current IT Landscape",tier:"Tier profile",str:"What works today",gap:"Gaps",ai:"AI workflow",reg:"Gap register"},
+ saved:"Autosaved in this browser at",notSaved:"Changes are kept in this browser only. Use Save file to keep a permanent copy.",noStore:"This browser blocks local storage. Use Save file to keep your work.",
+ client:"Client",assessor:"Assessor",date:"Assessment date",scope:"Scope",
+ imports:"Inputs",impHint:"Import the Interview Assessment Excel export and the Target Profile Workshop risk criteria JSON. Both are required before the AI workflow starts.",
+ impIv:"Import Interview Excel",impWs:"Import Workshop risk criteria JSON",pasteWs:"Or paste the Workshop risk criteria JSON",loadWs:"Load pasted JSON",
+ ivNone:"No Interview export imported.",wsNone:"No Workshop risk criteria imported.",ivYes:(n,d,sv)=>`Interview: <b>${n}</b>, assessment date ${d}, schema ${sv}.`,wsYes:(o,sv)=>`Workshop: <b>${o}</b>, schema ${sv}.`,
+ sample:"Load sample (CMC)",sampleHint:"Loads the fictional hospital example with all six Functions locked, Stage 2 proposals decided, and the Gap register ready to export. It replaces current work.",reset:"Reset",resetConfirm:"Click again to erase all work",
+ eng:"Engagement context for the AI",alias:"Client alias",anon:"Anonymize client name in prompts",sector:"Sector",threat:"Threat context",oblig:"Obligations",
+ phAlias:"[PLACEHOLDER: for example Client A]",phSector:"[PLACEHOLDER: for example private hospital group]",phThreat:"[PLACEHOLDER: threats and peer incidents stated by the client]",phOblig:"[PLACEHOLDER: for example CII, PDPA sensitive data]",
+ ready:"Readiness gate",readyHint:"The Gap Analysis is Provisional while any item below is open. Close open evidence requests or record why they stay open.",
+ rq:{schemaIv:"Interview schema",schemaWs:"Workshop schema",rubric:"Tier Rubric version",na:"Subcategories not assessed",cl:"Counted lower (evidence missing)",open:"Open evidence requests",nm:"Coverage not measured",inc:"Incident indicators recorded",tgt:"Categories without a Workshop target"},
+ provisional:"Provisional",readyOk:"Ready",method:"Method pack",
+ tierHint:"Current Tier comes from the Interview export. Target Tier comes from the Workshop. Status, gap size, and the feasibility flag are calculated.",
+ cols:{cat:"Category",cur:"Current",tgt:"Target",gap:"Gap",st:"Status",pr:"Priority",md:"Mandate",fl:"Flags",band:"Highest Risk Level",rl:"Risk Level",id:"ID",sub:"Subcategory",tier:"Counted",ev:"Evidence",cov:"Coverage",gt:"Gap type",stat:"Status",fd:"Foundation",ntr:"Next-tier ready",fn:"Function",stage:"Stage",find:"Finding",basis:"Basis",L:"L",I:"Max I",score:"Score",w:"Weighted",resp:"Response",angle:"Stage",act:"Action",lg:"Linked gaps",bo:"Builds on",docs:"Documents",qw:"Quick win",type:"Type",stmt:"Statement",cause:"Root cause",count:"Findings"},
+ cst:{Gap:"Gap","Meets target":"Meets target","Above target":"Above target","Not assessed":"Not assessed"},
+ sst:{Strength:"Strength","Meets with Observation":"Meets with Observation",Gap:"Gap","Not Assessed":"Not assessed"},
+ prN:{H:"High",M:"Medium",L:"Low"},feas:"Feasibility check in P4",byFn:"Current vs Target Tier by Function",barLeg:"Bar: Current Tier. Line: Target Tier.",
+ delta:"Tier Delta",deltaCur:"Today (Current Tier descriptor)",deltaTgt:"Target (Target Tier descriptor)",
+ strHint:"Strengths meet the Target with documented or demonstrated evidence. Foundations are evidence-backed practices below the Target that improvements can build on. Client-stated answers never count. Statements appear after the AI Analyst output is imported.",
+ strNone:"No Strengths or Foundations yet.",
+ gapHint:"Pick a Category. The evidence comes from the Interview export. Gap Findings, risk proposals, and Improvement Actions appear after the AI Analyst output is imported. You decide Likelihood and Impact.",
+ dq:"Data quality",evd:"Subcategory evidence",gtOv:"Gap type (rule, override allowed)",auto:"Rule",
+ findings:"Gap Findings",noFind:"No AI output imported for this Function yet. Use the AI workflow tab.",km:"Key message",kmF:"What we found",kmC:"What closes it",wwt:"What works today",
+ basisN:{Observed:"Observed",Inferred:"Inferred"},extent:"Extent",confirmed:"Confirmed",likely:"Likely",notChecked:"Not checked",cons:"Consequence",facts:"Supporting facts",rc:"Root cause",evi:"Evidence",
+ riskT:"Risk rating (assessor decides)",aiProp:"AI proposal",Lq:"Likelihood",area:{ops:"Operations",fin:"Financial",legal:"Legal and regulatory",rep:"Reputation",safety:"Health and safety",data:"Personal data"},
+ conf:"Confirmed by assessor",cmt:"Comment for the Analyst",phCmt:"[PLACEHOLDER: comment]",remove:"Remove this finding",scoreL:(s,b,w)=>`Score ${s} · ${b} · weighted ${w}`,
+ respT:"Response",angles:{fix:"Fix",find:"Find",prevent:"Prevent",exceptions:"Handle exceptions",validate:"Validate",sustain:"Sustain"},na:"Not applicable",
+ stN:{Required:"Required","In place":"In place","Not applicable":"Not applicable","Beyond Target Tier":"Beyond Target Tier","Not assessed":"Not assessed (older method)"},nAct:n=>n===1?"1 action":n+" actions",flowT:"Response flow: Fix, Find, Prevent, Handle exceptions, Validate, Sustain",
+ docsT:"Framework documents",docCols:{id:"ID",title:"Title",lvl:"Hierarchy",lev:"Level",st:"Status"},docSt:{Exists:"Exists","Needs update":"Needs update",Missing:"Missing","Not verified":"Not verified"},docGapT:"Needed but not in the register",noDocsOld:"This output uses an older method and has no document links.",
+ hl:{T0:"Direction",T1:"Policy",T2:"Standard",T3:"Procedure, plan, or playbook",T4:"Form, register, record, or report"},
+ exSet:"Standard exceptions set",exSetH:"These documents support Handle exceptions for every Gap Finding. A finding lists them only when it adds something specific.",
+ spiderT:"Current and Target Tier by Category",spiderLeg:"Filled area: Current Tier. Dashed line: Target Tier. The center is Tier 0. A Category that is not assessed plots at 0. Axis labels are Category IDs, colored by Function.",
+ sc:{close:"Close",open:"Open in Gaps tab",wsResp:"Workshop response",flags:"Flags",comment:"Assessor comment",cat:"Category",repeat:"Repeat finding",conf:"Confirmed by assessor",stages:"Response"},
+ defT:"Definitions",defs:[["Strength","A Subcategory where the Counted Tier meets the Target, the evidence is Documented or Demonstrated, and Coverage is Largely or Full (or does not apply). It is capability the client can rely on today. A client-stated answer alone never creates a Strength."],
+  ["Foundation","A Subcategory still below the Target that already has an evidence-backed practice: Counted Tier 2 or above, or a technical check of Yes on a Criticality A system. Improvement Actions build on it, so the client extends what exists instead of starting over. A Foundation is not a Strength and does not count as meeting the Target."],
+  ["Meets with Observation","The Counted Tier meets the Target but Coverage is below Largely. The shortfall is recorded as an Observation and does not become a Gap Finding."],
+  ["Not assessed","No rating exists by the evidence cut-off date. The Subcategory is left out of the Category Tier and reported as Not assessed."]],
+
+ verifyT:"Open verify items",phAns:"[PLACEHOLDER: answer after checking with the client]",obsT:"Observations",
+ aiHint:"Run the steps in order for each Function. Copy a prompt, paste it into the named Claude chat, then paste the JSON reply back here. The HTML validates every reply against the method pack schema. A Function locks only at round 3 with no open verify items and every finding confirmed.",
+ steps:["Analyst draft","Reviewer check","Analyst revision","Assessor decisions","Analyst final","Lock"],
+ chat:{an:"Chat: Client · P2 · Analyst · ",rv:"Chat: Client · P2 · Reviewer (all Functions)",x:"Chat: Client · P2 · Reviewer 2"},
+ copyPrompt:"Copy prompt",copyFollow:"Copy follow-up",importJson:"Import JSON",phJson:"Paste the JSON reply here",valid:"Valid",errors:"Errors",warnings:"Warnings",
+ decHint:"Resolve every verify item and confirm every finding on the Gaps tab, then copy the follow-up with your decisions.",lockB:"Lock Function",unlockB:"Unlock with reason",phUnlock:"Reason for unlocking",locked:"Locked",
+ stageN:{none:"Not started",r1:"Round 1",rv:"Reviewed",r2:"Round 2",r3:"Round 3",lk:"Locked"},
+ lockNeeds:"Needs: round 3 imported, no errors or warnings, no open verify items, every finding confirmed.",
+ xTitle:"Stage 2: cross-function review",xHint:"Available when all six Functions are locked. Reviewer 2 returns proposals only. Accept or reject each one.",xNot:"Lock all six Functions first.",
+ accept:"Accept",reject:"Reject",xLock:"Lock consolidation",xLocked:"Consolidation locked",pType:{MergeIMP:"Merge actions",SystemicRootCause:"Systemic root cause",Calibration:"Calibration",MissingLink:"Missing link",Consistency:"Consistency"},
+ regHint:"All Gap Findings across Functions, sorted by the Workshop rule: Risk Level, then legal or regulatory mandate, then risk score, then weighted impact. Values reflect assessor decisions.",
+ regGap:"Gap Register",regImp:"Improvement Actions (handoff to P3 Roadmap)",regStr:"Strength Register",regSys:"Systemic root causes",regNone:"No findings yet.",
+ qwT:"Quick-win candidate: Critical or High Risk Level, and either next-tier ready or builds on an existing capability.",scHint:"Click a row to open the details on the right. Press Esc to close.",
+ log:"Change log",
+ toast:{saved:"File saved",opened:"Work loaded",bad:"That file is not a Gap Analysis file.",iv:"Interview export imported",ivBad:"That file is not an Interview Assessment export (schema csf-interview/2 or csf-interview/3).",lsLocked:"Landscape locked",ws:"Workshop risk criteria imported",wsBad:"That is not a Workshop risk criteria JSON.",copied:"Copied to clipboard",imp:"JSON imported",impBad:"JSON has errors. See the list.",sample:"Sample loaded",reset:"Work cleared",xlsx:"Excel file exported",locked:"Function locked",needImports:"Import both inputs first."},
+ printT:"Gap Analysis report",
+ helpHtml:`<h2>How to use the Gap Analysis</h2>
+<p>This file turns the Interview Assessment and the Target Profile Workshop into analyzed Gap Findings, Strengths, and Improvement Actions for the Roadmap. The HTML calculates every number. The AI writes text and proposes Likelihood and Impact. You decide.</p>
+<h3>Steps</h3><ol><li><b>Setup.</b> Import the Interview Excel export and the Workshop risk criteria JSON. Fill the engagement context. Check the readiness gate.</li>
+<li><b>Current IT Landscape (Stage 0b).</b> Review the facts, add assessor notes, copy the Landscape prompt, import the draft, comment, import the revision, and lock. Stage 1 starts only after the lock.</li>
+<li><b>Tier profile.</b> Review Current against Target for all 22 Categories and the Tier Delta.</li>
+<li><b>AI workflow.</b> For each Function: copy the Analyst prompt, import the draft, run the Reviewer, import the revision, make your decisions on the Gaps tab, import the final round, and lock.</li>
+<li><b>Gaps.</b> Read each Gap Finding, set Likelihood and Impact, answer verify items, and confirm.</li>
+<li><b>Stage 2.</b> When all six Functions are locked, run Reviewer 2 and accept or reject each proposal.</li>
+<li><b>Gap register.</b> Export the Gap Register, Improvement Actions, and Strength Register to Excel for the Roadmap.</li></ol>
+<h3>Rules</h3><p>Each Gap Finding is answered in six stages: Fix, Find, Prevent, Handle exceptions, Validate, and Sustain. The Target Tier of the Category sets how many stages apply, and the documents link at Gap Finding level from the Framework register. Each Gap Finding has four layers: Title, Statement, Supporting facts, and Consequence. Status per Subcategory: Strength (meets Target with documented or demonstrated evidence and enough coverage), Meets with Observation (meets Target with low coverage), Gap, or Not assessed. Category Tier follows Tier Rubric rule R4. Risk score is Likelihood times the highest Impact; weighted impact only breaks ties. Risk Levels and responses come from the Workshop.</p>
+<h3>Flow</h3><p>The flow runs one way. Each Function gets one Reviewer round. Unresolved items become verify items for you. Locked content changes only with a reason in the change log.</p>
+<h3>Confidentiality</h3><p>Prompts contain client evidence. Use the Anonymize option, a Claude plan that does not train on client data, and one Claude Project per client.</p>
+<h3>Where data is stored</h3><p>Work autosaves in this browser for this file only. Press Save file after each session.</p>`},
+TH:{title:"CSF Gap Analysis",help:"วิธีใช้",open:"เปิดไฟล์",save:"บันทึกไฟล์",print:"พิมพ์รายงาน",xlsx:"ส่งออก Excel",
+ ls:{gate:"Stage 1 เริ่มได้หลังล็อก Current IT Landscape แล้ว Landscape ที่ล็อกจะเป็นบริบทใน Prompt ของ Analyst ทุกฉบับ",legacy:"งานนี้เริ่มก่อนมีขั้นตอน Landscape ให้ล็อก Landscape เพื่อเพิ่มบริบทใน Prompt ที่เหลือ",
+  hint:"ข้อเท็จจริงเท่านั้น ก่อนการให้คะแนนใด ๆ HTML สร้างข้อเท็จจริงทั้งหมดจาก Interview และบริบทงาน AI ร่าง key message หน้าละหนึ่งข้อ และสรุป block ละหนึ่งบรรทัด ผู้ประเมินทบทวน ให้ความเห็น และล็อก บันทึกของผู้ประเมินจะกลายเป็นข้อเท็จจริง",
+  st0:"Stage 0b",s1:"ร่าง key message",s2:"ทบทวนและให้ความเห็น",s3:"ล็อก Landscape",copy:"คัดลอก Prompt ของ Landscape",copyF:"คัดลอกข้อความต่อเนื่องพร้อมความเห็น",
+  pages:{1:"ธุรกิจ กฎหมาย และภัยคุกคาม",2:"บริการสำคัญและระบบ",3:"โครงสร้างพื้นฐาน การยืนยันตัวตน และบุคคลภายนอก",4:"ความครอบคลุม การเปลี่ยนแปลง และฐานการประเมิน"},
+  b:{B1:"บริบทธุรกิจและกฎหมาย",B2:"บริการสำคัญกับระบบ",B3:"ภาพรวมแอปพลิเคชัน",B4:"โครงสร้างพื้นฐานและการเชื่อมต่อ",B5:"การยืนยันตัวตน",B6:"ขีดความสามารถด้านความมั่นคงปลอดภัยที่มีอยู่",B7:"บุคคลภายนอก",B8:"ข้อมูล",B9:"โครงสร้างทีม IT และรูปแบบการทำงาน",B10:"ภาพรวมความครอบคลุมของการควบคุม",B11:"ฐานการประเมิน",B12:"ภัยคุกคาม",B13:"การเปลี่ยนแปลงที่กำลังดำเนินการ",B14:"การประเมินและการตรวจสอบครั้งก่อน"},
+  noFacts:"ยังไม่มีข้อเท็จจริง ให้เก็บข้อมูลใน Interview หรือระบุในบันทึกว่าทำไม block นี้ไม่เกี่ยวข้อง",note:"บันทึกของผู้ประเมิน (กลายเป็นข้อเท็จจริง)",phNote:"[PLACEHOLDER: ข้อเท็จจริงที่ผู้ประเมินยืนยัน เช่น ภัยคุกคามของอุตสาหกรรมหรือหน่วยงานกำกับ]",cm:"ความเห็นถึง AI",phCm:"[PLACEHOLDER: สิ่งที่ต้องแก้]",
+  refs:"Landscape",refBy:"ถูกอ้างอิงโดย",refNone:"ยังไม่มีการอ้างอิง",repeat:"ข้อตรวจพบซ้ำ",cif:"การเปลี่ยนแปลงที่กำลังดำเนินการ",tool:"เครื่องมือที่มีอยู่",
+  k:{facts:"ข้อเท็จจริง",blocks:"Block ที่มีข้อเท็จจริง",dcf:"ข้อขัดแย้งจากแผนก",ref:"Block ที่ถูกอ้างอิง"},locked:"ล็อก Landscape แล้ว",lockB:"ล็อก Landscape",unlockB:"ปลดล็อก",phUnlock:"[PLACEHOLDER: เหตุผลที่ปลดล็อก]",
+  needs:"การล็อกต้องมีร่างที่นำเข้าแล้วโดยไม่มีข้อผิดพลาด และไม่มีรายการ verify ค้าง",bNo:"นำเข้าร่างก่อน",bErr:"แก้ข้อผิดพลาดในร่างล่าสุด",bVer:"รายการ verify ที่ค้าง",unlockWarn:"ผลของ Function ใช้ Landscape ที่ล็อกไว้แล้ว ให้ตรวจซ้ำหลังแก้ไข",
+  diag:"แผนภาพภาพรวม",diagUp:"อัปโหลดแผนภาพ",diagRm:"ลบแผนภาพ",diagBig:"ไฟล์ภาพใหญ่เกิน 2 MB",verifyT:"รายการ verify จาก AI",phVans:"[PLACEHOLDER: คำตอบ]",
+  l2T:"ตรวจการอ้างอิง Landscape (กฎ L2)",l2H:"ทุก block ต้องมี Gap Finding หรือ Improvement Action อย่างน้อยหนึ่งรายการที่อ้างอิง หรือมีเหตุผลว่าทำไมยังอยู่ในรายงาน",l2Ok:"ทุก block ถูกอ้างอิงหรือมีเหตุผลแล้ว",phL2:"[PLACEHOLDER: เหตุผลที่คง block ไว้]",
+  printT:"Current IT Landscape",sheet:"Landscape",ivOld:"Interview รุ่น csf-interview/2 ไม่มี Environment Profile หลาย block จะว่าง"},
+ tabs:{setup:"ตั้งค่า",land:"Current IT Landscape",tier:"Tier Profile",str:"สิ่งที่ทำได้ดีแล้ว",gap:"ช่องว่าง (Gaps)",ai:"ขั้นตอน AI",reg:"ทะเบียนช่องว่าง"},
+ saved:"บันทึกอัตโนมัติในเบราว์เซอร์นี้เมื่อ",notSaved:"ข้อมูลเก็บในเบราว์เซอร์นี้เท่านั้น กดบันทึกไฟล์เพื่อเก็บสำเนาถาวร",noStore:"เบราว์เซอร์นี้ไม่อนุญาตให้เก็บข้อมูล กดบันทึกไฟล์เพื่อเก็บงาน",
+ client:"ลูกค้า",assessor:"ผู้ประเมิน",date:"วันที่ประเมิน",scope:"ขอบเขต",
+ imports:"ข้อมูลนำเข้า",impHint:"นำเข้าไฟล์ Excel จาก Interview Assessment และ JSON เกณฑ์ความเสี่ยงจาก Target Profile Workshop ต้องมีทั้งสองไฟล์ก่อนเริ่มขั้นตอน AI",
+ impIv:"นำเข้า Excel จาก Interview",impWs:"นำเข้า JSON จาก Workshop",pasteWs:"หรือวาง JSON เกณฑ์ความเสี่ยงจาก Workshop",loadWs:"โหลด JSON ที่วาง",
+ ivNone:"ยังไม่ได้นำเข้า Interview",wsNone:"ยังไม่ได้นำเข้าเกณฑ์จาก Workshop",ivYes:(n,d,sv)=>`Interview: <b>${n}</b> วันที่ประเมิน ${d} schema ${sv}`,wsYes:(o,sv)=>`Workshop: <b>${o}</b> schema ${sv}`,
+ sample:"โหลดตัวอย่าง (CMC)",sampleHint:"โหลดตัวอย่างโรงพยาบาลสมมติ ครบทั้ง 6 Function ที่ล็อกแล้ว ตัดสินข้อเสนอ Stage 2 แล้ว และพร้อมส่งออก Gap register จะแทนที่งานปัจจุบัน",reset:"ล้างข้อมูล",resetConfirm:"กดอีกครั้งเพื่อลบงานทั้งหมด",
+ eng:"บริบทงานสำหรับ AI",alias:"ชื่อแทนลูกค้า",anon:"ซ่อนชื่อลูกค้าใน Prompt",sector:"อุตสาหกรรม",threat:"บริบทภัยคุกคาม",oblig:"หน้าที่ตามกฎหมาย",
+ phAlias:"[PLACEHOLDER: เช่น Client A]",phSector:"[PLACEHOLDER: เช่น กลุ่มโรงพยาบาลเอกชน]",phThreat:"[PLACEHOLDER: ภัยคุกคามและเหตุการณ์ที่ลูกค้าแจ้ง]",phOblig:"[PLACEHOLDER: เช่น CII, ข้อมูลอ่อนไหวตาม PDPA]",
+ ready:"ความพร้อมของข้อมูล",readyHint:"Gap Analysis ยังเป็นฉบับเบื้องต้นตราบที่ยังมีรายการด้านล่างค้างอยู่ ปิดคำขอหลักฐานที่ค้าง หรือบันทึกเหตุผลที่ยังค้าง",
+ rq:{schemaIv:"Interview schema",schemaWs:"Workshop schema",rubric:"เวอร์ชัน Tier Rubric",na:"Subcategory ที่ยังไม่ได้ประเมิน",cl:"นับต่ำกว่า (ขาดหลักฐาน)",open:"คำขอหลักฐานที่ค้าง",nm:"ยังไม่ได้วัดความครอบคลุม",inc:"ร่องรอยเหตุการณ์ที่บันทึกไว้",tgt:"Category ที่ไม่มีเป้าหมายจาก Workshop"},
+ provisional:"ฉบับเบื้องต้น",readyOk:"พร้อม",method:"Method pack",
+ tierHint:"Current Tier มาจาก Interview Target Tier มาจาก Workshop สถานะ ขนาดช่องว่าง และการตรวจความเป็นไปได้คำนวณโดยเครื่องมือ",
+ cols:{cat:"Category",cur:"ปัจจุบัน",tgt:"เป้าหมาย",gap:"ช่องว่าง",st:"สถานะ",pr:"ลำดับความสำคัญ",md:"ข้อบังคับ",fl:"สัญลักษณ์",band:"ระดับความเสี่ยงสูงสุด",rl:"ระดับความเสี่ยง",id:"รหัส",sub:"Subcategory",tier:"นับได้",ev:"หลักฐาน",cov:"ความครอบคลุม",gt:"ประเภทช่องว่าง",stat:"สถานะ",fd:"Foundation",ntr:"ใกล้ถึง Tier ถัดไป",fn:"Function",stage:"ขั้น",find:"Finding",basis:"ฐาน",L:"L",I:"I สูงสุด",score:"คะแนน",w:"ถ่วงน้ำหนัก",resp:"การตอบสนอง",angle:"ขั้นตอน",act:"Action",lg:"ช่องว่างที่เชื่อม",bo:"ต่อยอดจาก",docs:"เอกสาร",qw:"Quick win",type:"ประเภท",stmt:"ข้อความ",cause:"สาเหตุ",count:"จำนวน Finding"},
+ cst:{Gap:"มีช่องว่าง","Meets target":"ถึงเป้าหมาย","Above target":"สูงกว่าเป้าหมาย","Not assessed":"ยังไม่ได้ประเมิน"},
+ sst:{Strength:"Strength","Meets with Observation":"ถึงเป้าหมายแต่มีข้อสังเกต",Gap:"มีช่องว่าง","Not Assessed":"ยังไม่ได้ประเมิน"},
+ prN:{H:"สูง",M:"กลาง",L:"ต่ำ"},feas:"ตรวจความเป็นไปได้ใน P4",byFn:"Current เทียบ Target ราย Function",barLeg:"แท่ง: Current Tier เส้น: Target Tier",
+ delta:"Tier Delta",deltaCur:"ปัจจุบัน (คำอธิบาย Current Tier)",deltaTgt:"เป้าหมาย (คำอธิบาย Target Tier)",
+ strHint:"Strength คือผลลัพธ์ที่ถึงเป้าหมายและมีหลักฐานเป็นเอกสารหรือการสาธิต Foundation คือสิ่งที่ทำได้จริงและมีหลักฐาน แต่ยังไม่ถึงเป้าหมาย ใช้ต่อยอดได้ คำตอบที่ไม่มีหลักฐานไม่นับ ข้อความจะแสดงหลังนำเข้าผลจาก AI Analyst",
+ strNone:"ยังไม่มี Strength หรือ Foundation",
+ gapHint:"เลือก Category หลักฐานมาจาก Interview Gap Finding ข้อเสนอความเสี่ยง และ Improvement Action จะแสดงหลังนำเข้าผลจาก AI Analyst ผู้ประเมินเป็นผู้ตัดสิน Likelihood และ Impact",
+ dq:"คุณภาพข้อมูล",evd:"หลักฐานราย Subcategory",gtOv:"ประเภทช่องว่าง (ตามกติกา แก้ได้)",auto:"กติกา",
+ findings:"Gap Findings",noFind:"ยังไม่ได้นำเข้าผลจาก AI สำหรับ Function นี้ ไปที่แท็บขั้นตอน AI",km:"ข้อความหลัก",kmF:"สิ่งที่พบ",kmC:"สิ่งที่ปิดช่องว่าง",wwt:"สิ่งที่ทำได้ดีแล้ว",
+ basisN:{Observed:"พบจริง",Inferred:"อนุมาน"},extent:"ขอบเขต",confirmed:"ยืนยันแล้ว",likely:"น่าจะได้รับผล",notChecked:"ยังไม่ได้ตรวจ",cons:"ผลกระทบ",facts:"ข้อเท็จจริงที่พบ",rc:"สาเหตุ",evi:"หลักฐาน",
+ riskT:"การให้คะแนนความเสี่ยง (ผู้ประเมินตัดสิน)",aiProp:"ข้อเสนอจาก AI",Lq:"Likelihood",area:{ops:"การดำเนินงาน",fin:"การเงิน",legal:"กฎหมายและข้อกำหนด",rep:"ชื่อเสียง",safety:"สุขภาพและความปลอดภัย",data:"ข้อมูลส่วนบุคคล"},
+ conf:"ผู้ประเมินยืนยันแล้ว",cmt:"ความเห็นถึง Analyst",phCmt:"[PLACEHOLDER: ความเห็น]",remove:"ตัด Finding นี้",scoreL:(s,b,w)=>`คะแนน ${s} · ${b} · ถ่วงน้ำหนัก ${w}`,
+ respT:"การตอบสนอง",angles:{fix:"Fix",find:"Find",prevent:"Prevent",exceptions:"Handle exceptions",validate:"Validate",sustain:"Sustain"},na:"ไม่เกี่ยวข้อง",
+ stN:{Required:"ต้องทำ","In place":"มีอยู่แล้ว","Not applicable":"ไม่เกี่ยวข้อง","Beyond Target Tier":"เกินระดับเป้าหมาย","Not assessed":"ไม่ได้ประเมิน (วิธีเดิม)"},nAct:n=>n+" action",flowT:"ลำดับการตอบสนอง: Fix, Find, Prevent, Handle exceptions, Validate, Sustain",
+ docsT:"เอกสารใน Framework",docCols:{id:"รหัส",title:"ชื่อ",lvl:"ลำดับชั้น",lev:"Level",st:"สถานะ"},docSt:{Exists:"มีอยู่","Needs update":"ต้องปรับปรุง",Missing:"ยังไม่มี","Not verified":"ยังไม่ยืนยัน"},docGapT:"จำเป็นแต่ไม่มีในทะเบียน",noDocsOld:"ผลลัพธ์นี้ใช้วิธีเดิมและไม่มีการเชื่อมเอกสาร",
+ hl:{T0:"ทิศทาง",T1:"นโยบาย",T2:"มาตรฐาน",T3:"ขั้นตอน แผน หรือ Playbook",T4:"แบบฟอร์ม ทะเบียน บันทึก หรือรายงาน"},
+ exSet:"ชุดเอกสารข้อยกเว้นมาตรฐาน",exSetH:"เอกสารเหล่านี้รองรับขั้น Handle exceptions ของทุก Gap Finding Finding จะระบุเฉพาะเมื่อมีเนื้อหาเฉพาะเพิ่มเติม",
+ spiderT:"Tier ปัจจุบันและ Tier เป้าหมายราย Category",spiderLeg:"พื้นที่สี: Tier ปัจจุบัน เส้นประ: Tier เป้าหมาย จุดศูนย์กลางคือ Tier 0 Category ที่ไม่ได้ประเมินแสดงที่ 0 ป้ายแกนคือรหัส Category สีตาม Function",
+ sc:{close:"ปิด",open:"เปิดในแท็บ Gaps",wsResp:"การตอบสนองตาม Workshop",flags:"สัญลักษณ์",comment:"ความเห็นผู้ประเมิน",cat:"Category",repeat:"Finding ซ้ำ",conf:"ผู้ประเมินยืนยันแล้ว",stages:"การตอบสนอง"},
+ defT:"นิยามคำศัพท์",defs:[["Strength","Subcategory ที่ Tier ที่นับได้ถึงเป้าหมาย มีหลักฐานเป็นเอกสารหรือการสาธิต และความครอบคลุมเป็น Largely หรือ Full (หรือไม่เกี่ยวข้อง) คือขีดความสามารถที่ลูกค้าพึ่งพาได้ในปัจจุบัน คำตอบที่ลูกค้าบอกเพียงอย่างเดียวไม่ทำให้เกิด Strength"],
+  ["Foundation","Subcategory ที่ยังต่ำกว่าเป้าหมายแต่มีวิธีปฏิบัติที่มีหลักฐานรองรับแล้ว คือ Tier ที่นับได้ตั้งแต่ 2 ขึ้นไป หรือผลตรวจทางเทคนิคเป็น Yes บนระบบ Criticality A Improvement Action ต่อยอดจากสิ่งนี้ ลูกค้าจึงขยายสิ่งที่มีอยู่แทนการเริ่มใหม่ Foundation ไม่ใช่ Strength และไม่นับว่าถึงเป้าหมาย"],
+  ["Meets with Observation","Tier ที่นับได้ถึงเป้าหมาย แต่ความครอบคลุมต่ำกว่า Largely ส่วนที่ขาดบันทึกเป็น Observation และไม่กลายเป็น Gap Finding"],
+  ["Not assessed","ไม่มีการให้คะแนนภายในวันตัดหลักฐาน Subcategory นี้ไม่ถูกนับใน Tier ของ Category และรายงานเป็น Not assessed"]],
+
+ verifyT:"รายการ verify ที่ค้าง",phAns:"[PLACEHOLDER: คำตอบหลังตรวจกับลูกค้า]",obsT:"ข้อสังเกต",
+ aiHint:"ทำตามลำดับในแต่ละ Function คัดลอก Prompt ไปวางในแชท Claude ตามชื่อที่ระบุ แล้ววาง JSON ที่ได้กลับมาที่นี่ เครื่องมือตรวจทุกคำตอบกับ schema ของ method pack Function จะล็อกได้เมื่อถึงรอบ 3 ไม่มี verify ค้าง และยืนยันทุก Finding แล้ว",
+ steps:["Analyst ร่างแรก","Reviewer ตรวจ","Analyst แก้ไข","ผู้ประเมินตัดสิน","Analyst ฉบับสุดท้าย","ล็อก"],
+ chat:{an:"แชท: Client · P2 · Analyst · ",rv:"แชท: Client · P2 · Reviewer (ทุก Function)",x:"แชท: Client · P2 · Reviewer 2"},
+ copyPrompt:"คัดลอก Prompt",copyFollow:"คัดลอกข้อความต่อเนื่อง",importJson:"นำเข้า JSON",phJson:"วาง JSON ที่ได้รับที่นี่",valid:"ถูกต้อง",errors:"ข้อผิดพลาด",warnings:"คำเตือน",
+ decHint:"ตอบ verify ทุกข้อและยืนยันทุก Finding ในแท็บช่องว่าง แล้วคัดลอกข้อความต่อเนื่องพร้อมคำตัดสิน",lockB:"ล็อก Function",unlockB:"ปลดล็อกพร้อมเหตุผล",phUnlock:"เหตุผลที่ปลดล็อก",locked:"ล็อกแล้ว",
+ stageN:{none:"ยังไม่เริ่ม",r1:"รอบ 1",rv:"ตรวจแล้ว",r2:"รอบ 2",r3:"รอบ 3",lk:"ล็อกแล้ว"},
+ lockNeeds:"ต้องมี: รอบ 3 ไม่มีข้อผิดพลาดหรือคำเตือน ไม่มี verify ค้าง และยืนยันทุก Finding",
+ xTitle:"Stage 2: ตรวจข้าม Function",xHint:"ใช้ได้เมื่อล็อกครบทั้ง 6 Function Reviewer 2 ส่งเฉพาะข้อเสนอ ให้รับหรือไม่รับทีละข้อ",xNot:"ล็อกให้ครบทั้ง 6 Function ก่อน",
+ accept:"รับ",reject:"ไม่รับ",xLock:"ล็อกการรวมผล",xLocked:"ล็อกการรวมผลแล้ว",pType:{MergeIMP:"รวม Action",SystemicRootCause:"สาเหตุเชิงระบบ",Calibration:"ปรับเทียบคะแนน",MissingLink:"เชื่อมโยงที่ขาด",Consistency:"ความสอดคล้อง"},
+ regHint:"Gap Finding ทุกข้อจากทุก Function เรียงตามกติกาจาก Workshop: ระดับความเสี่ยง ข้อบังคับทางกฎหมาย คะแนนความเสี่ยง แล้วผลกระทบถ่วงน้ำหนัก ค่าที่แสดงเป็นไปตามคำตัดสินของผู้ประเมิน",
+ regGap:"ทะเบียนช่องว่าง",regImp:"Improvement Actions (ส่งต่อ P3 Roadmap)",regStr:"ทะเบียน Strength",regSys:"สาเหตุเชิงระบบ",regNone:"ยังไม่มี Finding",
+ qwT:"Quick-win candidate: ระดับ Critical หรือ High และใกล้ถึง Tier ถัดไป หรือต่อยอดจากสิ่งที่มีอยู่",scHint:"คลิกแถวเพื่อเปิดรายละเอียดทางขวา กด Esc เพื่อปิด",
+ log:"บันทึกการเปลี่ยนแปลง",
+ toast:{saved:"บันทึกไฟล์แล้ว",opened:"โหลดงานแล้ว",bad:"ไฟล์นี้ไม่ใช่ไฟล์ Gap Analysis",iv:"นำเข้า Interview แล้ว",ivBad:"ไฟล์นี้ไม่ใช่ Excel จาก Interview Assessment (schema csf-interview/2)",ws:"นำเข้าเกณฑ์จาก Workshop แล้ว",wsBad:"ไม่ใช่ JSON เกณฑ์ความเสี่ยงจาก Workshop",copied:"คัดลอกแล้ว",imp:"นำเข้า JSON แล้ว",impBad:"JSON มีข้อผิดพลาด ดูรายการ",sample:"โหลดตัวอย่างแล้ว",reset:"ล้างงานแล้ว",xlsx:"ส่งออก Excel แล้ว",locked:"ล็อก Function แล้ว",needImports:"นำเข้าข้อมูลทั้งสองไฟล์ก่อน"},
+ printT:"รายงาน Gap Analysis",
+ helpHtml:`<h2>วิธีใช้ Gap Analysis</h2>
+<p>ไฟล์นี้แปลงผลจาก Interview Assessment และ Target Profile Workshop เป็น Gap Finding, Strength และ Improvement Action ที่วิเคราะห์แล้ว เพื่อส่งต่อไปทำ Roadmap เครื่องมือคำนวณตัวเลขทั้งหมด AI เขียนข้อความและเสนอ Likelihood กับ Impact ผู้ประเมินเป็นผู้ตัดสิน</p>
+<h3>ขั้นตอน</h3><ol><li><b>ตั้งค่า</b> นำเข้า Excel จาก Interview และ JSON จาก Workshop กรอกบริบทงาน และตรวจความพร้อมของข้อมูล</li>
+<li><b>Tier Profile</b> ทบทวน Current เทียบ Target ทั้ง 22 Category และ Tier Delta</li>
+<li><b>ขั้นตอน AI</b> ในแต่ละ Function: คัดลอก Prompt ของ Analyst นำเข้าร่างแรก ให้ Reviewer ตรวจ นำเข้าฉบับแก้ไข ตัดสินในแท็บช่องว่าง นำเข้ารอบสุดท้าย แล้วล็อก</li>
+<li><b>ช่องว่าง</b> อ่าน Gap Finding กำหนด Likelihood และ Impact ตอบ verify และยืนยัน</li>
+<li><b>Stage 2</b> เมื่อล็อกครบ 6 Function ให้ Reviewer 2 ตรวจ แล้วรับหรือไม่รับทีละข้อเสนอ</li>
+<li><b>ทะเบียนช่องว่าง</b> ส่งออก Gap Register, Improvement Actions และ Strength Register เป็น Excel เพื่อทำ Roadmap</li></ol>
+<h3>กติกา</h3><p>Gap Finding แต่ละข้อตอบสนองใน 6 ขั้น: Fix, Find, Prevent, Handle exceptions, Validate และ Sustain Target Tier ของ Category กำหนดจำนวนขั้นที่ใช้ และเอกสารเชื่อมที่ระดับ Gap Finding จากทะเบียนของ Framework Gap Finding แต่ละข้อมี 4 ชั้น: Title, Statement, Supporting facts และ Consequence สถานะราย Subcategory: Strength (ถึงเป้าหมาย มีหลักฐานเป็นเอกสารหรือการสาธิต และความครอบคลุมเพียงพอ) ถึงเป้าหมายแต่มีข้อสังเกต (ความครอบคลุมต่ำ) มีช่องว่าง หรือยังไม่ได้ประเมิน Tier ราย Category ใช้กติกา R4 ของ Tier Rubric คะแนนความเสี่ยงคือ Likelihood คูณ Impact สูงสุด ผลกระทบถ่วงน้ำหนักใช้ตัดสินเมื่อคะแนนเท่ากันเท่านั้น ระดับและการตอบสนองมาจาก Workshop</p>
+<h3>ลำดับงาน</h3><p>งานเดินทางเดียว Reviewer ตรวจ Function ละรอบเดียว สิ่งที่แก้ไม่ได้จะเป็นรายการ verify ให้ผู้ประเมิน เนื้อหาที่ล็อกแล้วแก้ได้เมื่อบันทึกเหตุผลในบันทึกการเปลี่ยนแปลงเท่านั้น</p>
+<h3>การรักษาความลับ</h3><p>Prompt มีหลักฐานของลูกค้า ใช้ตัวเลือกซ่อนชื่อลูกค้า ใช้ Claude plan ที่ไม่นำข้อมูลไป train และแยก Claude Project ต่อลูกค้า</p>
+<h3>ข้อมูลถูกเก็บที่ไหน</h3><p>งานบันทึกอัตโนมัติในเบราว์เซอร์นี้สำหรับไฟล์นี้เท่านั้น กดบันทึกไฟล์หลังทำงานทุกครั้ง</p>`}
+};
+const lsBlank=()=>({r1:null,r2:null,msgs:{},cm:{},vans:{},notes:{},diag:"",facts:null,locked:false,legacy:false,l2:{}});
+const blank=()=>({app:"csf-gap",schema:"csf-gap-state/3",ls:lsBlank(),method:DATA.methodVersion,client:{alias:"",anon:false,sector:"",threat:"",oblig:""},iv:null,ws:null,gt:{},fn:Object.fromEntries(FN.map(f=>[f,{r1:null,rv:null,r2:null,r3:null,dec:{},vans:{},locked:false,msgs:{}}])),x:{p:null,dec:{},locked:false,msgs:null},log:[],updated:null});
+let S=blank(), lang="EN", view="setup", curCat=CATS[0], curFn="GV", storeOK=true, lastSave=null, resetArm=false;
+try{const l=localStorage.getItem("csf-audit-lang");if(l==="TH"||l==="EN")lang=l;}catch(e){}
+try{const raw=localStorage.getItem(KEY);if(raw){const o=JSON.parse(raw);if(o&&o.app==="csf-gap")S=norm(o);}}catch(e){storeOK=false;}
+const IS=i=>i.stage!==undefined?i.stage:i.angle; /* IMP stage tag: key stage from csf-gap-analyst/5, key angle in /4 and older outputs */
+function norm(o){const b=blank();const s=Object.assign(b,o);s.client=Object.assign(blank().client,o.client||{});FN.forEach(f=>{s.fn[f]=Object.assign(blank().fn[f],(o.fn||{})[f]||{});});s.x=Object.assign(blank().x,o.x||{});s.gt=o.gt||{};s.log=o.log||[];s.ls=Object.assign(lsBlank(),o.ls||{});if(o.schema!=="csf-gap-state/2"&&o.schema!=="csf-gap-state/3"){if(FN.some(f=>o.fn&&o.fn[f]&&o.fn[f].r1))s.ls.legacy=true;}s.schema="csf-gap-state/3";return s;}
+const $=id=>document.getElementById(id), t=()=>T[lang], Li=()=>lang==="TH"?1:0;
+const gTitle=g=>g.title||g.statement;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const catNm=c=>M.categories[c][Li()];
+function persist(){S.updated=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(S));lastSave=new Date();storeOK=true;}catch(e){storeOK=false;}renderSavebar();}
+function renderSavebar(){const x=t();$("savebar").textContent=!storeOK?x.noStore:lastSave?`${x.saved} ${lastSave.toLocaleTimeString()}. ${x.notSaved}`:x.notSaved;}
+function toast(m){const e=$("toast");e.textContent=m;e.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>e.hidden=true,2400);}
+function tierChip(v){const k=v===null||v===undefined||v===""?"none":v;return `<span class="tier t${k}">${k==="none"?"-":k}</span>`;}
+function bandChip(b){const x=t();return b?`<span class="band ${b}">${esc(bandName(b))}</span>`:`<span class="band none">-</span>`;}
+function bandName(b){const ws=S.ws;const n={C:"Critical",H:"High",M:"Medium",L:"Low"};return n[b]||b;}
+async function copyText(s){try{await navigator.clipboard.writeText(s);toast(t().toast.copied);}catch(e){const ta=document.createElement("textarea");ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast(t().toast.copied);}catch(er){}ta.remove();}}
+
+/* ---------- XLSX reader (stored or deflated entries, inline or shared strings) ---------- */
+async function inflate(u8){const ds=new DecompressionStream("deflate-raw");const w=ds.writable.getWriter();w.write(u8);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer());}
+async function unzip(buf){const dv=new DataView(buf),u=new Uint8Array(buf);let e=u.length-22;while(e>=0&&dv.getUint32(e,true)!==0x06054b50)e--;if(e<0)throw new Error("zip");
+  const n=dv.getUint16(e+10,true);let p=dv.getUint32(e+16,true);const out={},dec=new TextDecoder();
+  for(let i=0;i<n;i++){const meth=dv.getUint16(p+10,true),csz=dv.getUint32(p+20,true),nl=dv.getUint16(p+28,true),xl=dv.getUint16(p+30,true),cl=dv.getUint16(p+32,true),lo=dv.getUint32(p+42,true);
+    const name=dec.decode(u.subarray(p+46,p+46+nl));p+=46+nl+xl+cl;
+    const lnl=dv.getUint16(lo+26,true),lxl=dv.getUint16(lo+28,true),st=lo+30+lnl+lxl,raw=u.subarray(st,st+csz);
+    out[name]=meth===0?raw:meth===8?await inflate(raw):null;}
+  return out;}
+async function readXlsx(buf){const z=await unzip(buf),dec=new TextDecoder(),xml=k=>z[k]?new DOMParser().parseFromString(dec.decode(z[k]),"application/xml"):null;
+  const ss=[];const sx=xml("xl/sharedStrings.xml");if(sx)[...sx.getElementsByTagName("si")].forEach(si=>ss.push([...si.getElementsByTagName("t")].map(n=>n.textContent).join("")));
+  const wb=xml("xl/workbook.xml"),rels=xml("xl/_rels/workbook.xml.rels");const rmap={};[...rels.getElementsByTagName("Relationship")].forEach(r=>rmap[r.getAttribute("Id")]=r.getAttribute("Target"));
+  const out={};for(const sh of [...wb.getElementsByTagName("sheet")]){const rid=sh.getAttribute("r:id")||sh.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships","id");
+    let tg=rmap[rid];tg=tg.startsWith("/")?tg.slice(1):"xl/"+tg.replace(/^\.\//,"");const d=xml(tg);if(!d)continue;const rows=[];
+    for(const r of [...d.getElementsByTagName("row")]){const row=[];for(const c of [...r.getElementsByTagName("c")]){const ref=c.getAttribute("r")||"";const col=ref.replace(/\d+/g,"").split("").reduce((a,ch)=>a*26+ch.charCodeAt(0)-64,0)-1;
+      const ty=c.getAttribute("t");let v="";if(ty==="inlineStr"){v=[...c.getElementsByTagName("t")].map(n=>n.textContent).join("");}else{const ve=c.getElementsByTagName("v")[0];v=ve?ve.textContent:"";if(ty==="s")v=ss[+v]||"";}
+      row[col<0?row.length:col]=v;}rows.push(Array.from(row,z=>z===undefined?"":z));}
+    out[sh.getAttribute("name")]=rows;}
+  return out;}
+function table(rows){if(!rows||!rows.length)return[];const h=rows[0].map(z=>String(z).trim());return rows.slice(1).filter(r=>r.some(c=>String(c).trim()!=="")).map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]===undefined?"":String(r[i])])));}
+const num=v=>v===""||v==null||v==="N/A"||isNaN(+v)?null:+v;
+const splitIds=v=>String(v||"").split(/[\s,;]+/).map(z=>z.trim()).filter(Boolean);
+
+/* ---------- Interview parse ---------- */
+function parseInterview(sh){const sum=Object.fromEntries((sh["Summary"]||[]).slice(1).map(r=>[r[0],r[1]]));
+  if(!["csf-interview/2","csf-interview/3"].includes(sum["Schema version"]))throw new Error("schema");
+  const iv={meta:{client:sum.Client||"",assessor:sum.Assessor||"",date:sum["Assessment date"]||"",ref:sum["Engagement reference"]||"",scope:sum.Scope||"",schema:sum["Schema version"],rubric:sum["Tier Rubric version"]||""},cats:{},subs:{},tc:[],sys:[],prof:[],smp:[],ven:[],obs:[],dr:{},openReq:[]};
+  table(sh["Category Tiers"]).forEach(r=>iv.cats[r.Category]={cur:num(r["Current Tier"]),tgt:num(r["Target Tier"]),why:r.Justification||"",over:r.Overridden==="Yes"});
+  table(sh["Subcategories"]).forEach(r=>iv.subs[r.ID]={outcome:r.Outcome,stated:r["Stated tier"]==="N/A"?"NA":num(r["Stated tier"]),ev:r["Evidence basis"]||"",counted:r["Counted tier"]==="N/A"?"NA":num(r["Counted tier"]),cl:r["Counted lower"]==="Yes",
+    ref:r["Evidence reference"]||"",notes:r["Interview notes"]||"",gap:r["Gap statement"]||"",req:r["Request status"]||"",docs:splitIds(r["Related documents"]),covApp:r["Coverage-applicable"]==="Yes",cov:r.Coverage||"",covPct:num(r["Coverage %"]),covSrc:r["Coverage source"]||"",ntr:r["Next-tier ready"]==="Yes",obs:splitIds(r["Technical observations"])});
+  table(sh["Evidence Requests"]).forEach(r=>{if(r.Status==="Open")iv.openReq.push(r.ID);});
+  table(sh["Technical Checks"]).forEach(r=>iv.tc.push({id:r.ID,area:r["Technology area"],q:r.Check,s:splitIds(r["CSF Subcategories"]),r:r.Result||"",n:r.Observation||""}));
+  table(sh["Systems (Quick BIA)"]).forEach(r=>iv.sys.push({name:r.System,crit:r.Criticality||r["Suggested criticality"]||"",smp:r.Sampled==="Yes",host:r.Hosting||"",hostCode:r["Hosting code"]||"",svc:r["Business service"]||"",mtd:r["Tolerable downtime"]||"",imp:Object.fromEntries(AREAS.map(a=>[a,num(r[IV_AREA[a]])]))}));
+  table(sh["System Profile"]).forEach(r=>iv.prof.push({sys:r.System,crit:r.Criticality,sec:r.Section,id:r["Field ID"],field:r.Field,ans:r.Answer,code:r["Answer code"]||"",rt:r.Rating,ev:r.Evidence,s:splitIds(r["CSF Subcategories"])}));
+  const sm=sh["System Sampling"]||[];if(sm.length){const h=sm[0];const sysCols=[];for(let i=2;i<h.length;i+=3)sysCols.push({i,name:h[i]});
+    sm.slice(1).forEach(r=>{if(r[0]==="Notes")return;sysCols.forEach(c=>{if(r[c.i])iv.smp.push({ctl:r[0],s:splitIds(r[1]),sys:c.name,v:r[c.i],src:r[c.i+1]||"",ref:r[c.i+2]||""});});});}
+  table(sh["Vendor Profile"]).forEach(r=>iv.ven.push(r));
+  table(sh["Technical Observations"]).forEach(r=>iv.obs.push({id:r.ID,type:r.Type,sys:r.System,desc:r.Description,sev:r.Severity,inet:r["Internet-facing"],s:splitIds(r["Related Subcategories"]),st:r.Status}));
+  table(sh["Document Requests"]).forEach(r=>{if(r["Document ID"])iv.dr[r["Document ID"]]=r.Status;});
+  iv.origin=Object.fromEntries(iv.prof.filter(p=>p.id==="C1").map(p=>[p.sys,p.ans]));
+  iv.sum=sum;iv.env={};table(sh["Environment Profile"]).forEach(r=>iv.env[r.Key]={id:r["Field ID"],field:r.Field,ans:r.Answer,code:r["Answer code"],ev:r.Evidence,note:r.Notes});
+  iv.sites=table(sh["Sites"]);iv.tools=table(sh["Security Tools"]);iv.hist=table(sh["Incident History"]);iv.chg=table(sh["Changes in Flight"]);iv.prior=table(sh["Prior Assessments"]);
+  iv.dept=table(sh["Departments"]);iv.dcf=table(sh["Department Conflicts"]);iv.dcq=table(sh["Department Custom"]);
+  return iv;}
+function parseWorkshop(o){if(!o||!o.targetProfile||!o.likelihoodScale||!o.impactScale)throw new Error("ws");return o;}
+
+/* ---------- derived model ---------- */
+const MAND={cii:"CII",state:"State agency",sensitive:"Sensitive personal data (PDPA)",fin:"Financial regulator",pci:"PCI DSS",ot:"OT"};
+function catInfo(c){const iv=S.iv,ws=S.ws;const ic=(iv&&iv.cats[c])||{},wp=ws&&ws.targetProfile?ws.targetProfile[c]:null;
+  const cur=ic.cur??null,tgt=wp?wp.target:(ic.tgt??null);const gap=cur===null||tgt===null?null:tgt-cur;
+  const st=cur===null?"Not assessed":gap>0?"Gap":gap===0?"Meets target":"Above target";
+  return{c,cur,tgt,gap,st,pr:wp?wp.priority:"",md:wp?(wp.mandated||[]):[],ov:wp&&wp.override?wp.override.reason||"":"",hasWs:!!wp,feas:gap!==null&&gap>=2,why:ic.why||""};}
+function tcFor(s){return S.iv?S.iv.tc.filter(k=>k.s.includes(s)):[];}
+function profFor(s){return S.iv?S.iv.prof.filter(p=>p.s.includes(s)&&p.ans):[];}
+function smpFor(s){return S.iv?S.iv.smp.filter(p=>p.s.includes(s)):[];}
+function subInfo(s){const iv=S.iv;if(!iv||!iv.subs[s])return null;const r=iv.subs[s],ci=catInfo(catOf(s)),tgt=ci.tgt;const cnt=r.counted;
+  const goodEv=r.ev==="Documented"||r.ev==="Demonstrated";const covOk=!r.covApp||["Full","Largely"].includes(r.cov);
+  let st;if(cnt===null||cnt===undefined||cnt==="NA")st="Not Assessed";else if(tgt!==null&&cnt>=tgt)st=goodEv&&covOk?"Strength":"Meets with Observation";else st="Gap";
+  const crit=n=>(iv.sys.find(y=>y.name===n)||{}).crit;
+  const fd=st==="Gap"&&((typeof cnt==="number"&&cnt>=2&&goodEv)||tcFor(s).some(k=>k.r==="Yes")||profFor(s).some(p=>p.rt==="Good"&&crit(p.sys)==="A"));
+  let gt=null;if(st==="Gap"){const docNone=r.docs.some(d=>iv.dr[d]==="Does not exist");const techBad=tcFor(s).some(k=>k.r==="No")||smpFor(s).some(p=>p.v==="No");
+    gt=(fnOf(s)==="GV"||docNone)?"Governance":techBad?"Technology":r.cl?"Evidence":(typeof cnt==="number"&&cnt>=3)?"Measurement":"Process";}
+  const gto=S.gt[s]||"";return Object.assign({},r,{s,st,fd,ntr:r.ntr,gtRule:gt,gt:st==="Gap"?(gto||gt):null,gtOv:!!gto,tgt});}
+function subsOfCat(c){return SUBS.filter(s=>catOf(s)===c);}
+function strengthsComputed(){const out=[];SUBS.forEach(s=>{const i=subInfo(s);if(!i)return;if(i.st==="Strength")out.push({id:"STR-"+s,s,type:"Strength"});else if(i.fd)out.push({id:"STR-"+s,s,type:"Foundation"});});return out;}
+
+/* ---------- current IT landscape (port of Gap-Analysis-Method/tools/landscape_facts.py) ---------- */
+const lsJoin=a=>{a=a.filter(Boolean);return a.length===1?a[0]:a.length?a.slice(0,-1).join(", ")+" and "+a[a.length-1]:"";};
+const plu=(k,w)=>`${k} ${w}${k===1?"":"s"}`;
+const HOSTN={onprem:"on-premises data center",priv:"private cloud or colocation",cloud:"public cloud",saas:"SaaS",vendor:"vendor-hosted",unk:"unknown hosting"};
+const ORIGN={cots:"standard commercial software",cotsc:"customized commercial software",inh:"in-house developed",saas:"SaaS",out:"outsourced custom build"};
+const COVN={full:"Full",part:"Partial",none:"None"},OPN={inh:"In-house",mssp:"MSSP",vend:"Vendor",nobody:"Nobody"},STN={use:"In use",bnd:"Bought, not deployed",plan:"Planned"};
+function mostCommon(a){const m=new Map();a.forEach(v=>m.set(v,(m.get(v)||0)+1));return [...m.entries()].sort((x,y)=>y[1]-x[1]);}
+const lc=v=>String(v||"").toLowerCase();
+function landscapeFacts(){const iv=S.iv;if(!iv)return null;const B={};LSB.forEach(([k])=>B[k]=[]);const add=(b,text,evidence)=>B[b].push({text,evidence});
+  const env=k=>((iv.env||{})[k]||{}).ans||"",pv={};iv.prof.forEach(p=>{(pv[p.sys]=pv[p.sys]||{})[p.id]={code:p.code||"",rt:p.rt||"",ans:p.ans||""};});
+  const crit=Object.fromEntries(iv.sys.map(y=>[y.name,y.crit||""]));const sites=iv.sites||[],tools=iv.tools||[],hist=iv.hist||[],chg=iv.chg||[],prior=iv.prior||[],depts=iv.dept||[],dcf=iv.dcf||[],ven=iv.ven||[],obs=iv.obs||[];
+  const dcode=(d,f)=>String(d[f+" code"]||""),vc=(v,f)=>String(v[f+" code"]||"");
+  if(sites.length){const staff=sites.reduce((a,z)=>a+(num(z.Staff)||0),0);add("B1",`The organization operates ${plu(sites.length,"site")}: ${lsJoin(sites.map(z=>z.Site))}`+(staff?`, with about ${staff} staff.`:"."),sites.map(z=>z.ID));}
+  if(iv.meta.scope)add("B1","Assessment scope: "+iv.meta.scope,["Summary:Scope"]);
+  const ob=S.client.oblig?S.client.oblig.split(/\s*,\s*/).filter(Boolean):[];if(ob.length)add("B1","Obligations recorded for this engagement: "+lsJoin(ob)+".",["ENG:obligations"]);
+  const md=[...new Set(CATS.flatMap(c=>catInfo(c).md))].map(m=>MAND[m]||m);if(md.length)add("B1","Mandates set in the Target Profile Workshop: "+lsJoin(md)+".",["WS:mandates"]);
+  iv.sys.forEach(y=>{if(crit[y.name]==="A")add("B2",`${y.name} supports ${y.svc||"an unnamed service"}, Criticality A, tolerable downtime ${y.mtd||"not stated"}.`,["BIA:"+y.name]);});
+  const cc=mostCommon(iv.sys.map(y=>crit[y.name]||"unrated")),cg=k=>(cc.find(z=>z[0]===k)||[0,0])[1];
+  add("B3",`${plu(iv.sys.length,"system")} listed: ${cg("A")} Criticality A, ${cg("B")} B, ${cg("C")} C`+(cg("unrated")?`, ${cg("unrated")} unrated.`:"."),["POP:systems"]);
+  const oc=mostCommon(iv.sys.map(y=>((pv[y.name]||{}).C1||{}).code||"")).filter(z=>z[0]);if(oc.length)add("B3","Origin: "+lsJoin(oc.map(([k,v])=>`${v} ${ORIGN[k]||k}`))+".",["POP:C1"]);
+  const hc=mostCommon(iv.sys.map(y=>y.hostCode||"")).filter(z=>z[0]);if(hc.length)add("B3","Hosting: "+lsJoin(hc.map(([k,v])=>`${v} ${HOSTN[k]||k}`))+".",["POP:C10"]);
+  const shadow=depts.flatMap(d=>String(d["U1 Systems not on the IT list"]||"").split(",").map(z=>z.trim()).filter(Boolean).map(z=>[d.Department,z]));
+  if(shadow.length)add("B3",`Department interviews found ${shadow.length} ${shadow.length===1?"system or app":"systems or apps"} not on the IT list: `+lsJoin(shadow.map(([dn,z])=>`${z} (${dn})`))+".",[...new Set(shadow.map(([dn])=>"U1:"+dn))].sort());
+  [["dc","Primary data center"],["dr","Disaster recovery site"],["seg","Network segmentation"],["rem","Staff remote access"],["ws","Workstations"],["eol","Workstations on end-of-life operating systems"],["otn","Networked medical devices and OT"],["otp","Medical device and OT network placement"],["bka","Backup architecture"]].forEach(([k,l])=>{if(env(k)!=="")add("B4",`${l}: ${env(k)}.`,["ENV:"+k]);});
+  const exp=Object.keys(pv).filter(n=>(pv[n].C6||{}).code==="direct");if(exp.length)add("B4",`${plu(exp.length,"system")} directly exposed to the internet: ${lsJoin(exp)}.`,exp.map(n=>"C6:"+n));
+  [["C3","Authentication"],["C4","Multi-factor authentication (MFA)"],["C5","Administrator accounts"]].forEach(([fid,l])=>{const c=mostCommon(Object.values(pv).map(f=>(f[fid]||{}).ans||"")).filter(z=>z[0]);if(c.length)add("B5",`${l}: `+lsJoin(c.map(([k,v])=>`${k} (${v})`))+".",["POP:"+fid]);});
+  if(env("shws"))add("B5",`Shared workstations in operational areas: ${env("shws")}.`,["ENV:shws"]);
+  const cred=depts.filter(d=>["some","shared"].includes(dcode(d,"U2")));if(cred.length)add("B5","Departments reporting shared accounts or passwords: "+lsJoin(cred.map(d=>`${d.Department} (${d["U2 Login and password sharing"]||""})`))+".",cred.map(d=>"U2:"+d.Department));
+  const stay=depts.filter(d=>dcode(d,"U3")==="stay").map(d=>d.Department);if(stay.length)add("B5","Shared computers stay logged in all shift in "+lsJoin(stay)+".",stay.map(n=>"U3:"+n));
+  tools.forEach(z=>add("B6",`${z.Capability}: ${z.Product||"no product named"}, coverage ${lc(COVN[z["Coverage code"]]||"not stated")}, operated by ${lc(OPN[z["Operated by code"]]||"not stated")}, ${lc(STN[z["Status code"]]||"status not stated")}.`,[z.ID]));
+  if(ven.length){const vt=mostCommon(ven.map(v=>v[Object.keys(v).find(k=>/^V1 /.test(k)&&!/rating|code/.test(k))]||"")).filter(z=>z[0]);add("B7",`${plu(ven.length,"vendor")} with system or data access: `+lsJoin(vt.map(([k,v])=>`${k} (${v})`))+".",["POP:V1"]);
+    const rem=ven.filter(v=>vc(v,"V2")==="rem").map(v=>v.Vendor);if(rem.length)add("B7",`${plu(rem.length,"vendor")} connect remotely: ${lsJoin(rem)}.`,rem.map(n=>"V2:"+n));
+    const ca=ven.filter(v=>vc(v,"V7")==="A").map(v=>v.Vendor);if(ca.length)add("B7",`Criticality A vendors: ${lsJoin(ca)}.`,ca.map(n=>"V7:"+n));}
+  const spd=Object.keys(pv).filter(n=>(pv[n].C11||{}).code==="spd"),pd=Object.keys(pv).filter(n=>(pv[n].C11||{}).code==="pd");
+  if(spd.length)add("B8",`Sensitive personal data sits in ${plu(spd.length,"system")}: ${lsJoin(spd)}.`,spd.map(n=>"C11:"+n));
+  if(pd.length)add("B8",`Personal data sits in ${plu(pd.length,"more system")}: ${lsJoin(pd)}.`,pd.map(n=>"C11:"+n));
+  const vs=ven.filter(v=>vc(v,"V3")==="spd").map(v=>v.Vendor);if(vs.length)add("B8",`Vendors with access to sensitive personal data: ${lsJoin(vs)}.`,vs.map(n=>"V3:"+n));
+  const pc=depts.filter(d=>dcode(d,"U4")&&dcode(d,"U4")!=="none");if(pc.length)add("B8","Departments that move work data through personal channels: "+lsJoin(pc.map(d=>`${d.Department} (${d["U4 Personal channels for work data"]||""})`))+".",pc.map(d=>"U4:"+d.Department));
+  [["ith","IT headcount"],["secr","Security role"],["outs","Outsourced IT functions"]].forEach(([k,l])=>{if(env(k)!=="")add("B9",`${l}: ${env(k)}.`,["ENV:"+k]);});
+  if(depts.length){const tr=depts.filter(d=>dcode(d,"U6")==="12m");add("B9",`Security training within 12 months: ${tr.length} of ${plu(depts.length,"department")} interviewed.`,["POP:U6"]);}
+  const names=Object.fromEntries(iv.prof.map(p=>[p.id,p.field]));
+  ["C3","C4","C5","C6","C7","C8","C9"].forEach(fid=>{const all=Object.values(pv).map(f=>(f[fid]||{}).rt||"").filter(r=>r&&r!=="Not applicable");if(!all.length)return;const ca=Object.entries(pv).filter(([n])=>crit[n]==="A").map(([,f])=>(f[fid]||{}).rt||"").filter(r=>r&&r!=="Not applicable");const k=(a,r)=>a.filter(z=>z===r).length;
+    add("B10",`${fid} ${names[fid]||fid}: ${k(all,"Good")} Good, ${k(all,"Weak")} Weak, ${k(all,"Poor")} Poor, ${k(all,"Unknown")} Unknown of ${all.length} systems answered`+(ca.length?` (Criticality A: ${k(ca,"Good")} Good of ${ca.length}).`:"."),["POP:"+fid]);});
+  add("B11",`Assessment date ${iv.meta.date||"not stated"}. ${plu(iv.sys.length,"system")} listed, ${iv.sys.filter(y=>y.smp).length} sampled.`,["Summary:Assessment date","POP:systems"]);
+  add("B11",`${plu(iv.prof.filter(p=>p.rt==="Unknown").length,"profile answer")} recorded as Unknown.`,["POP:unknown"]);
+  const vul=obs.filter(o=>o.type==="Vulnerability");if(vul.length)add("B11","Technical observations (vulnerabilities): "+lsJoin(mostCommon(vul.map(o=>o.sev||"Not rated")).map(([k,v])=>`${v} ${k}`))+". Details stay in the Technical Observation Register.",vul.map(o=>o.id));
+  if(depts.length)add("B11",`${plu(depts.length,"department")} interviewed in S2C. ${plu(dcf.length,"answer")} conflict with what IT stated.`,["POP:departments",...dcf.map(c=>c.ID)]);
+  const dk=depts.filter(d=>dcode(d,"U7")==="dk").map(d=>d.Department);if(dk.length)add("B12","Staff do not know how to report a suspicious event in "+lsJoin(dk)+".",dk.map(n=>"U7:"+n));
+  hist.forEach(h=>add("B12",(`${h.Date||"Date not stated"}: ${lc(h.Type||"incident")} affecting ${h["Systems affected"]||"unnamed systems"}. ${h["Business impact"]||""}`).trim().replace(/\.$/,"")+".",[h.ID]));
+  if(S.client.threat&&S.client.threat.trim())add("B12","Threat context recorded by the assessor: "+S.client.threat.trim().replace(/\.$/,"")+".",["ENG:threat"]);
+  chg.forEach(c=>add("B13",`${c.Project}: ${c["Affected systems"]||"no system linked"}, target ${c["Target date"]||"not set"}, ${lc(c.Status||"status not stated")}`+(c["Within 12 months"]==="Yes"?", within 12 months.":"."),[c.ID]));
+  prior.forEach(z=>add("B14",`${z.Type} on ${z.Date||"date not stated"} by ${z["Performed by"]||"not stated"}: ${num(z["Findings open"])??"unknown"} findings open, ${num(z["Findings closed"])??"unknown"} closed.`,[z.ID]));
+  const blocks={};LSB.forEach(([k,n])=>{blocks[k]={name:n,facts:B[k]};const no=(S.ls.notes||{})[k];if(no&&no.trim()){blocks[k].assessorNote=no.trim().slice(0,600);blocks[k].facts.push({text:"Assessor note: "+no.trim(),evidence:["NOTE:"+k]});}});
+  const ivs=iv.sum||{};
+  return{schema:"csf-gap-landscape-facts/1",source:iv.meta.schema,asOf:String(ivs.Exported||new Date().toISOString()).slice(0,10),blocks,
+   securityTools:tools.map(z=>({id:z.ID,capability:z.Capability||"",product:z.Product||"",coverage:COVN[z["Coverage code"]]||"",operatedBy:OPN[z["Operated by code"]]||"",status:STN[z["Status code"]]||"",notes:z.Notes||""})),
+   changesInFlight:chg.map(c=>({id:c.ID,project:c.Project||"",systems:String(c["Affected systems"]||"").split(",").map(z=>z.trim()).filter(Boolean),targetDate:c["Target date"]||"",status:c.Status||"",within12Months:c["Within 12 months"]==="Yes"})),
+   priorAssessments:prior.map(z=>({id:z.ID,type:z.Type||"",date:z.Date||"",performedBy:z["Performed by"]||"",findingsOpen:num(z["Findings open"]),findingsClosed:num(z["Findings closed"])})),
+   incidentHistory:hist.map(h=>({id:h.ID,date:h.Date||"",type:h.Type||"",systems:h["Systems affected"]||"",impact:h["Business impact"]||"",reported:h["Reported to a regulator"]||""})),
+   departmentConflicts:dcf.map(c=>({id:c.ID,department:c.Department||"",type:c["Type code"]||"",detail:c.Detail||"",evidence:String(c.Evidence||"").split(",").map(z=>z.trim()).filter(Boolean)}))};}
+function lsFacts(){return S.ls.locked&&S.ls.facts?S.ls.facts:landscapeFacts();}
+function lsOut(){return S.ls.r2||S.ls.r1;}
+function lsIds(L){const ids=new Set();Object.values(L.blocks).forEach(b=>b.facts.forEach(f=>f.evidence.forEach(e=>ids.add(e))));["securityTools","changesInFlight","priorAssessments","incidentHistory","departmentConflicts"].forEach(k=>(L[k]||[]).forEach(r=>ids.add(r.id)));return ids;}
+function lsRefs(){const m={};LSB.forEach(([b])=>m[b]=[]);FN.forEach(f=>{const o=curOut(f);if(!o)return;o.categories.forEach(c=>c.gapFindings.forEach(g=>{if(finalRisk(f,g).removed)return;(g.landscapeRefs||[]).forEach(b=>{if(m[b]&&!m[b].includes(g.id))m[b].push(g.id);});}));
+  o.improvementActions.forEach(i=>{if(i.changeInFlight)m.B13.push(i.id);if(i.existingTool)m.B6.push(i.id);});});return m;}
+function l2Open(){const r=lsRefs();return LSB.map(([b])=>b).filter(b=>!r[b].length&&!((S.ls.l2||{})[b]||"").trim());}
+function deptFor(s){const iv=S.iv;if(!iv||!iv.dept)return[];const out=[];DFD.filter(f=>f.s.includes(s)).forEach(f=>iv.dept.forEach(d=>{const ans=f.type==="sys"?[d["U1 Systems used"],d["U1 Systems not on the IT list"]].filter(Boolean).join(" | "):d[f.id+" "+f.n[0]];if(ans)out.push({evidenceId:f.id+":"+d.Department,department:d.Department,field:f.n[0],answer:ans,rating:d[f.id+" rating"]||""});}));
+  (iv.dcq||[]).forEach(q=>{if(splitIds(q["CSF Subcategories"]).includes(s))out.push({evidenceId:q["Question ID"]+":"+q.Department,department:q.Department,field:q.Question,answer:q.Answer,rating:q.Rating||""});});return out;}
+const VERDICT=/\b(weak|poor|strong|good|adequate|inadequate|insufficient|immature|mature|lacks?|lacking|fails?|failed|gaps?|risks?|should|must|recommend\w*|needs?)\b/;
+function lsRules(d,round){const err=[],warn=[],L=lsFacts();const pages=d.pages.map(p=>p.page).sort();if(pages.join()!=="1,2,3,4")err.push(`pages must be 1 to 4 once each, found ${pages.join(", ")}`);
+  const bl=d.blockLines.map(b=>b.block);[...new Set(bl)].forEach(b=>{if(bl.filter(z=>z===b).length>1)err.push(`${b}: more than one block line`);});
+  d.pages.forEach(p=>{if(wc(p.title)>12)err.push(`page ${p.page}: title longer than 12 words`);if(wc(p.keyMessage)>35)err.push(`page ${p.page}: key message longer than 35 words`);[["title",p.title],["keyMessage",p.keyMessage]].forEach(([k,v])=>{const m=String(v).match(VERDICT);if(m)err.push(`page ${p.page} ${k}: judgment word "${m[0]}" in a facts-only section`);});});
+  d.blockLines.forEach(b=>{if(wc(b.text)>30)err.push(`${b.block}: block line longer than 30 words`);const m=b.text.match(VERDICT);if(m)err.push(`${b.block}: judgment word "${m[0]}" in a facts-only section`);});
+  if(d.round!==round)err.push(`round is ${d.round}, expected ${round}`);
+  if(L){const ids=lsIds(L);[...d.pages.map(p=>["page "+p.page,p]),...d.blockLines.map(b=>[b.block,b])].forEach(([n,it])=>it.evidence.forEach(e=>{if(!ids.has(e))err.push(`${n}: evidence ${e} is not in the Landscape facts`);}));
+    const empty=Object.entries(L.blocks).filter(([,b])=>!b.facts.length).map(([k])=>k);bl.forEach(b=>{if(empty.includes(b))err.push(`${b}: block line written for a block with no facts`);});
+    if(round===1)empty.forEach(b=>{if(!d.verify.some(v=>v.ref===b))err.push(`${b}: block has no facts and no verify item`);});}
+  return{err,warn};}
+function lsImport(k){const x=t(),txt=($("j-ls"+k)||{}).value||"";let o;try{o=JSON.parse(String(txt).trim().replace(/^```(json)?/,"").replace(/```$/,""));}catch(e){S.ls.msgs[k]={err:["Not valid JSON: "+e.message],warn:[]};persist();renderLand();toast(x.toast.impBad);return;}
+  let err=vjs(SCH["csf-gap-landscape/1"],o),warn=[];if(!err.length){const r=lsRules(o,k==="r1"?1:2);err=err.concat(r.err,styleErrs(o));warn=r.warn;}
+  S.ls.msgs[k]={err,warn};if(!err.length){S.ls[k]=o;if(k==="r1"){S.ls.r2=null;S.ls.msgs.r2=null;}toast(x.toast.imp);}else toast(x.toast.impBad);persist();renderLand();}
+function lsBlockers(){const x=t().ls,o=lsOut(),out=[];if(!o){out.push(x.bNo);return out;}const m=S.ls.msgs[S.ls.r2?"r2":"r1"]||{};if((m.err||[]).length)out.push(x.bErr);if((o.verify||[]).length)out.push(x.bVer+": "+o.verify.length);return out;}
+function lsPrompt(){return fill(P.landscape,{CLIENT_ALIAS:alias(),LANDSCAPE_SCHEMA:J(SCH["csf-gap-landscape/1"]),LANDSCAPE_FACTS_JSON:J(JSON.parse(anonStr(JSON.stringify(lsFacts()))))});}
+function lsFollow(){const o=lsOut()||{},c={comments:[],resolvedVerify:[]};Object.entries(S.ls.cm||{}).forEach(([k,v])=>{if(v&&v.trim())c.comments.push({ref:k,comment:v.trim()});});(o.verify||[]).forEach((v,i)=>{const a=(S.ls.vans||{})[i];if(a&&a.trim())c.resolvedVerify.push({ref:v.ref,question:v.question,answer:a.trim()});});
+  return fill(P.lsFollow,{ASSESSOR_COMMENTS_JSON:J(c)});}
+function lsLocked(){return S.ls.locked&&S.ls.facts?Object.assign({},S.ls.facts,{keyMessages:((lsOut()||{}).pages||[]).map(p=>({page:p.page,keyMessage:p.keyMessage}))}):null;}
+function lsRefHtml(g){if(!g.landscapeRefs)return"";const x=t().ls;return `<span>${x.refs}</span><span class="mono mini">${esc(g.landscapeRefs.join(", "))}${g.repeatFinding&&g.repeatFinding.value?` <span class="flag">${esc(x.repeat)} ${esc(g.repeatFinding.priorRef||"")}</span>`:""}</span>`;}
+function impBadge(i){if(!i)return"";const x=t().ls,a=[];if(i.changeInFlight)a.push(`${x.cif} ${i.changeInFlight.ref} (${i.changeInFlight.appliesTo})`);if(i.existingTool)a.push(`${x.tool} ${i.existingTool}`);return a.length?` <span class="flag info">${esc(a.join(" · "))}</span>`:"";}
+function v3Rules(d,L){const err=[];d.categories.forEach(c=>c.gapFindings.forEach(g=>{const r=g.repeatFinding;if(r.value&&!r.priorRef)err.push(`${g.id}: repeat finding needs a PRIOR ID`);if(!r.value&&r.priorRef)err.push(`${g.id}: priorRef set but repeatFinding is false`);
+    if(L){g.landscapeRefs.forEach(b=>{if(!L.blocks[b])err.push(`${g.id}: Landscape block ${b} is not in the Landscape`);});if(r.priorRef&&!L.priorAssessments.some(z=>z.id===r.priorRef))err.push(`${g.id}: ${r.priorRef} is not in priorAssessments`);}}));
+  if(L){const tools=Object.fromEntries(L.securityTools.map(z=>[z.id,z])),chg=new Set(L.changesInFlight.map(c=>c.id)),soon=L.changesInFlight.filter(c=>c.within12Months);
+    d.improvementActions.forEach(i=>{const hit=soon.filter(c=>c.systems.some(z=>i.systems.includes(z))).map(c=>c.id);if(hit.length&&!i.changeInFlight)err.push(`${i.id}: names a system in ${hit.join(", ")} (within 12 months) but changeInFlight is null`);
+      if(i.changeInFlight&&!chg.has(i.changeInFlight.ref))err.push(`${i.id}: ${i.changeInFlight.ref} is not in changesInFlight`);const tl=i.existingTool;if(tl&&!tools[tl])err.push(`${i.id}: ${tl} is not in securityTools`);else if(tl&&tools[tl].status==="Bought, not deployed"&&!/^Deploy/.test(i.action))err.push(`${i.id}: ${tl} is bought but not deployed, so the action must start with Deploy`);});}
+  return err;}
+function renderLand(){const x=t(),X=x.ls,L=Li();if(!S.iv){$("v-land").innerHTML=`<div class="callout ok">${x.ivNone}</div>`;return;}
+  const F=lsFacts(),o=lsOut(),lk=S.ls.locked,refs=lsRefs(),dis=lk?" disabled":"";const nF=Object.values(F.blocks).reduce((a,b)=>a+b.facts.length,0),nB=Object.values(F.blocks).filter(b=>b.facts.length).length,nR=LSB.filter(([b])=>refs[b].length).length;
+  const lines=Object.fromEntries(((o||{}).blockLines||[]).map(b=>[b.block,b]));const pg=Object.fromEntries(((o||{}).pages||[]).map(p=>[p.page,p]));const bl=lsBlockers();
+  const imp=k=>lk?"":`<textarea class="json" id="j-ls${k}" placeholder="${esc(x.phJson)}"></textarea><button class="btn sm pri" data-lsimp="${k}">${x.importJson}</button>${msgList(S.ls.msgs[k])}`;
+  const ver=o&&(o.verify||[]).length&&!lk?`<h3>${X.verifyT}</h3>${o.verify.map((v,i)=>`<div class="vrow" style="margin:6px 0"><span class="mini"><span class="mono">${esc(v.ref)}</span> ${esc(v.question)}</span><input type="text" data-lsvans="${i}" value="${esc((S.ls.vans||{})[i]||"")}" placeholder="${esc(X.phVans)}" style="width:100%"></div>`).join("")}`:"";
+  const steps=`<div class="steps">${stepBox(1,X.s1,!o,!!o,`<button class="btn sm" data-lscp="p">${X.copy}</button>${!o||!S.ls.r2?imp("r1"):msgList(S.ls.msgs.r1)}`)}
+   ${stepBox(2,X.s2,!!o&&!lk&&bl.length>0,!!S.ls.r2||lk,o?`<button class="btn sm" data-lscp="f">${X.copyF}</button>${ver}${imp("r2")}`:"")}
+   ${stepBox(3,X.s3,!!o&&!bl.length&&!lk,lk,lk?`<span class="stage lk">${X.locked}</span><input type="text" id="unl-ls" placeholder="${esc(X.phUnlock)}"><button class="btn sm danger" id="b-lsunlock">${X.unlockB}</button>`:`<span class="mini">${X.needs}</span>${bl.length?`<ul class="msgs">${bl.map(b=>`<li class="warn">${esc(b)}</li>`).join("")}</ul>`:""}<button class="btn sm pri" id="b-lslock"${bl.length?" disabled":""}>${X.lockB}</button>`)}</div>`;
+  const blk=b=>{const f=F.blocks[b],r=refs[b],ln=lines[b];return `<div class="lsblk"><h3><span class="mono">${b}</span> ${esc(X.b[b])}</h3>${ln?`<div class="line">${esc(ln.text)}</div>`:""}
+    ${f.facts.length?`<ul>${f.facts.map(z=>`<li>${esc(z.text)} <span class="mono mini">${esc(z.evidence.join(", "))}</span></li>`).join("")}</ul>`:`<p class="mini" style="color:var(--warn)">${X.noFacts}</p>`}
+    ${b==="B4"?`<div class="lsdiag"><b class="mini">${X.diag}</b> ${lk?"":`<button class="btn sm" id="b-diag">${X.diagUp}</button>${S.ls.diag?` <button class="btn sm danger" id="b-diagrm">${X.diagRm}</button>`:""}`}${S.ls.diag?`<img src="${S.ls.diag}" alt="${esc(X.diag)}">`:""}</div>`:""}
+    <label class="mini" for="lsn-${b}">${X.note}</label><textarea id="lsn-${b}" data-lsnote="${b}" placeholder="${esc(X.phNote)}"${dis}>${esc((S.ls.notes||{})[b]||"")}</textarea>
+    ${o&&!lk?`<label class="mini" for="lsc-${b}">${X.cm}</label><textarea id="lsc-${b}" data-lscm="${b}" placeholder="${esc(X.phCm)}">${esc((S.ls.cm||{})[b]||"")}</textarea>`:""}
+    <div class="refs${r.length?"":" none"}">${r.length?X.refBy+": "+esc(r.join(", ")):X.refNone}</div></div>`;};
+  const pages=LSP.map(z=>{const p=pg[z.p];return `<div class="lspage"><div class="ph"><h2>${z.p}. ${esc(X.pages[z.p])}</h2>${p?`<div class="km">${esc(p.title)}</div><div class="kmx">${esc(p.keyMessage)} <span class="mono mini">${esc(p.evidence.join(", "))}</span></div>`:""}
+    ${o&&!lk?`<label class="mini" for="lsc-P${z.p}">${X.cm}</label><textarea id="lsc-P${z.p}" data-lscm="P${z.p}" placeholder="${esc(X.phCm)}" style="width:100%">${esc((S.ls.cm||{})["P"+z.p]||"")}</textarea>`:""}</div>${z.b.map(blk).join("")}</div>`;}).join("");
+  $("v-land").innerHTML=`<p class="hint">${X.hint}</p>${S.iv.meta.schema==="csf-interview/2"?`<div class="callout">${X.ivOld}</div>`:""}
+   <div class="kpis"><div class="kpi box"><b>${nF}</b><span>${X.k.facts}</span></div><div class="kpi box${nB<14?" warn":""}"><b>${nB} / 14</b><span>${X.k.blocks}</span></div><div class="kpi box${(F.departmentConflicts||[]).length?" bad":""}"><b>${(F.departmentConflicts||[]).length}</b><span>${X.k.dcf}</span></div><div class="kpi box"><b>${nR} / 14</b><span>${X.k.ref}</span></div></div>
+   <div class="box pad"><h2>${X.st0}</h2>${steps}</div>${pages}`;}
+function l2Box(){const x=t(),X=x.ls,r=lsRefs(),open=l2Open();
+  return `<div class="box pad" style="margin-top:12px"><h2>${X.l2T}</h2><p class="hint">${X.l2H}</p>${!open.length?`<p class="mini" style="color:var(--ok)">${X.l2Ok}</p>`:""}<div class="scroll"><table class="t"><tbody>${LSB.map(([b])=>`<tr><td class="mono">${b}</td><td>${esc(X.b[b])}</td><td class="mono mini">${esc(r[b].join(", "))}</td><td>${r[b].length?"":`<input type="text" data-lsl2="${b}" value="${esc((S.ls.l2||{})[b]||"")}" placeholder="${esc(X.phL2)}" style="width:100%;min-width:220px">`}</td></tr>`).join("")}</tbody></table></div></div>`;}
+
+/* ---------- risk ---------- */
+function weights(){const w={};AREAS.forEach(a=>w[a]=S.ws&&S.ws.impactWeights&&S.ws.impactWeights[a]?(S.ws.impactWeights[a].normalized??(S.ws.impactWeights[a].percent||0)/100):1/6);return w;}
+function bandOf(score){const th=(S.ws&&S.ws.bandThresholds)||{M:5,H:10,C:20};return score>=th.C?"C":score>=th.H?"H":score>=th.M?"M":"L";}
+function curOut(f){const F=S.fn[f];return F.r3||F.r2||F.r1;}
+function finalRisk(f,g){const d=(S.fn[f].dec||{})[g.id]||{};const L=d.L!==undefined&&d.L!==""?+d.L:g.likelihood.value;const I={};AREAS.forEach(a=>{const v=d.I&&d.I[a]!==undefined&&d.I[a]!==""?(d.I[a]==="na"?null:+d.I[a]):g.impact[a].value;I[a]=v;});
+  const xc=calibOverride(g.id);const Lf=xc!==null?xc:L;
+  const vals=AREAS.map(a=>I[a]).filter(v=>v!==null&&v!==undefined);const mx=vals.length?Math.max(...vals):null;const w=weights();
+  const score=Lf&&mx?Lf*mx:null;const wi=+(AREAS.reduce((s,a)=>s+(I[a]||0)*w[a],0)).toFixed(2);
+  return{L:Lf,I,mx,score,band:score?bandOf(score):null,wi,conf:!!d.ok,removed:!!d.rm};}
+function calibOverride(gid){const x=S.x;if(!x.p)return null;for(const p of x.p.proposals||[]){if(p.type==="Calibration"&&x.dec[p.id]==="accept"&&p.targets.includes(gid)&&p.change&&p.change.suggestedLikelihood)return p.change.suggestedLikelihood;}return null;}
+function allFindings(){const out=[];FN.forEach(f=>{const o=curOut(f);if(!o)return;o.categories.forEach(c=>c.gapFindings.forEach(g=>{const r=finalRisk(f,g);if(r.removed)return;const ci=catInfo(c.categoryId);out.push({f,c:c.categoryId,g,r,md:ci.md.length>0});}));});
+  out.sort((a,b)=>(BAND_ORDER[a.r.band]??9)-(BAND_ORDER[b.r.band]??9)||(b.md-a.md)||((b.r.score||0)-(a.r.score||0))||(b.r.wi-a.r.wi));return out;}
+function allImps(){let imps=[];FN.forEach(f=>{const o=curOut(f);if(o)imps=imps.concat(o.improvementActions.map(i=>Object.assign({},i,{linkedGaps:[...i.linkedGaps],f})));});
+  const x=S.x;if(x.p)(x.p.proposals||[]).forEach(p=>{if(x.dec[p.id]!=="accept"||!p.change)return;const ch=p.change;
+    if(p.type==="MergeIMP"&&ch.keepImp){const keep=imps.find(i=>i.id===ch.keepImp);const rm=ch.removeImps||[];if(keep){rm.forEach(id=>{const o=imps.find(i=>i.id===id);if(o)o.linkedGaps.forEach(gl=>{if(!keep.linkedGaps.includes(gl))keep.linkedGaps.push(gl);});});(ch.affectedGaps||[]).forEach(gl=>{if(!keep.linkedGaps.includes(gl))keep.linkedGaps.push(gl);});if(ch.mergedAction)keep.action=ch.mergedAction;}imps=imps.filter(i=>!rm.includes(i.id));}
+    if(p.type==="MissingLink")(ch.addLinks||[]).forEach(l=>{const i=imps.find(z=>z.id===l.imp);if(i&&!i.linkedGaps.includes(l.gap))i.linkedGaps.push(l.gap);});});
+  return imps;}
+function quickWin(fd){const imps=allImps().filter(i=>i.linkedGaps.includes(fd.g.id));const ntr=fd.g.linkedSubcategories.some(s=>(subInfo(s)||{}).ntr);return (fd.r.band==="C"||fd.r.band==="H")&&(ntr||imps.some(i=>i.buildsOn&&i.buildsOn.length));}
+function systemic(){const out=[];const cnt={};FN.forEach(f=>{const o=curOut(f);if(!o)return;o.categories.forEach(c=>c.gapFindings.forEach(g=>g.rootCause.forEach(rc=>{(cnt[rc]=cnt[rc]||{cats:new Set(),fns:new Set(),gaps:[]});cnt[rc].cats.add(c.categoryId);cnt[rc].fns.add(f);cnt[rc].gaps.push(g.id);})));});
+  Object.entries(cnt).forEach(([rc,v])=>{if(v.cats.size>=3&&v.fns.size>=2)out.push({rc,gaps:v.gaps,stmt:"",src:"rule"});});
+  const x=S.x;if(x.p)(x.p.proposals||[]).forEach(p=>{if(p.type==="SystemicRootCause"&&x.dec[p.id]==="accept"&&p.change){const e=out.find(o=>o.rc===p.change.systemicCause);if(e){e.stmt=p.change.systemicStatement||"";e.src="Reviewer 2";}else out.push({rc:p.change.systemicCause,gaps:p.change.affectedGaps||[],stmt:p.change.systemicStatement||"",src:"Reviewer 2"});}});
+  return out;}
+
+/* ---------- JSON schema subset validator ---------- */
+function vjs(schema,data){const errs=[];const root=schema;
+  const res=s=>{if(s&&s.$ref){const k=s.$ref.replace("#/$defs/","");return root.$defs[k];}return s;};
+  const tp=v=>v===null?"null":Array.isArray(v)?"array":Number.isInteger(v)?"integer":typeof v;
+  function chk(s,v,p){s=res(s);if(!s)return;if(s.$ref)s=res(s);
+    if(s.const!==undefined&&v!==s.const){errs.push(`${p}: must be ${JSON.stringify(s.const)}`);return;}
+    if(s.enum&&!s.enum.includes(v)){errs.push(`${p}: ${JSON.stringify(v)} is not one of ${s.enum.join(", ")}`);return;}
+    if(s.type){const ts=[].concat(s.type),vt=tp(v);if(!ts.some(z=>z===vt||(z==="number"&&(vt==="integer"||vt==="number"))||(z==="integer"&&vt==="integer"))){errs.push(`${p}: expected ${ts.join(" or ")}`);return;}}
+    if(typeof v==="string"){if(s.minLength&&v.length<s.minLength)errs.push(`${p}: too short`);if(s.maxLength&&v.length>s.maxLength)errs.push(`${p}: longer than ${s.maxLength} characters`);if(s.pattern&&!new RegExp(s.pattern).test(v))errs.push(`${p}: "${v}" does not match ${s.pattern}`);}
+    if(typeof v==="number"){if(s.minimum!==undefined&&v<s.minimum)errs.push(`${p}: below ${s.minimum}`);if(s.maximum!==undefined&&v>s.maximum)errs.push(`${p}: above ${s.maximum}`);}
+    if(Array.isArray(v)){if(s.minItems&&v.length<s.minItems)errs.push(`${p}: needs at least ${s.minItems} item(s)`);if(s.maxItems&&v.length>s.maxItems)errs.push(`${p}: at most ${s.maxItems} item(s)`);if(s.uniqueItems&&new Set(v.map(z=>JSON.stringify(z))).size!==v.length)errs.push(`${p}: duplicate items`);if(s.items)v.forEach((z,i)=>chk(s.items,z,`${p}[${i}]`));}
+    if(v&&typeof v==="object"&&!Array.isArray(v)){(s.required||[]).forEach(k=>{if(!(k in v))errs.push(`${p}: missing ${k}`);});const props=s.properties||{};
+      Object.keys(v).forEach(k=>{if(props[k])chk(props[k],v[k],`${p}.${k}`);else if(s.additionalProperties===false)errs.push(`${p}: field "${k}" is not allowed`);});}}
+  chk(root,data,"$");return errs;}
+const BANNED=/\b(estate|posture|uplift|leverag(e|es|ed|ing)|artifacts?|artefacts?|ideate|operationali[sz]e)\b/i, UKS=/\b(organis|prioritis|minimis|optimis|behaviour|colour|centre|licence)/i;
+function styleErrs(o){const out=[];(function walk(v,p){if(typeof v==="string"){if(/[–—]/.test(v))out.push(`${p}: dash character`);if(v.includes(";"))out.push(`${p}: semicolon`);if(v.includes("!"))out.push(`${p}: exclamation mark`);const m=v.match(BANNED);if(m)out.push(`${p}: banned word "${m[0]}"`);const u=v.match(UKS);if(u)out.push(`${p}: British spelling "${u[0]}"`);}else if(Array.isArray(v))v.forEach((z,i)=>walk(z,`${p}[${i}]`));else if(v&&typeof v==="object")Object.entries(v).forEach(([k,z])=>walk(z,`${p}.${k}`));})(o,"$");return out;}
+const wc=s=>String(s||"").trim().split(/\s+/).filter(Boolean).length;
+function layerRules(g,err,warn){if(wc(g.title)>12)warn.push(`${g.id}: title longer than 12 words`);if(wc(g.statement)>35)warn.push(`${g.id}: statement longer than 35 words`);if(wc(g.consequence)>35)warn.push(`${g.id}: consequence longer than 35 words`);
+  (g.supportingFacts||[]).forEach((f,n)=>{if(wc(f.fact)>25)warn.push(`${g.id}: supporting fact ${n+1} longer than 25 words`);f.evidence.forEach(e=>{if(!g.evidence.includes(e))err.push(`${g.id}: supporting fact ${n+1} cites ${e}, which is not in the finding evidence`);});});}
+function factsHtml(g){return (g.supportingFacts||[]).length?`<ul class="facts">${g.supportingFacts.map(f=>`<li>${esc(f.fact)} <span class="mono mini">${esc(f.evidence.join(", "))}</span></li>`).join("")}</ul>`:"";}
+function analystRules(d,fnId){const err=[],warn=[];if(d.function!==fnId)err.push(`function is ${d.function}, expected ${fnId}`);const imps=Object.fromEntries(d.improvementActions.map(i=>[i.id,i]));const gaps={};
+  d.categories.forEach(c=>{if(!c.categoryId.startsWith(fnId+"."))err.push(`${c.categoryId}: outside Function ${fnId}`);
+    const sInfo=subsOfCat(c.categoryId).map(subInfo).filter(Boolean);const marked=new Set(sInfo.filter(i=>i.st==="Strength"||i.fd).map(i=>"STR-"+i.s));
+    c.strengths.forEach(z=>{if(!z.id.startsWith("STR-"+c.categoryId+"-"))err.push(`${z.id}: does not match ${c.categoryId}`);else if(!marked.has(z.id))err.push(`${z.id}: the HTML did not mark this Subcategory as Strength or Foundation`);});
+    const linked=new Set();c.gapFindings.forEach(g=>{gaps[g.id]=g;if(g.title!==undefined)layerRules(g,err,warn);g.linkedSubcategories.forEach(s=>linked.add(s));if(!g.id.startsWith("GAP-"+c.categoryId+"-"))err.push(`${g.id}: does not match ${c.categoryId}`);
+      if(g.basis==="Observed"&&g.confidence!==null)err.push(`${g.id}: Observed must have confidence null`);if(g.basis==="Inferred"&&g.confidence===null)err.push(`${g.id}: Inferred needs a confidence`);
+      if(g.confidence==="Low"&&g.likelihood.value!==null)err.push(`${g.id}: Low confidence must have no Likelihood`);if(g.likelihood.value!==null&&!g.likelihood.anchor)err.push(`${g.id}: Likelihood needs an anchor`);
+      if(g.likelihood.anchor&&g.likelihood.value!==null&&+g.likelihood.anchor[1]!==g.likelihood.value)err.push(`${g.id}: anchor ${g.likelihood.anchor} does not match Likelihood ${g.likelihood.value}`);
+      g.linkedSubcategories.forEach(s=>{if(!s.startsWith(c.categoryId+"-"))err.push(`${g.id}: ${s} is outside the Category`);});
+      (g.responses.stageStatus?STG:STG.slice(0,4)).forEach(a=>{if(!g.responses.stageStatus&&!g.responses[a].length&&!(g.responses.notApplicable||{})[a])err.push(`${g.id}: stage ${a} is empty without a reason`);g.responses[a].forEach(i=>{if(!imps[i])err.push(`${g.id}: ${i} is not in improvementActions`);else if(!imps[i].linkedGaps.includes(g.id))err.push(`${g.id}: ${i} does not list this finding`);});});});
+    sInfo.filter(i=>i.st==="Gap").forEach(i=>{if(!linked.has(i.s))warn.push(`${i.s}: status Gap but no Gap Finding links it`);});});
+  const cats=new Set(d.categories.map(c=>c.categoryId));CATS.filter(c=>c.startsWith(fnId+".")).forEach(c=>{if(!cats.has(c)&&subsOfCat(c).some(s=>(subInfo(s)||{}).st==="Gap"))warn.push(`${c}: Category with gaps is missing from the output`);});
+  const seen={};Object.values(imps).forEach(i=>{i.linkedGaps.forEach(g=>{if(!gaps[g])err.push(`${i.id}: linked gap ${g} is not in this output`);});(i.prerequisites||[]).forEach(p=>{if(!imps[p])err.push(`${i.id}: prerequisite ${p} not found`);});const k=i.action.trim().toLowerCase();if(seen[k])err.push(`${i.id}: duplicates ${seen[k]}`);seen[k]=i.id;});
+  return{err,warn};}
+function validateReply(kind,fnId,txt){let o;try{o=JSON.parse(String(txt).trim().replace(/^```(json)?/,"").replace(/```$/,""));}catch(e){return{ok:false,err:["Not valid JSON: "+e.message],warn:[]};}
+  const sid=kind==="an"?(o&&["csf-gap-analyst/1","csf-gap-analyst/2","csf-gap-analyst/3","csf-gap-analyst/4"].includes(o.schema)?o.schema:"csf-gap-analyst/5"):kind==="rv"?(o&&o.schema==="csf-gap-review/1"?"csf-gap-review/1":"csf-gap-review/2"):"csf-gap-xreview/1";let err=vjs(SCH[sid],o),warn=[];
+  if(!err.length){if(kind==="an"){const r=analystRules(o,fnId);err=err.concat(r.err);warn=r.warn;if(sid==="csf-gap-analyst/4"||sid==="csf-gap-analyst/5")err=err.concat(v4Rules(o));if(sid==="csf-gap-analyst/3"||sid==="csf-gap-analyst/4"||sid==="csf-gap-analyst/5")err=err.concat(v3Rules(o,S.ls.locked?S.ls.facts:null));}if(kind==="rv"&&o.function!==fnId)err.push(`function is ${o.function}, expected ${fnId}`);err=err.concat(styleErrs(o));}
+  return{ok:!err.length,err,warn,o};}
+
+/* ---------- prompt builders ---------- */
+function alias(){return S.client.anon?(S.client.alias||"Client A"):(S.iv?S.iv.meta.client:"");}
+function anonStr(s){if(!S.client.anon||!S.iv||!S.iv.meta.client)return s;const nm=S.iv.meta.client.replace(/^Sample:\s*/,"").replace(/\s*\(fictional\)/,"");return s.split(S.iv.meta.client).join(alias()).split(nm).join(alias());}
+function riskSubset(){const w=S.ws||{};return{likelihoodScale:w.likelihoodScale,impactScale:w.impactScale,bandThresholds:w.bandThresholds,appetiteBand:w.appetiteBand,levelNames:w.levelNames};}
+function inputPack(f){const iv=S.iv,L=0;const cats=CATS.filter(c=>c.startsWith(f+".")).map(c=>{const ci=catInfo(c);const subs=subsOfCat(c).map(subInfo).filter(Boolean);
+  return{id:c,name:M.categories[c][0],currentTier:ci.cur,targetTier:ci.tgt,status:ci.st,priority:({H:"High",M:"Medium",L:"Low"})[ci.pr]||"Medium",mandates:ci.md.map(m=>MAND[m]||m),override:ci.ov||null,
+   tierDelta:{current:ci.cur===null?"":RUB[c][String(ci.cur)][0],target:ci.tgt===null?"":RUB[c][String(ci.tgt)][0]},
+   dataQuality:{notAssessed:subs.filter(i=>i.st==="Not Assessed").map(i=>i.s),countedLower:subs.filter(i=>i.cl).map(i=>i.s),openRequests:subs.filter(i=>iv.openReq.includes(i.s)).map(i=>i.s)},
+   subcategories:subs.map(i=>({id:i.s,outcome:i.outcome,status:i.st,foundation:!!i.fd,nextTierReady:!!i.ntr,gapType:i.gt,statedTier:typeof i.stated==="number"?i.stated:null,countedTier:typeof i.counted==="number"?i.counted:null,evidenceBasis:i.ev||null,
+     coverage:i.covApp?{band:i.cov,percent:i.covPct,source:i.covSrc}:null,notes:i.notes,assessorGapNote:i.gap,evidenceRefs:i.ref,
+     technicalChecks:tcFor(i.s).map(k=>({id:k.id,check:k.q,result:k.r,observation:k.n})),sampling:smpFor(i.s).map(p=>({evidenceId:p.ctl,system:p.sys,value:p.v,source:p.src,evidence:p.ref})),
+     profileResults:profFor(i.s).map(p=>({evidenceId:p.id+":"+p.sys,field:p.field,system:p.sys,criticality:p.crit,answer:p.ans,rating:p.rt,evidence:p.ev})),
+     departmentResults:deptFor(i.s),documents:i.docs.map(d=>({id:d,title:(DOCM[d]||{}).en||"",level:(DOCM[d]||{}).level||"",requestStatus:iv.dr[d]||""})),observations:i.obs}))};});
+  const lsL=lsLocked();const pack={schema:lsL?"csf-gap-input/2":"csf-gap-input/1",methodVersion:DATA.methodVersion,rubricVersion:DATA.rubricVersion,engagement:{clientAlias:alias(),sector:S.client.sector,scope:iv.meta.scope,assessmentDate:iv.meta.date,obligations:S.client.oblig?S.client.oblig.split(/\s*,\s*/).filter(Boolean):[],threatContext:S.client.threat},
+   function:f,riskCriteria:riskSubset(),categories:cats,
+   systems:iv.sys.map(y=>({name:y.name,criticality:y.crit,sampled:y.smp,origin:iv.origin[y.name]||"",hosting:y.hostCode||y.host||"",dataHeld:(iv.prof.find(p=>p.sys===y.name&&p.id==="C11")||{}).ans||"",impact:y.imp})),vendors:iv.ven,observations:iv.obs.filter(o=>o.type!=="Incident indicator").map(o=>({id:o.id,system:o.sys,description:o.desc,severity:o.sev,internetFacing:o.inet,subcategories:o.s}))};
+  if(lsL){pack.landscape=lsL;pack.documentRegister=Object.entries(DOCM).map(([id,d])=>({id,title:d.en,hierarchy:d.tier,type:d.type,level:d.level}));}
+  return JSON.parse(anonStr(JSON.stringify(pack)));}
+const J=o=>JSON.stringify(o,null,1);
+function fill(tpl,map){return tpl.replace(/\{\{([A-Z_]+)\}\}/g,(m,k)=>map[k]!==undefined?map[k]:m);}
+function analystPrompt(f){return fill(P.analyst,{FUNCTION_ID:f,FUNCTION_NAME:M.functions[f][0],CLIENT_ALIAS:alias(),FUNCTION_CONTEXT:P.fnContext[f],CALIBRATION_ANCHORS:P.anchors,RISK_CRITERIA_JSON:J(riskSubset()),OUTPUT_SCHEMA:J(SCH["csf-gap-analyst/5"]),INPUT_JSON:J(inputPack(f))});}
+function reviewerPrompt(f){return fill(P.reviewer,{REVIEW_SCHEMA:J(SCH["csf-gap-review/2"]),CALIBRATION_ANCHORS:P.anchors,INPUT_JSON:J(inputPack(f)),ANALYST_DRAFT_JSON:J(S.fn[f].r1)});}
+function follow1(f){return fill(P.follow1,{REVIEWER_FEEDBACK_JSON:J(S.fn[f].rv)});}
+function decisionsJson(f){const F=S.fn[f],o=F.r2||F.r1;const dec={schema:"csf-gap-decisions/1",function:f,resolvedVerify:[],decisions:[],comments:[]};
+  (o.verify||[]).forEach((v,i)=>{const a=(F.vans||{})[i];if(a&&a.trim())dec.resolvedVerify.push({ref:v.ref,question:v.question,answer:a.trim()});});
+  o.categories.forEach(c=>c.gapFindings.forEach(g=>{const d=(F.dec||{})[g.id]||{};if(d.rm){dec.decisions.push({ref:g.id,field:"remove",value:true,reason:d.cm||""});return;}
+    if(d.L!==undefined&&d.L!==""&&+d.L!==g.likelihood.value)dec.decisions.push({ref:g.id,field:"likelihood",value:+d.L});
+    AREAS.forEach(a=>{if(d.I&&d.I[a]!==undefined&&d.I[a]!==""){const v=d.I[a]==="na"?null:+d.I[a];if(v!==g.impact[a].value)dec.decisions.push({ref:g.id,field:"impact."+a,value:v});}});
+    if(d.cm&&d.cm.trim())dec.comments.push({ref:g.id,comment:d.cm.trim()});}));return dec;}
+function follow2(f){return fill(P.follow2,{ASSESSOR_DECISIONS_JSON:J(decisionsJson(f))});}
+function xPrompt(){const locked={};FN.forEach(f=>{if(!curOut(f))return;const o=JSON.parse(JSON.stringify(curOut(f)));o.categories.forEach(c=>c.gapFindings.forEach(g=>{const r=finalRisk(f,g);g.likelihood.value=r.L;AREAS.forEach(a=>g.impact[a].value=r.I[a]);}));locked[f]=o;});
+  return fill(P.xreview,{LANDSCAPE_JSON:J(JSON.parse(anonStr(JSON.stringify(lsLocked()||{})))),XREVIEW_SCHEMA:J(SCH["csf-gap-xreview/1"]),LOCKED_FUNCTIONS_JSON:J({client:alias(),functions:locked})});}
+function stageOf(f){const F=S.fn[f];return F.locked?"lk":F.r3?"r3":F.r2?"r2":F.rv?"rv":F.r1?"r1":"none";}
+function lockBlockers(f){const F=S.fn[f],x=t(),out=[];if(!F.r3){out.push(x.stageN.r3);return out;}const m=F.msgs.r3||{};if((m.err||[]).length||(m.warn||[]).length)out.push(x.errors+" / "+x.warnings);if((F.r3.verify||[]).length)out.push(x.verifyT);
+  F.r3.categories.forEach(c=>c.gapFindings.forEach(g=>{const d=(F.dec||{})[g.id]||{};if(!d.ok&&!d.rm)out.push(g.id+": "+x.conf);const r=finalRisk(f,g);if(!d.rm&&(r.L===null&&g.confidence!=="Low"))out.push(g.id+": "+x.Lq);}));return out;}
+
+/* ---------- v1.2: six stages, documents, Tier spider chart, side card, definitions ---------- */
+const STG=["fix","find","prevent","exceptions","validate","sustain"];
+const STAGE_ANGLE={fix:"Fix",find:"Find",prevent:"Prevent",exceptions:"Handle exceptions",validate:"Validate",sustain:"Sustain"};
+const FNCOL={GV:"#2f6db5",ID:"#1f8a70",PR:"#7a4fb5",DE:"#c46a1a",RS:"#b8453a",RC:"#5b6770"};
+const EXSET=["GV-PRC-003","GV-FRM-004","GV-REG-004","GV-FRM-001"];
+function stgStatus(g,a){const r=g.responses;if(r.stageStatus)return r.stageStatus[a];if(a==="validate"||a==="sustain")return"Not assessed";return(r[a]||[]).length?"Required":"Not applicable";}
+function stgIds(g,a){return g.responses[a]||[];}
+function stgCls(s){return s==="Required"?"req":s==="In place"?"inp":s==="Beyond Target Tier"?"bey":s==="Not assessed"?"nas":"nap";}
+function stgBadge(s){const x=t();return `<span class="stage ${s==="Required"?"s3":s==="In place"?"lk":""}">${esc(x.stN[s])}</span>`;}
+function flowHtml(g){const x=t();return `<div class="flow" role="list" aria-label="${esc(x.flowT)}">${STG.map((a,n)=>{const s=stgStatus(g,a),ids=stgIds(g,a),why=(g.responses.notApplicable||{})[a]||"";const sub=s==="Required"?x.nAct(ids.length):x.stN[s];return `<div class="chev ${stgCls(s)}" role="listitem" title="${esc(x.angles[a]+": "+x.stN[s]+(why?". "+why:""))}"><b>${n+1} ${esc(x.angles[a])}</b><span>${esc(sub)}</span></div>`;}).join("")}</div>`;}
+function flowText(g){const x=t();return STG.map(a=>{const s=stgStatus(g,a);return `${x.angles[a]}: ${s==="Required"?x.nAct(stgIds(g,a).length):x.stN[s]}`;}).join(" | ");}
+function docStatus(id,ai){const q=((S.iv||{}).dr||{})[id];return q==="Received"?"Exists":q==="Does not exist"?"Missing":(ai||"Not verified");}
+function docsHtml(g){const x=t();if(!g.documents)return `<p class="mini">${x.noDocsOld}</p>`;const ds=g.documents,gp=g.documentGaps||[];
+  const rows=ds.map(d=>{const m=DOCM[d.id]||{};return `<tr><td class="mono">${esc(d.id)}</td><td>${esc(m.en||"")}</td><td class="mini">${esc(m.tier?x.hl[m.tier]:"")}</td><td class="mini">${esc(m.level||"")}</td><td>${esc(x.docSt[docStatus(d.id,d.status)])}</td></tr>`;}).join("");
+  return `${ds.length?`<div class="scroll"><table class="t gd2"><thead><tr><th>${x.docCols.id}</th><th>${x.docCols.title}</th><th>${x.docCols.lvl}</th><th>${x.docCols.lev}</th><th>${x.docCols.st}</th></tr></thead><tbody>${rows}</tbody></table></div>`:`<p class="mini">-</p>`}${gp.length?`<p class="mini"><b>${x.docGapT}:</b> ${gp.map(esc).join(" / ")}</p>`:""}`;}
+function exSetHtml(){const x=t();return `<div class="box pad" style="margin-top:12px"><h2>${x.exSet}</h2><p class="hint">${x.exSetH}</p><div class="scroll"><table class="t gd2"><thead><tr><th>${x.docCols.id}</th><th>${x.docCols.title}</th><th>${x.docCols.lev}</th><th>${x.docCols.st}</th></tr></thead><tbody>${EXSET.map(id=>{const m=DOCM[id]||{};return `<tr><td class="mono">${id}</td><td>${esc(m.en||"")}</td><td class="mini">${esc(m.level||"")}</td><td>${esc(x.docSt[docStatus(id,"Not verified")])}</td></tr>`;}).join("")}</tbody></table></div></div>`;}
+function v4Rules(d){const err=[];const imps=Object.fromEntries(d.improvementActions.map(i=>[i.id,i]));
+  d.categories.forEach(c=>{const ci=catInfo(c.categoryId),tg=ci?ci.tgt:null;
+    c.gapFindings.forEach(g=>{const r=g.responses,st=r.stageStatus,na=r.notApplicable||{};
+      STG.forEach(a=>{const s=st[a];
+        if(s==="Required"&&!r[a].length)err.push(`${g.id}: stage ${a} is Required but has no Improvement Action`);
+        if(s!=="Required"&&r[a].length)err.push(`${g.id}: stage ${a} is ${s} but lists Improvement Actions`);
+        if(s!=="Required"&&!na[a])err.push(`${g.id}: stage ${a} is ${s} without a reason`);
+        if(s==="Beyond Target Tier"&&a!=="sustain")err.push(`${g.id}: only Sustain can be Beyond Target Tier`);
+        r[a].forEach(id=>{const i=imps[id];if(i&&IS(i)!==STAGE_ANGLE[a])err.push(`${g.id}: ${id} is listed under ${a} but its stage is ${IS(i)}}`);});});
+      if(tg!==null&&tg!==undefined){if(tg>=3&&st.sustain==="Beyond Target Tier")err.push(`${g.id}: Target Tier is ${tg}, so Sustain is within the Target and cannot be Beyond Target Tier`);
+        if(tg<3&&st.sustain==="Required")err.push(`${g.id}: Target Tier is ${tg}, so Sustain is beyond the Target. Use Beyond Target Tier with a reason`);}
+      const ids=g.documents.map(z=>z.id);if(new Set(ids).size!==ids.length)err.push(`${g.id}: a document is listed twice`);
+      g.documents.forEach(z=>{if(!DOCM[z.id])err.push(`${g.id}: ${z.id} is not in the document register`);const q=((S.iv||{}).dr||{})[z.id];
+        if(q==="Received"&&z.status==="Missing")err.push(`${g.id}: ${z.id} was received but is marked Missing`);
+        if(q==="Does not exist"&&(z.status==="Exists"||z.status==="Needs update"))err.push(`${g.id}: ${z.id} does not exist but is marked ${z.status}`);});});});
+  d.improvementActions.forEach(i=>i.linkedGaps.forEach(gid=>{let gd=null;d.categories.forEach(c=>c.gapFindings.forEach(g=>{if(g.id===gid)gd=g;}));if(!gd)return;const have=new Set(gd.documents.map(z=>z.id));i.documents.forEach(doc=>{if(!have.has(doc))err.push(`${i.id}: document ${doc} is not in the documents of ${gid}`);});}));
+  return err;}
+function defsBox(){const x=t();return `<details class="box pad defs" open><summary><b>${x.defT}</b></summary><dl class="defl">${x.defs.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></details>`;}
+function spiderSvg(){const x=t(),N=CATS.length,R=150,C=210,W=420;
+  const ang=i=>-Math.PI/2+i*2*Math.PI/N,pt=(i,v)=>[C+Math.cos(ang(i))*R*v/4,C+Math.sin(ang(i))*R*v/4],f1=n=>n.toFixed(1);
+  const poly=fn=>CATS.map((c,i)=>pt(i,fn(catInfo(c))).map(f1).join(",")).join(" ");
+  const rings=[1,2,3,4].map(v=>`<polygon points="${CATS.map((c,i)=>pt(i,v).map(f1).join(",")).join(" ")}" fill="none" stroke="var(--line)" stroke-width="${v===4?1.2:.6}"/>`).join("");
+  const spokes=CATS.map((c,i)=>{const p=pt(i,4);return `<line x1="${C}" y1="${C}" x2="${f1(p[0])}" y2="${f1(p[1])}" stroke="var(--line)" stroke-width=".5"/>`;}).join("");
+  const ringLab=[1,2,3,4].map(v=>`<text x="${C+3}" y="${f1(C-R*v/4+3)}" font-size="8" fill="var(--muted)">${v}</text>`).join("");
+  const labs=CATS.map((c,i)=>{const p=pt(i,4.62),co=Math.cos(ang(i));const an=Math.abs(co)<.2?"middle":co>0?"start":"end";return `<text x="${f1(p[0])}" y="${f1(p[1]+3)}" font-size="9" font-family="var(--f-mono)" font-weight="600" text-anchor="${an}" fill="${FNCOL[fnOf(c)]}">${c}</text>`;}).join("");
+  const dots=CATS.map((c,i)=>{const k=catInfo(c);if(k.cur===null)return"";const p=pt(i,k.cur);return `<circle cx="${f1(p[0])}" cy="${f1(p[1])}" r="3" fill="var(--accent)"><title>${c}: ${esc(x.cols.cur)} ${k.cur}, ${esc(x.cols.tgt)} ${k.tgt??"-"}</title></circle>`;}).join("");
+  const leg=FN.map(f=>`<span class="sp-k"><i style="background:${FNCOL[f]}"></i>${f} ${esc(M.functions[f][Li()])}</span>`).join("");
+  return `<div class="spider"><svg viewBox="0 0 ${W} ${W}" role="img" aria-label="${esc(x.spiderT)}">${rings}${spokes}${ringLab}<polygon points="${poly(k=>k.cur??0)}" fill="var(--accent)" fill-opacity=".22" stroke="var(--accent)" stroke-width="1.6"/><polygon points="${poly(k=>k.tgt??0)}" fill="none" stroke="var(--warn)" stroke-width="1.6" stroke-dasharray="5 3"/>${dots}${labs}</svg><div class="sp-leg"><span class="sp-k"><i class="sp-cur"></i>${esc(x.cols.cur)}</span><span class="sp-k"><i class="sp-tgt"></i>${esc(x.cols.tgt)}</span>${leg}</div><p class="mini">${x.spiderLeg}</p></div>`;}
+let scId=null;
+function sideHtml(gid){const x=t(),z=allFindings().find(q=>q.g.id===gid);if(!z)return"";const{f,c,g,r}=z,K=x.sc;
+  const imps=allImps().filter(i=>i.linkedGaps.includes(g.id)),d=(S.fn[f].dec||{})[g.id]||{},ci=catInfo(c),resp=(S.ws&&S.ws.responses&&r.band&&S.ws.responses[r.band])||{};
+  const stages=STG.map(a=>{const s=stgStatus(g,a),ids=stgIds(g,a);return `<div class="sc-st"><b>${esc(x.angles[a])}</b> ${stgBadge(s)}${ids.length?ids.map(id=>{const i=imps.find(q=>q.id===id);return `<div class="mini"><span class="mono">${id}</span> ${esc(i?i.action:"")}${impBadge(i)}</div>`;}).join(""):((g.responses.notApplicable||{})[a]?`<div class="mini">${esc(g.responses.notApplicable[a])}</div>`:"")}</div>`;}).join("");
+  const imp6=AREAS.map(a=>`${esc(x.area[a])} ${r.I[a]??"-"}`).join(" · ");
+  return `<div class="sc-h"><div><span class="mono"><b>${g.id}</b></span> ${bandChip(r.band)} <span class="st ${g.basis==="Observed"?"Missing":"Partial"}">${esc(x.basisN[g.basis])}${g.confidence?" · "+esc(g.confidence):""}</span></div><button class="btn sm" id="sc-close" aria-label="${esc(K.close)}">&times; ${esc(K.close)}</button></div>
+   <h2>${esc(gTitle(g))}</h2>${g.title?`<p>${esc(g.statement)}</p>`:""}
+   <div class="kv"><span>${K.cat}</span><span>${c} ${esc(catNm(c))} · ${tierChip(ci.cur===null?null:String(ci.cur))} &rarr; ${tierChip(ci.tgt===null?null:String(ci.tgt))}</span><span>${x.cols.md}</span><span>${ci.md.length?ci.md.map(m=>esc(MAND[m]||m)).join(", "):"-"}</span><span>${K.flags}</span><span>${quickWin({g,r})?`<span class="flag info" title="${esc(x.qwT)}">Quick win</span> `:""}${g.repeatFinding&&g.repeatFinding.value?`<span class="flag">${esc(K.repeat)} ${esc(g.repeatFinding.priorRef||"")}</span> `:""}${r.conf?`<span class="okm">&#10003;</span> ${esc(K.conf)}`:""}</span></div>
+   ${(g.supportingFacts||[]).length?`<h3>${x.facts}</h3>${factsHtml(g)}`:""}
+   <h3>${x.cons}</h3><p>${esc(g.consequence)}</p>
+   <div class="kv"><span>${x.extent}</span><span>${x.confirmed}: ${esc(g.extent.confirmed.join(", ")||"-")}${g.extent.likely.length?`<br>${x.likely}: ${esc(g.extent.likely.join(", "))}`:""}<br>${x.notChecked}: ${esc(g.extent.notChecked||"-")}</span><span>${x.rc}</span><span>${esc(g.rootCause.join(", "))}</span><span>${x.cols.sub}</span><span class="mono mini">${esc(g.linkedSubcategories.join(", "))}</span><span>${x.evi}</span><span class="mono mini">${esc(g.evidence.join(", "))}</span>${lsRefHtml(g)}</div>
+   <h3>${x.riskT}</h3><div class="kv"><span>${x.Lq}</span><span>${r.L??"-"} <span class="mini">${esc(g.likelihood.anchor||"")} ${esc(g.likelihood.rationale)}</span></span><span>Impact</span><span class="mini">${imp6}</span><span>${x.cols.score}</span><span>${r.score?esc(x.scoreL(r.score,bandName(r.band),r.wi)):"-"}</span>${resp.action?`<span>${K.wsResp}</span><span class="mini">${esc(resp.action)}${resp.time?" · "+esc(resp.time):""}${resp.auth?" · "+esc(resp.auth):""}</span>`:""}</div>
+   <h3>${K.stages}</h3>${flowHtml(g)}${stages}
+   <h3>${x.docsT}</h3>${docsHtml(g)}
+   ${d.cm&&d.cm.trim()?`<h3>${K.comment}</h3><p>${esc(d.cm)}</p>`:""}
+   <p style="margin-top:14px"><button class="btn sm" data-gocat="${c}" data-gid="${g.id}">${esc(K.open)}</button></p>`;}
+function renderSide(){const el=$("sidecard");if(!el)return;if(!scId||view!=="reg"||!allFindings().some(q=>q.g.id===scId)){if(scId&&view==="reg")scId=null;el.hidden=true;el.innerHTML="";document.body.classList.remove("sc-open");return;}
+  el.setAttribute("aria-label",t().tabs.reg);el.innerHTML=sideHtml(scId);el.hidden=false;document.body.classList.add("sc-open");}
+function openSide(id){scId=id;renderReg();renderSide();const b=$("sc-close");if(b)b.focus({preventScroll:true});}
+function closeSide(){const id=scId;scId=null;renderReg();renderSide();const el=document.querySelector(`[data-sc="${id}"]`);if(el)el.focus({preventScroll:true});}
+
+/* ---------- views ---------- */
+function renderSetup(){const x=t(),iv=S.iv,ws=S.ws,c=S.client;const rq=readiness();
+  $("v-setup").innerHTML=`<div class="grid2"><div class="box pad"><h2>${x.imports}</h2><p class="hint">${x.impHint}</p>
+   <div class="linkbox">${iv?x.ivYes(esc(iv.meta.client),esc(iv.meta.date),esc(iv.meta.schema)):x.ivNone}<div class="hbtns" style="margin-top:8px"><button class="btn sm pri" id="b-iv">${x.impIv}</button></div></div>
+   <div class="linkbox" style="margin-top:8px">${ws?x.wsYes(esc(ws.organization||"-"),esc(ws.schema||"none")):x.wsNone}<div class="hbtns" style="margin-top:8px"><button class="btn sm pri" id="b-ws">${x.impWs}</button></div>
+    <label class="mini" for="ws-paste" style="display:block;margin-top:8px">${x.pasteWs}</label><textarea id="ws-paste" class="json" style="min-height:70px"></textarea><button class="btn sm" id="b-wsp" style="margin-top:4px">${x.loadWs}</button></div>
+   <h3>${x.sample}</h3><p class="mini">${x.sampleHint}</p><div class="hbtns"><button class="btn" id="b-sample"${DATA.sample?"":" disabled"}>${x.sample}</button><button class="btn danger" id="b-reset">${resetArm?x.resetConfirm:x.reset}</button></div>
+   <p class="mini">${x.method} ${esc(DATA.methodVersion)} · Tier Rubric ${esc(DATA.rubricVersion)} · App ${esc(DATA.appVersion)}</p></div>
+  <div class="box pad"><h2>${x.eng}</h2><div class="form" style="margin-top:10px">
+   <label for="c-anon">${x.anon}</label><select id="c-anon" data-cl="anon"><option value="0"${!c.anon?" selected":""}>${Li()?"ไม่ใช่":"No"}</option><option value="1"${c.anon?" selected":""}>${Li()?"ใช่":"Yes"}</option></select>
+   <label for="c-alias">${x.alias}</label><input type="text" id="c-alias" data-cl="alias" value="${esc(c.alias)}" placeholder="${esc(x.phAlias)}">
+   <label for="c-sector">${x.sector}</label><input type="text" id="c-sector" data-cl="sector" value="${esc(c.sector)}" placeholder="${esc(x.phSector)}">
+   <label for="c-oblig">${x.oblig}</label><input type="text" id="c-oblig" data-cl="oblig" value="${esc(c.oblig)}" placeholder="${esc(x.phOblig)}">
+   <label for="c-threat">${x.threat}</label><textarea id="c-threat" data-cl="threat" placeholder="${esc(x.phThreat)}">${esc(c.threat)}</textarea></div>
+   <h3>${x.ready} ${rq.prov?`<span class="flag">${x.provisional}</span>`:iv&&ws?`<span class="st Exists">${x.readyOk}</span>`:""}</h3><p class="hint">${x.readyHint}</p>
+   <table class="t"><tbody>${rq.rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="num"${r[2]?' style="color:var(--bad);font-weight:600"':""}>${esc(r[1])}</td></tr>`).join("")}</tbody></table></div></div>`;}
+function readiness(){const x=t(),iv=S.iv,ws=S.ws;if(!iv)return{prov:false,rows:[]};const subs=SUBS.map(subInfo).filter(Boolean);
+  const na=subs.filter(i=>i.st==="Not Assessed"&&i.counted!=="NA").length,cl=subs.filter(i=>i.cl).length,op=iv.openReq.length,nm=subs.filter(i=>i.covApp&&i.cov==="Not measured").length,inc=iv.obs.filter(o=>o.type==="Incident indicator"&&o.st!=="Closed").length,nt=ws?CATS.filter(c=>!ws.targetProfile[c]).length:CATS.length;
+  const rows=[[x.rq.schemaIv,iv.meta.schema,iv.meta.schema!=="csf-interview/3"],[x.rq.schemaWs,ws?(ws.schema||"none"):"-",!ws||ws.schema!=="csf-workshop-risk/1"],[x.rq.rubric,iv.meta.rubric||"-",iv.meta.rubric!==DATA.rubricVersion],[x.rq.na,na,na>0],[x.rq.cl,cl,cl>0],[x.rq.open,op,op>0],[x.rq.nm,nm,nm>0],[x.rq.inc,inc,inc>0],[x.rq.tgt,nt,nt>0]];
+  return{prov:rows.some(r=>r[2]),rows};}
+function fnBars(){const x=t(),L=Li();const pair=(label,c,tg)=>`<div class="pair"><span>${label}</span><span class="tr">${c===null?"":`<i style="width:${c/4*100}%;background:${c>=tg?"var(--ok)":c>=tg-1?"var(--warn)":"var(--bad)"}"></i>`}<u style="left:calc(${tg/4*100}% - 1px)"></u></span><span class="num">${c===null?"-":c.toFixed(1)} / ${tg.toFixed(1)}</span></div>`;
+  return FN.map(f=>{const ks=CATS.filter(c=>c.startsWith(f+".")).map(catInfo);const w=ks.filter(k=>k.cur!==null&&k.tgt!==null);const cur=w.length?w.reduce((a,k)=>a+k.cur,0)/w.length:null;const tg=w.length?w.reduce((a,k)=>a+k.tgt,0)/w.length:0;return pair(`${f} ${esc(M.functions[f][L])}`,cur,tg);}).join("");}
+function catBand(c){const fs=allFindings().filter(z=>z.c===c);return fs.length?fs[0].r.band:null;}
+function renderTier(){const x=t(),L=Li();if(!S.iv){$("v-tier").innerHTML=`<div class="callout ok">${x.ivNone}</div>`;return;}
+  const rows=CATS.map(c=>{const k=catInfo(c);return `<tr><td class="mono"><button class="btn sm mono" data-gocat="${c}">${c}</button></td><td>${esc(catNm(c))}</td><td>${tierChip(k.cur===null?null:String(k.cur))}</td><td>${tierChip(k.tgt===null?null:String(k.tgt))}</td><td class="num">${k.gap===null?"-":k.gap>0?`<b style="color:var(--bad)">${k.gap}</b>`:k.gap}</td><td>${esc(x.cst[k.st])}</td><td>${k.pr?esc(x.prN[k.pr]):"-"}</td><td class="mini">${k.md.map(m=>esc(MAND[m]||m)).join(", ")}</td><td>${k.feas?`<span class="flag">${x.feas}</span>`:""}${k.ov?`<span class="flag info" title="${esc(k.ov)}">override</span>`:""}</td><td>${bandChip(catBand(c))}</td></tr>`;}).join("");
+  const cnt={Gap:0,"Meets target":0,"Above target":0,"Not assessed":0};CATS.forEach(c=>cnt[catInfo(c).st]++);
+  $("v-tier").innerHTML=`<p class="hint">${x.tierHint}</p><div class="kpis">${Object.entries(cnt).map(([k,v])=>`<div class="kpi box${k==="Gap"?" bad":k==="Meets target"?" ok":""}"><b>${v}</b><span>${esc(x.cst[k])}</span></div>`).join("")}<div class="kpi box warn"><b>${CATS.filter(c=>catInfo(c).feas).length}</b><span>${x.feas}</span></div></div>
+   <div class="box pad" style="margin-top:12px"><h2>${x.spiderT}</h2>${spiderSvg()}</div>
+   <div class="grid2" style="margin-top:12px"><div class="box pad"><h2>${x.byFn}</h2><p class="mini">${x.barLeg}</p><div class="bars">${fnBars()}</div></div>
+   <div class="box pad"><h2>${x.delta}: ${curCat}</h2>${deltaBox(curCat)}</div></div>
+   <div class="box scroll" style="margin-top:12px"><table class="t" style="min-width:1100px"><thead><tr><th>${x.cols.id}</th><th>${x.cols.cat}</th><th>${x.cols.cur}</th><th>${x.cols.tgt}</th><th>${x.cols.gap}</th><th>${x.cols.st}</th><th>${x.cols.pr}</th><th>${x.cols.md}</th><th>${x.cols.fl}</th><th>${x.cols.band}</th></tr></thead><tbody>${rows}</tbody></table></div>`;}
+function deltaBox(c){const x=t(),L=Li(),k=catInfo(c);if(k.cur===null||k.tgt===null)return `<p class="mini">-</p>`;
+  return `<div class="kv"><span>${x.deltaCur}</span><span>${tierChip(String(k.cur))} ${esc(RUB[c][String(k.cur)][L])}</span><span>${x.deltaTgt}</span><span>${tierChip(String(k.tgt))} ${esc(RUB[c][String(k.tgt)][L])}</span></div>`;}
+function strText(id){for(const f of FN){const o=curOut(f);if(!o)continue;for(const c of o.categories)for(const z of c.strengths)if(z.id===id)return z;}return null;}
+function renderStr(){const x=t(),L=Li();if(!S.iv){$("v-str").innerHTML=`<div class="callout ok">${x.ivNone}</div>`;return;}const list=strengthsComputed();
+  $("v-str").innerHTML=`<p class="hint">${x.strHint}</p>${defsBox()}<div class="kpis" style="margin-top:12px"><div class="kpi box ok"><b>${list.filter(z=>z.type==="Strength").length}</b><span>Strength</span></div><div class="kpi box"><b>${list.filter(z=>z.type==="Foundation").length}</b><span>Foundation</span></div></div>
+  ${FN.map(f=>{const it=list.filter(z=>fnOf(z.s)===f);if(!it.length)return"";return `<div class="box pad" style="margin-top:10px"><h2>${f} ${esc(M.functions[f][L])}</h2><table class="t"><thead><tr><th>${x.cols.id}</th><th>${x.cols.type}</th><th>${x.cols.sub}</th><th>${x.cols.stmt}</th></tr></thead><tbody>
+   ${it.map(z=>{const st=strText(z.id);return `<tr><td class="mono">${z.id}</td><td><span class="st ${z.type==="Strength"?"Exists":"Partial"}">${z.type}</span></td><td class="mini">${esc((S.iv.subs[z.s]||{}).outcome||"")}</td><td>${st?esc(st.statement)+`<div class="mini mono">${esc(st.evidence.join(", "))}</div>`:`<span class="mini">-</span>`}</td></tr>`;}).join("")}</tbody></table></div>`;}).join("")||`<p class="mini">${x.strNone}</p>`}`;}
+function renderGap(){const x=t(),L=Li();if(!S.iv){$("v-gap").innerHTML=`<div class="callout ok">${x.ivNone}</div>`;return;}
+  const items=CATS.map(c=>{const k=catInfo(c),b=catBand(c);return `<button class="li${c===curCat?" sel":""}" data-pickcat="${c}">${tierChip(k.cur===null?null:String(k.cur))}<span class="id">${c}</span><span class="nm">${esc(catNm(c))}</span>${b?bandChip(b):k.st==="Gap"?`<span class="flag info">${k.gap}</span>`:""}</button>`;}).join("");
+  $("v-gap").innerHTML=`<p class="hint">${x.gapHint}</p><div class="ws"><div class="box list">${items}</div><div class="box pad detail" id="gdetail">${gapDetail(curCat)}</div></div>`;}
+function gapDetail(c){const x=t(),L=Li(),k=catInfo(c),f=fnOf(c),F=S.fn[f],o=curOut(f),oc=o?o.categories.find(z=>z.categoryId===c):null,locked=F.locked;
+  const subs=subsOfCat(c).map(subInfo).filter(Boolean);
+  const sRows=subs.map(i=>`<tr><td class="mono">${i.s}</td><td class="mini" style="max-width:320px">${esc(i.outcome)}</td><td>${tierChip(typeof i.counted==="number"?String(i.counted):null)}${i.cl?' <span class="flag" title="counted lower">!</span>':""}</td><td class="mini">${esc(i.ev||"-")}</td><td class="mini">${i.covApp?esc(i.cov+(i.covPct!==null?" ("+i.covPct+"%)":"")):"-"}</td><td><span class="st ${i.st==="Strength"?"Exists":i.st==="Gap"?"Missing":"Partial"}">${esc(x.sst[i.st])}</span>${i.fd?' <span class="st Partial">F</span>':""}${i.ntr?' <span class="flag info">+</span>':""}</td>
+   <td>${i.st==="Gap"?`<select data-gt="${i.s}" id="gt-${i.s}" aria-label="${esc(x.cols.gt)} ${i.s}"${locked?" disabled":""}><option value="">${x.auto}: ${esc(i.gtRule)}</option>${GTYPES.map(g=>`<option value="${g}"${S.gt[i.s]===g?" selected":""}>${g}</option>`).join("")}</select>`:"-"}</td></tr>`).join("");
+  const dq=`<span>${x.rq.na}: <b>${subs.filter(i=>i.st==="Not Assessed").length}</b></span><span>${x.rq.cl}: <b>${subs.filter(i=>i.cl).length}</b></span><span>${x.rq.open}: <b>${subs.filter(i=>S.iv.openReq.includes(i.s)).length}</b></span>`;
+  const head=`<div class="dh">${tierChip(k.cur===null?null:String(k.cur))}<h2><span class="mono" style="font-size:15px">${c}</span> ${esc(catNm(c))}</h2><span class="stage ${stageOf(f)==="lk"?"lk":stageOf(f)==="r3"?"s3":stageOf(f)==="none"?"":"s1"}">${f}: ${esc(x.stageN[stageOf(f)])}</span></div>
+   <div class="meta"><span>${x.cols.cur}: <b>${k.cur??"-"}</b></span><span>${x.cols.tgt}: <b>${k.tgt??"-"}</b></span><span>${x.cols.st}: <b>${esc(x.cst[k.st])}</b></span><span>${x.cols.pr}: <b>${k.pr?esc(x.prN[k.pr]):"-"}</b></span><span>${x.cols.md}: <b>${k.md.map(m=>esc(MAND[m]||m)).join(", ")||"-"}</b></span>${k.feas?`<span class="flag">${x.feas}</span>`:""}</div>`;
+  const km=oc?`<div class="km"><b>${x.kmF}</b>${esc(oc.keyMessage.found)}<b style="margin-top:6px">${x.kmC}</b>${esc(oc.keyMessage.closes)}${oc.whatWorksToday?`<b style="margin-top:6px">${x.wwt}</b>${esc(oc.whatWorksToday)}`:""}</div>`:"";
+  const fnds=oc?oc.gapFindings.map(g=>findingCard(f,g,o,locked)).join(""):`<p class="mini">${x.noFind}</p>`;
+  const vi=o&&(o.verify||[]).length&&!F.r3?`<h3>${x.verifyT}</h3>${o.verify.map((v,i)=>`<div class="fcard"><div class="mini mono">${esc(v.ref)}</div><div>${esc(v.question)}</div><input type="text" data-vans="${f}:${i}" id="va-${f}-${i}" value="${esc((F.vans||{})[i]||"")}" placeholder="${esc(x.phAns)}" style="width:100%;margin-top:4px"></div>`).join("")}`:"";
+  const obs=oc&&oc.observations.length?`<h3>${x.obsT}</h3><ul class="mini">${oc.observations.map(z=>`<li><span class="mono">${z.subcategory}</span> ${esc(z.statement)}</li>`).join("")}</ul>`:"";
+  return head+km+`<h3>${x.delta}</h3>${deltaBox(c)}<h3>${x.dq}</h3><div class="meta">${dq}</div><h3>${x.evd}</h3><div class="scroll"><table class="t" style="min-width:820px"><thead><tr><th>${x.cols.id}</th><th>${x.cols.sub}</th><th>${x.cols.tier}</th><th>${x.cols.ev}</th><th>${x.cols.cov}</th><th>${x.cols.stat}</th><th>${x.cols.gt}</th></tr></thead><tbody>${sRows}</tbody></table></div>
+   <h3>${x.findings}</h3>${fnds}${obs}${vi}`;}
+function findingCard(f,g,o,locked){const x=t(),L=Li(),d=(S.fn[f].dec||{})[g.id]||{},r=finalRisk(f,g),dis=locked?" disabled":"";const imps=o.improvementActions;
+  const opt=(cur,ai,na)=>`${na?`<option value="na"${cur==="na"?" selected":""}>${x.na}</option>`:""}${[1,2,3,4,5].map(n=>`<option value="${n}"${String(cur)===String(n)?" selected":""}>${n}${n===ai?" *":""}</option>`).join("")}`;
+  const lv=d.L!==undefined&&d.L!==""?d.L:(g.likelihood.value??"");
+  const resp=STG.map(a=>{const s=stgStatus(g,a),ids=stgIds(g,a);return `<div class="sc-st"><b>${x.angles[a]}</b> ${stgBadge(s)}${ids.length?ids.map(id=>{const i=imps.find(z=>z.id===id);return `<div class="mini"><span class="mono">${id}</span> ${esc(i?i.action:"")}${impBadge(i)}</div>`;}).join(""):((g.responses.notApplicable||{})[a]?`<div class="mini">${esc(g.responses.notApplicable[a])}</div>`:"")}</div>`;}).join("");
+  return `<div class="fcard"${r.removed?' style="opacity:.55"':""}><div class="fh"><b class="id">${g.id}</b><span class="st ${g.basis==="Observed"?"Missing":"Partial"}">${esc(x.basisN[g.basis])}${g.confidence?" · "+esc(g.confidence):""}</span>${bandChip(r.band)}<span class="mini">${r.score?esc(x.scoreL(r.score,bandName(r.band),r.wi)):""}</span>${quickWin({g,r})?`<span class="flag info" title="${esc(x.qwT)}">Quick win</span>`:""}</div>
+   <div class="stmt">${esc(gTitle(g))}</div>${g.title?`<div>${esc(g.statement)}</div>`:""}
+   <div class="kv">${(g.supportingFacts||[]).length?`<span>${x.facts}</span><span>${factsHtml(g)}</span>`:""}<span>${x.cons}</span><span>${esc(g.consequence)}</span><span>${x.extent}</span><span>${x.confirmed}: ${esc(g.extent.confirmed.join(", ")||"-")}${g.extent.likely.length?`<br>${x.likely}: ${esc(g.extent.likely.join(", "))}`:""}<br>${x.notChecked}: ${esc(g.extent.notChecked||"-")}</span>
+   <span>${x.rc}</span><span>${esc(g.rootCause.join(", "))}</span><span>${x.evi}</span><span class="mono mini">${esc(g.evidence.join(", "))}</span>${lsRefHtml(g)}<span>Subcategories</span><span class="mono mini">${esc(g.linkedSubcategories.join(", "))}</span></div>
+   <h3>${x.riskT}</h3><div class="ai">${x.aiProp}: L ${g.likelihood.value??"-"} (${esc(g.likelihood.anchor||"-")}) · ${esc(g.likelihood.rationale)}</div>
+   <div class="rgrid"><div><label for="dL-${g.id}">${x.Lq}</label><select id="dL-${g.id}" data-dec="${f}:${g.id}:L"${dis}><option value="">-</option>${opt(lv,g.likelihood.value,false)}</select></div>
+   ${AREAS.map(a=>{const cur=d.I&&d.I[a]!==undefined&&d.I[a]!==""?d.I[a]:(g.impact[a].value===null?"na":g.impact[a].value);return `<div><label for="dI-${g.id}-${a}" title="${esc(g.impact[a].rationale)}">${esc(x.area[a])}</label><select id="dI-${g.id}-${a}" data-dec="${f}:${g.id}:I:${a}"${dis}>${opt(cur,g.impact[a].value,true)}</select></div>`;}).join("")}</div>
+   <details><summary class="mini">${x.aiProp}: Impact</summary><ul class="mini">${AREAS.map(a=>`<li><b>${esc(x.area[a])} ${g.impact[a].value??"-"}:</b> ${esc(g.impact[a].rationale)}</li>`).join("")}</ul></details>
+   <h3>${x.respT}</h3>${flowHtml(g)}${resp}<h3>${x.docsT}</h3>${docsHtml(g)}
+   <div class="covline"><label class="mini"><input type="checkbox" data-decok="${f}:${g.id}"${d.ok?" checked":""}${dis}> ${x.conf}</label><label class="mini"><input type="checkbox" data-decrm="${f}:${g.id}"${d.rm?" checked":""}${dis}> ${x.remove}</label>
+   <input type="text" data-deccm="${f}:${g.id}" id="dc-${g.id}" value="${esc(d.cm||"")}" placeholder="${esc(x.phCmt)}" style="flex:1 1 240px"${dis}></div></div>`;}
+function msgList(m){const x=t();if(!m)return"";const e=m.err||[],w=m.warn||[];if(!e.length&&!w.length)return `<p class="mini" style="color:var(--ok)">${x.valid}</p>`;return `<ul class="msgs">${e.slice(0,30).map(z=>`<li class="err">${esc(z)}</li>`).join("")}${w.slice(0,30).map(z=>`<li class="warn">${esc(z)}</li>`).join("")}</ul>`;}
+function stepBox(n,title,cur,done,body){return `<div class="step2${done?" done":cur?" cur":""}"><span class="sn2">${n}</span><b>${esc(title)}</b>${body}</div>`;}
+function renderAi(){const x=t(),L=Li();if(!S.iv||!S.ws){$("v-ai").innerHTML=`<div class="callout ok">${x.toast.needImports}</div>`;return;}
+  if(!S.ls.locked&&!S.ls.legacy){$("v-ai").innerHTML=`<div class="callout">${x.ls.gate} <button class="btn sm pri" data-tab="land">${x.tabs.land}</button></div>`;return;}
+  const tabsF=FN.map(f=>`<button class="li${f===curFn?" sel":""}" data-pickfn="${f}"><span class="id">${f}</span><span class="nm">${esc(M.functions[f][L])}</span><span class="stage ${stageOf(f)==="lk"?"lk":stageOf(f)==="r3"?"s3":stageOf(f)==="none"?"":"s1"}">${esc(x.stageN[stageOf(f)])}</span></button>`).join("");
+  const f=curFn,F=S.fn[f],st=stageOf(f),lk=F.locked,ix={none:0,r1:1,rv:2,r2:3,r3:4,lk:5}[st];
+  const imp=(k)=>lk?"":`<textarea class="json" id="j-${k}" placeholder="${esc(x.phJson)}"></textarea><button class="btn sm pri" data-imp="${k}">${x.importJson}</button>${msgList(F.msgs[k])}`;
+  const blockers=lockBlockers(f);
+  const steps=[stepBox(1,x.steps[0],ix===0,ix>0,`<span class="mini">${esc(x.chat.an+f)}</span><button class="btn sm" data-cp="an">${x.copyPrompt}</button>${ix===0||(ix===1&&!F.rv)?imp("r1"):msgList(F.msgs.r1)}`),
+   stepBox(2,x.steps[1],ix===1,ix>1,`<span class="mini">${esc(x.chat.rv)}</span>${F.r1?`<button class="btn sm" data-cp="rv">${x.copyPrompt}</button>`:""}${ix===1?imp("rv"):msgList(F.msgs.rv)}`),
+   stepBox(3,x.steps[2],ix===2,ix>2,`<span class="mini">${esc(x.chat.an+f)}</span>${F.rv?`<button class="btn sm" data-cp="f1">${x.copyFollow}</button>`:""}${ix===2?imp("r2"):msgList(F.msgs.r2)}`),
+   stepBox(4,x.steps[3],ix===3,ix>3,`<span class="mini">${x.decHint}</span><button class="btn sm" data-tab="gap">${x.tabs.gap}</button>`),
+   stepBox(5,x.steps[4],ix===3,ix>4,`<span class="mini">${esc(x.chat.an+f)}</span>${F.r2?`<button class="btn sm" data-cp="f2">${x.copyFollow}</button>`:""}${ix===3||ix===4&&!lk?imp("r3"):msgList(F.msgs.r3)}`),
+   stepBox(6,x.steps[5],ix===4,lk,lk?`<span class="stage lk">${x.locked}</span><input type="text" id="unl-${f}" placeholder="${esc(x.phUnlock)}"><button class="btn sm danger" data-unlock="${f}">${x.unlockB}</button>`:`<span class="mini">${x.lockNeeds}</span>${blockers.length?`<ul class="msgs">${blockers.slice(0,8).map(b=>`<li class="warn">${esc(b)}</li>`).join("")}</ul>`:""}<button class="btn sm pri" data-lock="${f}"${blockers.length?" disabled":""}>${x.lockB}</button>`)].join("");
+  const allLk=FN.every(z=>S.fn[z].locked),X=S.x;
+  const xbox=`<div class="box pad" style="margin-top:12px"><h2>${x.xTitle}</h2><p class="hint">${x.xHint}</p>${!allLk?`<p class="mini">${x.xNot}</p>`:`<span class="mini">${esc(x.chat.x)}</span> <button class="btn sm" data-cp="x">${x.copyPrompt}</button>
+   ${X.locked?`<p><span class="stage lk">${x.xLocked}</span></p>`:`<textarea class="json" id="j-x" placeholder="${esc(x.phJson)}"></textarea><button class="btn sm pri" data-imp="x">${x.importJson}</button>${msgList(X.msgs)}`}
+   ${X.p?`<div class="scroll"><table class="t" style="margin-top:8px"><thead><tr><th>ID</th><th>${x.cols.type}</th><th>Targets</th><th>${x.cols.stmt}</th><th></th></tr></thead><tbody>${X.p.proposals.map(p=>`<tr><td class="mono">${p.id}</td><td>${esc(x.pType[p.type])}</td><td class="mono mini">${esc(p.targets.join(", "))}</td><td>${esc(p.proposal)}<div class="mini">${esc(p.rationale)}</div></td><td>${X.locked?esc(X.dec[p.id]||"-"):seg("xd:"+p.id,["accept","reject"],X.dec[p.id]||"",{accept:x.accept,reject:x.reject})}</td></tr>`).join("")}</tbody></table></div>
+   ${X.locked?"":`<button class="btn sm pri" id="b-xlock"${X.p.proposals.every(p=>X.dec[p.id])?"":" disabled"}>${x.xLock}</button>`}`:""}`}</div>`;
+  $("v-ai").innerHTML=`${!S.ls.locked&&S.ls.legacy?`<div class="callout">${x.ls.legacy} <button class="btn sm" data-tab="land">${x.tabs.land}</button></div>`:""}<p class="hint">${x.aiHint}</p><div class="ws"><div class="box list">${tabsF}</div><div class="box pad detail"><h2>${f} ${esc(M.functions[f][L])}</h2><div class="steps">${steps}</div></div></div>${xbox}`;}
+function seg(name,vals,curv,labels){return `<span class="seg" role="group">${vals.map(v=>`<button data-seg="${name}" data-v="${v}" aria-pressed="${curv===v}">${esc(labels[v])}</button>`).join("")}</span>`;}
+function renderReg(){const x=t(),L=Li();const fs=allFindings(),imps=allImps(),strs=strengthsComputed(),sys=systemic();
+  const gRows=fs.map((z,n)=>`<tr class="rg${scId===z.g.id?" on":""}" data-sc="${z.g.id}" tabindex="0" aria-label="${esc(z.g.id)}"><td class="num">${n+1}</td><td class="mono">${z.g.id}</td><td class="mono">${z.c}</td><td style="min-width:300px"><b>${esc(gTitle(z.g))}</b></td><td>${bandChip(z.r.band)}</td><td class="num">${z.r.score??"-"}</td><td>${z.md?"Yes":""}</td><td>${quickWin(z)?"Yes":""}</td><td>${z.r.conf?"✓":""}</td></tr>`).join("");
+  const iRows=imps.map(i=>`<tr><td class="mono">${i.id}</td><td>${esc(IS(i))}</td><td style="min-width:300px">${esc(i.action)}</td><td class="mono mini">${esc(i.linkedGaps.join(", "))}</td><td>${esc(i.gapType)}</td><td class="mono mini">${esc(i.buildsOn.join(", "))}</td><td class="mono mini">${esc(i.documents.join(", "))}</td><td class="mono mini">${esc(i.prerequisites.join(", "))}</td></tr>`).join("");
+  $("v-reg").innerHTML=`<p class="hint">${x.regHint}</p>${l2Box()}<div class="kpis">${["C","H","M","L"].map(b=>`<div class="kpi box${b==="C"?" bad":b==="H"?" warn":""}"><b>${fs.filter(z=>z.r.band===b).length}</b><span>${bandName(b)}</span></div>`).join("")}<div class="kpi box"><b>${imps.length}</b><span>IMP</span></div><div class="kpi box ok"><b>${strs.length}</b><span>Strength / Foundation</span></div></div>
+   <div class="box pad"><h2>${x.regGap} <span class="mini">${fs.length}</span></h2><div class="scroll"><table class="t" style="min-width:760px"><thead><tr><th>#</th><th>${x.cols.find}</th><th>${x.cols.cat}</th><th>${x.cols.stmt}</th><th>${x.cols.rl}</th><th>${x.cols.score}</th><th>${x.cols.md}</th><th>${x.cols.qw}</th><th>${x.conf}</th></tr></thead><tbody>${gRows||`<tr><td colspan="9" class="mini">${x.regNone}</td></tr>`}</tbody></table></div><p class="mini">${x.qwT}</p><p class="mini">${x.scHint}</p></div>
+   <div class="box pad" style="margin-top:12px"><h2>${x.regImp} <span class="mini">${imps.length}</span></h2><div class="scroll"><table class="t" style="min-width:1200px"><thead><tr><th>ID</th><th>${x.cols.angle}</th><th>${x.cols.act}</th><th>${x.cols.lg}</th><th>${x.cols.gt}</th><th>${x.cols.bo}</th><th>${x.cols.docs}</th><th>Prerequisites</th></tr></thead><tbody>${iRows||`<tr><td colspan="8" class="mini">-</td></tr>`}</tbody></table></div></div>
+   ${exSetHtml()}<div class="grid2" style="margin-top:12px"><div class="box pad"><h2>${x.regSys}</h2>${sys.length?`<table class="t"><tbody>${sys.map(z=>`<tr><td><b>${esc(z.rc)}</b><div class="mini">${esc(z.src)}</div></td><td>${esc(z.stmt)}<div class="mini mono">${esc(z.gaps.join(", "))}</div></td></tr>`).join("")}</tbody></table>`:`<p class="mini">-</p>`}</div>
+   <div class="box pad"><h2>${x.log}</h2>${S.log.length?`<table class="t"><tbody>${S.log.map(l=>`<tr><td class="mini">${esc(l.at.slice(0,16).replace("T"," "))}</td><td>${esc(l.what)}</td><td class="mini">${esc(l.why||"")}</td></tr>`).join("")}</tbody></table>`:`<p class="mini">-</p>`}</div></div>`;}
+
+/* ---------- rendering + events ---------- */
+const VIEWS={setup:renderSetup,land:renderLand,tier:renderTier,str:renderStr,gap:renderGap,ai:renderAi,reg:renderReg};
+function renderStatic(){const x=t();document.documentElement.lang=lang==="TH"?"th":"en";$("t-title").textContent=x.title;["help","open","save","print","xlsx"].forEach(k=>$("b-"+k).textContent=x[k]);
+  $("b-th").setAttribute("aria-pressed",lang==="TH");$("b-en").setAttribute("aria-pressed",lang==="EN");const m=S.iv?S.iv.meta:{};
+  $("eng").innerHTML=`${x.client}: <b>${esc(m.client||"-")}</b> · ${x.assessor}: <b>${esc(m.assessor||"-")}</b> · ${x.date}: <b>${esc(m.date||"-")}</b>${S.iv&&readiness().prov?` · <span class="flag">${x.provisional}</span>`:""}`;
+  $("tabs").innerHTML=Object.entries(x.tabs).map(([k,v])=>`<button role="tab" data-tab="${k}" aria-selected="${view===k}">${esc(v)}</button>`).join("");renderSavebar();}
+function renderView(){Object.keys(VIEWS).forEach(k=>$("v-"+k).hidden=k!==view);VIEWS[view]();renderSide();}
+function renderAll(){renderStatic();renderView();}
+function setView(v){view=v;try{history.replaceState(null,"","#"+v)}catch(e){}renderAll();window.scrollTo({top:0});}
+function logChange(what,why){S.log.push({at:new Date().toISOString(),what,why:why||""});}
+function importReply(k){const x=t(),f=curFn,F=S.fn[f];const txt=($("j-"+k)||{}).value||"";
+  if(k==="x"){const r=validateReply("x",null,txt);S.x.msgs={err:r.err,warn:r.warn};if(r.ok){S.x.p=r.o;S.x.dec={};toast(x.toast.imp);}else toast(x.toast.impBad);persist();renderAi();return;}
+  const kind=k==="rv"?"rv":"an";const r=validateReply(kind,f,txt);
+  if(r.ok&&kind==="an"){const want={r1:1,r2:2,r3:3}[k];if(r.o.round!==want)r.err.push(`round is ${r.o.round}, expected ${want}`);}
+  F.msgs[k]={err:r.err,warn:r.warn};
+  if(!r.err.length){F[k]=r.o;if(k==="r3")logChange(`${f}: round 3 imported`);toast(x.toast.imp);}else toast(x.toast.impBad);persist();renderAi();}
+document.addEventListener("click",e=>{const x=t();
+  if(e.target.closest("#sc-close")){closeSide();return;}
+  const sc=e.target.closest("[data-sc]");if(sc){if(scId===sc.dataset.sc){closeSide();}else openSide(sc.dataset.sc);return;}
+  const tb=e.target.closest("[data-tab]");if(tb){setView(tb.dataset.tab);return;}
+  const gc=e.target.closest("[data-gocat]");if(gc){curCat=gc.dataset.gocat;if(view==="tier"){renderTier();return;}setView("gap");return;}
+  const pc=e.target.closest("[data-pickcat]");if(pc){curCat=pc.dataset.pickcat;renderGap();return;}
+  const pf=e.target.closest("[data-pickfn]");if(pf){curFn=pf.dataset.pickfn;renderAi();return;}
+  const cp=e.target.closest("[data-cp]");if(cp){const k=cp.dataset.cp,f=curFn;const s=k==="an"?analystPrompt(f):k==="rv"?reviewerPrompt(f):k==="f1"?follow1(f):k==="f2"?follow2(f):xPrompt();copyText(s);return;}
+  const lc2=e.target.closest("[data-lscp]");if(lc2){copyText(lc2.dataset.lscp==="p"?lsPrompt():lsFollow());return;}
+  const li=e.target.closest("[data-lsimp]");if(li){lsImport(li.dataset.lsimp);return;}
+  if(e.target.id==="b-lslock"){if(!lsBlockers().length){S.ls.facts=landscapeFacts();S.ls.locked=true;logChange("Current IT Landscape locked");persist();toast(x.toast.lsLocked);renderLand();}return;}
+  if(e.target.id==="b-lsunlock"){const why=($("unl-ls")||{}).value||"";if(!why.trim()){$("unl-ls").focus();return;}const used=FN.some(f=>S.fn[f].r1);S.ls.locked=false;logChange("Current IT Landscape unlocked"+(used?". "+x.ls.unlockWarn:""),why);persist();renderLand();return;}
+  if(e.target.id==="b-diag"){$("f-diag").click();return;}
+  if(e.target.id==="b-diagrm"){S.ls.diag="";persist();renderLand();return;}
+  const im=e.target.closest("[data-imp]");if(im){importReply(im.dataset.imp);return;}
+  const lk=e.target.closest("[data-lock]");if(lk){const f=lk.dataset.lock;if(!lockBlockers(f).length){S.fn[f].locked=true;logChange(`${f}: Function locked`);persist();toast(x.toast.locked);renderAi();}return;}
+  const ul=e.target.closest("[data-unlock]");if(ul){const f=ul.dataset.unlock,why=($("unl-"+f)||{}).value||"";if(!why.trim()){$("unl-"+f).focus();return;}S.fn[f].locked=false;S.x.locked=false;logChange(`${f}: Function unlocked`,why);persist();renderAi();return;}
+  const sg=e.target.closest("[data-seg]");if(sg){const [kind,id]=sg.dataset.seg.split(":");if(kind==="xd"){S.x.dec[id]=S.x.dec[id]===sg.dataset.v?"":sg.dataset.v;persist();renderAi();}return;}
+  if(e.target.id==="b-xlock"){S.x.locked=true;logChange("Consolidation locked");persist();renderAi();return;}
+  if(e.target.id==="b-iv"){$("f-xlsx").click();return;}
+  if(e.target.id==="b-ws"){$("f-ws").click();return;}
+  if(e.target.id==="b-wsp"){try{S.ws=parseWorkshop(JSON.parse($("ws-paste").value));persist();renderAll();toast(x.toast.ws);}catch(er){toast(x.toast.wsBad);}return;}
+  if(e.target.id==="b-sample"){if(DATA.sample){S=norm(JSON.parse(JSON.stringify(DATA.sample)));persist();renderAll();toast(x.toast.sample);}return;}
+  if(e.target.id==="b-reset"){if(!resetArm){resetArm=true;renderSetup();setTimeout(()=>{if(resetArm){resetArm=false;if(view==="setup")renderSetup();}},4000);return;}resetArm=false;S=blank();persist();renderAll();toast(x.toast.reset);return;}
+});
+function decObj(f,g){const F=S.fn[f];F.dec=F.dec||{};return F.dec[g]||(F.dec[g]={});}
+document.addEventListener("change",e=>{const el=e.target;
+  if(el.dataset.cl){if(el.tagName==="SELECT"){S.client[el.dataset.cl]=el.dataset.cl==="anon"?el.value==="1":el.value;persist();}return;}
+  if(el.dataset.gt){if(el.value)S.gt[el.dataset.gt]=el.value;else delete S.gt[el.dataset.gt];persist();renderGap();return;}
+  if(el.dataset.dec){const [f,g,k,a]=el.dataset.dec.split(":");const d=decObj(f,g);if(k==="L")d.L=el.value;else{d.I=d.I||{};d.I[a]=el.value;}persist();renderGap();return;}
+  if(el.dataset.decok){const [f,g]=el.dataset.decok.split(":");decObj(f,g).ok=el.checked;persist();renderGap();return;}
+  if(el.dataset.decrm){const [f,g]=el.dataset.decrm.split(":");decObj(f,g).rm=el.checked;persist();renderGap();return;}
+});
+document.addEventListener("input",e=>{const el=e.target;
+  if(el.dataset.cl&&el.tagName!=="SELECT"){S.client[el.dataset.cl]=el.value;persist();return;}
+  if(el.dataset.lsnote){S.ls.notes[el.dataset.lsnote]=el.value;persist();return;}
+  if(el.dataset.lscm){S.ls.cm[el.dataset.lscm]=el.value;persist();return;}
+  if(el.dataset.lsvans){S.ls.vans[el.dataset.lsvans]=el.value;persist();return;}
+  if(el.dataset.lsl2){S.ls.l2[el.dataset.lsl2]=el.value;persist();return;}
+  if(el.dataset.deccm){const [f,g]=el.dataset.deccm.split(":");decObj(f,g).cm=el.value;persist();return;}
+  if(el.dataset.vans){const [f,i]=el.dataset.vans.split(":");S.fn[f].vans=S.fn[f].vans||{};S.fn[f].vans[i]=el.value;persist();return;}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("help").hidden)closeHelp();else if(e.key==="Escape"&&scId)closeSide();if((e.key==="Enter"||e.key===" ")&&e.target.dataset&&e.target.dataset.sc){e.preventDefault();if(scId===e.target.dataset.sc)closeSide();else openSide(e.target.dataset.sc);return;}});
+$("f-xlsx").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{const sh=await readXlsx(await f.arrayBuffer());S.iv=parseInterview(sh);if(!S.client.alias)S.client.alias="Client A";persist();renderAll();toast(t().toast.iv);}catch(err){console.error(err);toast(t().toast.ivBad);}e.target.value="";});
+$("f-diag").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){toast(t().ls.diagBig);e.target.value="";return;}const rd=new FileReader();rd.onload=()=>{S.ls.diag=rd.result;persist();renderLand();};rd.readAsDataURL(f);e.target.value="";});
+$("f-ws").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{S.ws=parseWorkshop(JSON.parse(await f.text()));persist();renderAll();toast(t().toast.ws);}catch(err){toast(t().toast.wsBad);}e.target.value="";});
+
+/* ---------- save / open ---------- */
+function fileBase(){const n=(S.iv&&S.iv.meta.client)||"client";return n.replace(/[^A-Za-z0-9ก-๙]+/g,"-")+"_csf-gap_"+new Date().toISOString().slice(0,10);}
+function download(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
+$("b-save").onclick=()=>{download(fileBase()+".json",new Blob([JSON.stringify(Object.assign({},S,{saved:new Date().toISOString()}),null,1)],{type:"application/json"}));toast(t().toast.saved);};
+$("b-open").onclick=()=>$("file").click();
+$("file").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{const o=JSON.parse(await f.text());if(!o||o.app!=="csf-gap")throw 0;S=norm(o);persist();renderAll();toast(t().toast.opened);}catch(err){toast(t().toast.bad);}e.target.value="";});
+
+/* ---------- XLSX writer (stored zip, inline strings) ---------- */
+const CRC=(()=>{const tb=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;tb[n]=c>>>0;}return b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=tb[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0;};})();
+function zip(files){const enc=new TextEncoder();const parts=[],cd=[];let off=0;
+  for(const [name,str] of files){const nb=enc.encode(name),db=enc.encode(str),crc=CRC(db);
+    const lh=new DataView(new ArrayBuffer(30));lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint16(8,0,true);lh.setUint32(14,crc,true);lh.setUint32(18,db.length,true);lh.setUint32(22,db.length,true);lh.setUint16(26,nb.length,true);
+    parts.push(new Uint8Array(lh.buffer),nb,db);
+    const ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint32(16,crc,true);ch.setUint32(20,db.length,true);ch.setUint32(24,db.length,true);ch.setUint16(28,nb.length,true);ch.setUint32(42,off,true);
+    cd.push(new Uint8Array(ch.buffer),nb);off+=30+nb.length+db.length;}
+  const cdSize=cd.reduce((s,a)=>s+a.length,0);const end=new DataView(new ArrayBuffer(22));end.setUint32(0,0x06054b50,true);end.setUint16(8,files.length,true);end.setUint16(10,files.length,true);end.setUint32(12,cdSize,true);end.setUint32(16,off,true);
+  return new Blob([...parts,...cd,new Uint8Array(end.buffer)],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});}
+const xe=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"");
+function colName(i){let s="";i++;while(i){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;}
+function sheetXml(rows,widths){const cols=widths?`<cols>${widths.map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join("")}</cols>`:"";
+  const body=rows.map((r,ri)=>`<row r="${ri+1}">${r.map((v,ci)=>{const ref=colName(ci)+(ri+1),st=ri===0?' s="1"':' s="2"';return typeof v==="number"?`<c r="${ref}"${st}><v>${v}</v></c>`:`<c r="${ref}" t="inlineStr"${st}><is><t xml:space="preserve">${xe(v)}</t></is></c>`;}).join("")}</row>`).join("");
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>${cols}<sheetData>${body}</sheetData><autoFilter ref="A1:${colName(Math.max(0,(rows[0]||[]).length-1))}${rows.length}"/></worksheet>`;}
+function xlsx(sheets){const wb=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheets.map((s,i)=>`<sheet name="${xe(s.name)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join("")}</sheets></workbook>`;
+  const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join("")}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="10"/><name val="Calibri"/></font><font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1F3864"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="3"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("")}</Types>`;
+  const root=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`;
+  return zip([["[Content_Types].xml",ct],["_rels/.rels",root],["xl/workbook.xml",wb],["xl/_rels/workbook.xml.rels",rels],["xl/styles.xml",styles],...sheets.map((s,i)=>[`xl/worksheets/sheet${i+1}.xml`,sheetXml(s.rows,s.widths)])]);}
+$("b-xlsx").onclick=()=>{const x=t();if(!S.iv){toast(x.toast.needImports);return;}const m=S.iv.meta;const rq=readiness();
+  const sum=[["Item","Value"],["Client",m.client],["Assessor",m.assessor],["Assessment date",m.date],["Engagement reference",m.ref],["Exported",new Date().toISOString()],["Schema version","csf-gap-export/1"],["Method pack version",DATA.methodVersion],["Tier Rubric version",DATA.rubricVersion],["Interview schema",m.schema],["Workshop schema",S.ws?(S.ws.schema||"none"):"not imported"],["Status",rq.prov?"Provisional":"Ready"],["Current IT Landscape",S.ls.locked?"Locked":S.ls.legacy?"Not locked (engagement started before v1.1)":"Not locked"],["Landscape blocks without reference or reason",l2Open().join(", ")||"None"],
+   ...FN.map(f=>[`${f} stage`,x.stageN[stageOf(f)]]),["Consolidation",S.x.locked?"Locked":"Open"],...rq.rows.map(r=>["Readiness: "+r[0],String(r[1])])];
+  const tier=[["Category","Name","Function","Current Tier","Target Tier","Gap","Status","Priority","Mandates","Workshop override","Feasibility check","Highest Risk Level","Current descriptor","Target descriptor"]];
+  CATS.forEach(c=>{const k=catInfo(c);tier.push([c,M.categories[c][0],fnOf(c),k.cur??"",k.tgt??"",k.gap??"",k.st,({H:"High",M:"Medium",L:"Low"})[k.pr]||"",k.md.map(z=>MAND[z]||z).join(", "),k.ov,k.feas?"Yes":"",catBand(c)?bandName(catBand(c)):"",k.cur===null?"":RUB[c][String(k.cur)][0],k.tgt===null?"":RUB[c][String(k.tgt)][0]]);});
+  const cs=[["Category","Name","What we found","What closes it","What works today"]];FN.forEach(f=>{const o=curOut(f);if(o)o.categories.forEach(c=>cs.push([c.categoryId,M.categories[c.categoryId][0],c.keyMessage.found,c.keyMessage.closes,c.whatWorksToday]));});
+  const fs=allFindings();const gr=[["Rank","Gap ID","Function","Category","Basis","Confidence","Title","Statement","Supporting facts","Consequence","Linked Subcategories","Root cause","Evidence","Extent confirmed","Extent likely","Not checked","Likelihood","Impact Operations","Impact Financial","Impact Legal","Impact Reputation","Impact Safety","Impact Personal data","Max impact","Risk score","Risk Level","Mandate","Weighted impact","Response","Timeframe","Acceptance authority","Reporting","Quick-win candidate","Assessor confirmed","Assessor comment","Fix","Find","Prevent","Handle exceptions","Validate","Sustain","Landscape blocks","Repeat finding","Prior assessment","Documents","Document gaps"]];
+  fs.forEach((z,n)=>{const g=z.g,r=z.r,resp=(S.ws&&S.ws.responses&&r.band&&S.ws.responses[r.band])||{};const d=(S.fn[z.f].dec||{})[g.id]||{};gr.push([n+1,g.id,z.f,z.c,g.basis,g.confidence||"",g.title||"",g.statement,(g.supportingFacts||[]).map(f=>"- "+f.fact+" ["+f.evidence.join(", ")+"]").join("\n"),g.consequence,g.linkedSubcategories.join(", "),g.rootCause.join(", "),g.evidence.join(", "),g.extent.confirmed.join(", "),g.extent.likely.join(", "),g.extent.notChecked,r.L??"",...AREAS.map(a=>r.I[a]??""),r.mx??"",r.score??"",r.band?bandName(r.band):"",z.md?"Yes":"",r.wi,resp.action||"",resp.time||"",resp.auth||"",resp.report||"",quickWin(z)?"Yes":"",r.conf?"Yes":"",d.cm||"",...STG.map(a=>{const ids=stgIds(g,a),s=stgStatus(g,a),why=(g.responses.notApplicable||{})[a];return ids.join(", ")||(s==="Required"?"":s+(why?": "+why:""));}),(g.landscapeRefs||[]).join(", "),g.repeatFinding?(g.repeatFinding.value?"Yes":"No"):"",(g.repeatFinding&&g.repeatFinding.priorRef)||"",(g.documents||[]).map(d=>d.id+" ("+docStatus(d.id,d.status)+")").join(", "),(g.documentGaps||[]).join(", ")]);});
+  const ir=[["IMP ID","Function","Stage","Action","Linked gaps","Gap type","Builds on","Documents","Prerequisites","Systems","Highest linked Risk Level","Mandate","Quick-win candidate","Change in flight","Applies to","Existing tool"]];
+  allImps().forEach(i=>{const lg=fs.filter(z=>i.linkedGaps.includes(z.g.id));const hb=lg.length?lg[0].r.band:null;ir.push([i.id,i.f,IS(i),i.action,i.linkedGaps.join(", "),i.gapType,i.buildsOn.join(", "),i.documents.join(", "),i.prerequisites.join(", "),i.systems.join(", "),hb?bandName(hb):"",lg.some(z=>z.md)?"Yes":"",lg.some(z=>quickWin(z))?"Yes":"",i.changeInFlight?i.changeInFlight.ref:"",i.changeInFlight?i.changeInFlight.appliesTo:"",i.existingTool||""]);});
+  const sr=[["ID","Type","Subcategory","Outcome","Statement","Evidence"]];strengthsComputed().forEach(z=>{const st=strText(z.id);sr.push([z.id,z.type,z.s,(S.iv.subs[z.s]||{}).outcome||"",st?st.statement:"",st?st.evidence.join(", "):""]);});
+  const sub=[["Subcategory","Category","Status","Foundation","Next-tier ready","Gap type","Gap type override","Counted tier","Target","Evidence basis","Coverage","Linked Gap Findings"]];
+  SUBS.forEach(s=>{const i=subInfo(s);if(!i)return;const lg=fs.filter(z=>z.g.linkedSubcategories.includes(s)).map(z=>z.g.id);sub.push([s,catOf(s),i.st,i.fd?"Yes":"",i.ntr?"Yes":"",i.gt||"",i.gtOv?"Yes":"",typeof i.counted==="number"?i.counted:"",i.tgt??"",i.ev,i.covApp?i.cov:"",lg.join(", ")]);});
+  const sy=[["Root cause","Source","Statement","Gap Findings"]];systemic().forEach(z=>sy.push([z.rc,z.src,z.stmt,z.gaps.join(", ")]));
+  const LF=lsFacts(),LO=lsOut(),LR=lsRefs(),lsx=[["Page","Block","Block name","Fact","Evidence","AI block line","Assessor note","Referenced by","Reason if not referenced"]],lpx=[["Page","Page name","Title","Key message","Evidence"]];
+  if(LF)LSP.forEach(z=>{z.b.forEach(b=>{const bk=LF.blocks[b],ln=((LO||{}).blockLines||[]).find(q=>q.block===b);(bk.facts.length?bk.facts:[{text:"",evidence:[]}]).forEach((f,n)=>lsx.push([z.p,b,bk.name,f.text,f.evidence.join(", "),n?"":(ln?ln.text:""),n?"":((S.ls.notes||{})[b]||""),n?"":LR[b].join(", "),n?"":((S.ls.l2||{})[b]||"")]));});
+    const pg=((LO||{}).pages||[]).find(q=>q.page===z.p);lpx.push([z.p,T.EN.ls.pages[z.p],pg?pg.title:"",pg?pg.keyMessage:"",pg?pg.evidence.join(", "):""]);});
+  const dx=[["Gap ID","Document ID","Title","Hierarchy","Level","Status","Source"]];fs.forEach(z=>(z.g.documents||[]).forEach(d=>{const m=DOCM[d.id]||{};dx.push([z.g.id,d.id,m.en||"",m.tier?T.EN.hl[m.tier]:"",m.level||"",docStatus(d.id,d.status),((S.iv||{}).dr||{})[d.id]?"Interview":"AI Analyst"]);}));EXSET.forEach(id=>{const m=DOCM[id]||{};dx.push(["All findings (standard exceptions set)",id,m.en||"",m.tier?T.EN.hl[m.tier]:"",m.level||"",docStatus(id,"Not verified"),((S.iv||{}).dr||{})[id]?"Interview":"Register"]);});fs.forEach(z=>(z.g.documentGaps||[]).forEach(p=>dx.push([z.g.id,"","Not in the register: "+p,"","","","AI Analyst"])));
+  const lg=[["When","Change","Reason"]];S.log.forEach(l=>lg.push([l.at,l.what,l.why]));
+  download(fileBase()+".xlsx",xlsx([{name:"Summary",rows:sum,widths:[34,60]},{name:"Tier Profile",rows:tier,widths:[9,40,8,8,8,6,14,9,30,30,10,10,60,60]},{name:"Category Summary",rows:cs,widths:[9,36,70,60,60]},{name:"Gap Register",rows:gr,widths:[5,15,6,8,9,9,40,60,60,60,22,22,30,30,24,24,7,7,7,7,7,7,7,7,7,9,7,8,40,20,24,12,9,9,30,22,22,22,22,22,22,14,14,10,40,30]},{name:"Improvement Actions",rows:ir,widths:[17,6,14,60,30,12,20,22,20,30,10,8,9]},{name:"Strength Register",rows:sr,widths:[16,11,10,50,70,30]},{name:"Subcategory Status",rows:sub,widths:[10,8,20,8,8,12,8,8,8,12,10,30]},{name:"Systemic Root Causes",rows:sy,widths:[18,12,70,50]},{name:"Landscape Pages",rows:lpx,widths:[6,40,50,90,40]},{name:"Landscape",rows:lsx,widths:[6,7,32,90,40,60,50,40,40]},{name:"Gap Documents",rows:dx,widths:[30,14,50,24,10,14,12]},{name:"Change Log",rows:lg,widths:[22,40,50]}]));toast(x.toast.xlsx);};
+
+/* ---------- print report ---------- */
+$("b-print").onclick=()=>{const x=t(),L=Li();if(!S.iv)return;const fs=allFindings();
+  $("printArea").innerHTML=`<h1>${x.printT}: ${esc(S.iv.meta.client)}</h1><p>${esc(S.iv.meta.date)} · Method ${esc(DATA.methodVersion)} · Tier Rubric ${esc(DATA.rubricVersion)}${readiness().prov?" · "+x.provisional:""}</p>
+  <h2>${x.spiderT}</h2>${spiderSvg()}
+  ${(()=>{const F=lsFacts(),o=lsOut();if(!F)return"";return `<h2>${x.ls.printT}</h2>${LSP.map(z=>{const p=((o||{}).pages||[]).find(q=>q.page===z.p);return `<div class="pq"><p><b>${z.p}. ${esc(x.ls.pages[z.p])}</b>${p?`: ${esc(p.title)}`:""}</p>${p?`<p>${esc(p.keyMessage)}</p>`:""}${z.b.map(b=>{const ln=((o||{}).blockLines||[]).find(q=>q.block===b);return `<p><b>${b} ${esc(x.ls.b[b])}.</b> ${esc(ln?ln.text:"")}</p><ul>${F.blocks[b].facts.map(f=>`<li>${esc(f.text)}</li>`).join("")}</ul>${b==="B4"&&S.ls.diag?`<img src="${S.ls.diag}" alt="" style="max-width:100%">`:""}`;}).join("")}</div>`;}).join("")}`;})()}
+  ${FN.map(f=>{const o=curOut(f);return `<h2>${f} ${esc(M.functions[f][L])}</h2>${CATS.filter(c=>c.startsWith(f+".")).map(c=>{const k=catInfo(c),oc=o?o.categories.find(z=>z.categoryId===c):null;
+   return `<div class="pq"><p><b>${c} ${esc(catNm(c))}</b> · ${x.cols.cur} ${k.cur??"-"} · ${x.cols.tgt} ${k.tgt??"-"} · ${esc(x.cst[k.st])}</p>${oc?`<p>${esc(oc.keyMessage.found)}</p><p><i>${esc(oc.keyMessage.closes)}</i></p>${oc.gapFindings.map(g=>{const r=finalRisk(f,g);return r.removed?"":`<p><b>${g.id}</b> [${r.band?bandName(r.band):"-"}] <b>${esc(gTitle(g))}</b>${g.title?" "+esc(g.statement):""}</p>`;}).join("")}`:""}</div>`;}).join("")}`;}).join("")}`;
+  window.print();};
+
+/* ---------- help + lang ---------- */
+let lastFocus=null;
+function openHelp(){lastFocus=document.activeElement;$("help-body").innerHTML=t().helpHtml+`<p><button class="btn pri" id="help-close">${lang==="TH"?"ปิด":"Close"}</button></p>`;$("help").hidden=false;$("help-close").focus();}
+function closeHelp(){$("help").hidden=true;if(lastFocus)lastFocus.focus();}
+$("b-help").onclick=openHelp;$("help").addEventListener("click",e=>{if(e.target.id==="help"||e.target.id==="help-close")closeHelp();});
+function setLang(l){lang=l;try{localStorage.setItem("csf-audit-lang",l)}catch(e){}renderAll();}
+$("b-th").onclick=()=>setLang("TH");$("b-en").onclick=()=>setLang("EN");
+{const h=(location.hash||"").slice(1);if(VIEWS[h])view=h;}
+renderAll();
+</script>

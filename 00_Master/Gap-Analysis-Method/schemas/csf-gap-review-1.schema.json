@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "csf-gap-review/1",
+  "title": "AI Reviewer feedback for one CSF Function (Gap Analysis Stage 1, step 2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "function", "reviewedRound", "checks", "verdict"],
+  "properties": {
+    "schema": { "const": "csf-gap-review/1" },
+    "function": { "enum": ["GV", "ID", "PR", "DE", "RS", "RC"] },
+    "reviewedRound": { "const": 1, "description": "The Reviewer reviews the first draft only. There is one feedback round." },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "target", "result", "note", "requiredChange"],
+        "properties": {
+          "check": { "type": "string", "pattern": "^C(0[1-9]|1[0-5])$" },
+          "target": { "type": "string", "description": "Finding, Strength, IMP, Category ID, or ALL" },
+          "result": { "enum": ["Pass", "Fail"] },
+          "note": { "type": "string", "maxLength": 500 },
+          "requiredChange": { "type": "string", "maxLength": 500, "description": "Empty when result is Pass" }
+        }
+      }
+    },
+    "verdict": { "enum": ["Accept", "Revise"], "description": "Revise when any check fails" }
+  }
+}

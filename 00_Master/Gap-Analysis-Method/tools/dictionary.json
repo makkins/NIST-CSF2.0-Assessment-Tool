@@ -1,0 +1,286 @@
+{
+ "version": "1.0",
+ "enums": {
+  "stages": [
+   "Fix",
+   "Find",
+   "Prevent",
+   "Handle exceptions",
+   "Validate",
+   "Sustain"
+  ],
+  "stageKeys": [
+   "fix",
+   "find",
+   "prevent",
+   "exceptions",
+   "validate",
+   "sustain"
+  ],
+  "stageStatus": [
+   "Required",
+   "In place",
+   "Not applicable",
+   "Beyond Target Tier"
+  ],
+  "levels": [
+   "Required",
+   "Expected",
+   "Optional"
+  ],
+  "packages": [
+   "Essential",
+   "Core",
+   "Extended"
+  ],
+  "triggers": [
+   "All",
+   "PDPA",
+   "ISO 27001",
+   "CII",
+   "CCA"
+  ],
+  "functions": [
+   "GV",
+   "ID",
+   "PR",
+   "DE",
+   "RS",
+   "RC"
+  ],
+  "tierNames": [
+   "Partial",
+   "Risk Informed",
+   "Repeatable",
+   "Adaptive"
+  ],
+  "types": [
+   "CHR",
+   "STR",
+   "STM",
+   "POL",
+   "STD",
+   "PRC",
+   "PLN",
+   "PLB",
+   "GDL",
+   "FRM",
+   "REG",
+   "REC",
+   "RPT",
+   "TPL"
+  ],
+  "hierarchy": [
+   "T0",
+   "T1",
+   "T2",
+   "T3",
+   "T4"
+  ],
+  "waves": [
+   "W0",
+   "W1",
+   "W2",
+   "W3",
+   "W4",
+   "W5"
+  ],
+  "tracks": [
+   "A",
+   "B"
+  ],
+  "caps": [
+   "IT",
+   "GUIDED",
+   "SPEC"
+  ]
+ },
+ "idFormats": {
+  "document": "^(GV|ID|PR|DE|RS|RC)-(CHR|STR|STM|POL|STD|PRC|PLN|PLB|GDL|FRM|REG|REC|RPT|TPL)-\\d{3}$",
+  "category": "^(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}$",
+  "subcategory": "^(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-\\d{2}$"
+ },
+ "registerFields": [
+  "title",
+  "th",
+  "hierarchy",
+  "type",
+  "category",
+  "level",
+  "trigger",
+  "package",
+  "wave",
+  "track",
+  "cap"
+ ],
+ "labels": {
+  "type": {
+   "CHR": {
+    "en": "Charter",
+    "th": "กฎบัตร",
+    "hierarchy": "T0"
+   },
+   "STR": {
+    "en": "Strategy",
+    "th": "ยุทธศาสตร์",
+    "hierarchy": "T0"
+   },
+   "STM": {
+    "en": "Statement",
+    "th": "แถลงการณ์",
+    "hierarchy": "T0"
+   },
+   "POL": {
+    "en": "Policy",
+    "th": "นโยบาย",
+    "hierarchy": "T1"
+   },
+   "STD": {
+    "en": "Standard",
+    "th": "มาตรฐาน",
+    "hierarchy": "T2"
+   },
+   "PRC": {
+    "en": "Procedure",
+    "th": "ระเบียบปฏิบัติ",
+    "hierarchy": "T3"
+   },
+   "PLN": {
+    "en": "Plan",
+    "th": "แผน",
+    "hierarchy": "T3"
+   },
+   "PLB": {
+    "en": "Playbook",
+    "th": "คู่มือรับมือ (Playbook)",
+    "hierarchy": "T3"
+   },
+   "GDL": {
+    "en": "Guideline",
+    "th": "แนวทาง",
+    "hierarchy": "T3"
+   },
+   "FRM": {
+    "en": "Form",
+    "th": "แบบฟอร์ม",
+    "hierarchy": "T4"
+   },
+   "REG": {
+    "en": "Register",
+    "th": "ทะเบียน",
+    "hierarchy": "T4"
+   },
+   "REC": {
+    "en": "Record",
+    "th": "บันทึก",
+    "hierarchy": "T4"
+   },
+   "RPT": {
+    "en": "Report",
+    "th": "รายงาน",
+    "hierarchy": "T4"
+   },
+   "TPL": {
+    "en": "Template",
+    "th": "แม่แบบ",
+    "hierarchy": "T4"
+   }
+  },
+  "hierarchy": {
+   "T0": {
+    "en": "Tier 0: Charter, Strategy, and Statement",
+    "th": "ชั้นที่ 0: กฎบัตร ยุทธศาสตร์ และแถลงการณ์"
+   },
+   "T1": {
+    "en": "Tier 1: Policy",
+    "th": "ชั้นที่ 1: นโยบาย"
+   },
+   "T2": {
+    "en": "Tier 2: Standard",
+    "th": "ชั้นที่ 2: มาตรฐาน"
+   },
+   "T3": {
+    "en": "Tier 3: Procedure, Plan, Playbook, and Guideline",
+    "th": "ชั้นที่ 3: ระเบียบปฏิบัติ แผน คู่มือ และแนวทาง"
+   },
+   "T4": {
+    "en": "Tier 4: Form, Register, Record, Report, and Template",
+    "th": "ชั้นที่ 4: แบบฟอร์ม ทะเบียน บันทึก รายงาน และแม่แบบ"
+   }
+  },
+  "level": {
+   "Required": "บังคับ (Required)",
+   "Expected": "คาดหวัง (Expected)",
+   "Optional": "ทางเลือก (Optional)"
+  },
+  "trigger": {
+   "All": "ทุกองค์กร",
+   "PDPA": "PDPA",
+   "ISO 27001": "ISO 27001 (กรณีขอรับรอง)",
+   "CII": "CII",
+   "CCA": "ผู้ให้บริการตาม พ.ร.บ.คอมพิวเตอร์ฯ"
+  },
+  "ppt": {
+   "Governance": "การกำกับดูแล (Governance)",
+   "People": "บุคลากร (People)",
+   "Process": "กระบวนการ (Process)",
+   "Technology": "เทคโนโลยี (Technology)",
+   "Physical": "กายภาพ (Physical)"
+  },
+  "package": {
+   "Essential": "จำเป็นขั้นต้น (Essential)",
+   "Core": "หลัก (Core)",
+   "Extended": "ขยาย (Extended)"
+  },
+  "wave": {
+   "W0": {
+    "en": "Mandate and Mobilize",
+    "th": "มอบอำนาจและเตรียมการ"
+   },
+   "W1": {
+    "en": "Understand",
+    "th": "ทำความเข้าใจองค์กร"
+   },
+   "W2": {
+    "en": "Direct",
+    "th": "กำหนดทิศทาง"
+   },
+   "W3": {
+    "en": "Standardize",
+    "th": "กำหนดมาตรฐานและวิธีปฏิบัติ"
+   },
+   "W4": {
+    "en": "Operate and Prove",
+    "th": "ปฏิบัติและพิสูจน์ผล"
+   },
+   "W5": {
+    "en": "Optimize",
+    "th": "ยกระดับ"
+   }
+  },
+  "track": {
+   "A": {
+    "en": "Track A: Governance build",
+    "th": "Track A: สร้างระบบกำกับดูแล"
+   },
+   "B": {
+    "en": "Track B: Threat-driven quick wins (Day 0 to 90)",
+    "th": "Track B: งานเร่งด่วนตามภัยคุกคาม (วันที่ 0 ถึง 90)"
+   }
+  },
+  "cap": {
+   "IT": {
+    "en": "IT-ready",
+    "th": "ทีม IT ทำได้เอง"
+   },
+   "GUIDED": {
+    "en": "Specialist-guided",
+    "th": "ต้องมีผู้เชี่ยวชาญแนะนำ"
+   },
+   "SPEC": {
+    "en": "Specialist-required",
+    "th": "ต้องใช้ผู้เชี่ยวชาญ"
+   }
+  }
+ }
+}

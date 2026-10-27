@@ -1,0 +1,564 @@
+{
+ "schema": "csf-gap-analyst/2",
+ "function": "DE",
+ "round": 3,
+ "categories": [
+  {
+   "categoryId": "DE.CM",
+   "keyMessage": {
+    "found": "No one monitors network traffic or reads HIS and PACS logs, and vendor sessions are unlogged.",
+    "closes": "Enable logging on HIS and PACS, deploy central logging, and agree a monitoring model."
+   },
+   "whatWorksToday": "CCTV and door alarms cover restricted areas, and endpoint detection monitors the HIS and Active Directory servers.",
+   "strengths": [
+    {
+     "id": "STR-DE.CM-02",
+     "type": "Foundation",
+     "statement": "CCTV and door alarms are in place for restricted areas.",
+     "evidence": [
+      "PHY-02"
+     ]
+    },
+    {
+     "id": "STR-DE.CM-06",
+     "type": "Foundation",
+     "statement": "IT keeps a list of suppliers with remote access.",
+     "evidence": [
+      "SUP-01"
+     ]
+    },
+    {
+     "id": "STR-DE.CM-09",
+     "type": "Foundation",
+     "statement": "Endpoint detection and response monitors the HIS and Active Directory servers, and DMARC is configured for email.",
+     "evidence": [
+      "F7:HIS",
+      "F7:Active Directory and network core",
+      "EML-01"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-DE.CM-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Network traffic and server logs are not monitored",
+     "statement": "No one watches network traffic or reads logs on the core systems, although the hospital runs around the clock.",
+     "supportingFacts": [
+      {
+       "fact": "Network traffic is not monitored with intrusion detection.",
+       "evidence": [
+        "NET-05"
+       ]
+      },
+      {
+       "fact": "HIS and PACS produce no security logs.",
+       "evidence": [
+        "F6:HIS",
+        "F6:PACS"
+       ]
+      },
+      {
+       "fact": "Central logs for Microsoft 365 and Active Directory are not reviewed.",
+       "evidence": [
+        "F6:Microsoft 365",
+        "F6:Active Directory and network core"
+       ]
+      },
+      {
+       "fact": "PACS servers have no endpoint protection.",
+       "evidence": [
+        "F7:PACS"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS",
+       "Microsoft 365",
+       "Active Directory and network core"
+      ],
+      "likely": [],
+      "notChecked": "Network device logs were not checked"
+     },
+     "linkedSubcategories": [
+      "DE.CM-01",
+      "DE.CM-09"
+     ],
+     "evidence": [
+      "NET-05",
+      "F6:HIS",
+      "F6:PACS",
+      "F6:Microsoft 365",
+      "F6:Active Directory and network core",
+      "F7:PACS"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Capacity"
+     ],
+     "consequence": "An intruder works for days unseen, and ransomware is noticed only when files are encrypted.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Monitoring is Poor on Criticality A systems and the threat is active.",
+      "evidence": [
+       "NET-05",
+       "F6:HIS",
+       "F6:PACS"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Undetected intruder stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Undetected intruder adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Undetected intruder triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Undetected intruder damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Undetected intruder delays or disrupts patient care."
+      },
+      "data": {
+       "value": 5,
+       "rationale": "Undetected intruder exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-DE.CM-01-01",
+       "IMP-DE.CM-01-03"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-DE.CM-01-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-DE.CM-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Vendor sessions are unlogged and physical monitoring is unconfirmed",
+     "statement": "CMC records neither vendor remote sessions nor proof that physical alerts are watched, so misuse leaves little trace.",
+     "supportingFacts": [
+      {
+       "fact": "Vendor remote access to HIS and PACS is not controlled or logged.",
+       "evidence": [
+        "vra:HIS",
+        "vra:PACS"
+       ]
+      },
+      {
+       "fact": "Vendor remote tools such as AnyDesk are not controlled.",
+       "evidence": [
+        "SUP-02"
+       ]
+      },
+      {
+       "fact": "CCTV and door alarms exist, but alert monitoring was only stated.",
+       "evidence": [
+        "PHY-02"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS"
+      ],
+      "likely": [],
+      "notChecked": "Monitoring of the hospital website vendor was not checked"
+     },
+     "linkedSubcategories": [
+      "DE.CM-02",
+      "DE.CM-06"
+     ],
+     "evidence": [
+      "vra:HIS",
+      "vra:PACS",
+      "SUP-02",
+      "PHY-02"
+     ],
+     "rootCause": [
+      "Tooling"
+     ],
+     "consequence": "A vendor or insider can copy patient records without detection, and CMC cannot prove what was accessed.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-a",
+      "rationale": "Vendor access is Poor on Criticality A systems and no activity record is kept.",
+      "evidence": [
+       "vra:HIS",
+       "vra:PACS",
+       "SUP-02"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Unseen data copying stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Unseen data copying adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Unseen data copying triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Unseen data copying damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Unseen data copying exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-DE.CM-02-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "DE.AE",
+   "keyMessage": {
+    "found": "No rule turns an alert into an incident, and no detection covers ransomware precursors.",
+    "closes": "Define triage steps and declaration criteria, then build ransomware detection rules."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-DE.AE-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No one triages alerts or declares incidents",
+     "statement": "No team is assigned to analyze alerts, and no rule decides when an event becomes an incident.",
+     "supportingFacts": [
+      {
+       "fact": "No one is assigned to monitor security alerts.",
+       "evidence": [
+        "LOG-04",
+        "DE.AE-02"
+       ]
+      },
+      {
+       "fact": "Incident declaration criteria were not provided.",
+       "evidence": [
+        "DE.AE-08"
+       ]
+      },
+      {
+       "fact": "Alert information does not reach authorized staff.",
+       "evidence": [
+        "DE.AE-06"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "IT operations"
+      ],
+      "likely": [],
+      "notChecked": "Alert volume per day was not measured"
+     },
+     "linkedSubcategories": [
+      "DE.AE-02",
+      "DE.AE-06",
+      "DE.AE-08"
+     ],
+     "evidence": [
+      "LOG-04",
+      "DE.AE-02",
+      "DE.AE-08",
+      "DE.AE-06"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Capacity"
+     ],
+     "consequence": "Response starts late or not at all, and regulator clocks run before CMC declares an incident.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-b",
+      "rationale": "No triage practice exists and the threat is active.",
+      "evidence": [
+       "LOG-04",
+       "DE.AE-02",
+       "DE.AE-08"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Late declaration stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Late declaration adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Late declaration triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Late declaration damages patient and public trust."
+      },
+      "safety": {
+       "value": 3,
+       "rationale": "Late declaration delays or disrupts patient care."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Late declaration exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-DE.AE-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-DE.AE-02",
+     "basis": "Inferred",
+     "confidence": "Medium",
+     "title": "Ransomware precursors are not detected or correlated",
+     "statement": "CMC probably has no rules for early ransomware signs, so the first visible sign is likely encrypted files.",
+     "supportingFacts": [
+      {
+       "fact": "No detection use cases were confirmed.",
+       "evidence": [
+        "LOG-05"
+       ]
+      },
+      {
+       "fact": "Information from multiple sources is not correlated.",
+       "evidence": [
+        "DE.AE-03"
+       ]
+      },
+      {
+       "fact": "The impact and scope of events are not estimated.",
+       "evidence": [
+        "DE.AE-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Central logging"
+      ],
+      "likely": [
+       "HIS",
+       "LIS",
+       "ERP"
+      ],
+      "notChecked": "Endpoint rules on servers were not reviewed"
+     },
+     "linkedSubcategories": [
+      "DE.AE-03",
+      "DE.AE-04"
+     ],
+     "evidence": [
+      "LOG-05",
+      "DE.AE-03",
+      "DE.AE-04"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Skills"
+     ],
+     "consequence": "Encryption spreads across servers before anyone reacts, and recovery starts from a full outage.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-b",
+      "rationale": "Inferred with Medium confidence from missing logging and use cases.",
+      "evidence": [
+       "LOG-05",
+       "DE.AE-03",
+       "DE.AE-04"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Silent encryption stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Silent encryption adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Silent encryption triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Silent encryption damages patient and public trust."
+      },
+      "safety": {
+       "value": 4,
+       "rationale": "Silent encryption delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Silent encryption exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [],
+      "prevent": [
+       "IMP-DE.AE-02-01"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-DE.CM-01-01",
+   "angle": "Fix",
+   "action": "Enable security logs on HIS and PACS and deploy central logging for Criticality A systems",
+   "linkedGaps": [
+    "GAP-DE.CM-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-DE.CM-01-02",
+   "angle": "Prevent",
+   "action": "Agree a monitoring model, in-house or managed service, for 24 hour coverage",
+   "linkedGaps": [
+    "GAP-DE.CM-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-DE.CM-01-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-DE.CM-01-03",
+   "angle": "Fix",
+   "action": "Install endpoint protection on the PACS servers",
+   "linkedGaps": [
+    "GAP-DE.CM-01"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-DE.CM-02-01",
+   "angle": "Fix",
+   "action": "Log vendor remote sessions to HIS and PACS and review the logs weekly",
+   "linkedGaps": [
+    "GAP-DE.CM-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-DE.AE-01-01",
+   "angle": "Fix",
+   "action": "Define alert triage steps and incident declaration criteria",
+   "linkedGaps": [
+    "GAP-DE.AE-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-DE.AE-02-01",
+   "angle": "Prevent",
+   "action": "Build detection rules for mass file renames, backup deletion, and new administrator accounts",
+   "linkedGaps": [
+    "GAP-DE.AE-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-DE.CM-01-01"
+   ],
+   "systems": []
+  }
+ ],
+ "verify": []
+}

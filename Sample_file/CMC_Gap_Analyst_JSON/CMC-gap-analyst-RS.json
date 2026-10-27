@@ -1,0 +1,877 @@
+{
+ "schema": "csf-gap-analyst/2",
+ "function": "RS",
+ "round": 3,
+ "categories": [
+  {
+   "categoryId": "RS.MA",
+   "keyMessage": {
+    "found": "Incidents run on improvisation with no tested plan, playbook, severity scale, or record.",
+    "closes": "Approve an incident response plan with a ransomware playbook and hold a first tabletop exercise."
+   },
+   "whatWorksToday": "Users can report suspicious email with one click.",
+   "strengths": [
+    {
+     "id": "STR-RS.MA-02",
+     "type": "Foundation",
+     "statement": "Users can report suspicious email with one click.",
+     "evidence": [
+      "EML-04"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-RS.MA-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No tested incident response plan or ransomware playbook",
+     "statement": "Incidents are handled by whoever is available, with no confirmed playbook, no exercise, and no criteria to start recovery.",
+     "supportingFacts": [
+      {
+       "fact": "Playbooks for ransomware and phishing were not confirmed.",
+       "evidence": [
+        "IR-01"
+       ]
+      },
+      {
+       "fact": "No technical or tabletop exercise has been run.",
+       "evidence": [
+        "IR-04"
+       ]
+      },
+      {
+       "fact": "Criteria for starting recovery are not defined.",
+       "evidence": [
+        "RS.MA-05"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Departmental downtime procedures were not collected"
+     },
+     "linkedSubcategories": [
+      "RS.MA-01",
+      "RS.MA-05"
+     ],
+     "evidence": [
+      "IR-01",
+      "IR-04",
+      "RS.MA-05"
+     ],
+     "rootCause": [
+      "Ownership",
+      "Skills"
+     ],
+     "consequence": "Decisions in the first hours are improvised during an attack on a hospital that runs around the clock, and reporting duties are missed.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-b",
+      "rationale": "No tested plan exists and the threat is active.",
+      "evidence": [
+       "IR-01",
+       "IR-04",
+       "RS.MA-05"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Improvised response stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Improvised response adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Improvised response triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Improvised response damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Improvised response delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Improvised response exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RS.MA-01-01"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-RS.MA-01-02"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-RS.MA-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Incident reports are not triaged, categorized, or escalated",
+     "statement": "Reports reach IT but no steps triage, rate, or escalate them, so serious incidents cannot be told from routine ones.",
+     "supportingFacts": [
+      {
+       "fact": "Users can report phishing with one click, but no triage steps follow.",
+       "evidence": [
+        "EML-04",
+        "RS.MA-02"
+       ]
+      },
+      {
+       "fact": "The contact list and out-of-band channel are only partly defined.",
+       "evidence": [
+        "IR-05"
+       ]
+      },
+      {
+       "fact": "No severity scale categorizes incidents.",
+       "evidence": [
+        "RS.MA-03",
+        "RS.MA-04"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "IT operations"
+      ],
+      "likely": [],
+      "notChecked": "Past incident emails were not collected"
+     },
+     "linkedSubcategories": [
+      "RS.MA-02",
+      "RS.MA-03",
+      "RS.MA-04"
+     ],
+     "evidence": [
+      "EML-04",
+      "RS.MA-02",
+      "IR-05",
+      "RS.MA-03",
+      "RS.MA-04"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "A reportable event passes as routine, and CMC misses its CII reporting duty.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Process gap that needs a reportable event before harm.",
+      "evidence": [
+       "EML-04",
+       "RS.MA-02",
+       "IR-05"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 3,
+       "rationale": "Missed reportable event stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Missed reportable event triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RS.MA-02-01",
+       "IMP-RS.MA-02-02"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "RS.AN",
+   "keyMessage": {
+    "found": "Investigations end at service restoration, and CMC cannot scope a breach to patient records.",
+    "closes": "Define evidence steps, retain a forensic provider, and extend log retention."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-RS.AN-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Investigation records and evidence are not preserved",
+     "statement": "CMC has only partial forensic capability and unsynchronized clocks, so evidence is weak and the entry point stays unknown.",
+     "supportingFacts": [
+      {
+       "fact": "Forensic capability is only partly available.",
+       "evidence": [
+        "IR-03"
+       ]
+      },
+      {
+       "fact": "System clocks are not synchronized to a trusted source.",
+       "evidence": [
+        "LOG-03"
+       ]
+      },
+      {
+       "fact": "No steps exist to preserve incident data and its integrity.",
+       "evidence": [
+        "RS.AN-06",
+        "RS.AN-07"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Incident handling"
+      ],
+      "likely": [],
+      "notChecked": "Past incident files were not provided"
+     },
+     "linkedSubcategories": [
+      "RS.AN-06",
+      "RS.AN-07"
+     ],
+     "evidence": [
+      "IR-03",
+      "LOG-03",
+      "RS.AN-06",
+      "RS.AN-07"
+     ],
+     "rootCause": [
+      "Skills",
+      "Budget"
+     ],
+     "consequence": "Attackers return through the same route after recovery, and CMC cannot support a regulator inquiry.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-a",
+      "rationale": "Investigation capability is Partial and the threat is active.",
+      "evidence": [
+       "IR-03",
+       "LOG-03",
+       "RS.AN-06"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 4,
+       "rationale": "Repeat entry stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Repeat entry adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Repeat entry triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Repeat entry damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 3,
+       "rationale": "Repeat entry exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RS.AN-01-02"
+      ],
+      "find": [],
+      "prevent": [
+       "IMP-RS.AN-01-01"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-RS.AN-02",
+     "basis": "Inferred",
+     "confidence": "Medium",
+     "title": "CMC cannot estimate how much patient data an incident reached",
+     "statement": "Missing logs and data maps probably prevent CMC from scoping a breach to specific patient records.",
+     "supportingFacts": [
+      {
+       "fact": "HIS and PACS produce no security logs.",
+       "evidence": [
+        "F6:HIS",
+        "F6:PACS"
+       ]
+      },
+      {
+       "fact": "No data inventory supports scoping.",
+       "evidence": [
+        "ID.AM-07"
+       ]
+      },
+      {
+       "fact": "Incident magnitude is not estimated or validated.",
+       "evidence": [
+        "RS.AN-08"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "PACS"
+      ],
+      "likely": [
+       "LIS",
+       "ERP"
+      ],
+      "notChecked": "Application audit logs were not reviewed"
+     },
+     "linkedSubcategories": [
+      "RS.AN-03",
+      "RS.AN-08"
+     ],
+     "evidence": [
+      "F6:HIS",
+      "F6:PACS",
+      "ID.AM-07",
+      "RS.AN-08"
+     ],
+     "rootCause": [
+      "Tooling",
+      "Skills"
+     ],
+     "consequence": "CMC cannot complete a PDPA breach assessment, so it notifies too many patients or too late.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-b",
+      "rationale": "Inferred with Medium confidence from two missing capabilities.",
+      "evidence": [
+       "F6:HIS",
+       "F6:PACS",
+       "ID.AM-07"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Unscoped breach adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Unscoped breach triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Unscoped breach damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Unscoped breach exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [
+       "IMP-RS.AN-02-01"
+      ],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "RS.CO",
+   "keyMessage": {
+    "found": "Regulatory reporting and stakeholder messages depend on memory under pressure.",
+    "closes": "Write a notification procedure after verifying current CII and PDPA timelines, and prepare message templates."
+   },
+   "whatWorksToday": "",
+   "strengths": [],
+   "gapFindings": [
+    {
+     "id": "GAP-RS.CO-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Regulatory reporting duties are not built into procedures",
+     "statement": "No procedure or owner covers CII incident reporting or PDPA breach notification, so duties depend on memory under pressure.",
+     "supportingFacts": [
+      {
+       "fact": "No notification procedure names an owner, timeline, or template.",
+       "evidence": [
+        "RS.CO-02"
+       ]
+      },
+      {
+       "fact": "The contact list for authorities and partners is only partly current.",
+       "evidence": [
+        "IR-05"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Current reporting timelines were not verified"
+     },
+     "linkedSubcategories": [
+      "RS.CO-02"
+     ],
+     "evidence": [
+      "RS.CO-02",
+      "IR-05"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "CMC misses a reporting deadline during an incident and faces regulator action on top of the attack.",
+     "likelihood": {
+      "value": 4,
+      "anchor": "L4-b",
+      "rationale": "No procedure exists and the threat is active.",
+      "evidence": [
+       "RS.CO-02",
+       "IR-05"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 3,
+       "rationale": "Missed deadline adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 4,
+       "rationale": "Missed deadline triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Missed deadline damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Missed deadline exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RS.CO-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    },
+    {
+     "id": "GAP-RS.CO-02",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "No roles or templates for sharing incident information",
+     "statement": "No one is assigned to speak to patients, staff, media, or referring hospitals during an incident.",
+     "supportingFacts": [
+      {
+       "fact": "No spokesperson or message template exists.",
+       "evidence": [
+        "RS.CO-03",
+        "NOTE:RS.CO-03"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "Both hospitals"
+      ],
+      "likely": [],
+      "notChecked": "Existing media contacts were not reviewed"
+     },
+     "linkedSubcategories": [
+      "RS.CO-03"
+     ],
+     "evidence": [
+      "RS.CO-03",
+      "NOTE:RS.CO-03"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Conflicting statements damage patient trust and invite media speculation.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Process gap that needs an incident before harm.",
+      "evidence": [
+       "RS.CO-03",
+       "NOTE:RS.CO-03"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "fin": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "legal": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "rep": {
+       "value": 3,
+       "rationale": "Conflicting statements damages patient and public trust."
+      },
+      "safety": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      },
+      "data": {
+       "value": 2,
+       "rationale": "Limited direct effect in this scenario."
+      }
+     },
+     "responses": {
+      "fix": [],
+      "find": [],
+      "prevent": [
+       "IMP-RS.CO-02-01"
+      ],
+      "exceptions": [],
+      "notApplicable": {
+       "fix": "Fix depends on the result of the Find action.",
+       "find": "The affected systems or units are already identified.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  },
+  {
+   "categoryId": "RS.MI",
+   "keyMessage": {
+    "found": "The team can contain a host, but no playbook or authority says who orders isolation of core systems.",
+    "closes": "Record who may isolate which systems, including a night shift rule for HIS."
+   },
+   "whatWorksToday": "The IT team can isolate a host, disable an account, and block an indicator.",
+   "strengths": [
+    {
+     "id": "STR-RS.MI-01",
+     "type": "Foundation",
+     "statement": "The IT team can isolate a host, disable an account, and block an indicator across the environment.",
+     "evidence": [
+      "IR-02"
+     ]
+    }
+   ],
+   "gapFindings": [
+    {
+     "id": "GAP-RS.MI-01",
+     "basis": "Observed",
+     "confidence": null,
+     "title": "Containment ability exists but decision authority does not",
+     "statement": "The team can isolate hosts, but no playbook or authority says who orders isolation of core systems, even at night.",
+     "supportingFacts": [
+      {
+       "fact": "The team can isolate a host, disable an account, and block an indicator.",
+       "evidence": [
+        "IR-02"
+       ]
+      },
+      {
+       "fact": "No playbook sets containment steps or who may order isolation.",
+       "evidence": [
+        "IR-01",
+        "NOTE:RS.MI-01"
+       ]
+      }
+     ],
+     "extent": {
+      "confirmed": [
+       "HIS",
+       "Core network"
+      ],
+      "likely": [],
+      "notChecked": "Authority for other systems was not reviewed"
+     },
+     "linkedSubcategories": [
+      "RS.MI-01",
+      "RS.MI-02"
+     ],
+     "evidence": [
+      "IR-02",
+      "IR-01",
+      "NOTE:RS.MI-01"
+     ],
+     "rootCause": [
+      "Ownership"
+     ],
+     "consequence": "Delay in disconnecting lets ransomware spread to more systems and lengthens the outage.",
+     "likelihood": {
+      "value": 3,
+      "anchor": "L3-c",
+      "rationale": "Governance gap that needs an attack before harm.",
+      "evidence": [
+       "IR-02",
+       "IR-01",
+       "NOTE:RS.MI-01"
+      ]
+     },
+     "impact": {
+      "ops": {
+       "value": 5,
+       "rationale": "Slow isolation stops or slows hospital operations."
+      },
+      "fin": {
+       "value": 4,
+       "rationale": "Slow isolation adds recovery cost and revenue loss."
+      },
+      "legal": {
+       "value": 3,
+       "rationale": "Slow isolation triggers reporting duties or regulator questions."
+      },
+      "rep": {
+       "value": 4,
+       "rationale": "Slow isolation damages patient and public trust."
+      },
+      "safety": {
+       "value": 5,
+       "rationale": "Slow isolation delays or disrupts patient care."
+      },
+      "data": {
+       "value": 4,
+       "rationale": "Slow isolation exposes sensitive health records."
+      }
+     },
+     "responses": {
+      "fix": [
+       "IMP-RS.MI-01-01"
+      ],
+      "find": [],
+      "prevent": [],
+      "exceptions": [],
+      "notApplicable": {
+       "find": "The affected systems or units are already identified.",
+       "prevent": "Recurrence is addressed by the related Governance and Process actions.",
+       "exceptions": "No system is known to be unable to meet the control."
+      }
+     }
+    }
+   ],
+   "observations": []
+  }
+ ],
+ "improvementActions": [
+  {
+   "id": "IMP-RS.MA-01-01",
+   "angle": "Fix",
+   "action": "Approve an incident response plan with a ransomware playbook",
+   "linkedGaps": [
+    "GAP-RS.MA-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.MA-01-02",
+   "angle": "Prevent",
+   "action": "Hold a tabletop exercise on ransomware each year",
+   "linkedGaps": [
+    "GAP-RS.MA-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [
+    "IMP-RS.MA-01-01"
+   ],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.MA-02-01",
+   "angle": "Fix",
+   "action": "Define triage, severity, and escalation steps and start an incident log",
+   "linkedGaps": [
+    "GAP-RS.MA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.MA-02-02",
+   "angle": "Fix",
+   "action": "Keep a current contact list and an out-of-band channel for responders",
+   "linkedGaps": [
+    "GAP-RS.MA-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.AN-01-01",
+   "angle": "Prevent",
+   "action": "Define evidence preservation steps and retain a forensic provider",
+   "linkedGaps": [
+    "GAP-RS.AN-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.AN-01-02",
+   "angle": "Fix",
+   "action": "Synchronize system clocks to a trusted time source",
+   "linkedGaps": [
+    "GAP-RS.AN-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.AN-02-01",
+   "angle": "Find",
+   "action": "Extend log retention on HIS and PACS to support scoping of affected records",
+   "linkedGaps": [
+    "GAP-RS.AN-02"
+   ],
+   "gapType": "Technology",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS",
+    "PACS"
+   ]
+  },
+  {
+   "id": "IMP-RS.CO-01-01",
+   "angle": "Fix",
+   "action": "Write a notification procedure with owner, timeline, and template for CII and PDPA reporting after verifying current timelines",
+   "linkedGaps": [
+    "GAP-RS.CO-01"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.CO-02-01",
+   "angle": "Prevent",
+   "action": "Name communication roles and prepare message templates for patients, staff, and media",
+   "linkedGaps": [
+    "GAP-RS.CO-02"
+   ],
+   "gapType": "Process",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": []
+  },
+  {
+   "id": "IMP-RS.MI-01-01",
+   "angle": "Fix",
+   "action": "Record who may isolate which systems, including a night shift rule for HIS, in the response plan",
+   "linkedGaps": [
+    "GAP-RS.MI-01"
+   ],
+   "gapType": "Governance",
+   "buildsOn": [],
+   "documents": [],
+   "prerequisites": [],
+   "systems": [
+    "HIS"
+   ]
+  }
+ ],
+ "verify": []
+}

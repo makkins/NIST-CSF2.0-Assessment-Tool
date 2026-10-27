@@ -1,0 +1,552 @@
+<title>CSF Document Audit Tracker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: engagement header, tab bar (Setup, Dashboard, Assess, Gap roadmap, Activities); Assess is a list-detail workspace */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#18212f; --muted:#5a6577; --line:#d6dce5; --accent:#245a7a; --accent-soft:#e2eef5; --chip:#eef1f5;
+  --ok:#1e7a46; --ok-soft:#e3f3ea; --warn:#a96300; --warn-soft:#fcf0dc; --bad:#b42318; --bad-soft:#fbe7e5; --na:#7b8494; --na-soft:#f0f1f4;
+  --req:#b42318; --exp:#1d4ed8; --opt:#8a93a3; --on-block:#ffffff;
+  --cap-it:#2e7d4f; --cap-g:#b26a00; --cap-s:#8a2f8f;
+  --f-body:"IBM Plex Sans Thai",system-ui,"Segoe UI",Tahoma,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10151c; --surface:#18202a; --ink:#e5e9f0; --muted:#9aa4b4; --line:#2c3644; --accent:#7fb6d6; --accent-soft:#1d3342; --chip:#222b37;
+  --ok:#4cc27e; --ok-soft:#173326; --warn:#e3a33f; --warn-soft:#3a2c15; --bad:#ef6b61; --bad-soft:#3a1d1c; --na:#8a93a3; --na-soft:#232a35;
+  --req:#e5534b; --exp:#5b8def; --opt:#7d8696; --on-block:#ffffff; --cap-it:#4fbf82; --cap-g:#e2a23b; --cap-s:#d07ad6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10151c; --surface:#18202a; --ink:#e5e9f0; --muted:#9aa4b4; --line:#2c3644; --accent:#7fb6d6; --accent-soft:#1d3342; --chip:#222b37;
+  --ok:#4cc27e; --ok-soft:#173326; --warn:#e3a33f; --warn-soft:#3a2c15; --bad:#ef6b61; --bad-soft:#3a1d1c; --na:#8a93a3; --na-soft:#232a35;
+  --req:#e5534b; --exp:#5b8def; --opt:#7d8696; --on-block:#ffffff; --cap-it:#4fbf82; --cap-g:#e2a23b; --cap-s:#d07ad6; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.5;margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:16px 48px}
+header.top{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:12px}
+h1{font-size:clamp(20px,2.6vw,27px);margin:0;line-height:1.2;text-wrap:balance}
+.eng{color:var(--muted);font-size:13px;margin-top:2px}
+.eng b{color:var(--ink)}
+.hbtns{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.btn{font:600 13px var(--f-body);padding:6px 11px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.sm{font-size:12px;padding:3px 8px}
+.btn.mono{font-family:var(--f-mono);white-space:nowrap}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.lang{display:flex;border:1px solid var(--ink);border-radius:4px;overflow:hidden}
+.lang button{font:600 13px var(--f-body);padding:6px 12px;border:0;background:var(--surface);color:var(--ink);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.savebar{font-size:12px;color:var(--muted);margin:8px 0 0}
+.tabs{display:flex;gap:4px;margin:14px 0 12px;flex-wrap:wrap}
+.tabs button{font:600 14px var(--f-body);padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:4px;cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=text],input[type=search],input[type=date],select,textarea{font:13px var(--f-body);padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);min-width:0;max-width:100%}
+textarea{width:100%;resize:vertical;min-height:54px}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.85}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.pad{padding:14px}
+.scroll{overflow-x:auto}
+h2{font-size:18px;margin:0 0 4px}
+h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.hint{color:var(--muted);font-size:13px;margin:0 0 10px;max-width:110ch}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.form{display:grid;grid-template-columns:200px 1fr;gap:8px 12px;align-items:center}
+.form label{font-size:13px;color:var(--muted)}
+.form .help{grid-column:2;font-size:12px;color:var(--muted);margin-top:-4px}
+@media (max-width:640px){.form{grid-template-columns:1fr}.form .help{grid-column:1}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex:none}
+.seg button{font:600 12px var(--f-body);padding:3px 9px;border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"][data-v="P"],.seg button[aria-pressed="true"][data-v="Exists"],.seg button[aria-pressed="true"][data-v="Y"]{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"][data-v="F"],.seg button[aria-pressed="true"][data-v="Missing"],.seg button[aria-pressed="true"][data-v="N"]{background:var(--bad);color:#fff}
+.seg button[aria-pressed="true"][data-v="Partial"]{background:var(--warn);color:#fff}
+.seg button[aria-pressed="true"][data-v="NA"]{background:var(--na);color:#fff}
+.lv{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:2px;font:600 11px var(--f-mono);color:var(--on-block);flex:none}
+.lv.Required{background:var(--req)} .lv.Expected{background:var(--exp)} .lv.Optional{background:var(--opt)}
+.cap{flex:none;font:600 10px var(--f-mono);padding:0 4px;border-radius:2px;border:1px solid currentColor;line-height:15px;display:inline-block}
+.cap.IT{color:var(--cap-it)} .cap.GUIDED{color:var(--cap-g)} .cap.SPEC{color:var(--cap-s)}
+.st{display:inline-block;font:600 11px var(--f-body);padding:1px 8px;border-radius:10px;white-space:nowrap}
+.st.Exists{background:var(--ok-soft);color:var(--ok)} .st.Partial{background:var(--warn-soft);color:var(--warn)} .st.Missing{background:var(--bad-soft);color:var(--bad)} .st.NA{background:var(--na-soft);color:var(--na)} .st.none{background:var(--chip);color:var(--muted)} .st.out{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+.mono{font-family:var(--f-mono)}
+.mini{font-size:12px;color:var(--muted)}
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.kpi{padding:10px 12px}
+.kpi b{display:block;font-size:24px;font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi span{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.kpi.ok b{color:var(--ok)} .kpi.warn b{color:var(--warn)} .kpi.bad b{color:var(--bad)}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font-size:13px}
+.bar .tr{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--chip)}
+.bar .tr i{display:block;height:100%}
+.bar .num{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right;font-size:12px}
+@media (max-width:560px){.bar{grid-template-columns:90px 1fr 54px}}
+.heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.heat>div{border-radius:4px;padding:8px;font-size:12px;border:1px solid var(--line)}
+.heat b{display:block;font-family:var(--f-mono);font-size:13px}
+.callout{border-left:4px solid var(--cap-s);background:var(--chip);padding:10px 12px;border-radius:4px;font-size:13px;margin:8px 0}
+.callout.ok{border-left-color:var(--ok)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin:6px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:4px}
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:13px}
+table.t th,table.t td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.t th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--surface);position:sticky;top:0}
+table.t tr.out td{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+/* assess workspace */
+.ws{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:12px;align-items:start}
+@media (max-width:900px){.ws{grid-template-columns:1fr}}
+.list{max-height:78vh;overflow:auto}
+.lfil{display:flex;flex-wrap:wrap;gap:6px;padding:10px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:1}
+.lfil input[type=search]{flex:1 1 100%}
+.li{display:flex;gap:6px;align-items:center;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:7px 10px;cursor:pointer;font:13px var(--f-body)}
+.li:hover{background:var(--chip)} .li.sel{background:var(--accent-soft)}
+.li .id{font-family:var(--f-mono);font-size:12px;white-space:nowrap}
+.li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.li .pct{font:600 11px var(--f-mono);color:var(--muted);min-width:34px;text-align:right}
+.li.out{opacity:.5}
+.detail{min-width:0}
+.dh{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dh h2{flex:1 1 300px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:6px 0 10px}
+.meta b{color:var(--ink);font-weight:600}
+.ck{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.ck .q{font-weight:600;font-size:13px}
+.ck .r{font-size:12px;color:var(--muted);grid-column:1}
+.ck .seg{grid-row:1/span 2;grid-column:2;align-self:start}
+.ck input{grid-column:1/-1;width:100%}
+.ck.F .q{color:var(--bad)}
+.actrow{border:1px solid var(--line);border-radius:4px;padding:8px;margin:6px 0}
+.actrow .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.actrow .top b{flex:1;min-width:0}
+.actrow details{font-size:12px;margin-top:4px}
+.actrow ol{margin:4px 0;padding-left:18px}
+.navrow{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(10,14,22,.55);z-index:20;display:flex;justify-content:center;align-items:flex-start;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 24px;overflow-y:auto}
+.modal .panel{background:var(--surface);color:var(--ink);border-radius:8px;max-width:860px;width:100%;padding:22px 24px;border:1px solid var(--line)}
+.modal p,.modal li{font-size:14px;max-width:80ch}
+.modal h3{text-transform:none;letter-spacing:0;color:var(--ink);font-size:15px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:4px;font-size:13px;z-index:30}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="t-title">CSF Document Audit Tracker</h1>
+      <div class="eng" id="eng"></div>
+    </div>
+    <div class="hbtns">
+      <button class="btn" id="b-help"></button>
+      <button class="btn" id="b-open"></button><input type="file" id="file" accept=".json,application/json" hidden>
+      <button class="btn" id="b-save"></button>
+      <button class="btn pri" id="b-xlsx"></button>
+      <div class="lang" role="group" aria-label="Language"><button id="b-th" aria-pressed="false">ไทย</button><button id="b-en" aria-pressed="true">EN</button></div>
+    </div>
+  </header>
+  <p class="savebar" id="savebar"></p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <section id="v-setup"></section>
+  <section id="v-dash" hidden></section>
+  <section id="v-assess" hidden></section>
+  <section id="v-gaps" hidden></section>
+  <section id="v-acts" hidden></section>
+</div>
+<div class="modal" id="help" hidden role="dialog" aria-modal="true"><div class="panel" id="help-body"></div></div>
+<div class="modal" id="confirm" hidden role="alertdialog" aria-modal="true" aria-labelledby="cf-title"><div class="panel" id="confirm-body" style="max-width:560px"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const DATA = __DATA__;
+const D=DATA.docs, M=DATA.meta, A=DATA.acts, BY=Object.fromEntries(D.map(d=>[d.id,d]));
+const FN=["GV","ID","PR","DE","RS","RC"], WAVES=Object.keys(M.waves), LV={Required:"R",Expected:"E",Optional:"O"}, CAPL={IT:"IT",GUIDED:"G",SPEC:"S"};
+const ST=["Exists","Partial","Missing","NA"];
+const KEY="csf-audit:"+location.pathname;
+const T={
+EN:{title:"CSF Document Audit Tracker",help:"Help",open:"Open file",save:"Save file",xlsx:"Export Excel",
+ tabs:{setup:"Setup",dash:"Dashboard",assess:"Assess",gaps:"Gap roadmap",acts:"Activities"},
+ saved:"Autosaved in this browser at",notSaved:"Changes are kept in this browser only. Use Save file to keep a permanent copy.",noStore:"This browser blocks local storage. Use Save file to keep your work.",
+ eng:"Engagement",client:"Client",assessor:"Assessor",date:"Assessment date",ref:"Engagement reference",scopeNote:"Scope note",
+ phClient:"[PLACEHOLDER: client name]",phAssessor:"[PLACEHOLDER: name, role]",phRef:"[PLACEHOLDER: engagement or project code]",phScope:"[PLACEHOLDER: entities, sites, and systems in scope]",
+ profile:"Organization profile",profileHint:"Answer these questions first. They decide which documents are in scope and which Required documents apply.",
+ q:{cii:["Critical Information Infrastructure (CII) operator","Designated under the Cybersecurity Act B.E. 2562. Confirm with the sector regulator [VERIFY]."],
+    pdpa:["Processes personal data","Almost every organization does. Turn off only if no personal data is processed at all."],
+    cca:["Provides network or internet access to others","For example guest Wi-Fi or a service provider role under the Computer Crime Act s.26."],
+    iso:["Pursuing ISO/IEC 27001 certification","Makes ISO-mandated documented information Required."],
+    size:["Organization size","Drives which optional documents are suggested."],
+    spec:["In-house cybersecurity specialist","Used for the capability gap analysis."],
+    mssp:["Security monitoring outsourced to an MSSP","Adds the MSSP requirements guideline."],
+    cloud:["Uses cloud services for business systems","Includes software as a service such as Microsoft 365."],
+    ai:["Staff use generative AI tools","Adds the generative AI acceptable use policy."],
+    ot:["Operational technology or medical devices on the network","Adds the OT and medical device inventory and standard."],
+    dev:["Develops or customizes software","Adds the secure software development standard."]},
+ yes:"Yes",no:"No",sizeOpt:{small:"Small (under 200 staff)",medium:"Medium (200 to 1,000)",large:"Large (over 1,000)"},specOpt:{none:"None",part:"Part-time or IT staff with security duties",fte:"Dedicated security staff"},
+ appl:"Document applicability",applHint:"Auto shows the result of the profile. Override any line and give a reason; auditors will ask for it.",
+ cols:{id:"ID",doc:"Document",lvl:"Level for this client",auto:"Auto",ovr:"Override",why:"Justification",status:"Status",score:"Checks passed",wave:"Wave",track:"Track",cap:"Capability",src:"Who can produce it",pre:"Run first",deps:"Blocked by",finding:"Finding",seq:"#",act:"Activity",res:"Result",ev:"Evidence",docs:"Feeds documents"},
+ inS:"In scope",outS:"Out of scope",ovAuto:"Auto",ovIn:"Include",ovOut:"Exclude",phWhy:"[PLACEHOLDER: reason for override]",needWhy:"Reason required",
+ reasons:{trig:"Required: trigger applies",notrig:"Trigger does not apply",opt:"Optional, not indicated by the profile",optOn:"Optional, indicated by the profile",cond:"Condition in profile not met",pkgEss:"Essential package: every organization",pkgCore:"Core package: mid-sized and larger organizations",pkgCoreSmall:"Core package: a small organization may defer; include it if needed",pkgExt:"Extended package, not indicated by the profile",pkgExtOn:"Extended package, indicated by the profile"},
+ sample:"Load sample assessment",sampleHint:"Loads a fictional hospital example so you can see the dashboard. It replaces current entries.",cfTitle:"Replace all data with the sample?",cfBody:"Loading the sample overwrites everything in this file: engagement details, document audit entries, notes, and the linked interview data. This cannot be undone. Save a file first if you need the current work.",cfOk:"Overwrite and load sample",cfSave:"Save file first",cfCancel:"Cancel",reset:"Reset assessment",resetConfirm:"Click again to erase all entries",
+ kpi:{scope:"In scope",assessed:"Assessed",exists:"Exists",partial:"Partial",missing:"Missing",none:"Not assessed",cov:"Document coverage",checks:"Checks passed"},
+ byFn:"Status by CSF Function",byWave:"Status by build wave",critical:"Required documents not in place",capGap:"Who can close the gaps",heat:"CSF Category coverage",heatHint:"Share of in-scope documents in each Category that exist (partial counts half).",
+ capMsgNone:(s,g)=>`${s} open gaps need a cybersecurity specialist and ${g} need specialist guidance. The profile shows no in-house specialist, so these gaps cannot be closed with current staff. Plan a security hire (FTE) or engage a consultant or managed service.`,
+ capMsgPart:(s,g)=>`${s} open gaps need a cybersecurity specialist and ${g} need specialist guidance. Part-time security staff can usually cover the guided items; plan external support for the specialist items.`,
+ capMsgFte:(s,g)=>`${s} open gaps need a cybersecurity specialist and ${g} need specialist guidance. Check that the security team has the specific skills listed under each gap.`,
+ bySrc:"Open gaps by first sourcing option",noData:"No documents assessed yet. Open the Assess tab, or load the sample from Setup.",
+ search:"Search ID or title",all:"All",fn:"Function",stat:"Status",lvl:"Level",wave:"Wave",onlyScope:"In scope only",
+ docStatus:"Document status",evidence:"Evidence reference",phEv:"[PLACEHOLDER: file name, version, date, location]",ctl:"Document control",content:"Required content (Part A)",field:"Required fields",
+ phObs:"[PLACEHOLDER: observation]",acts:"Prerequisite activities",actHint:"Shared across documents: marking an activity here updates it everywhere.",phActEv:"[PLACEHOLDER: minutes, attendance list, or report reference]",
+ finding:"Finding",phFinding:"[PLACEHOLDER: gap description, risk, and impact]",rec:"Recommendation",phRec:"[PLACEHOLDER: recommended action, owner, target date]",comment:"Assessor comment",phComment:"[PLACEHOLDER: general comment]",
+ allPass:"Mark all checks Pass",clear:"Clear checks",prev:"Previous",next:"Next",purpose:"Purpose",owner:"Owner",approver:"Approver",review:"Review",
+ suggest:"Suggested from checks",agenda:"Agenda",dur:"Duration",roles:"Participants",
+ sv:{Exists:"Exists",Partial:"Partial",Missing:"Missing",NA:"N/A",none:"Not assessed",out:"Out of scope"},rv:{P:"Pass",F:"Fail",NA:"N/A"},av:{Y:"Done",N:"Not done",NA:"N/A"},
+ gapsHint:"In-scope documents that are missing or partial, in the recommended build order. Hand this to the client as the starting point of the remediation roadmap.",inclNone:"Include not assessed",
+ actsHint:"Activities that produce the input for documents. Record whether each has been done and where the evidence is.",
+ toastSaved:"Engagement file saved",toastOpened:"Assessment loaded",toastLinked:"Interview data linked",toastBad:"That file is not a tracker or engagement file.",
+ iv:"Interview evidence",ivHint:"Tiers recorded in the linked Interview Assessment for the CSF Subcategories this document supports.",ivNone:"Not rated",ivCol:{sub:"Subcategory",tier:"Stated",ev:"Evidence",cnt:"Counted",notes:"Interview notes"},ivEv:{S:"Stated",O:"Demonstrated",D:"Documented"},
+ ivLink:"Linked Interview Assessment",ivLinkHint:"Open a save file from the Interview Assessment (or a combined engagement file) to see interview tiers next to each document. Save file writes both parts into one engagement file that either tool can open.",ivLinkNone:"No interview file linked.",ivLinkYes:(c,n,u)=>`Linked: <b>${c}</b>, ${n} Subcategories rated, last updated ${u}.`,ivOpen:"Open interview or engagement file",unlink:"Unlink",ivPill:"Interview linked",ivXl:"Interview counted tier (lowest mapped)",
+ ivReq:(subs,st)=>`Requested during the interview (raised in ${subs}). Status: ${st}.`,ivReqSt:{req:"Requested",recv:"Received",none:"Does not exist"},
+ ivRead:(a,b)=>`Interview reads: ${a}. ${b}`,ivRd:{al:["practice exists and is documented","Verify that the document matches practice."],un:["practice exists but this document is missing or partial","Document what already happens."],pa:["document exists but practice is weak","Check enforcement and awareness."],gp:["no practice and no document","Treat as a priority gap."]},toastXlsx:"Excel file exported",toastSample:"Sample loaded",toastReset:"Assessment cleared",
+ helpHtml:`<h2>How to use the audit tracker</h2>
+<p>Use this file to assess a client's cybersecurity documents against the 142-document NIST CSF 2.0 framework, record evidence and findings, and produce a gap roadmap.</p>
+<h3>Steps</h3><ol>
+<li><b>Setup.</b> Enter the engagement details and answer the profile questions. The tool applies the rules in order: a Required document whose trigger applies is always in scope; then Essential documents are in scope for everyone, Core documents for mid-sized and larger organizations, and Extended or Optional documents only when the profile calls for them. Override any line with a reason.</li>
+<li><b>Assess.</b> Pick a document. Set its status, record the evidence reference, then mark each document control check and each required content item Pass, Fail, or N/A with an observation. Record whether the prerequisite activities took place.</li>
+<li><b>Dashboard.</b> See coverage by Function, by build wave, and by CSF Category, the Required documents that are missing, and how many gaps need a specialist.</li>
+<li><b>Gap roadmap.</b> Missing and partial documents in the recommended build order, with capability, sourcing, and prerequisites.</li>
+<li><b>Export.</b> Export Excel for the report. Save file keeps a complete copy you can open again on any computer.</li></ol>
+<h3>Statuses</h3><ul><li><b>Exists:</b> approved, current, and covers the required content.</li><li><b>Partial:</b> exists but is draft, outdated, or missing required content.</li><li><b>Missing:</b> no document or equivalent.</li><li><b>N/A:</b> found not applicable during fieldwork; give the reason in the comment.</li></ul>
+<h3>Working with the Interview Assessment</h3><p>Both tools read and write the same engagement file. Open an interview save file here to link it; each document then shows the interview tiers for its CSF Subcategories, which separates "practice without document" from "document without practice". Save file stores both parts.</p><h3>Where your data is kept</h3><p>Entries are autosaved in this browser for this file only. Clearing browser data erases them. Use <b>Save file</b> after each session and keep the file with the engagement records. Each client should have its own copy of this HTML file.</p>
+<h3>Placeholders</h3><p>Fields marked [PLACEHOLDER] show what to write. Replace them with client-specific content.</p>
+<h3>Sources</h3><p>Document list, required content, and levels come from the framework register. Build order, capability flags, and activities are practitioner guidance. Items marked VERIFY need confirmation against current Thai notifications.</p>`},
+TH:{title:"เครื่องมือตรวจประเมินเอกสารตาม CSF",help:"วิธีใช้",open:"เปิดไฟล์",save:"บันทึกไฟล์",xlsx:"ส่งออก Excel",
+ tabs:{setup:"ตั้งค่า",dash:"แดชบอร์ด",assess:"ประเมิน",gaps:"แผนปิดช่องว่าง",acts:"กิจกรรม"},
+ saved:"บันทึกอัตโนมัติในเบราว์เซอร์นี้เมื่อ",notSaved:"ข้อมูลถูกเก็บในเบราว์เซอร์นี้เท่านั้น กดบันทึกไฟล์เพื่อเก็บสำเนาถาวร",noStore:"เบราว์เซอร์นี้ไม่อนุญาตให้เก็บข้อมูล กดบันทึกไฟล์เพื่อเก็บงาน",
+ eng:"ข้อมูลงาน",client:"ลูกค้า",assessor:"ผู้ประเมิน",date:"วันที่ประเมิน",ref:"รหัสงาน",scopeNote:"ขอบเขต",
+ phClient:"[PLACEHOLDER: ชื่อลูกค้า]",phAssessor:"[PLACEHOLDER: ชื่อ ตำแหน่ง]",phRef:"[PLACEHOLDER: รหัสงานหรือโครงการ]",phScope:"[PLACEHOLDER: หน่วยงาน สถานที่ และระบบที่อยู่ในขอบเขต]",
+ profile:"ข้อมูลองค์กร",profileHint:"ตอบคำถามเหล่านี้ก่อน คำตอบจะกำหนดว่าเอกสารใดอยู่ในขอบเขต และเอกสาร Required ใดมีผลบังคับ",
+ q:{cii:["เป็นหน่วยงานโครงสร้างพื้นฐานสำคัญทางสารสนเทศ (CII)","ได้รับการกำหนดตาม พ.ร.บ.การรักษาความมั่นคงปลอดภัยไซเบอร์ พ.ศ. 2562 ควรยืนยันกับหน่วยงานกำกับดูแล [VERIFY]"],
+    pdpa:["ประมวลผลข้อมูลส่วนบุคคล","เกือบทุกองค์กรมีการประมวลผล เลือกไม่ใช่เฉพาะกรณีที่ไม่มีข้อมูลส่วนบุคคลเลย"],
+    cca:["ให้บริการเครือข่ายหรืออินเทอร์เน็ตแก่ผู้อื่น","เช่น Wi-Fi สำหรับผู้มาติดต่อ หรือเป็นผู้ให้บริการตาม พ.ร.บ.คอมพิวเตอร์ฯ มาตรา 26"],
+    iso:["อยู่ระหว่างขอรับรอง ISO/IEC 27001","ทำให้เอกสารที่ ISO บังคับเป็น Required"],
+    size:["ขนาดองค์กร","ใช้กำหนดเอกสาร Optional ที่แนะนำ"],
+    spec:["ผู้เชี่ยวชาญด้านไซเบอร์ภายในองค์กร","ใช้ในการวิเคราะห์ช่องว่างด้านขีดความสามารถ"],
+    mssp:["จ้าง MSSP เฝ้าระวังความมั่นคงปลอดภัย","เพิ่มแนวทางข้อกำหนดสำหรับ MSSP"],
+    cloud:["ใช้บริการคลาวด์สำหรับระบบงาน","รวมถึง software as a service เช่น Microsoft 365"],
+    ai:["พนักงานใช้เครื่องมือ Generative AI","เพิ่มนโยบายการใช้ Generative AI"],
+    ot:["มีอุปกรณ์ OT หรืออุปกรณ์การแพทย์ในเครือข่าย","เพิ่มทะเบียนและมาตรฐานอุปกรณ์ OT และอุปกรณ์การแพทย์"],
+    dev:["พัฒนาหรือปรับแต่งซอฟต์แวร์เอง","เพิ่มมาตรฐานการพัฒนาซอฟต์แวร์อย่างปลอดภัย"]},
+ yes:"ใช่",no:"ไม่ใช่",sizeOpt:{small:"เล็ก (ต่ำกว่า 200 คน)",medium:"กลาง (200 ถึง 1,000 คน)",large:"ใหญ่ (มากกว่า 1,000 คน)"},specOpt:{none:"ไม่มี",part:"บางเวลา หรือเจ้าหน้าที่ IT ที่มีหน้าที่ด้านความมั่นคงปลอดภัย",fte:"มีเจ้าหน้าที่ด้านความมั่นคงปลอดภัยโดยเฉพาะ"},
+ appl:"การบังคับใช้ของเอกสาร",applHint:"คอลัมน์ Auto แสดงผลจากข้อมูลองค์กร ปรับแก้รายการใดก็ได้พร้อมระบุเหตุผล เนื่องจากผู้ตรวจสอบจะขอดู",
+ cols:{id:"รหัส",doc:"เอกสาร",lvl:"ระดับสำหรับลูกค้า",auto:"Auto",ovr:"ปรับแก้",why:"เหตุผล",status:"สถานะ",score:"ผ่านการตรวจ",wave:"ระลอก",track:"Track",cap:"ขีดความสามารถ",src:"ผู้ที่จัดทำได้",pre:"ทำก่อน",deps:"ติดเอกสาร",finding:"ข้อตรวจพบ",seq:"#",act:"กิจกรรม",res:"ผล",ev:"หลักฐาน",docs:"ส่งข้อมูลให้เอกสาร"},
+ inS:"อยู่ในขอบเขต",outS:"นอกขอบเขต",ovAuto:"Auto",ovIn:"รวม",ovOut:"ไม่รวม",phWhy:"[PLACEHOLDER: เหตุผลในการปรับแก้]",needWhy:"ต้องระบุเหตุผล",
+ reasons:{trig:"Required: เข้าเงื่อนไข Trigger",notrig:"ไม่เข้าเงื่อนไข Trigger",opt:"Optional และข้อมูลองค์กรไม่ได้ชี้ว่าจำเป็น",optOn:"Optional และข้อมูลองค์กรชี้ว่าควรมี",cond:"ไม่เข้าเงื่อนไขในข้อมูลองค์กร",pkgEss:"ชุด Essential: ทุกองค์กร",pkgCore:"ชุด Core: องค์กรขนาดกลางขึ้นไป",pkgCoreSmall:"ชุด Core: องค์กรเล็กเลื่อนได้ หากจำเป็นให้เลือกรวม",pkgExt:"ชุด Extended และข้อมูลองค์กรไม่ได้ชี้ว่าจำเป็น",pkgExtOn:"ชุด Extended และข้อมูลองค์กรชี้ว่าควรมี"},
+ sample:"โหลดตัวอย่างการประเมิน",sampleHint:"โหลดตัวอย่างโรงพยาบาลสมมติเพื่อดูแดชบอร์ด ข้อมูลปัจจุบันจะถูกแทนที่",cfTitle:"แทนที่ข้อมูลทั้งหมดด้วยตัวอย่างหรือไม่",cfBody:"การโหลดตัวอย่างจะเขียนทับข้อมูลทั้งหมดในไฟล์นี้ ข้อมูลงาน ผลตรวจเอกสาร บันทึก และข้อมูลสัมภาษณ์ที่เชื่อมไว้ ไม่สามารถย้อนกลับได้ หากต้องการเก็บงานปัจจุบัน ให้บันทึกไฟล์ก่อน",cfOk:"เขียนทับและโหลดตัวอย่าง",cfSave:"บันทึกไฟล์ก่อน",cfCancel:"ยกเลิก",reset:"ล้างการประเมิน",resetConfirm:"คลิกอีกครั้งเพื่อลบข้อมูลทั้งหมด",
+ kpi:{scope:"อยู่ในขอบเขต",assessed:"ประเมินแล้ว",exists:"มีครบ",partial:"มีบางส่วน",missing:"ไม่มี",none:"ยังไม่ประเมิน",cov:"ความครอบคลุมเอกสาร",checks:"ผ่านการตรวจ"},
+ byFn:"สถานะตาม CSF Function",byWave:"สถานะตามระลอกการจัดทำ",critical:"เอกสาร Required ที่ยังไม่มี",capGap:"ใครปิดช่องว่างได้",heat:"ความครอบคลุมราย CSF Category",heatHint:"สัดส่วนเอกสารในขอบเขตของแต่ละ Category ที่มีอยู่ (มีบางส่วนนับครึ่ง)",
+ capMsgNone:(s,g)=>`มีช่องว่าง ${s} รายการที่ต้องใช้ผู้เชี่ยวชาญด้านไซเบอร์ และ ${g} รายการที่ต้องมีผู้เชี่ยวชาญแนะนำ ข้อมูลองค์กรระบุว่าไม่มีผู้เชี่ยวชาญภายใน จึงปิดช่องว่างเหล่านี้ด้วยบุคลากรปัจจุบันไม่ได้ ควรวางแผนจ้างพนักงานประจำด้านความมั่นคงปลอดภัย (FTE) หรือใช้ที่ปรึกษาหรือบริการ managed service`,
+ capMsgPart:(s,g)=>`มีช่องว่าง ${s} รายการที่ต้องใช้ผู้เชี่ยวชาญด้านไซเบอร์ และ ${g} รายการที่ต้องมีผู้เชี่ยวชาญแนะนำ เจ้าหน้าที่บางเวลามักรองรับรายการที่ต้องการคำแนะนำได้ แต่ควรวางแผนใช้ผู้ให้บริการภายนอกสำหรับรายการที่ต้องใช้ผู้เชี่ยวชาญ`,
+ capMsgFte:(s,g)=>`มีช่องว่าง ${s} รายการที่ต้องใช้ผู้เชี่ยวชาญด้านไซเบอร์ และ ${g} รายการที่ต้องมีผู้เชี่ยวชาญแนะนำ ควรตรวจสอบว่าทีมความมั่นคงปลอดภัยมีทักษะเฉพาะตามที่ระบุในแต่ละช่องว่าง`,
+ bySrc:"ช่องว่างที่ยังเปิดอยู่ตามทางเลือกการจัดหาลำดับแรก",noData:"ยังไม่มีเอกสารที่ประเมิน ไปที่แท็บประเมิน หรือโหลดตัวอย่างจากแท็บตั้งค่า",
+ search:"ค้นหารหัสหรือชื่อเอกสาร",all:"ทั้งหมด",fn:"Function",stat:"สถานะ",lvl:"ระดับ",wave:"ระลอก",onlyScope:"เฉพาะในขอบเขต",
+ docStatus:"สถานะเอกสาร",evidence:"อ้างอิงหลักฐาน",phEv:"[PLACEHOLDER: ชื่อไฟล์ เวอร์ชัน วันที่ ที่จัดเก็บ]",ctl:"การควบคุมเอกสาร",content:"เนื้อหาที่ต้องมี (Part A)",field:"ช่องข้อมูลที่ต้องมี",
+ phObs:"[PLACEHOLDER: ข้อสังเกต]",acts:"กิจกรรมที่ต้องทำก่อน",actHint:"ใช้ร่วมกันทุกเอกสาร การบันทึกกิจกรรมที่นี่จะอัปเดตทุกที่",phActEv:"[PLACEHOLDER: รายงานการประชุม รายชื่อผู้เข้าร่วม หรือรายงานอ้างอิง]",
+ finding:"ข้อตรวจพบ",phFinding:"[PLACEHOLDER: รายละเอียดช่องว่าง ความเสี่ยง และผลกระทบ]",rec:"ข้อเสนอแนะ",phRec:"[PLACEHOLDER: การดำเนินการที่แนะนำ ผู้รับผิดชอบ กำหนดเวลา]",comment:"ความเห็นผู้ประเมิน",phComment:"[PLACEHOLDER: ความเห็นทั่วไป]",
+ allPass:"ตั้งทุกข้อเป็นผ่าน",clear:"ล้างผลการตรวจ",prev:"ก่อนหน้า",next:"ถัดไป",purpose:"วัตถุประสงค์",owner:"เจ้าของ",approver:"ผู้อนุมัติ",review:"รอบทบทวน",
+ suggest:"สถานะที่แนะนำจากผลการตรวจ",agenda:"หัวข้อ",dur:"ระยะเวลา",roles:"ผู้เข้าร่วม",
+ sv:{Exists:"มีครบ",Partial:"มีบางส่วน",Missing:"ไม่มี",NA:"ไม่เกี่ยวข้อง",none:"ยังไม่ประเมิน",out:"นอกขอบเขต"},rv:{P:"ผ่าน",F:"ไม่ผ่าน",NA:"N/A"},av:{Y:"ทำแล้ว",N:"ยังไม่ทำ",NA:"N/A"},
+ gapsHint:"เอกสารในขอบเขตที่ไม่มีหรือมีบางส่วน เรียงตามลำดับการจัดทำที่แนะนำ ใช้เป็นจุดเริ่มต้นของแผนปิดช่องว่างให้ลูกค้า",inclNone:"รวมรายการที่ยังไม่ประเมิน",
+ actsHint:"กิจกรรมที่ให้ข้อมูลนำเข้าสำหรับจัดทำเอกสาร บันทึกว่าได้ทำแล้วหรือไม่และหลักฐานอยู่ที่ใด",
+ toastSaved:"บันทึกไฟล์งานแล้ว",toastOpened:"โหลดการประเมินแล้ว",toastLinked:"เชื่อมข้อมูลสัมภาษณ์แล้ว",toastBad:"ไฟล์นี้ไม่ใช่ไฟล์ของเครื่องมือหรือไฟล์งาน",
+ iv:"หลักฐานจากการสัมภาษณ์",ivHint:"Tier ที่บันทึกใน Interview Assessment ที่เชื่อมไว้ สำหรับ CSF Subcategory ที่เอกสารนี้สนับสนุน",ivNone:"ยังไม่ให้คะแนน",ivCol:{sub:"Subcategory",tier:"บอกเล่า",ev:"หลักฐาน",cnt:"นับเป็น",notes:"บันทึกการสัมภาษณ์"},ivEv:{S:"คำบอกเล่า",O:"สาธิตให้ดู",D:"มีเอกสาร"},
+ ivLink:"เชื่อมกับ Interview Assessment",ivLinkHint:"เปิดไฟล์ที่บันทึกจาก Interview Assessment (หรือไฟล์รวมของงาน) เพื่อดู Tier จากการสัมภาษณ์คู่กับแต่ละเอกสาร การบันทึกไฟล์จะเขียนข้อมูลทั้งสองส่วนลงในไฟล์งานเดียว ซึ่งเปิดได้จากทั้งสองเครื่องมือ",ivLinkNone:"ยังไม่ได้เชื่อมไฟล์สัมภาษณ์",ivLinkYes:(c,n,u)=>`เชื่อมแล้ว: <b>${c}</b> ให้คะแนนแล้ว ${n} Subcategory ปรับปรุงล่าสุด ${u}`,ivOpen:"เปิดไฟล์สัมภาษณ์หรือไฟล์งาน",unlink:"ยกเลิกการเชื่อม",ivPill:"เชื่อมการสัมภาษณ์แล้ว",ivXl:"Interview counted tier (lowest mapped)",
+ ivReq:(subs,st)=>`ขอเอกสารนี้ระหว่างสัมภาษณ์ (มาจาก ${subs}) สถานะ: ${st}`,ivReqSt:{req:"ขอแล้ว",recv:"ได้รับแล้ว",none:"ไม่มีจริง"},
+ ivRead:(a,b)=>`ผลจากการสัมภาษณ์: ${a} ${b}`,ivRd:{al:["มีการปฏิบัติและมีเอกสาร","ตรวจสอบว่าเอกสารตรงกับการปฏิบัติ"],un:["มีการปฏิบัติแต่เอกสารนี้ไม่มีหรือมีบางส่วน","เขียนสิ่งที่ทำอยู่แล้วเป็นเอกสาร"],pa:["มีเอกสารแต่การปฏิบัติยังอ่อน","ตรวจสอบการบังคับใช้และการรับรู้"],gp:["ไม่มีทั้งการปฏิบัติและเอกสาร","จัดเป็นช่องว่างลำดับแรก"]},toastXlsx:"ส่งออก Excel แล้ว",toastSample:"โหลดตัวอย่างแล้ว",toastReset:"ล้างการประเมินแล้ว",
+ helpHtml:`<h2>วิธีใช้เครื่องมือตรวจประเมิน</h2>
+<p>ใช้ไฟล์นี้ประเมินเอกสารด้านไซเบอร์ของลูกค้าเทียบกับกรอบเอกสาร 142 ฉบับตาม NIST CSF 2.0 บันทึกหลักฐานและข้อตรวจพบ และจัดทำแผนปิดช่องว่าง</p>
+<h3>ขั้นตอน</h3><ol>
+<li><b>ตั้งค่า</b> กรอกข้อมูลงานและตอบคำถามข้อมูลองค์กร เครื่องมือใช้กฎตามลำดับ: เอกสาร Required ที่เข้าเงื่อนไข Trigger อยู่ในขอบเขตเสมอ จากนั้นชุด Essential อยู่ในขอบเขตของทุกองค์กร ชุด Core สำหรับองค์กรขนาดกลางขึ้นไป และชุด Extended หรือ Optional เฉพาะเมื่อข้อมูลองค์กรชี้ว่าจำเป็น ปรับแก้รายการใดก็ได้พร้อมเหตุผล</li>
+<li><b>ประเมิน</b> เลือกเอกสาร กำหนดสถานะ บันทึกอ้างอิงหลักฐาน แล้วตรวจการควบคุมเอกสารและเนื้อหาที่ต้องมีทีละข้อว่าผ่าน ไม่ผ่าน หรือ N/A พร้อมข้อสังเกต และบันทึกว่ากิจกรรมที่ต้องทำก่อนได้ทำแล้วหรือไม่</li>
+<li><b>แดชบอร์ด</b> ดูความครอบคลุมตาม Function ตามระลอกการจัดทำ และตาม CSF Category เอกสาร Required ที่ยังไม่มี และจำนวนช่องว่างที่ต้องใช้ผู้เชี่ยวชาญ</li>
+<li><b>แผนปิดช่องว่าง</b> เอกสารที่ไม่มีหรือมีบางส่วนเรียงตามลำดับที่แนะนำ พร้อมขีดความสามารถ ผู้ที่จัดทำได้ และกิจกรรมที่ต้องทำก่อน</li>
+<li><b>ส่งออก</b> ส่งออก Excel สำหรับรายงาน และกดบันทึกไฟล์เพื่อเก็บสำเนาครบถ้วนที่เปิดได้บนทุกเครื่อง</li></ol>
+<h3>สถานะ</h3><ul><li><b>มีครบ:</b> ได้รับอนุมัติ เป็นปัจจุบัน และครอบคลุมเนื้อหาที่ต้องมี</li><li><b>มีบางส่วน:</b> มีแต่ยังเป็นร่าง ล้าสมัย หรือขาดเนื้อหาที่ต้องมี</li><li><b>ไม่มี:</b> ไม่มีเอกสารหรือเอกสารที่เทียบเท่า</li><li><b>ไม่เกี่ยวข้อง:</b> พบระหว่างตรวจว่าไม่เกี่ยวข้อง ให้ระบุเหตุผลในความเห็น</li></ul>
+<h3>การทำงานร่วมกับ Interview Assessment</h3><p>ทั้งสองเครื่องมืออ่านและเขียนไฟล์งานรูปแบบเดียวกัน เปิดไฟล์ที่บันทึกจากการสัมภาษณ์ที่นี่เพื่อเชื่อมข้อมูล แล้วแต่ละเอกสารจะแสดง Tier จากการสัมภาษณ์ของ CSF Subcategory ที่เกี่ยวข้อง ช่วยแยก "ปฏิบัติแต่ไม่มีเอกสาร" ออกจาก "มีเอกสารแต่ไม่ปฏิบัติ" การบันทึกไฟล์จะเก็บข้อมูลทั้งสองส่วน</p><h3>ข้อมูลถูกเก็บที่ไหน</h3><p>ข้อมูลบันทึกอัตโนมัติในเบราว์เซอร์นี้สำหรับไฟล์นี้เท่านั้น หากล้างข้อมูลเบราว์เซอร์ ข้อมูลจะหายไป กด <b>บันทึกไฟล์</b> หลังทำงานทุกครั้ง และเก็บไฟล์ไว้กับเอกสารของงาน ลูกค้าแต่ละรายควรใช้สำเนาไฟล์ HTML นี้แยกกัน</p>
+<h3>Placeholder</h3><p>ช่องที่มี [PLACEHOLDER] แสดงสิ่งที่ควรกรอก ให้แทนที่ด้วยข้อมูลของลูกค้า</p>
+<h3>แหล่งที่มา</h3><p>รายการเอกสาร เนื้อหาที่ต้องมี และระดับ มาจากทะเบียนของกรอบนี้ ลำดับการจัดทำ ขีดความสามารถ และกิจกรรม เป็นแนวทางจากผู้ปฏิบัติงาน รายการที่ระบุ VERIFY ต้องตรวจสอบกับประกาศของไทยฉบับปัจจุบัน</p>`}
+};
+const blank=()=>({v:1,app:"csf-doc-audit",client:{name:"",assessor:"",date:"",ref:"",scope:""},profile:{cii:false,pdpa:true,cca:false,iso:false,size:"medium",spec:"none",mssp:false,cloud:true,ai:false,ot:false,dev:false},scope:{},docs:{},acts:{},updated:null});
+const LKEY="csf-audit-link:"+location.pathname;
+let LI=null;
+let S=blank(), lang="EN", view="setup", cur=D[0].id, storeOK=true, lastSave=null, resetArm=false;
+try{const l=localStorage.getItem("csf-audit-lang");if(l==="TH"||l==="EN")lang=l;}catch(e){}
+try{const raw=localStorage.getItem(KEY);if(raw){const o=JSON.parse(raw);if(o&&o.app==="csf-doc-audit")S=Object.assign(blank(),o);}const lr=localStorage.getItem(LKEY);if(lr)LI=JSON.parse(lr);}catch(e){storeOK=false;}
+const $=id=>document.getElementById(id), t=()=>T[lang], Li=()=>lang==="TH"?1:0;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nm=d=>lang==="TH"?d.th:d.en, role=k=>(M.roles[k]||[k,k])[Li()];
+function persist(){S.updated=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(S));if(LI)localStorage.setItem(LKEY,JSON.stringify(LI));else localStorage.removeItem(LKEY);lastSave=new Date();storeOK=true;}catch(e){storeOK=false;}renderSavebar();}
+function renderSavebar(){const x=t();$("savebar").textContent=!storeOK?x.noStore:lastSave?`${x.saved} ${lastSave.toLocaleTimeString()}. ${x.notSaved}`:x.notSaved;}
+function toast(m){const e=$("toast");e.textContent=m;e.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>e.hidden=true,2200);}
+
+/* ---------- applicability ---------- */
+const OPT_RULES={"ID-REG-004":p=>p.ot,"PR-STD-015":p=>p.ot,"GV-POL-005":p=>p.ai,"DE-GDL-001":p=>p.mssp,"PR-STD-008":p=>p.size==="large","PR-PRC-004":p=>p.size!=="small",
+ "GV-TPL-001":p=>p.size==="large","ID-PRC-005":p=>p.size==="large"||p.dev,"DE-PRC-003":p=>p.size==="large"&&(p.spec==="fte"||p.mssp)};
+const COND_RULES={"PR-STD-013":p=>p.dev,"PR-STD-014":p=>p.cloud,"GV-REG-006":p=>p.cii,"GV-REG-005":p=>p.iso};
+function activeTriggers(p){const s=new Set(["All"]);if(p.pdpa)s.add("PDPA");if(p.cii)s.add("CII");if(p.cca)s.add("CCA");if(p.iso)s.add("ISO 27001");return s;}
+const EXT_RULES={"GV-REG-002":p=>p.iso,"GV-STD-003":p=>p.size==="large"||p.cloud&&p.size!=="small","ID-PRC-004":p=>p.size==="large"||p.mssp,"RS-PLB-004":p=>p.size!=="small","RC-PLN-003":p=>p.cii||p.size==="large"};
+function auto(d){const p=S.profile,trig=activeTriggers(p),hit=d.trigger.some(x=>trig.has(x));
+  if(COND_RULES[d.id]&&!COND_RULES[d.id](p))return{inc:false,lvl:d.level,why:"cond"};
+  if(d.trigger.length===1&&d.trigger[0]==="PDPA"&&!p.pdpa)return{inc:false,lvl:d.level,why:"notrig"};
+  /* rule 1: Required and the trigger applies, whatever the package */
+  if(d.level==="Required"&&hit)return{inc:true,lvl:"Required",why:"trig"};
+  const lvl=d.level==="Optional"?"Optional":"Expected";
+  /* rules 2 to 4: package */
+  if(d.level==="Optional"){const on=OPT_RULES[d.id]?OPT_RULES[d.id](p):false;return{inc:on,lvl,why:on?"optOn":"opt"};}
+  if(d.pkg==="Essential")return{inc:true,lvl,why:"pkgEss"};
+  if(d.pkg==="Core")return p.size==="small"?{inc:false,lvl,why:"pkgCoreSmall"}:{inc:true,lvl,why:"pkgCore"};
+  const on=EXT_RULES[d.id]?EXT_RULES[d.id](p):false;return{inc:on,lvl,why:on?"pkgExtOn":"pkgExt"};}
+function inScope(d){const o=S.scope[d.id];if(o&&o.ov==="in")return true;if(o&&o.ov==="out")return false;return auto(d).inc;}
+function effLvl(d){return auto(d).lvl;}
+function rec(id){return S.docs[id]||(S.docs[id]={status:"",ev:"",finding:"",rec:"",comment:"",checks:{}});}
+function status(d){if(!inScope(d))return"out";const r=S.docs[d.id];return r&&r.status?r.status:"none";}
+function allChecks(d){return d.ctrl.concat(d.content);}
+function score(d){const r=S.docs[d.id];if(!r)return null;let p=0,f=0;allChecks(d).forEach(c=>{const v=(r.checks[c.id]||{}).r;if(v==="P")p++;else if(v==="F")f++;});return p+f?{p,f,pct:Math.round(p/(p+f)*100)}:null;}
+function suggestStatus(d){const r=S.docs[d.id];if(!r)return"";const n=allChecks(d).length;let p=0,f=0,na=0;allChecks(d).forEach(c=>{const v=(r.checks[c.id]||{}).r;if(v==="P")p++;else if(v==="F")f++;else if(v==="NA")na++;});
+  if(p+f+na<n)return"";if(f===0&&p>0)return"Exists";if(p===0&&f>0)return"Missing";return"Partial";}
+function stPill(s){return `<span class="st ${s}">${esc(t().sv[s])}</span>`;}
+function lvBlock(l){return `<span class="lv ${l}" title="${l}">${LV[l]}</span>`;}
+function capTag(c){return `<span class="cap ${c}" title="${esc(M.caps[c][Li()])}">${CAPL[c]}</span>`;}
+function seg(name,vals,curv,labels){return `<span class="seg" role="group">${vals.map(v=>`<button data-seg="${name}" data-v="${v}" aria-pressed="${curv===v}">${esc(labels[v])}</button>`).join("")}</span>`;}
+
+/* ---------- linked interview ---------- */
+function ivEff(sid){if(!LI||!LI.subs)return{st:"none"};const r=LI.subs[sid];if(!r||r.tier===""||r.tier==null)return{st:"none"};if(r.tier==="NA")return{st:"NA"};
+  const ru=Object.assign({cap:true,obs:true},LI.rules||{});const raw=+r.tier;const ok=r.ev==="D"||(r.ev==="O"&&ru.obs);const capped=ru.cap&&raw>=2&&!ok;return{st:"rated",raw,v:capped?1:raw,capped,ev:r.ev||"",notes:r.notes||""};}
+function ivLowest(d){const v=d.csf.map(ivEff).filter(e=>e.st==="rated").map(e=>e.v);return v.length?Math.min(...v):null;}
+function ivTierBox(v){const bg=v===null?"var(--chip)":v===0?"var(--bad)":v===1?"var(--warn)":v===2?"#4d7ea8":"var(--ok)";return `<span style="display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 4px;border-radius:3px;font:600 12px var(--f-mono);background:${bg};color:${v===null?"var(--muted)":"#fff"}">${v===null?"-":v}</span>`;}
+function ivReqLine(d){if(!LI||!LI.subs)return"";const subs=Object.keys(LI.subs).filter(s=>((LI.subs[s]||{}).dr||{})[d.id]);if(!subs.length)return"";const o=(LI.dr||{})["d:"+d.id]||{};const x=t();return `<div class="callout${o.st==="recv"?" ok":""}">${esc(x.ivReq(subs.join(", "),x.ivReqSt[o.st||"req"]))}${o.recv?` · ${esc(o.recv)}`:""}</div>`;}
+function ivPanel(d){if(!LI)return"";const x=t(),L=Li();const rows=d.csf.map(sid=>{const e=ivEff(sid);const nm=L?((M.subcats_th||{})[sid]||M.subcats[sid]):M.subcats[sid];
+  return `<tr><td class="mono">${sid}</td><td>${esc(nm||"")}</td><td>${e.st==="rated"?ivTierBox(e.raw):e.st==="NA"?"N/A":`<span class="mini">${x.ivNone}</span>`}</td><td class="mini">${e.ev?esc(x.ivEv[e.ev]):""}</td><td>${e.st==="rated"?ivTierBox(e.v):""}</td><td class="mini">${esc((e.notes||"").slice(0,160))}</td></tr>`;}).join("");
+  const raws=d.csf.map(ivEff).filter(e=>e.st==="rated");let read="";const st=status(d);
+  if(raws.length&&["Exists","Partial","Missing"].includes(st)){const pr=raws.some(e=>e.raw>=2),dc=st==="Exists";const k=pr&&dc?"al":pr?"un":dc?"pa":"gp";read=`<div class="callout${k==="al"?" ok":""}">${esc(x.ivRead(x.ivRd[k][0],x.ivRd[k][1]))}</div>`;}
+  return `<h3>${x.iv}</h3><p class="mini">${x.ivHint}</p><div class="scroll"><table class="t"><thead><tr><th>${x.ivCol.sub}</th><th></th><th>${x.ivCol.tier}</th><th>${x.ivCol.ev}</th><th>${x.ivCol.cnt}</th><th>${x.ivCol.notes}</th></tr></thead><tbody>${rows}</tbody></table></div>${read}${ivReqLine(d)}`;}
+
+/* ---------- views ---------- */
+function renderSetup(){const x=t(),p=S.profile,c=S.client;
+  const yn=k=>`<select id="p-${k}" data-prof="${k}"><option value="1"${p[k]?" selected":""}>${x.yes}</option><option value="0"${!p[k]?" selected":""}>${x.no}</option></select>`;
+  const sl=(k,o)=>`<select id="p-${k}" data-prof="${k}">${Object.entries(o).map(([v,l])=>`<option value="${v}"${p[k]===v?" selected":""}>${esc(l)}</option>`).join("")}</select>`;
+  const q=(k,ctl)=>`<label for="p-${k}">${esc(x.q[k][0])}</label>${ctl}<div class="help">${esc(x.q[k][1])}</div>`;
+  const counts={Required:0,Expected:0,Optional:0};let n=0;D.forEach(d=>{if(inScope(d)){n++;counts[effLvl(d)]++;}});
+  let rows=D.map(d=>{const a=auto(d),o=S.scope[d.id]||{},inc=inScope(d),miss=o.ov&&o.ov!=="auto"&&!(o.why||"").trim();
+    return `<tr class="${inc?"":"out"}"><td class="mono">${d.id}</td><td>${esc(nm(d))}</td><td>${lvBlock(effLvl(d))} ${effLvl(d)}</td><td>${a.inc?x.inS:x.outS}<div class="mini">${esc(x.reasons[a.why])}</div></td>
+    <td><select data-ov="${d.id}" id="ov-${d.id}" aria-label="${x.cols.ovr} ${d.id}"><option value="auto"${!o.ov||o.ov==="auto"?" selected":""}>${x.ovAuto}</option><option value="in"${o.ov==="in"?" selected":""}>${x.ovIn}</option><option value="out"${o.ov==="out"?" selected":""}>${x.ovOut}</option></select></td>
+    <td><input type="text" id="why-${d.id}" data-why="${d.id}" value="${esc(o.why||"")}" placeholder="${esc(x.phWhy)}" style="width:100%">${miss?`<div class="mini" style="color:var(--bad)">${x.needWhy}</div>`:""}</td></tr>`;}).join("");
+  $("v-setup").innerHTML=`<div class="grid2">
+   <div class="box pad"><h2>${x.eng}</h2><div class="form" style="margin-top:10px">
+    <label for="c-name">${x.client}</label><input type="text" id="c-name" data-cl="name" value="${esc(c.name)}" placeholder="${esc(x.phClient)}">
+    <label for="c-assessor">${x.assessor}</label><input type="text" id="c-assessor" data-cl="assessor" value="${esc(c.assessor)}" placeholder="${esc(x.phAssessor)}">
+    <label for="c-date">${x.date}</label><input type="date" id="c-date" data-cl="date" value="${esc(c.date)}">
+    <label for="c-ref">${x.ref}</label><input type="text" id="c-ref" data-cl="ref" value="${esc(c.ref)}" placeholder="${esc(x.phRef)}">
+    <label for="c-scope">${x.scopeNote}</label><textarea id="c-scope" data-cl="scope" placeholder="${esc(x.phScope)}">${esc(c.scope)}</textarea></div>
+    <h3>${x.sample}</h3><p class="mini">${x.sampleHint}</p><div class="hbtns"><button class="btn" id="b-sample">${x.sample}</button><button class="btn danger" id="b-reset">${resetArm?x.resetConfirm:x.reset}</button></div>
+    <h3>${x.ivLink}</h3><p class="mini">${x.ivLinkHint}</p><div style="border:1px dashed var(--line);border-radius:6px;padding:10px 12px;font-size:13px">${LI?x.ivLinkYes(esc((LI.client||{}).name||"-"),Object.keys(M.subcats).filter(k=>ivEff(k).st!=="none").length,esc((LI.updated||"").slice(0,10)||"-")):x.ivLinkNone}<div class="hbtns" style="margin-top:8px"><button class="btn sm" id="b-ivlink">${x.ivOpen}</button>${LI?`<button class="btn sm danger" id="b-ivunlink">${x.unlink}</button>`:""}</div></div></div>
+   <div class="box pad"><h2>${x.profile}</h2><p class="hint">${x.profileHint}</p><div class="form">
+    ${q("cii",yn("cii"))}${q("pdpa",yn("pdpa"))}${q("cca",yn("cca"))}${q("iso",yn("iso"))}${q("size",sl("size",x.sizeOpt))}${q("spec",sl("spec",x.specOpt))}${q("mssp",yn("mssp"))}${q("cloud",yn("cloud"))}${q("ai",yn("ai"))}${q("ot",yn("ot"))}${q("dev",yn("dev"))}</div></div></div>
+   <div class="box pad" style="margin-top:12px"><h2>${x.appl}</h2><p class="hint">${x.applHint}</p>
+    <div class="kpis"><div class="kpi box"><b>${n}</b><span>${x.kpi.scope}</span></div><div class="kpi box"><b>${counts.Required}</b><span>Required</span></div><div class="kpi box"><b>${counts.Expected}</b><span>Expected</span></div><div class="kpi box"><b>${counts.Optional}</b><span>Optional</span></div></div>
+    <div class="scroll" style="max-height:60vh"><table class="t"><thead><tr><th>${x.cols.id}</th><th>${x.cols.doc}</th><th>${x.cols.lvl}</th><th>${x.cols.auto}</th><th>${x.cols.ovr}</th><th style="min-width:220px">${x.cols.why}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;}
+
+function agg(ds){const c={Exists:0,Partial:0,Missing:0,NA:0,none:0};ds.forEach(d=>{const s=status(d);if(s!=="out")c[s]++;});return c;}
+function barRow(label,c){const tot=c.Exists+c.Partial+c.Missing+c.NA+c.none||1;const w=k=>c[k]/tot*100;const cov=c.Exists+c.Partial+c.Missing?Math.round((c.Exists+c.Partial/2)/(c.Exists+c.Partial+c.Missing)*100):null;
+  return `<div class="bar"><span>${label}</span><span class="tr" title="${Object.entries(c).map(([k,v])=>t().sv[k]+" "+v).join(" / ")}"><i style="width:${w("Exists")}%;background:var(--ok)"></i><i style="width:${w("Partial")}%;background:var(--warn)"></i><i style="width:${w("Missing")}%;background:var(--bad)"></i><i style="width:${w("NA")}%;background:var(--na)"></i></span><span class="num">${cov===null?"-":cov+"%"}</span></div>`;}
+function legend(){const x=t();return `<div class="legend"><span><i style="background:var(--ok)"></i>${x.sv.Exists}</span><span><i style="background:var(--warn)"></i>${x.sv.Partial}</span><span><i style="background:var(--bad)"></i>${x.sv.Missing}</span><span><i style="background:var(--na)"></i>${x.sv.NA}</span><span><i style="background:var(--chip);border:1px solid var(--line)"></i>${x.sv.none}</span></div>`;}
+function renderDash(){const x=t(),L=Li();const sc=D.filter(inScope);const c=agg(sc);const assessed=c.Exists+c.Partial+c.Missing+c.NA;
+  const cov=c.Exists+c.Partial+c.Missing?Math.round((c.Exists+c.Partial/2)/(c.Exists+c.Partial+c.Missing)*100):0;
+  let P=0,F=0;sc.forEach(d=>{const s=score(d);if(s){P+=s.p;F+=s.f;}});
+  const gaps=sc.filter(d=>["Missing","Partial"].includes(status(d)));const gS=gaps.filter(d=>d.cap==="SPEC").length,gG=gaps.filter(d=>d.cap==="GUIDED").length;
+  const crit=sc.filter(d=>effLvl(d)==="Required"&&["Missing","Partial"].includes(status(d))).sort((a,b)=>a.seq-b.seq);
+  const capMsg=S.profile.spec==="none"?x.capMsgNone(gS,gG):S.profile.spec==="part"?x.capMsgPart(gS,gG):x.capMsgFte(gS,gG);
+  const src={};gaps.forEach(d=>{const k=d.src[0];src[k]=(src[k]||0)+1;});
+  const cats=Object.keys(M.categories).map(k=>{const ds=sc.filter(d=>d.cat===k);const a=agg(ds);const den=a.Exists+a.Partial+a.Missing;return{k,n:ds.length,den,pct:den?Math.round((a.Exists+a.Partial/2)/den*100):null};});
+  const heatBg=p=>p===null?"var(--chip)":p>=80?"var(--ok-soft)":p>=50?"var(--warn-soft)":"var(--bad-soft)";
+  $("v-dash").innerHTML=`${assessed?"":`<div class="callout ok">${x.noData}</div>`}
+  <div class="kpis"><div class="kpi box"><b>${sc.length}</b><span>${x.kpi.scope}</span></div><div class="kpi box"><b>${assessed}</b><span>${x.kpi.assessed}</span></div><div class="kpi box ok"><b>${c.Exists}</b><span>${x.kpi.exists}</span></div><div class="kpi box warn"><b>${c.Partial}</b><span>${x.kpi.partial}</span></div><div class="kpi box bad"><b>${c.Missing}</b><span>${x.kpi.missing}</span></div><div class="kpi box"><b>${c.none}</b><span>${x.kpi.none}</span></div><div class="kpi box"><b>${cov}%</b><span>${x.kpi.cov}</span></div><div class="kpi box"><b>${P+F?Math.round(P/(P+F)*100)+"%":"-"}</b><span>${x.kpi.checks}</span></div></div>
+  <div class="grid2"><div class="box pad"><h2>${x.byFn}</h2>${legend()}<div class="bars">${FN.map(f=>barRow(`${f} ${esc(M.functions[f][L])}`,agg(sc.filter(d=>d.fn===f)))).join("")}</div></div>
+  <div class="box pad"><h2>${x.byWave}</h2>${legend()}<div class="bars">${WAVES.map(w=>barRow(`${w} ${esc(M.waves[w][L])}`,agg(sc.filter(d=>d.wave===w)))).join("")}</div></div>
+  <div class="box pad"><h2>${x.capGap}</h2><div class="callout${gS+gG?"":" ok"}">${esc(capMsg)}</div><h3>${x.bySrc}</h3><div class="bars">${Object.entries(src).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="bar"><span>${esc(M.sourcing[k][L])}</span><span class="tr"><i style="width:${v/gaps.length*100}%;background:var(--accent)"></i></span><span class="num">${v}</span></div>`).join("")||`<span class="mini">-</span>`}</div>
+   <div class="legend" style="margin-top:10px">${["IT","GUIDED","SPEC"].map(k=>`<span>${capTag(k)} ${esc(M.caps[k][L])}: ${gaps.filter(d=>d.cap===k).length}</span>`).join("")}</div></div>
+  <div class="box pad"><h2>${x.critical} <span class="mini">${crit.length}</span></h2><div class="scroll" style="max-height:340px"><table class="t"><tbody>${crit.map(d=>`<tr><td class="mono"><button class="btn sm" data-go="${d.id}">${d.id}</button></td><td>${esc(nm(d))}</td><td>${stPill(status(d))}</td><td>${capTag(d.cap)}</td></tr>`).join("")||`<tr><td class="mini">-</td></tr>`}</tbody></table></div></div></div>
+  <div class="box pad" style="margin-top:12px"><h2>${x.heat}</h2><p class="hint">${x.heatHint}</p><div class="heat">${cats.map(k=>`<div style="background:${heatBg(k.pct)}"><b>${k.k}</b>${esc(M.categories[k.k][L])}<div class="mini">${k.pct===null?"-":k.pct+"%"} · ${k.n}</div></div>`).join("")}</div></div>`;}
+
+function listItems(){const q=($("l-q")||{}).value||"",fn=($("l-fn")||{}).value||"",st=($("l-st")||{}).value||"",lv=($("l-lv")||{}).value||"",wv=($("l-wv")||{}).value||"",only=($("l-only")||{checked:true}).checked;
+  return D.filter(d=>{if(only&&!inScope(d))return false;const ql=q.toLowerCase();if(ql&&!(d.id.toLowerCase().includes(ql)||d.en.toLowerCase().includes(ql)||d.th.includes(q)))return false;
+   if(fn&&d.fn!==fn)return false;if(st&&status(d)!==st)return false;if(lv&&effLvl(d)!==lv)return false;if(wv&&d.wave!==wv)return false;return true;}).sort((a,b)=>a.seq-b.seq);}
+function renderList(){const el=$("l-items");if(!el)return;const x=t();const items=listItems();
+  el.innerHTML=items.map(d=>{const s=score(d);return `<button class="li${d.id===cur?" sel":""}${inScope(d)?"":" out"}" data-pick="${d.id}">${lvBlock(effLvl(d))}<span class="id">${d.id}</span><span class="nm">${esc(nm(d))}</span><span class="pct">${s?s.pct+"%":""}</span>${stPill(status(d))}</button>`;}).join("")||`<p class="mini" style="padding:10px">-</p>`;}
+function renderAssess(){const x=t();const prev={q:($("l-q")||{}).value||"",fn:($("l-fn")||{}).value||"",st:($("l-st")||{}).value||"",lv:($("l-lv")||{}).value||"",wv:($("l-wv")||{}).value||"",only:$("l-only")?$("l-only").checked:true};
+  const o=(v,l)=>`<option value="${v}">${esc(l)}</option>`;
+  $("v-assess").innerHTML=`<div class="ws"><div class="box list"><div class="lfil"><input type="search" id="l-q" placeholder="${esc(x.search)}" aria-label="${esc(x.search)}">
+   <select id="l-fn" aria-label="${x.fn}">${o("",x.fn+": "+x.all)}${FN.map(f=>o(f,f+" "+M.functions[f][Li()])).join("")}</select>
+   <select id="l-st" aria-label="${x.stat}">${o("",x.stat+": "+x.all)}${["none","Exists","Partial","Missing","NA","out"].map(s=>o(s,x.sv[s])).join("")}</select>
+   <select id="l-lv" aria-label="${x.lvl}">${o("",x.lvl+": "+x.all)}${["Required","Expected","Optional"].map(s=>o(s,s)).join("")}</select>
+   <select id="l-wv" aria-label="${x.wave}">${o("",x.wave+": "+x.all)}${WAVES.map(w=>o(w,w)).join("")}</select>
+   <label class="mini" style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="l-only"> ${x.onlyScope}</label></div><div id="l-items"></div></div>
+   <div class="box pad detail" id="detail"></div></div>`;
+  $("l-q").value=prev.q;$("l-fn").value=prev.fn;$("l-st").value=prev.st;$("l-lv").value=prev.lv;$("l-wv").value=prev.wv;$("l-only").checked=prev.only;
+  renderList();renderDetail();}
+function renderDetail(){const el=$("detail");if(!el)return;const x=t(),L=Li(),d=BY[cur],r=S.docs[d.id]||{checks:{}},inc=inScope(d);
+  const sug=suggestStatus(d);
+  const ck=c=>{const v=(r.checks[c.id]||{}).r||"",cm=(r.checks[c.id]||{}).c||"";return `<div class="ck ${v}"><span class="q">${esc(c.t[L])}</span>${c.r?`<span class="r">${esc(c.r[L])}</span>`:"<span class='r'></span>"}${seg("ck:"+c.id,["P","F","NA"],v,x.rv)}<input type="text" id="cm-${d.id}-${c.id}" data-cm="${c.id}" value="${esc(cm)}" placeholder="${esc(x.phObs)}"></div>`;};
+  const contentAll=d.content.filter(c=>c.g==="content"),fields=d.content.filter(c=>c.g==="field");
+  const actRow=k=>{const a=A[k],s=S.acts[k]||{};return `<div class="actrow"><div class="top"><b>${k} ${esc(L?a.th:a.en)}</b>${capTag(a.cap)}${seg("act:"+k,["Y","N","NA"],s.r||"",x.av)}</div>
+   <input type="text" id="ae-${d.id}-${k}" data-actev="${k}" value="${esc(s.e||"")}" placeholder="${esc(x.phActEv)}" style="width:100%;margin-top:6px">
+   <details><summary>${x.agenda} · ${esc(a.duration[L])}</summary><ol>${a.agenda[L].map(z=>`<li>${esc(z)}</li>`).join("")}</ol><div class="mini">${x.roles}: ${a.roles.map(role).map(esc).join(", ")}</div></details></div>`;};
+  const idx=listItems().findIndex(z=>z.id===cur);
+  el.innerHTML=`<div class="dh">${lvBlock(effLvl(d))}<h2><span class="mono" style="font-size:15px">${d.id}</span> ${esc(nm(d))}</h2>${stPill(status(d))}</div>
+  <div class="meta"><span>${x.cols.wave}: <b>${d.wave} ${esc(M.waves[d.wave][L])}</b> (#${d.seq})</span><span>${x.cols.cap}: ${capTag(d.cap)} <b>${esc(M.caps[d.cap][L])}</b></span><span>${x.owner}: <b>${esc(role(d.owner_k))}</b></span><span>${x.approver}: <b>${esc(role(d.approver_k))}</b></span><span>${x.review}: <b>${esc(L?d.review_th:d.review)}</b></span><span>CSF: <b class="mono">${d.csf.join(", ")}</b></span></div>
+  <p class="mini">${x.purpose}: ${esc(d.purpose[L])}</p>
+  ${inc?"":`<div class="callout">${x.sv.out}. ${esc(x.reasons[auto(d).why])}</div>`}
+  <h3>${x.docStatus}</h3><div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">${seg("status",ST,r.status||"",x.sv)}${sug?`<span class="mini">${x.suggest}: ${stPill(sug)}</span>`:""}</div>
+  <div style="margin-top:8px"><label class="mini" for="ev-${d.id}">${x.evidence}</label><input type="text" id="ev-${d.id}" data-f="ev" value="${esc(r.ev||"")}" placeholder="${esc(x.phEv)}" style="width:100%"></div>
+  <h3>${x.ctl}</h3>${d.ctrl.map(ck).join("")}
+  <h3>${x.content}</h3>${contentAll.map(ck).join("")}
+  ${fields.length?`<h3>${x.field}</h3>${fields.map(ck).join("")}`:""}
+  <div class="hbtns" style="margin-top:8px"><button class="btn sm" id="b-allpass">${x.allPass}</button><button class="btn sm" id="b-clear">${x.clear}</button></div>
+  ${d.acts.length?`<h3>${x.acts}</h3><p class="mini">${x.actHint}</p>${d.acts.map(actRow).join("")}`:""}
+  ${ivPanel(d)}
+  <h3>${x.finding}</h3><textarea id="fd-${d.id}" data-f="finding" placeholder="${esc(x.phFinding)}">${esc(r.finding||"")}</textarea>
+  <h3>${x.rec}</h3><textarea id="rc-${d.id}" data-f="rec" placeholder="${esc(x.phRec)}">${esc(r.rec||"")}</textarea>
+  <h3>${x.comment}</h3><textarea id="co-${d.id}" data-f="comment" placeholder="${esc(x.phComment)}">${esc(r.comment||"")}</textarea>
+  <div class="navrow"><button class="btn" id="b-prev"${idx<=0?" disabled":""}>${x.prev}</button><button class="btn pri" id="b-next"${idx<0||idx>=listItems().length-1?" disabled":""}>${x.next}</button></div>`;}
+
+function gapRows(incNone){return D.filter(d=>inScope(d)&&(["Missing","Partial"].includes(status(d))||(incNone&&status(d)==="none"))).sort((a,b)=>a.seq-b.seq);}
+function renderGaps(){const x=t(),L=Li();const incNone=$("g-none")?$("g-none").checked:false;const rows=gapRows(incNone);const gapIds=new Set(rows.map(d=>d.id));
+  $("v-gaps").innerHTML=`<p class="hint">${x.gapsHint}</p><label class="mini" style="display:flex;gap:6px;align-items:center;margin-bottom:8px"><input type="checkbox" id="g-none"${incNone?" checked":""}> ${x.inclNone}</label>
+  <div class="box scroll"><table class="t" style="min-width:1100px"><thead><tr><th>${x.cols.seq}</th><th>${x.cols.doc}</th><th>${x.cols.lvl}</th><th>${x.cols.status}</th><th>${x.cols.wave}</th><th>${x.cols.cap}</th><th>${x.cols.src}</th><th>${x.cols.pre}</th><th>${x.cols.deps}</th><th>${x.cols.finding}</th></tr></thead><tbody>
+  ${rows.map(d=>{const r=S.docs[d.id]||{};return `<tr><td class="num">${d.seq}</td><td><button class="btn sm mono" data-go="${d.id}">${d.id}</button> ${esc(nm(d))}</td><td>${lvBlock(effLvl(d))}</td><td>${stPill(status(d))}</td><td>${d.wave} · ${d.track}</td><td>${capTag(d.cap)} ${esc(M.caps[d.cap][L])}</td><td>${d.src.map(s=>esc(M.sourcing[s][L])).join(" / ")}</td><td>${d.acts.map(a=>{const s=(S.acts[a]||{}).r;return `<div>${esc(L?A[a].th:A[a].en)}${s?` <span class="st ${s==="Y"?"Exists":s==="N"?"Missing":"NA"}">${x.av[s]}</span>`:""}</div>`;}).join("")||"-"}</td><td class="mono mini">${d.deps.filter(z=>gapIds.has(z)).join(", ")||"-"}</td><td class="mini">${esc(r.finding||"")}</td></tr>`;}).join("")||`<tr><td colspan="10" class="mini">-</td></tr>`}</tbody></table></div>`;}
+
+function renderActs(){const x=t(),L=Li();
+  $("v-acts").innerHTML=`<p class="hint">${x.actsHint}</p><div class="box scroll"><table class="t" style="min-width:1000px"><thead><tr><th>${x.cols.act}</th><th>${x.cols.cap}</th><th>${x.cols.res}</th><th style="min-width:240px">${x.cols.ev}</th><th>${x.cols.docs}</th></tr></thead><tbody>
+  ${Object.keys(A).map(k=>{const a=A[k],s=S.acts[k]||{};const outs=a.outputs.filter(id=>inScope(BY[id]));return `<tr><td><b>${k}</b> ${esc(L?a.th:a.en)}<details class="mini"><summary>${x.agenda} · ${esc(a.duration[L])}</summary><ol>${a.agenda[L].map(z=>`<li>${esc(z)}</li>`).join("")}</ol>${x.roles}: ${a.roles.map(role).map(esc).join(", ")}</details></td><td>${capTag(a.cap)}</td><td>${seg("act:"+k,["Y","N","NA"],s.r||"",x.av)}</td><td><input type="text" id="aev-${k}" data-actev="${k}" value="${esc(s.e||"")}" placeholder="${esc(x.phActEv)}" style="width:100%"></td><td class="mono mini">${outs.join(", ")}</td></tr>`;}).join("")}</tbody></table></div>`;}
+
+/* ---------- rendering + events ---------- */
+const VIEWS={setup:renderSetup,dash:renderDash,assess:renderAssess,gaps:renderGaps,acts:renderActs};
+function renderStatic(){const x=t();document.documentElement.lang=lang==="TH"?"th":"en";$("t-title").textContent=x.title;
+  $("b-help").textContent=x.help;$("b-open").textContent=x.open;$("b-save").textContent=x.save;$("b-xlsx").textContent=x.xlsx;
+  $("b-th").setAttribute("aria-pressed",lang==="TH");$("b-en").setAttribute("aria-pressed",lang==="EN");
+  const c=S.client;$("eng").innerHTML=`${x.client}: <b>${esc(c.name||x.phClient)}</b> · ${x.assessor}: <b>${esc(c.assessor||"-")}</b> · ${x.date}: <b>${esc(c.date||"-")}</b>${LI?` · <span class="st Exists">${esc(x.ivPill)}</span>`:""}`;
+  $("tabs").innerHTML=Object.entries(x.tabs).map(([k,v])=>`<button role="tab" data-tab="${k}" aria-selected="${view===k}">${esc(v)}</button>`).join("");renderSavebar();}
+function renderView(){Object.keys(VIEWS).forEach(k=>$("v-"+k).hidden=k!==view);VIEWS[view]();}
+function renderAll(){renderStatic();renderView();}
+function setView(v){view=v;try{history.replaceState(null,"","#"+v)}catch(e){}renderStatic();renderView();window.scrollTo({top:0});}
+function goDoc(id){cur=id;if(view!=="assess"){view="assess";renderStatic();renderAssess();}else{renderList();renderDetail();}const dt=$("detail");if(dt)dt.scrollIntoView({block:"start"});}
+
+document.addEventListener("click",e=>{
+  const tb=e.target.closest("[data-tab]");if(tb){setView(tb.dataset.tab);return;}
+  const pk=e.target.closest("[data-pick]");if(pk){cur=pk.dataset.pick;renderList();renderDetail();if(window.innerWidth<900)$("detail").scrollIntoView({block:"start"});return;}
+  const go=e.target.closest("[data-go]");if(go){goDoc(go.dataset.go);return;}
+  const sg=e.target.closest("[data-seg]");if(sg){const [kind,id]=sg.dataset.seg.split(/:(.+)/);const v=sg.dataset.v;
+    if(kind==="status"){const r=rec(cur);r.status=r.status===v?"":v;persist();renderDetail();renderList();return;}
+    if(kind==="ck"){const r=rec(cur);const c=r.checks[id]||(r.checks[id]={});c.r=c.r===v?"":v;persist();renderDetail();renderList();return;}
+    if(kind==="act"){const a=S.acts[id]||(S.acts[id]={});a.r=a.r===v?"":v;persist();view==="acts"?renderActs():renderDetail();return;}}
+  if(e.target.id==="b-allpass"){const r=rec(cur);allChecks(BY[cur]).forEach(c=>{(r.checks[c.id]||(r.checks[c.id]={})).r="P";});persist();renderDetail();renderList();return;}
+  if(e.target.id==="b-clear"){const r=rec(cur);Object.values(r.checks).forEach(c=>c.r="");persist();renderDetail();renderList();return;}
+  if(e.target.id==="b-prev"||e.target.id==="b-next"){const it=listItems();const i=it.findIndex(z=>z.id===cur);const j=e.target.id==="b-prev"?i-1:i+1;if(it[j]){cur=it[j].id;renderList();renderDetail();$("detail").scrollIntoView({block:"start"});}return;}
+  if(e.target.id==="b-sample"){openConfirm();return;}
+  if(e.target.id==="cf-ok"){closeConfirm();doSample();return;}
+  if(e.target.id==="cf-save"){$("b-save").click();return;}
+  if(e.target.id==="cf-cancel"||e.target.id==="confirm"){closeConfirm();return;}
+  if(false){loadSample();return;}
+  if(e.target.id==="b-ivlink"){$("file").click();return;}
+  if(e.target.id==="b-ivunlink"){LI=null;persist();renderAll();return;}
+  if(e.target.id==="b-reset"){if(!resetArm){resetArm=true;renderSetup();setTimeout(()=>{if(resetArm){resetArm=false;if(view==="setup")renderSetup();}},4000);return;}resetArm=false;S=blank();persist();renderAll();toast(t().toastReset);return;}
+});
+document.addEventListener("change",e=>{const el=e.target;
+  if(el.dataset.prof){const k=el.dataset.prof;S.profile[k]=el.tagName==="SELECT"&&(el.value==="1"||el.value==="0")?el.value==="1":el.value;persist();renderSetup();return;}
+  if(el.dataset.ov){const o=S.scope[el.dataset.ov]||(S.scope[el.dataset.ov]={});o.ov=el.value;persist();renderSetup();return;}
+  if(el.id==="g-none"){renderGaps();return;}
+  if(el.id&&el.id.startsWith("l-")){renderList();return;}
+  if(el.dataset.cl){S.client[el.dataset.cl]=el.value;persist();renderStatic();return;}
+});
+document.addEventListener("input",e=>{const el=e.target;
+  if(el.dataset.cl){S.client[el.dataset.cl]=el.value;persist();return;}
+  if(el.dataset.why){const o=S.scope[el.dataset.why]||(S.scope[el.dataset.why]={});o.why=el.value;persist();return;}
+  if(el.dataset.f){rec(cur)[el.dataset.f]=el.value;persist();return;}
+  if(el.dataset.cm){const r=rec(cur);(r.checks[el.dataset.cm]||(r.checks[el.dataset.cm]={})).c=el.value;persist();return;}
+  if(el.dataset.actev){(S.acts[el.dataset.actev]||(S.acts[el.dataset.actev]={})).e=el.value;persist();return;}
+  if(el.id==="l-q"){renderList();return;}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("confirm").hidden){closeConfirm();return;}if(e.key==="Escape"&&!$("help").hidden)closeHelp();});
+
+/* ---------- file save / open ---------- */
+function fileBase(){return ((S.client.name||"client").replace(/[^A-Za-z0-9ก-๙]+/g,"-")+"_csf-engagement_"+new Date().toISOString().slice(0,10));}
+function download(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
+$("b-save").onclick=()=>{const b={app:"csf-engagement",v:1,saved:new Date().toISOString(),audit:S,interview:LI};download(fileBase()+".json",new Blob([JSON.stringify(b,null,1)],{type:"application/json"}));toast(t().toastSaved);};
+$("b-open").onclick=()=>$("file").click();
+$("file").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{const o=JSON.parse(await f.text());let msg;
+  if(o&&o.app==="csf-engagement"){if(o.audit&&o.audit.app==="csf-doc-audit"){S=Object.assign(blank(),o.audit);msg=t().toastOpened;}if(o.interview&&o.interview.app==="csf-interview"){LI=o.interview;msg=msg||t().toastLinked;}if(!msg)throw 0;}
+  else if(o&&o.app==="csf-doc-audit"){S=Object.assign(blank(),o);msg=t().toastOpened;}
+  else if(o&&o.app==="csf-interview"){LI=o;msg=t().toastLinked;}
+  else throw 0;
+  if(LI&&!S.client.name&&LI.client)S.client=Object.assign(blank().client,LI.client);
+  persist();renderAll();toast(msg);}catch(err){toast(t().toastBad);}e.target.value="";});
+
+/* ---------- minimal XLSX writer (stored zip, inline strings) ---------- */
+const CRC=(()=>{const tb=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;tb[n]=c>>>0;}return b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=tb[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0;};})();
+function zip(files){const enc=new TextEncoder();const parts=[],cd=[];let off=0;
+  for(const [name,str] of files){const nb=enc.encode(name),db=enc.encode(str),crc=CRC(db);
+    const lh=new DataView(new ArrayBuffer(30));lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint16(8,0,true);lh.setUint32(14,crc,true);lh.setUint32(18,db.length,true);lh.setUint32(22,db.length,true);lh.setUint16(26,nb.length,true);
+    parts.push(new Uint8Array(lh.buffer),nb,db);
+    const ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint32(16,crc,true);ch.setUint32(20,db.length,true);ch.setUint32(24,db.length,true);ch.setUint16(28,nb.length,true);ch.setUint32(42,off,true);
+    cd.push(new Uint8Array(ch.buffer),nb);off+=30+nb.length+db.length;}
+  const cdSize=cd.reduce((s,a)=>s+a.length,0);const end=new DataView(new ArrayBuffer(22));end.setUint32(0,0x06054b50,true);end.setUint16(8,files.length,true);end.setUint16(10,files.length,true);end.setUint32(12,cdSize,true);end.setUint32(16,off,true);
+  return new Blob([...parts,...cd,new Uint8Array(end.buffer)],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});}
+const xe=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"");
+function colName(i){let s="";i++;while(i){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;}
+function sheetXml(rows,widths){const cols=widths?`<cols>${widths.map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join("")}</cols>`:"";
+  const body=rows.map((r,ri)=>`<row r="${ri+1}">${r.map((v,ci)=>{const ref=colName(ci)+(ri+1),st=ri===0?' s="1"':' s="2"';return typeof v==="number"?`<c r="${ref}"${st}><v>${v}</v></c>`:`<c r="${ref}" t="inlineStr"${st}><is><t xml:space="preserve">${xe(v)}</t></is></c>`;}).join("")}</row>`).join("");
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>${cols}<sheetData>${body}</sheetData><autoFilter ref="A1:${colName(Math.max(0,(rows[0]||[]).length-1))}${rows.length}"/></worksheet>`;}
+function xlsx(sheets){const wb=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheets.map((s,i)=>`<sheet name="${xe(s.name)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join("")}</sheets></workbook>`;
+  const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join("")}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="10"/><name val="Calibri"/></font><font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1F3864"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="3"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("")}</Types>`;
+  const root=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`;
+  return zip([["[Content_Types].xml",ct],["_rels/.rels",root],["xl/workbook.xml",wb],["xl/_rels/workbook.xml.rels",rels],["xl/styles.xml",styles],...sheets.map((s,i)=>[`xl/worksheets/sheet${i+1}.xml`,sheetXml(s.rows,s.widths)])]);}
+$("b-xlsx").onclick=()=>{const x=t(),L=Li(),c=S.client,sc=D.filter(inScope),a=agg(sc);
+  const sum=[["Item","Value"],["Client",c.name],["Assessor",c.assessor],["Assessment date",c.date],["Engagement reference",c.ref],["Scope",c.scope],["Exported",new Date().toISOString()],
+    ["Profile",Object.entries(S.profile).map(([k,v])=>k+"="+v).join("; ")],["In scope",sc.length],["Exists",a.Exists],["Partial",a.Partial],["Missing",a.Missing],["N/A",a.NA],["Not assessed",a.none]];
+  FN.forEach(f=>{const g=agg(sc.filter(d=>d.fn===f));sum.push([`${f} Exists / Partial / Missing / Not assessed`,`${g.Exists} / ${g.Partial} / ${g.Missing} / ${g.none}`]);});
+  const docs=[["Seq","ID","Document","Function","Category","Level (base)","Level (client)","In scope","Scope override","Override reason","Status","Checks passed","Checks failed","Score %","Evidence","Finding","Recommendation","Comment","Wave","Track","Capability","Sourcing","Owner","Approver","CSF subcategories",x.ivXl]];
+  D.slice().sort((p,q)=>p.seq-q.seq).forEach(d=>{const r=S.docs[d.id]||{},s=score(d),o=S.scope[d.id]||{};docs.push([d.seq,d.id,nm(d),d.fn,d.cat,d.level,effLvl(d),inScope(d)?"Yes":"No",o.ov||"auto",o.why||"",x.sv[status(d)],s?s.p:0,s?s.f:0,s?s.pct:"",r.ev||"",r.finding||"",r.rec||"",r.comment||"",d.wave,d.track,M.caps[d.cap][L],d.src.map(z=>M.sourcing[z][L]).join(" / "),role(d.owner_k),role(d.approver_k),d.csf.join(", "),LI?(ivLowest(d)??""):""]);});
+  const checks=[["ID","Document","Check group","Check","Requirement","Result","Observation"]];
+  D.forEach(d=>{const r=S.docs[d.id];if(!r||!inScope(d))return;allChecks(d).forEach(ch=>{const v=r.checks[ch.id]||{};if(!v.r&&!v.c)return;checks.push([d.id,nm(d),ch.g==="ctl"?x.ctl:ch.g==="field"?x.field:x.content,ch.t[L],ch.r?ch.r[L]:"",v.r?x.rv[v.r]:"",v.c||""]);});});
+  const acts=[["ID","Activity","Facilitator capability","Result","Evidence","Feeds documents"]];Object.keys(A).forEach(k=>{const s=S.acts[k]||{};acts.push([k,L?A[k].th:A[k].en,M.caps[A[k].cap][L],s.r?x.av[s.r]:"",s.e||"",A[k].outputs.join(", ")]);});
+  const gap=[["Seq","ID","Document","Level (client)","Status","Wave","Track","Capability","Sourcing","Run first","Blocked by","Finding","Recommendation"]];const gr=gapRows(false),gi=new Set(gr.map(d=>d.id));
+  gr.forEach(d=>{const r=S.docs[d.id]||{};gap.push([d.seq,d.id,nm(d),effLvl(d),x.sv[status(d)],d.wave,d.track,M.caps[d.cap][L],d.src.map(z=>M.sourcing[z][L]).join(" / "),d.acts.map(z=>L?A[z].th:A[z].en).join("; "),d.deps.filter(z=>gi.has(z)).join(", "),r.finding||"",r.rec||""]);});
+  download(fileBase()+".xlsx",xlsx([{name:"Summary",rows:sum,widths:[34,80]},{name:"Documents",rows:docs,widths:[6,13,44,8,8,11,11,8,10,30,12,8,8,8,30,40,40,30,6,6,18,30,28,28,24]},{name:"Checks",rows:checks,widths:[13,40,18,40,60,10,50]},{name:"Activities",rows:acts,widths:[8,50,18,10,40,40]},{name:"Gap Roadmap",rows:gap,widths:[6,13,44,11,12,6,6,18,30,50,20,40,40]}]));toast(t().toastXlsx);};
+
+/* ---------- sample ---------- */
+function doSample(){loadSample();}
+let cfFocus=null;
+function openConfirm(){const x=t();cfFocus=document.activeElement;
+  $("confirm-body").innerHTML=`<h2 id="cf-title" style="margin-top:0">${esc(x.cfTitle)}</h2><div class="callout" style="border-left:3px solid var(--bad)">${esc(x.cfBody)}</div><div class="hbtns" style="margin-top:14px;justify-content:flex-end"><button class="btn" id="cf-cancel">${esc(x.cfCancel)}</button><button class="btn" id="cf-save">${esc(x.cfSave)}</button><button class="btn danger" id="cf-ok">${esc(x.cfOk)}</button></div>`;
+  $("confirm").hidden=false;$("cf-cancel").focus();}
+function closeConfirm(){$("confirm").hidden=true;if(cfFocus&&cfFocus.focus)cfFocus.focus();}
+function loadSample(){S=blank();S.client={name:"Sample: Chaophraya Medical Center (fictional)",assessor:"Sample Assessor, Senior Consultant",date:"2026-10-01",ref:"SAMPLE-001",scope:"Two hospitals, HIS, PACS, LIS, ERP, Microsoft 365. Fictional example data."};
+  S.profile={cii:true,pdpa:true,cca:true,iso:false,size:"large",spec:"part",mssp:true,cloud:true,ai:true,ot:true,dev:false};
+  const ex=new Set("GV-CHR-001 GV-POL-001 GV-POL-003 GV-STD-001 GV-FRM-002 GV-FRM-003 ID-REG-001 PR-POL-002 PR-PRC-003 PR-FRM-004 PR-STD-006 PR-PRC-005 PR-PRC-006 PR-FRM-005 PR-FRM-001 PR-PRC-001 GV-POL-004 GV-TPL-002 GV-REG-007".split(" "));
+  const pa=new Set("GV-CHR-002 GV-REG-003 GV-REG-001 ID-REG-002 ID-RPT-001 PR-POL-001 PR-STD-001 PR-STD-012 PR-STD-016 RS-PLN-001 RS-REG-002 RC-PLN-002 PR-PLN-001 GV-PRC-005 GV-TPL-004 ID-REG-004 PR-REC-003 ID-STD-002 PR-PRC-007".split(" "));
+  D.forEach(d=>{if(!inScope(d))return;const st=ex.has(d.id)?"Exists":pa.has(d.id)?"Partial":(d.seq%5===0?"":"Missing");if(!st)return;const r=rec(d.id);r.status=st;
+    allChecks(d).forEach((c,i)=>{r.checks[c.id]={r:st==="Exists"?"P":st==="Missing"?"F":(i%3===0?"F":"P"),c:""};});
+    if(st!=="Exists"){r.finding=st==="Missing"?"Sample: no approved document or equivalent was provided.":"Sample: draft exists but is not approved and lacks required sections.";r.rec="Sample: develop or complete the document, obtain approval, and communicate it.";}
+    if(st!=="Missing")r.ev="Sample: "+d.id+" v1.0, document portal";});
+  ["ACT-01","ACT-05","ACT-18","ACT-19"].forEach(k=>S.acts[k]={r:"Y",e:"Sample: minutes on file"});["ACT-07","ACT-08","ACT-09","ACT-20"].forEach(k=>S.acts[k]={r:"N",e:""});
+  persist();renderAll();toast(t().toastSample);}
+
+/* ---------- help + lang ---------- */
+let lastFocus=null;
+function openHelp(){lastFocus=document.activeElement;$("help-body").innerHTML=t().helpHtml+`<p><button class="btn pri" id="help-close">${lang==="TH"?"ปิด":"Close"}</button></p>`;$("help").hidden=false;$("help-close").focus();}
+function closeHelp(){$("help").hidden=true;if(lastFocus)lastFocus.focus();}
+$("b-help").onclick=openHelp;$("help").addEventListener("click",e=>{if(e.target.id==="help"||e.target.id==="help-close")closeHelp();});
+function setLang(l){lang=l;try{localStorage.setItem("csf-audit-lang",l)}catch(e){}renderAll();}
+$("b-th").onclick=()=>setLang("TH");$("b-en").onclick=()=>setLang("EN");
+try{const h=location.hash.replace("#","");if(VIEWS[h])view=h;}catch(e){}
+renderAll();
+</script>

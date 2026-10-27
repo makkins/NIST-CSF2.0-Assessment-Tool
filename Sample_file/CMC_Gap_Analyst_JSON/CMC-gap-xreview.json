@@ -1,0 +1,210 @@
+{
+ "schema": "csf-gap-xreview/1",
+ "proposals": [
+  {
+   "id": "P01",
+   "type": "MergeIMP",
+   "targets": [
+    "IMP-PR.AA-01-02",
+    "IMP-GV.SC-02-01",
+    "IMP-DE.CM-02-01"
+   ],
+   "proposal": "Merge the three vendor remote access actions into one action.",
+   "rationale": "All three change how vendors reach HIS and PACS: supervised access, MFA, and session logging (C7:HIS, C7:PACS, SUP-02).",
+   "change": {
+    "keepImp": "IMP-PR.AA-01-02",
+    "removeImps": [
+     "IMP-GV.SC-02-01",
+     "IMP-DE.CM-02-01"
+    ],
+    "mergedAction": "Require MFA, supervision, and session logging for vendor remote access to HIS and PACS, and remove unattended remote tools.",
+    "affectedGaps": [
+     "GAP-PR.AA-01",
+     "GAP-GV.SC-02",
+     "GAP-DE.CM-02"
+    ]
+   }
+  },
+  {
+   "id": "P02",
+   "type": "MergeIMP",
+   "targets": [
+    "IMP-ID.IM-01-01",
+    "IMP-RS.MA-01-02"
+   ],
+   "proposal": "Merge the two ransomware tabletop exercise actions into one action.",
+   "rationale": "Both actions run a ransomware tabletop exercise with the same participants (IR-04).",
+   "change": {
+    "keepImp": "IMP-RS.MA-01-02",
+    "removeImps": [
+     "IMP-ID.IM-01-01"
+    ],
+    "mergedAction": "Hold a tabletop exercise on ransomware each year, starting with a first exercise, and record the improvements in the register.",
+    "affectedGaps": [
+     "GAP-ID.IM-01",
+     "GAP-RS.MA-01"
+    ]
+   }
+  },
+  {
+   "id": "P03",
+   "type": "MergeIMP",
+   "targets": [
+    "IMP-ID.RA-01-02",
+    "IMP-PR.PS-01-03"
+   ],
+   "proposal": "Merge the two remediation timeline actions into one action.",
+   "rationale": "Both set timelines by severity and report compliance, one for vulnerabilities and one for patches.",
+   "change": {
+    "keepImp": "IMP-PR.PS-01-03",
+    "removeImps": [
+     "IMP-ID.RA-01-02"
+    ],
+    "mergedAction": "Set patch and remediation timelines by severity, track compliance monthly, and report it to the steering committee.",
+    "affectedGaps": [
+     "GAP-ID.RA-01",
+     "GAP-PR.PS-01"
+    ]
+   }
+  },
+  {
+   "id": "P04",
+   "type": "SystemicRootCause",
+   "targets": [
+    "GAP-GV.OC-01",
+    "GAP-GV.OC-02",
+    "GAP-GV.RM-01",
+    "GAP-GV.RM-02",
+    "GAP-GV.RR-01",
+    "GAP-GV.RR-02",
+    "GAP-GV.PO-01",
+    "GAP-GV.PO-02",
+    "GAP-GV.OV-01",
+    "GAP-GV.SC-01",
+    "GAP-GV.SC-02",
+    "GAP-ID.AM-01",
+    "GAP-ID.AM-02",
+    "GAP-ID.RA-02",
+    "GAP-ID.IM-01",
+    "GAP-PR.AA-01",
+    "GAP-PR.AA-02",
+    "GAP-PR.AT-01",
+    "GAP-PR.DS-02",
+    "GAP-PR.PS-02",
+    "GAP-DE.AE-01",
+    "GAP-RS.MA-01",
+    "GAP-RS.MA-02",
+    "GAP-RS.CO-01",
+    "GAP-RS.CO-02",
+    "GAP-RS.MI-01",
+    "GAP-RC.RP-01",
+    "GAP-RC.RP-02",
+    "GAP-RC.CO-01"
+   ],
+   "proposal": "Record Ownership as a systemic root cause.",
+   "rationale": "Ownership is a root cause in Gap Findings across all six Functions.",
+   "change": {
+    "systemicCause": "Ownership",
+    "systemicStatement": "No executive owns cybersecurity at CMC, and PACS and Active Directory have an IT owner only, so each control depends on whoever in IT has time and no one checks controls across both hospitals.",
+    "affectedGaps": [
+     "GAP-GV.OC-01",
+     "GAP-GV.OC-02",
+     "GAP-GV.RM-01",
+     "GAP-GV.RM-02",
+     "GAP-GV.RR-01",
+     "GAP-GV.RR-02",
+     "GAP-GV.PO-01",
+     "GAP-GV.PO-02",
+     "GAP-GV.OV-01",
+     "GAP-GV.SC-01",
+     "GAP-GV.SC-02",
+     "GAP-ID.AM-01",
+     "GAP-ID.AM-02",
+     "GAP-ID.RA-02",
+     "GAP-ID.IM-01",
+     "GAP-PR.AA-01",
+     "GAP-PR.AA-02",
+     "GAP-PR.AT-01",
+     "GAP-PR.DS-02",
+     "GAP-PR.PS-02",
+     "GAP-DE.AE-01",
+     "GAP-RS.MA-01",
+     "GAP-RS.MA-02",
+     "GAP-RS.CO-01",
+     "GAP-RS.CO-02",
+     "GAP-RS.MI-01",
+     "GAP-RC.RP-01",
+     "GAP-RC.RP-02",
+     "GAP-RC.CO-01"
+    ]
+   }
+  },
+  {
+   "id": "P05",
+   "type": "SystemicRootCause",
+   "targets": [
+    "GAP-ID.AM-01",
+    "GAP-ID.RA-01",
+    "GAP-PR.AA-01",
+    "GAP-PR.DS-01",
+    "GAP-PR.DS-02",
+    "GAP-PR.IR-01",
+    "GAP-PR.IR-02",
+    "GAP-DE.CM-01",
+    "GAP-DE.CM-02",
+    "GAP-DE.AE-02",
+    "GAP-RS.AN-02"
+   ],
+   "proposal": "Record Tooling as a systemic root cause.",
+   "rationale": "Tooling is a root cause in Gap Findings across Identify, Protect, Detect, and Respond.",
+   "change": {
+    "systemicCause": "Tooling",
+    "systemicStatement": "CMC lacks basic security tooling on core systems: no central logging, no vulnerability scanning, no network monitoring, and no MFA on privileged access.",
+    "affectedGaps": [
+     "GAP-ID.AM-01",
+     "GAP-ID.RA-01",
+     "GAP-PR.AA-01",
+     "GAP-PR.DS-01",
+     "GAP-PR.DS-02",
+     "GAP-PR.IR-01",
+     "GAP-PR.IR-02",
+     "GAP-DE.CM-01",
+     "GAP-DE.CM-02",
+     "GAP-DE.AE-02",
+     "GAP-RS.AN-02"
+    ]
+   }
+  },
+  {
+   "id": "P06",
+   "type": "Calibration",
+   "targets": [
+    "GAP-RC.RP-02"
+   ],
+   "proposal": "Lower the Likelihood of GAP-RC.RP-02 from 4 to 3.",
+   "rationale": "The PACS backup is immutable, which blocks part of the attack path.",
+   "change": {
+    "suggestedLikelihood": 3,
+    "note": "HIS, Microsoft 365, and Active Directory still have no restore test, so the assessor may keep Likelihood 4."
+   }
+  },
+  {
+   "id": "P07",
+   "type": "MissingLink",
+   "targets": [
+    "IMP-PR.IR-01-01",
+    "GAP-PR.PS-02"
+   ],
+   "proposal": "Link the network segmentation action to GAP-PR.PS-02.",
+   "rationale": "Segmentation also isolates legacy medical devices, which supports the isolation action.",
+   "change": {
+    "addLinks": [
+     {
+      "imp": "IMP-PR.IR-01-01",
+      "gap": "GAP-PR.PS-02"
+     }
+    ]
+   }
+  }
+ ]
+}

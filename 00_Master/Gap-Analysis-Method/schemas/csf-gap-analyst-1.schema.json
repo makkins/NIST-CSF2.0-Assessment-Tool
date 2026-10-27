@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "csf-gap-analyst/1",
+  "title": "AI Analyst output for one CSF Function (Gap Analysis Stage 1)",
+  "description": "Text and judgments only. The HTML calculates tiers, coverage, risk scores, bands, and priority order, so those fields are not allowed here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "function", "round", "categories", "improvementActions", "verify"],
+  "properties": {
+    "schema": { "const": "csf-gap-analyst/1" },
+    "function": { "enum": ["GV", "ID", "PR", "DE", "RS", "RC"] },
+    "round": { "type": "integer", "minimum": 1, "maximum": 3, "description": "1 first draft, 2 after Reviewer feedback, 3 after assessor comments" },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/category" }
+    },
+    "improvementActions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/imp" }
+    },
+    "verify": {
+      "type": "array",
+      "description": "Open [VERIFY] items for the assessor. A Function locks only when this list is empty.",
+      "items": { "$ref": "#/$defs/verifyItem" }
+    }
+  },
+  "$defs": {
+    "catId": { "type": "string", "pattern": "^(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}$" },
+    "subId": { "type": "string", "pattern": "^(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-[0-9]{2}$" },
+    "evidenceRef": {
+      "type": "string",
+      "description": "Evidence ID from the input pack: Subcategory ID, technical check ID (for example IAM-01), profile field with system (for example C4:HIS), sampling control with system (for example mfa:PACS), observation ID (OBS-01), document ID, or NOTE:<Subcategory ID> for interview notes",
+      "minLength": 2
+    },
+    "text": { "type": "string", "minLength": 1, "maxLength": 900 },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["categoryId", "keyMessage", "whatWorksToday", "strengths", "gapFindings", "observations"],
+      "properties": {
+        "categoryId": { "$ref": "#/$defs/catId" },
+        "keyMessage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["found", "closes"],
+          "description": "Two-statement conclusion. found: the property of the organization with its consequence. closes: the first concrete move, starting with a verb.",
+          "properties": {
+            "found": { "$ref": "#/$defs/text" },
+            "closes": { "$ref": "#/$defs/text" }
+          }
+        },
+        "whatWorksToday": { "type": "string", "maxLength": 600, "description": "One sentence naming the Strengths and Foundations, empty string if none" },
+        "strengths": { "type": "array", "items": { "$ref": "#/$defs/strength" } },
+        "gapFindings": { "type": "array", "items": { "$ref": "#/$defs/gapFinding" } },
+        "observations": {
+          "type": "array",
+          "description": "For Subcategories with status Meets with Observation only",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["subcategory", "statement", "evidence"],
+            "properties": {
+              "subcategory": { "$ref": "#/$defs/subId" },
+              "statement": { "$ref": "#/$defs/text" },
+              "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceRef" } }
+            }
+          }
+        }
+      }
+    },
+    "strength": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "statement", "evidence"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^STR-(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-[0-9]{2}$", "description": "Use the Subcategory ID that the HTML marked Strength or Foundation" },
+        "type": { "enum": ["Strength", "Foundation"] },
+        "statement": { "$ref": "#/$defs/text" },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceRef" } }
+      }
+    },
+    "areaScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "rationale"],
+      "properties": {
+        "value": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+        "rationale": { "type": "string", "maxLength": 400 }
+      }
+    },
+    "gapFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "basis", "confidence", "statement", "extent", "linkedSubcategories", "evidence", "rootCause", "consequence", "likelihood", "impact", "responses"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^GAP-(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-[0-9]{2}$" },
+        "basis": { "enum": ["Observed", "Inferred"] },
+        "confidence": { "enum": ["High", "Medium", "Low", null], "description": "Required for Inferred, null for Observed" },
+        "statement": { "$ref": "#/$defs/text", "description": "Analyzed conclusion: property of the organization plus consequence. No recommendation." },
+        "extent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["confirmed", "likely", "notChecked"],
+          "properties": {
+            "confirmed": { "type": "array", "items": { "type": "string" }, "description": "Systems or units where the condition is confirmed" },
+            "likely": { "type": "array", "items": { "type": "string" }, "description": "Systems or units likely affected (Inferred)" },
+            "notChecked": { "type": "string", "maxLength": 300, "description": "What the population outside the evidence is, for example '23 systems not profiled'" }
+          }
+        },
+        "linkedSubcategories": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/subId" } },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceRef" } },
+        "rootCause": {
+          "type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true,
+          "items": { "enum": ["Ownership", "Capacity", "Skills", "Budget", "Tooling", "Vendor dependency"] }
+        },
+        "consequence": { "$ref": "#/$defs/text", "description": "Threat scenario and business consequence for this client" },
+        "likelihood": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "anchor", "rationale", "evidence"],
+          "description": "Proposal only. The assessor decides. value is null when confidence is Low.",
+          "properties": {
+            "value": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+            "anchor": { "type": ["string", "null"], "pattern": "^L[1-5]-[a-z]$", "description": "Calibration anchor ID used, for example L4-a" },
+            "rationale": { "type": "string", "maxLength": 500 },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceRef" } }
+          }
+        },
+        "impact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ops", "fin", "legal", "rep", "safety", "data"],
+          "description": "Proposal only, on the Workshop impact scale. The assessor decides.",
+          "properties": {
+            "ops": { "$ref": "#/$defs/areaScore" },
+            "fin": { "$ref": "#/$defs/areaScore" },
+            "legal": { "$ref": "#/$defs/areaScore" },
+            "rep": { "$ref": "#/$defs/areaScore" },
+            "safety": { "$ref": "#/$defs/areaScore" },
+            "data": { "$ref": "#/$defs/areaScore" }
+          }
+        },
+        "responses": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fix", "find", "prevent", "exceptions", "notApplicable"],
+          "description": "IMP IDs per response angle. An empty angle needs a reason in notApplicable.",
+          "properties": {
+            "fix": { "$ref": "#/$defs/impIdList" },
+            "find": { "$ref": "#/$defs/impIdList" },
+            "prevent": { "$ref": "#/$defs/impIdList" },
+            "exceptions": { "$ref": "#/$defs/impIdList" },
+            "notApplicable": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "fix": { "type": "string" }, "find": { "type": "string" }, "prevent": { "type": "string" }, "exceptions": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "impIdList": { "type": "array", "items": { "type": "string", "pattern": "^IMP-(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-[0-9]{2}-[0-9]{2}$" } },
+    "imp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "angle", "action", "linkedGaps", "gapType", "buildsOn", "documents", "prerequisites", "systems"],
+      "description": "Atomic action. No cost, duration, phase, or owner: those belong to P3 Roadmap.",
+      "properties": {
+        "id": { "type": "string", "pattern": "^IMP-(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-[0-9]{2}-[0-9]{2}$" },
+        "angle": { "enum": ["Fix", "Find", "Prevent", "Handle exceptions"] },
+        "action": { "type": "string", "minLength": 5, "maxLength": 400, "description": "Starts with a verb. One action." },
+        "linkedGaps": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^GAP-(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-[0-9]{2}$" } },
+        "gapType": { "enum": ["Governance", "Process", "Technology", "Measurement", "Evidence"] },
+        "buildsOn": { "type": "array", "items": { "type": "string", "pattern": "^STR-" } },
+        "documents": { "type": "array", "items": { "type": "string", "pattern": "^(GV|ID|PR|DE|RS|RC)-[A-Z]{3}-[0-9]{3}$" } },
+        "prerequisites": { "type": "array", "items": { "type": "string", "pattern": "^IMP-" } },
+        "systems": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "verifyItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "question"],
+      "properties": {
+        "ref": { "type": "string", "description": "Gap, Strength, IMP, or evidence ID the question is about" },
+        "question": { "type": "string", "minLength": 5, "maxLength": 400 }
+      }
+    }
+  }
+}

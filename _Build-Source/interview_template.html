@@ -1,0 +1,1096 @@
+<title>CSF Interview Assessment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: engagement header, tab bar (Setup, Dashboard, Assess, Gap roadmap, Activities); Assess is a list-detail workspace */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#18212f; --muted:#5a6577; --line:#d6dce5; --accent:#245a7a; --accent-soft:#e2eef5; --chip:#eef1f5;
+  --ok:#1e7a46; --ok-soft:#e3f3ea; --warn:#a96300; --warn-soft:#fcf0dc; --bad:#b42318; --bad-soft:#fbe7e5; --na:#7b8494; --na-soft:#f0f1f4;
+  --req:#b42318; --exp:#1d4ed8; --opt:#8a93a3; --on-block:#ffffff;
+  --cap-it:#2e7d4f; --cap-g:#b26a00; --cap-s:#8a2f8f;
+  --f-body:"IBM Plex Sans Thai",system-ui,"Segoe UI",Tahoma,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10151c; --surface:#18202a; --ink:#e5e9f0; --muted:#9aa4b4; --line:#2c3644; --accent:#7fb6d6; --accent-soft:#1d3342; --chip:#222b37;
+  --ok:#4cc27e; --ok-soft:#173326; --warn:#e3a33f; --warn-soft:#3a2c15; --bad:#ef6b61; --bad-soft:#3a1d1c; --na:#8a93a3; --na-soft:#232a35;
+  --req:#e5534b; --exp:#5b8def; --opt:#7d8696; --on-block:#ffffff; --cap-it:#4fbf82; --cap-g:#e2a23b; --cap-s:#d07ad6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10151c; --surface:#18202a; --ink:#e5e9f0; --muted:#9aa4b4; --line:#2c3644; --accent:#7fb6d6; --accent-soft:#1d3342; --chip:#222b37;
+  --ok:#4cc27e; --ok-soft:#173326; --warn:#e3a33f; --warn-soft:#3a2c15; --bad:#ef6b61; --bad-soft:#3a1d1c; --na:#8a93a3; --na-soft:#232a35;
+  --req:#e5534b; --exp:#5b8def; --opt:#7d8696; --on-block:#ffffff; --cap-it:#4fbf82; --cap-g:#e2a23b; --cap-s:#d07ad6; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.5;margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:16px 48px}
+header.top{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:12px}
+h1{font-size:clamp(20px,2.6vw,27px);margin:0;line-height:1.2;text-wrap:balance}
+.eng{color:var(--muted);font-size:13px;margin-top:2px}
+.eng b{color:var(--ink)}
+.hbtns{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.btn{font:600 13px var(--f-body);padding:6px 11px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.sm{font-size:12px;padding:3px 8px}
+.mchk{display:flex;flex-wrap:wrap;gap:4px 12px}
+.mchk label{display:flex;gap:4px;align-items:center}
+.btn.mono{font-family:var(--f-mono);white-space:nowrap}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.lang{display:flex;border:1px solid var(--ink);border-radius:4px;overflow:hidden}
+.lang button{font:600 13px var(--f-body);padding:6px 12px;border:0;background:var(--surface);color:var(--ink);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.savebar{font-size:12px;color:var(--muted);margin:8px 0 0}
+.tabs{display:flex;gap:4px;margin:14px 0 12px;flex-wrap:wrap}
+.tabs button{font:600 14px var(--f-body);padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:4px;cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=text],input[type=number],input[type=search],input[type=date],select,textarea{font:13px var(--f-body);padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);min-width:0;max-width:100%}
+textarea{width:100%;resize:vertical;min-height:54px}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.85}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.pad{padding:14px}
+.scroll{overflow-x:auto}
+h2{font-size:18px;margin:0 0 4px}
+h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.hint{color:var(--muted);font-size:13px;margin:0 0 10px;max-width:110ch}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.form{display:grid;grid-template-columns:200px 1fr;gap:8px 12px;align-items:center}
+.form label{font-size:13px;color:var(--muted)}
+.form .help{grid-column:2;font-size:12px;color:var(--muted);margin-top:-4px}
+@media (max-width:640px){.form{grid-template-columns:1fr}.form .help{grid-column:1}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex:none}
+.seg button{font:600 12px var(--f-body);padding:3px 9px;border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button[aria-pressed="true"][data-v="P"],.seg button[aria-pressed="true"][data-v="Exists"],.seg button[aria-pressed="true"][data-v="Y"]{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"][data-v="F"],.seg button[aria-pressed="true"][data-v="Missing"],.seg button[aria-pressed="true"][data-v="N"]{background:var(--bad);color:#fff}
+.seg button[aria-pressed="true"][data-v="Partial"]{background:var(--warn);color:#fff}
+.seg button[aria-pressed="true"][data-v="NA"]{background:var(--na);color:#fff}
+.lv{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:2px;font:600 11px var(--f-mono);color:var(--on-block);flex:none}
+.lv.Required{background:var(--req)} .lv.Expected{background:var(--exp)} .lv.Optional{background:var(--opt)}
+.cap{flex:none;font:600 10px var(--f-mono);padding:0 4px;border-radius:2px;border:1px solid currentColor;line-height:15px;display:inline-block}
+.cap.IT{color:var(--cap-it)} .cap.GUIDED{color:var(--cap-g)} .cap.SPEC{color:var(--cap-s)}
+.st{display:inline-block;font:600 11px var(--f-body);padding:1px 8px;border-radius:10px;white-space:nowrap}
+.st.Exists{background:var(--ok-soft);color:var(--ok)} .st.Partial{background:var(--warn-soft);color:var(--warn)} .st.Missing{background:var(--bad-soft);color:var(--bad)} .st.NA{background:var(--na-soft);color:var(--na)} .st.none{background:var(--chip);color:var(--muted)} .st.out{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+.mono{font-family:var(--f-mono)}
+.mini{font-size:12px;color:var(--muted)}
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.kpi{padding:10px 12px}
+.kpi b{display:block;font-size:24px;font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi span{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.kpi.ok b{color:var(--ok)} .kpi.warn b{color:var(--warn)} .kpi.bad b{color:var(--bad)}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font-size:13px}
+.bar .tr{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--chip)}
+.bar .tr i{display:block;height:100%}
+.bar .num{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right;font-size:12px}
+@media (max-width:560px){.bar{grid-template-columns:90px 1fr 54px}}
+.heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.heat>div{border-radius:4px;padding:8px;font-size:12px;border:1px solid var(--line)}
+.heat b{display:block;font-family:var(--f-mono);font-size:13px}
+.callout{border-left:4px solid var(--cap-s);background:var(--chip);padding:10px 12px;border-radius:4px;font-size:13px;margin:8px 0}
+.callout.ok{border-left-color:var(--ok)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin:6px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:4px}
+/* tables */
+table.t{border-collapse:collapse;width:100%;font-size:13px}
+table.t th,table.t td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.t th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--surface);position:sticky;top:0}
+table.t tr.out td{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+/* assess workspace */
+.ws{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:12px;align-items:start}
+@media (max-width:900px){.ws{grid-template-columns:1fr}}
+.list{max-height:78vh;overflow:auto}
+.lfil{display:flex;flex-wrap:wrap;gap:6px;padding:10px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:1}
+.lfil input[type=search]{flex:1 1 100%}
+.li{display:flex;gap:6px;align-items:center;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:7px 10px;cursor:pointer;font:13px var(--f-body)}
+.li:hover{background:var(--chip)} .li.sel{background:var(--accent-soft)}
+.li .id{font-family:var(--f-mono);font-size:12px;white-space:nowrap}
+.li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.li .pct{font:600 11px var(--f-mono);color:var(--muted);min-width:34px;text-align:right}
+.li.out{opacity:.5}
+.detail{min-width:0}
+.dh{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dh h2{flex:1 1 300px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:6px 0 10px}
+.meta b{color:var(--ink);font-weight:600}
+.ck{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.ck .q{font-weight:600;font-size:13px}
+.ck .r{font-size:12px;color:var(--muted);grid-column:1}
+.ck .seg{grid-row:1/span 2;grid-column:2;align-self:start}
+.ck input{grid-column:1/-1;width:100%}
+.ck.F .q{color:var(--bad)}
+.actrow{border:1px solid var(--line);border-radius:4px;padding:8px;margin:6px 0}
+.actrow .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.actrow .top b{flex:1;min-width:0}
+.actrow details{font-size:12px;margin-top:4px}
+.actrow ol{margin:4px 0;padding-left:18px}
+.navrow{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(10,14,22,.55);z-index:20;display:flex;justify-content:center;align-items:flex-start;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 24px;overflow-y:auto}
+.modal .panel{background:var(--surface);color:var(--ink);border-radius:8px;max-width:860px;width:100%;padding:22px 24px;border:1px solid var(--line)}
+.modal p,.modal li{font-size:14px;max-width:80ch}
+.modal h3{text-transform:none;letter-spacing:0;color:var(--ink);font-size:15px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:4px;font-size:13px;z-index:30}
+/* interview additions */
+.seg button[aria-pressed="true"][data-v="0"]{background:var(--bad);color:#fff}
+.seg button[aria-pressed="true"][data-v="1"]{background:var(--warn);color:#fff}
+.seg button[aria-pressed="true"][data-v="2"]{background:#4d7ea8;color:#fff}
+.seg button[aria-pressed="true"][data-v="3"],.seg button[aria-pressed="true"][data-v="4"]{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"][data-v="S"]{background:var(--warn);color:#fff}
+.seg button[aria-pressed="true"][data-v="O"]{background:#4d7ea8;color:#fff}
+.seg button[aria-pressed="true"][data-v="D"]{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"][data-v="open"]{background:var(--warn);color:#fff}
+.seg button[aria-pressed="true"][data-v="recv"]{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"][data-v="req"]{background:#4d7ea8;color:#fff}
+.seg button[aria-pressed="true"][data-v="none"]{background:var(--bad);color:#fff}
+.tier{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 4px;border-radius:3px;font:600 12px var(--f-mono);color:#fff}
+.tier.t0{background:var(--bad)} .tier.t1{background:var(--warn)} .tier.t2{background:#4d7ea8} .tier.t3,.tier.t4{background:var(--ok)} .tier.tNA{background:var(--na)} .tier.tnone{background:var(--chip);color:var(--muted);border:1px solid var(--line)}
+.qbox{border-left:4px solid var(--accent);background:var(--accent-soft);padding:10px 12px;border-radius:4px;margin:8px 0}
+.qbox .qq{font-size:16px;font-weight:600;line-height:1.45}
+.probe{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:13px}
+.probe input{margin-top:3px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:12px var(--f-body);padding:3px 9px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.anchors{font-size:12px;color:var(--muted);margin:6px 0 0;padding-left:0;list-style:none}
+.anchors li{padding:1px 0}
+.anchors b{color:var(--ink)}
+.flag{display:inline-block;font:600 11px var(--f-body);padding:1px 7px;border-radius:10px;background:var(--warn-soft);color:var(--warn);white-space:nowrap}
+.flag.info{background:var(--chip);color:var(--muted)}
+.pair{display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center;font-size:13px}
+.pair .tr{position:relative;height:16px;background:var(--chip);border-radius:3px}
+.pair .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--accent)}
+.pair .tr u{position:absolute;top:-3px;bottom:-3px;width:3px;background:var(--ink);text-decoration:none}
+@media (max-width:560px){.pair{grid-template-columns:90px 1fr 60px}}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quad>div{border:1px solid var(--line);border-radius:6px;padding:10px}
+.quad b.n{font-size:22px;display:block;font-variant-numeric:tabular-nums}
+.seg button[aria-pressed="true"][data-v="P"]{background:var(--warn);color:#fff}
+.scene{border:1px solid var(--line);border-radius:6px;margin:8px 0;overflow:hidden}
+.scene .st1{padding:10px 12px;background:var(--chip);font-size:13px}
+.scene .st2{padding:10px 12px;border-top:1px solid var(--line);background:var(--warn-soft)}
+.scene .st2 .qq{font-size:15px;font-weight:600;line-height:1.45}
+.step{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ink);color:var(--bg);font:600 11px var(--f-mono);margin-right:6px;vertical-align:1px}
+.tc{border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin:8px 0}
+.tc .top{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.tc .top .qt{flex:1 1 320px;font-weight:600;font-size:13px}
+.tc .good{font-size:12px;background:var(--ok-soft);border-left:3px solid var(--ok);padding:6px 9px;border-radius:3px;margin:6px 0}
+.tc .good b{color:var(--ok)}
+.tc.N{border-left:4px solid var(--bad)} .tc.P{border-left:4px solid var(--warn)} .tc.Y{border-left:4px solid var(--ok)}
+.ref{font:11px var(--f-mono);color:var(--muted)}
+.sessgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px}
+.sess{border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.sess .sh{display:flex;gap:8px;align-items:center}
+.sess .sn{display:inline-grid;place-items:center;min-width:34px;height:24px;border-radius:4px;background:var(--ink);color:var(--bg);font:600 12px var(--f-mono)}
+.sess .st3{flex:1;font-weight:600;font-size:14px;line-height:1.3}
+.sess p{margin:0;font-size:12px;color:var(--muted)} .sess p b{color:var(--ink)}
+.sess .bar2{height:6px;background:var(--chip);border-radius:3px;overflow:hidden} .sess .bar2 i{display:block;height:100%;background:var(--ok)}
+.sess.par{border-style:dashed}
+.flow{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font:600 12px var(--f-mono);margin:6px 0 12px}
+.flow span{padding:3px 8px;border-radius:4px;background:var(--chip)} .flow span.p{border:1px dashed var(--line);background:transparent} .flow em{color:var(--muted);font-style:normal}
+table.sys td,table.sys th{padding:4px 5px} table.sys select,table.sys input[type=text]{font-size:12px;padding:3px 4px}
+.crit{display:inline-grid;place-items:center;width:22px;height:20px;border-radius:3px;font:600 12px var(--f-mono);color:#fff}
+.crit.A{background:var(--bad)} .crit.B{background:var(--warn)} .crit.C{background:var(--na)} .crit.none{background:var(--chip);color:var(--muted)}
+td.cY{background:var(--ok-soft)} td.cP{background:var(--warn-soft)} td.cN{background:var(--bad-soft)} td.cU{background:var(--chip)}
+.chipv{display:inline-block;font:600 11px var(--f-body);padding:1px 7px;border-radius:10px;margin:1px}
+.chipv.Y{background:var(--ok-soft);color:var(--ok)} .chipv.P{background:var(--warn-soft);color:var(--warn)} .chipv.N{background:var(--bad-soft);color:var(--bad)} .chipv.NA,.chipv.U,.chipv.none{background:var(--chip);color:var(--muted)}
+.linkbox{border:1px dashed var(--line);border-radius:6px;padding:10px 12px;font-size:13px}
+td.rt-G{background:var(--ok-soft)} td.rt-W{background:var(--warn-soft)} td.rt-P{background:var(--bad-soft)} td.rt-U{background:var(--chip)}
+table.sys select[multiple]{min-width:140px} table.sys td select{max-width:210px} .covline{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+#printArea{display:none}
+@media print{
+  body{background:#fff;color:#000}
+  .wrap,.modal,.toast{display:none!important}
+  #printArea{display:block;font:11pt var(--f-body);color:#000}
+  #printArea h1{font-size:16pt;margin:0 0 4pt}
+  #printArea .pq{break-inside:avoid;border-bottom:1px solid #999;padding:6pt 0 18pt}
+  #printArea .pq b{font-family:var(--f-mono)}
+  #printArea .pl{min-height:40pt}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="t-title">CSF Interview Assessment</h1>
+      <div class="eng" id="eng"></div>
+    </div>
+    <div class="hbtns">
+      <button class="btn" id="b-help"></button>
+      <button class="btn" id="b-open"></button><input type="file" id="file" accept=".json,application/json" hidden>
+      <button class="btn" id="b-save"></button>
+      <button class="btn pri" id="b-xlsx"></button>
+      <div class="lang" role="group" aria-label="Language"><button id="b-th" aria-pressed="false">ไทย</button><button id="b-en" aria-pressed="true">EN</button></div>
+    </div>
+  </header>
+  <p class="savebar" id="savebar"></p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <section id="v-setup"></section>
+  <section id="v-plan" hidden></section>
+  <section id="v-iv" hidden></section>
+  <section id="v-score" hidden></section>
+  <section id="v-dash" hidden></section>
+  <section id="v-fu" hidden></section>
+  <section id="v-tech" hidden></section>
+  <section id="v-sys" hidden></section>
+  <section id="v-ven" hidden></section>
+  <section id="v-env" hidden></section>
+  <section id="v-dept" hidden></section>
+  <section id="v-obs" hidden></section>
+</div>
+<div id="printArea"></div>
+<div class="modal" id="help" hidden role="dialog" aria-modal="true"><div class="panel" id="help-body"></div></div>
+<div class="modal" id="confirm" hidden role="alertdialog" aria-modal="true" aria-labelledby="cf-title"><div class="panel" id="confirm-body" style="max-width:560px"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const DATA = __DATA__;
+const M=DATA.meta, Q=DATA.q, DOCS=DATA.docs, DBY=Object.fromEntries(DOCS.map(d=>[d.id,d]));
+const FN=["GV","ID","PR","DE","RS","RC"], CATS=Object.keys(M.categories), SUBS=Object.keys(M.subcats);
+const catOf=s=>s.split("-")[0], fnOf=s=>s.slice(0,2);
+const DOCS_BY_SUB={};DOCS.forEach(d=>d.csf.forEach(s=>(DOCS_BY_SUB[s]=DOCS_BY_SUB[s]||[]).push(d.id)));
+const SESS=DATA.sessions, SBY=Object.fromEntries(SESS.map(x=>[x.id,x])), SYSCTL=DATA.sysctl, PRIN=DATA.principles;
+const SUB_SESS={};SESS.forEach(x=>x.subs.forEach(s=>SUB_SESS[s]=x.id));
+const TC=DATA.tc, DOM=DATA.domains, DKEYS=Object.keys(DOM), TCBY=Object.fromEntries(TC.map(c=>[c.id,c]));
+const TC_BY_SUB={};TC.forEach(c=>c.s.forEach(s=>(TC_BY_SUB[s]=TC_BY_SUB[s]||[]).push(c.id)));
+const ROLE_KEYS=Object.keys(M.roles).filter(k=>SUBS.some(s=>Q[s].r.includes(k)));
+const TIERS=["0","1","2","3","4","NA"], EVB=["S","O","D"];
+const PF=DATA.profile, PFBY=Object.fromEntries(PF.map(f=>[f.id,f])), VF=DATA.vendor, DEVO=DATA.devOrigins, RUB=DATA.rubric, RUBV=DATA.rubricVersion, COV=new Set(DATA.coverage), SCHEMA=DATA.schema;
+const EF=DATA.envFields, ETB=DATA.envTables, DF=DATA.deptFields, DFBY=Object.fromEntries(DATA.deptFields.map(f=>[f.id,f]));
+const RT2SV={G:"Y",W:"P",P:"N",U:"U",X:"NA"}, SV_PTS={Y:1,P:0.5,N:0,U:0};
+const KEY="csf-interview:"+location.pathname, LKEY="csf-interview-link:"+location.pathname;
+const T={
+EN:{title:"CSF Interview Assessment",help:"Help",open:"Open file",save:"Save file",xlsx:"Export Excel",
+ tabs:{setup:"Setup",plan:"Interview plan",sys:"Systems and Quick BIA",ven:"Vendors",env:"Environment",dept:"Departments",iv:"Interview",tech:"Technical review",obs:"Observations",score:"Category tiers",dash:"Dashboard",fu:"Requests"},
+ saved:"Autosaved in this browser at",notSaved:"Changes are kept in this browser only. Use Save file to keep a permanent copy.",noStore:"This browser blocks local storage. Use Save file to keep your work.",
+ eng:"Engagement",client:"Client",assessor:"Assessor",date:"Assessment date",ref:"Engagement reference",scopeNote:"Scope note",
+ phClient:"[PLACEHOLDER: client name]",phAssessor:"[PLACEHOLDER: name, role]",phRef:"[PLACEHOLDER: engagement or project code]",phScope:"[PLACEHOLDER: entities, sites, and systems in scope]",
+ people:"Interviewees",peopleHint:"Add each person you interview. Their role decides which questions appear in the interview plan.",addPerson:"Add interviewee",
+ pc:{name:"Name",role:"Role",dept:"Department or title",date:"Interview date",del:""},phName:"[PLACEHOLDER: name]",phDept:"[PLACEHOLDER: department or job title]",remove:"Remove",
+ rules:"Scoring rules",rulesHint:"These rules follow the assessment method: the Current Tier is set per Category, and evidence and gaps are recorded per Subcategory.",
+ rCap:"Tier 2 and above requires evidence beyond the interview",rCapH:"A Subcategory rated Tier 2 or higher on interview statements only is counted as Tier 1 until evidence is received. The stated rating is still recorded.",
+ rObs:"A live demonstration counts as evidence",rObsH:"If No, only documents and records lift the cap.",rTgt:"Default Target Tier",rTgtH:"Applied to every Category unless you change it on the Category tiers tab.",
+ link:"Linked Document Audit Tracker",linkHint:"Open a save file from the Document Audit Tracker (or a combined engagement file) to see document status next to each Subcategory. Save file writes both parts into one engagement file that either tool can open.",
+ linkNone:"No audit file linked.",linkYes:(c,n,u)=>`Linked: <b>${c}</b>, ${n} documents assessed, last updated ${u}.`,linkOpen:"Open audit or engagement file",unlink:"Unlink",copyEng:"Copy engagement details from linked file",
+ sample:"Load sample assessment",sampleHint:"Loads a fictional hospital example. It replaces all current data.",cfTitle:"Replace all data with the sample?",cfBody:(n)=>`Loading the sample overwrites everything in this file: engagement details, interviewees, ratings, notes, systems, vendors, environment, observations, and document requests.${n?` This file holds ${n}.`:""} This cannot be undone. Save a file first if you need the current work.`,cfHas:(a,b,c)=>[a?a+" rated Subcategories":"",b?b+" systems":"",c?c+" interviewees":""].filter(Boolean).join(", "),cfOk:"Overwrite and load sample",cfSave:"Save file first",cfCancel:"Cancel",reset:"Reset assessment",resetConfirm:"Click again to erase all entries",
+ planHint:"Questions are grouped by the role best placed to answer them. A Subcategory can appear under several roles. Start a session to work through one role's questions, or print a question sheet.",
+ cols:{role:"Role",ppl:"Interviewees",nq:"Questions",done:"Rated",act:"",id:"ID",cat:"Category",sub:"Subcategory",tier:"Tier",ev:"Evidence",eff:"Counted",rated:"Rated",mean:"Average",sug:"Suggested",cur:"Current Tier",tgt:"Target Tier",gap:"Gap",why:"Justification",req:"Request",from:"Ask",status:"Status",recv:"Received evidence",docs:"Related documents"},
+ start:"Start session",print:"Print sheet",unassigned:"No interviewee with this role yet",
+ search:"Search ID, outcome, or question",all:"All",fn:"Function",cat:"Category",role:"Role",stat:"Status",
+ sf:{none:"Not rated",rated:"Rated",fu:"Evidence requested",cap:"Counted lower (needs evidence)",cov:"Next-tier ready (coverage)"},
+ outcome:"CSF outcome",question:"Main question",probes:"Follow-up prompts",evReq:"Evidence to request",relDocs:"Related framework documents",relHint:"Status comes from the linked Document Audit Tracker.",relNoLink:"Link an audit file on Setup to see document status.",
+ who:"Answered by",noPeople:"Add interviewees on the Setup tab.",tierQ:"Observed tier",evQ:"Evidence basis",evRef:"Evidence reference",phEvRef:"[PLACEHOLDER: file name, screen shown, or record reference]",
+ notes:"Interview notes",phNotes:"[PLACEHOLDER: what the interviewee said, with examples]",gapQ:"Gap statement",phGap:"[PLACEHOLDER: what is missing against the outcome, and the risk]",
+ fuQ:"Request evidence after the interview",phFu:"[PLACEHOLDER: evidence to request]",prev:"Previous",next:"Next",suggestedRoles:"Suggested interviewees",
+ tv:{"0":"0","1":"1","2":"2","3":"3","4":"4",NA:"N/A"},tl:{"0":"Not in place","1":"Partial","2":"Risk Informed","3":"Repeatable","4":"Adaptive",NA:"Not applicable",none:"Not rated"},
+ ta:{"0":"No practice exists.","1":"Ad hoc and reactive; depends on individuals; not documented or approved.","2":"Approved by management and risk-informed, but not applied consistently across the organization.","3":"Formally approved as policy or procedure, applied consistently across the organization, and reviewed on a cycle.","4":"Improved continuously using metrics, lessons learned, and threat information; part of enterprise risk decisions."},
+ ev:{S:"Stated",O:"Demonstrated",D:"Documented"},evl:{S:"Stated in interview only",O:"Shown live or by screenshot",D:"Document or record provided"},
+ capNote:(r)=>`Counted as Tier 1 until evidence is received (stated Tier ${r}).`,
+ scoreHint:"The suggested tier is the highest Tier that at least half of the rated Subcategories in the Category reach (Tier Rubric rule R4). Example: counted tiers 2, 2, 1, 2, 1 give Tier 2. Set the Current Tier yourself when your judgment differs, and record why.",auto:"Auto",needWhy:"Reason required when you change the suggested tier",phWhy:"[PLACEHOLDER: reason]",
+ kpi:{rated:"Subcategories rated",cov:"Rated share",fu:"Open evidence requests",cap:"Counted lower",covcap:"Next-tier ready",cur:"Average Current Tier",tgt:"Categories at target",ppl:"Interviewees"},
+ byFn:"Current vs Target Tier by Function",byCat:"Current vs Target Tier by Category",barLeg:"Bar: Current Tier. Line: Target Tier.",
+ cross:"Practice vs document cross-check",crossHint:"Compares the interview rating (stated Tier 2 or higher means the practice exists) with document status from the linked audit (Exists or Partial means a document exists).",
+ q4:{al:["Practice and document","Practice exists and is documented. Verify consistency."],un:["Practice without document","Practice exists but is not documented. Quick win: write down what already happens."],pa:["Document without practice","A document exists but is not followed. Check enforcement and awareness."],gp:["Neither","No practice and no document. Treat as a priority gap."]},
+ crossNo:"Link an audit file on Setup to see this cross-check.",dist:"Tier distribution of rated Subcategories",noData:"No Subcategories rated yet. Open the Interview tab, or load the sample from Setup.",
+ fuHint:"Evidence to collect after the interviews. Items rated Tier 2 or higher on statements only are added automatically. Export to Excel and send the list to the client.",
+ fuSrc:{man:"Requested",cap:"Needed to confirm tier"},fs:{open:"Open",recv:"Received"},phRecv:"[PLACEHOLDER: received file and date]",
+ printTitle:"Interview question sheet",printRole:"Role",printDate:"Date",printPpl:"Interviewees",
+ seqTitle:"Recommended interview sequence",seqHint:"Run the sessions in this order. Each session builds on what the earlier ones produced. Dashed cards depend only on S1 and can run in parallel with S2 when the schedule is tight.",why:"Why this order",
+ sDep:"Needs",sPar:"Can run in parallel with S2",sObj:"Objective",sOut:"Output",sWho:"Who",sDur:"Duration",sQ:"Questions",sAreas:"Technical areas",sOpenSys:"Open Systems and Quick BIA",sOpenReq:"Open request list",byRole:"Alternative view: questions by role",session:"Session",sNone:"No CSF questions; uses the request list",
+ sysHint:"S2 Part A with business users: ask each department which systems they use, then score the impact of a one-week outage on each area (1 Very low to 5 Very high, NIST SP 800-30 levels, the same scale as the Target Profile Workshop) and the downtime the business can tolerate. The tool suggests criticality; you and the client confirm it. Tick 3 to 5 systems for sampling, covering different hosting types. S2 Part B with IT: fill the Core profile below for every system.",
+ prelim:"This is a preliminary criticality assessment based on interviews, not a Business Impact Analysis. Recommend a full BIA in the roadmap.",addSys:"Add system",
+ sc:{name:"System",svc:"Business service supported",own:"Owner",host:"Hosting",data:"Data sensitivity",inet:"Internet-facing",ven:"Vendor remote access",shared:"Shared infrastructure",ops:"Operations",fin:"Financial",leg:"Legal or regulatory",rep:"Reputation",hs:"Health and safety",pd:"Personal data",mtd:"Tolerable downtime",man:"Manual workaround",sug:"Suggested",crit:"Criticality",why:"Reason",smp:"Sample"},
+ phSys:"[PLACEHOLDER: system name]",phSvc:"[PLACEHOLDER: service]",phOwn:"[PLACEHOLDER: owner]",phCritWhy:"[PLACEHOLDER: reason if changed]",
+ hostO:{onprem:"On-premises data center",priv:"Private cloud or colocation",cloud:"Public cloud (IaaS or PaaS)",saas:"SaaS",vendor:"Vendor-hosted",unk:"Unknown"},dataO:{H:"High",M:"Medium",L:"Low"},ynO:{Y:"Yes",N:"No"},impO:{"1":"1 Very low","2":"2 Low","3":"3 Moderate","4":"4 High","5":"5 Very high"},
+ envHint:"S1, S3, and S6: record facts about the whole organization. These answers carry no rating and never change coverage. They feed the Current IT Landscape section of the Gap Analysis. Where an answer overlaps a system profile field, the system profile governs. Hosting (C10) is the Hosting column on the Systems tab; Data held (C11) is in the Core profile.",
+ dpHint:"S2C with frontline users, one row per department. Ask how people really work. The tool compares each answer with what IT stated in the system and environment profiles and lists every disagreement as a conflict. A conflict is strong evidence: it shows the practice IT does not see.",
+ dpK:{n:"Departments interviewed",x:"Systems not on the IT list",c:"Conflicts with IT answers"},dc:{name:"Department",ppl:"Interviewees",date:"Date",staff:"Staff",other:"Other systems or apps not on the list",note:"Notes"},
+ phDept:"[PLACEHOLDER: department]",phPpl:"[PLACEHOLDER: names or roles]",phOther:"[PLACEHOLDER: names, separated by commas]",phDNote:"[PLACEHOLDER: context]",addDept:"Add department",dpNone:"No departments yet.",
+ cqTitle:"Custom questions (U9)",cqHint:"Add questions for this engagement, for example use of generative AI tools. Each question becomes a column with a free-text answer and a rating.",cqQ:"Question",cqS:"CSF Subcategories",phCq:"[PLACEHOLDER: question]",phCqS:"[PLACEHOLDER: for example PR.DS-01]",addCq:"Add question",cqNone:"No custom questions.",cqAns:"[PLACEHOLDER: answer]",
+ cfTitleD:"Conflicts with IT answers",cfHintD:"Calculated from the answers. Each conflict cites both sides as evidence. Resolve the facts with IT before the Gap Analysis, or keep the conflict as evidence that practice differs from what IT believes.",cfNoneD:"No conflicts found.",
+ cfT:{shadow:"System not on the IT list",cred:"Shared credentials on a system IT rated Good",shws:"Shared logged-in computers that IT did not report",rem:"Remote access differs from the IT answer",bia:"Work stops, but the Quick BIA records a manual workaround"},addToSys:"Add to system list",cfCols:{id:"ID",dept:"Department",type:"Type",detail:"Detail",ev:"Evidence"},
+ envFTitle:"Environment profile",envFHint:"One answer per field. Record the evidence basis, and a short note where the answer needs context.",envK:{f:"Fields answered",bnd:"Tools bought, not deployed",chg:"Changes within 12 months"},
+ envNote:"Notes",envSess:"Session",envBlock:"Landscape block",envAdd:"Add row",envNone:"No rows yet.",envW12:"Within 12 months",envPhNum:"[PLACEHOLDER: number]",envPhText:"[PLACEHOLDER: answer]",envPhNote:"[PLACEHOLDER: context]",
+ mtdO:{"4h":"Under 4 hours","1d":"4 hours to 1 day","1w":"1 day to 1 week",gt:"Over 1 week"},critO:{A:"A Critical",B:"B Important",C:"C Supporting"},
+ sugRule:"Suggested A: shared infrastructure, any impact Very high, or any impact High with tolerable downtime of 1 day or less (a manual workaround lowers these to B unless downtime must be under 4 hours). B: any impact Moderate or higher, downtime of 1 day or less, high-sensitivity data, or internet-facing. Otherwise C. Adjust with the client and record the reason.",
+ smpTitle:"Critical system sampling",smpHint:"Values come from the system profiles (Auto). Choose a value only to override the profile, and record the evidence reference in the cell. Results appear under the related CSF Subcategories in the Interview tab and feed coverage.",smpNone:"Tick systems in the Sample column above.",smpNote:"Notes",phSmpNote:"[PLACEHOLDER: evidence seen, exceptions]",
+ sysv:{Y:"Yes",P:"Partial",N:"No",NA:"N/A",U:"Unknown"},kSys:"Systems listed",kA:"Critical (A)",kSmp:"Sampled",smpRes:"Critical system sampling",
+ drTitle:"Documents to request",drHint:"Tick any document the interviewee mentions, even if the written request list said it does not exist. Ticks build the Document request list.",drReq:"Request",drOther:"Other documents mentioned (one per line)",phDrOther:"[PLACEHOLDER: document name, owner]",
+ drListTitle:"Document request list",drListHint:"Built from the ticks made during the interviews, one line per document. Confirm owners and dates in S10, then export to Excel and send to the client.",
+ drc:{doc:"Document",src:"Raised in",who:"Ask",type:"Type",method:"Method",st:"Status",recv:"Received file"},drs:{req:"Requested",recv:"Received",none:"Does not exist"},drNone:"No documents requested yet.",evTitle:"Evidence to confirm tier",kDr:"Documents requested",
+ scene:"Set the scene",sceneHint:"Say this first, in your own words, so the interviewee knows why the question matters.",scenario:"Scenario question",scenarioHint:"Ask this to make the topic concrete. Then use the main question and prompts to confirm.",
+ tcTitle:"Technical control checks",tcHint:"Ask the technical owner. Compare the answer with the good practice and mark the result.",good:"Good practice",tcv:{Y:"Yes",P:"Partial",N:"No",NA:"N/A"},tcNone:"Not checked",phTcN:"[PLACEHOLDER: what is in place, tool name, coverage, evidence seen]",
+ techHint:"Technical interview with IT and security staff, grouped by technology area. Each check shows the good practice and its reference, so you can judge the answer on the spot. Results also appear under the related CSF Subcategories.",
+ area:"Technology area",areaAsk:"Ask",progress:"Checked",csfLink:"CSF Subcategories",
+ planMgmt:"Management and process interviews (by role)",planTech:"Technical interviews (by technology area)",planTechHint:"Use these sessions with IT, infrastructure, security operations, and development staff to check how controls are actually implemented.",
+ nChecks:"Checks",tcRes:"Technical control results by area",tcResHint:"Share of checked items marked Yes, Partial, or No in each technology area.",tcSummary:(y,p,n)=>`Technical checks: ${y} Yes, ${p} Partial, ${n} No`,
+ printTech:"Technical check sheet",
+ toastSaved:"Engagement file saved",toastOpened:"Interview loaded",toastLinked:"Audit data linked",toastBad:"That file is not a tracker or engagement file.",toastXlsx:"Excel file exported",toastSample:"Sample loaded",toastReset:"Interview cleared",toastCopied:"Engagement details copied",
+ dS:"Doc",
+ sv:{Exists:"Exists",Partial:"Partial",Missing:"Missing",NA:"N/A",none:"Not assessed",out:"Out of scope"},
+ rR4:"Category roll-up (Tier Rubric R4)",rR4H:"The suggested Current Tier is the highest Tier that at least half of the rated Subcategories reach.",rR3:"Coverage rule (Tier Rubric R3)",rR3H:"On a Coverage-applicable Subcategory, Tier 3 and above need coverage of Largely or Full on sampled Criticality A systems. Otherwise the counted tier stays at 2 and the outcome is flagged Next-tier ready.",rubV:"Tier Rubric version",
+ rubTitle:(c,v)=>`Tier descriptors for ${c} (Tier Rubric v${v})`,rubNote:"Practitioner descriptors derived from the CSF 2.0 Tier characteristics, not NIST text. Tier 0 is a convention of this tool.",
+ covTitle:"Coverage (Tier Rubric R3)",covBand:{full:"Full",lg:"Largely",pt:"Partial",none:"None",nm:"Not measured"},covSrc:{sampling:"System sampling and profiles",tech:"Technical checks",ov:"Assessor override"},covAuto:"Calculated",covOv:"Override",covPts:"data points",phCovWhy:"[PLACEHOLDER: reason for override]",
+ covNote:"Score: Yes 1, Partial 0.5, No or Unknown 0, over sampled Criticality A systems (all sampled systems if none is A). Bands: Full 100%, Largely 75% or more, Partial 25% or more, None below 25%.",covCapNote:"Counted as Tier 2: coverage below Largely. Next-tier ready.",
+ pfTitle:"System profile (Core)",pfHint:"S2 Part B with IT: walk down the list and answer each column for every system. The color shows the rating. Unknown is a valid answer: it counts as No for coverage and shows where the client must find out.",pfNone:"Add systems above first.",pfDet:"Details",pfClose:"Close",
+ pfSec:{core:"Core profile",full:"Full profile",dev:"Development profile"},pfSecHint:{core:"Every system (S2 Part B).",full:"Required for Criticality A and sampled systems (S6).",dev:"For systems with Origin = COTS customized, In-house developed, or Outsourced custom build (S6, with developers)."},
+ pfNotReq:"Not required for this system. Fill it if you have the information.",pfDevNone:"Shown when Origin is COTS customized, In-house developed, or Outsourced custom build.",pfField:"Field",pfAsk:"Ask",pfAns:"Answer",pfEv:"Evidence",pfNotes:"Notes and evidence references",phPfNotes:"[PLACEHOLDER: what you saw, file names, screens shown]",
+ rt:{G:"Good",W:"Weak",P:"Poor",U:"Unknown",X:"Not applicable"},popTitle:"Population view",popHint:"Share of systems rated Good for each Core field, by criticality. Use it to state the extent of a gap across all systems, not only the sample.",
+ popCols:{f:"Field",all:"All systems",A:"A",B:"B",C:"C",unk:"Unknown",poor:"Poor",na:"Not answered"},exTitle:"Exception candidates",exHint:"Systems that cannot support a control or are out of vendor support. Each needs compensating controls and a time-bound risk acceptance.",exNone:"None so far.",
+ smpAuto:"Auto",smpSrc:{profile:"from profile",manual:"manual entry"},phCref:"[PLACEHOLDER: evidence ref]",
+ pfRes:"System and vendor profile results",pfResHint:"Answers from the profiles for this outcome. Use them to judge the extent across systems before you rate.",pfCount:(g,w,p,u,n)=>`Good ${g}, Weak ${w}, Poor ${p}, Unknown ${u} (of ${n} answered)`,pfTc:"System profile",
+ venHint:"S5 with Procurement, Legal, and IT: list every vendor that can reach systems or data, then answer each column. Hold Ctrl or Cmd to select several linked systems.",addVen:"Add vendor",vc:{name:"Vendor",sys:"Linked systems",note:"Notes"},phVen:"[PLACEHOLDER: vendor name]",phVenNote:"[PLACEHOLDER: contract reference, contact]",venNone:"No vendors yet.",
+ obsHint:"Record weaknesses and signs of attack seen during the assessment. Observe only: do not test or exploit anything unless the Statement of Work (SoW) authorizes testing. A vulnerability is evidence for a gap, not a gap itself. Notify Critical internet-facing items within days, not at the final report.",
+ obsInc:"An incident indicator is recorded. Stop that part of the work and notify the contact named in the SoW now.",addObs:"Add observation",
+ oc:{id:"ID",type:"Type",sys:"System",desc:"Description",sev:"Severity",inet:"Internet-facing",subs:"Related Subcategories",st:"Status",date:"Notified on",note:"Notes"},obsT:{vuln:"Vulnerability",inc:"Incident indicator"},obsSev:{C:"Critical",H:"High",M:"Medium",L:"Low"},obsSt:{open:"Open",notified:"Notified",closed:"Closed"},
+ phObsSys:"[PLACEHOLDER: system]",phObsDesc:"[PLACEHOLDER: what you observed and where]",phObsSubs:"[PLACEHOLDER: for example PR.PS-02]",obsNone:"No observations yet.",obsRel:"Technical observations",
+ drType:{doc:"Document",tech:"Technical evidence"},drMethod:{export:"System export or report",screen:"Screenshot",demo:"Live demonstration",copy:"Copy of document"},
+ rbQ:"Read-back confirmed",rbHint:"Use the last five minutes of each session to read back key facts and get confirmation.",
+ helpHtml:`<h2>How to use the interview assessment</h2>
+<p>Use this file to assess how a client actually operates when documents are missing or incomplete. It covers all 106 NIST CSF 2.0 Subcategories with an interview question, follow-up prompts, and the evidence to request for each.</p>
+<h3>Steps</h3><ol>
+<li><b>Setup.</b> Enter the engagement details, add interviewees with their roles, and confirm the scoring rules. Optionally link the Document Audit Tracker save file.</li>
+<li><b>Interview plan.</b> See which questions belong to each role. Start a session for a role, or print the question sheet before the meeting.</li>
+<li><b>Interview.</b> For each Subcategory, ask the main question and the prompts, record who answered, the observed tier, the evidence basis, notes, and the gap. Flag evidence to request.</li>
+<li><b>Category tiers.</b> Review the suggested Current Tier per Category, override with a reason where needed, and confirm the Target Tier.</li>
+<li><b>Dashboard and Evidence requests.</b> Review Current against Target, the practice and document cross-check, and send the evidence request list to the client.</li></ol>
+<h3>Tier scale</h3><p>Tiers 1 to 4 follow the NIST CSF 2.0 Tier names (Partial, Risk Informed, Repeatable, Adaptive), applied here to each Subcategory practice. Tier 0 (Not in place) is a convention of this tool to separate "no practice" from "ad hoc practice"; it is not a CSF Tier.</p>
+<h3>Tier Rubric</h3><p>Each Subcategory is rated against the Tier descriptors of its Category from the Tier Rubric, the same rubric the Target Profile Workshop and the Gap Analysis use. Three rules apply. R2: Tier 2 and above need documented or demonstrated evidence. R3: on a Coverage-applicable Subcategory, Tier 3 and above also need coverage of Largely or Full on sampled Criticality A systems; otherwise the counted tier stays at 2 and the outcome is flagged Next-tier ready. R4: the suggested Category tier is the highest Tier that at least half of the rated Subcategories reach.</p>
+<h3>System profile</h3><p>Most clients have few documents, so collect facts per system with drop-down answers. In S2 Part A, ask business users which systems they use. In S2 Part B, ask IT to answer the Core profile for every system (about one to two minutes each). In S6, fill the Full profile for Criticality A and sampled systems, and the Development profile for systems that are customized, built in-house, or built by a contractor. Every answer has a rating (Good, Weak, Poor, Unknown). The ratings fill the System Sampling grid and the coverage calculation, so you never enter the same fact twice. The Population view shows how far a gap extends across all systems.</p>
+<h3>Departments</h3><p>In S2C, interview frontline users department by department, for example Food and Beverage, Marketing and PR, and Finance. Questions U1 to U8 are standard; add engagement-specific questions as U9. The tool lists systems that IT did not name, and conflicts between what users do and what IT stated. Cite them in the Gap Analysis as DEPT:&lt;department&gt; or &lt;field&gt;:&lt;department&gt;, for example U2:Finance.</p>
+<h3>Environment</h3><p>In S1, S3, and S6, record facts about the whole organization: sites, data center and disaster recovery site, network segmentation, staff remote access, workstations, medical devices and operational technology (OT), backup architecture, IT organization, security tools, incident history, changes in flight, and prior assessments. These answers have no rating. The Gap Analysis uses them for the Current IT Landscape section, checks every Improvement Action against the changes in flight and the tools already bought, and flags findings that repeat a prior assessment. Each repeating row gets an ID (for example TOOL-01) that the Gap Analysis cites as evidence.</p>
+<h3>Vendors</h3><p>In S5, list every vendor that can reach systems or data, with access type, data access, contract clauses, data processing agreement, and due diligence. Link each vendor to its systems.</p>
+<h3>Observations</h3><p>Record vulnerabilities and incident indicators seen during the assessment on the Observations tab. Observe only; do not test or exploit anything unless the Statement of Work authorizes testing. An incident indicator means stopping that work and notifying the client contact at once. Vulnerabilities are evidence for gaps and appear under the related Subcategories.</p>
+<h3>Read-back</h3><p>Use the last five minutes of each session to read back the key facts and tick Read-back confirmed on the Interview plan tab. This replaces a separate review round with process owners.</p>
+<h3>Interview sequence</h3><p>The Interview plan tab orders the work into ten sessions. Business context comes first (S1), then a Quick BIA that names the critical systems (S2). Governance, legal, and supplier sessions (S3 to S5) need only S1 and can run in parallel. Technical, detection, and response sessions (S6 to S8) use the critical systems from S2. S10 confirms the document request list.</p>
+<h3>Systems and Quick BIA</h3><p>When the client has no asset inventory, build a working system list in S2, score impact and tolerable downtime, and confirm criticality with the client. Sample 3 to 5 critical systems in S6. State in the report that this is a preliminary assessment, not a full BIA, and that systems not named in interviews may exist.</p>
+<h3>Document requests during interviews</h3><p>Clients often answer "none" to a written document request list, then mention the document in the interview. Tick the related document in each question, or type other documents named. The Requests tab builds one deduplicated list to confirm in S10.</p>
+<h3>Scene and scenario</h3><p>Each Subcategory starts with a short scene-setting line and a scenario question. Use them with executives and business owners who are not security specialists: explain why the topic matters, ask them to picture a concrete situation, then confirm with the main question and prompts.</p>
+<h3>Technical review</h3><p>The Technical review tab holds control checks for IT and security staff, grouped by technology area (identity, endpoint, network, email, data, backup, vulnerability, logging, cloud, application, third-party access, OT and medical devices, physical, incident response). Each check shows the good practice and its reference (CIS Controls v8.1 Safeguard, ISO/IEC 27002:2022, or NIST guidance). Mark Yes, Partial, No, or N/A and note what you saw. The good practice is a practitioner benchmark, not a legal requirement; scale it to the client's size and risk.</p>
+<h3>Evidence rule</h3><p>With the default rule, a rating of Tier 2 or higher based only on what the interviewee said is counted as Tier 1 until evidence arrives. The stated rating stays on record, and an evidence request is created automatically.</p>
+<h3>Working with the Document Audit Tracker</h3><p>Both tools read and write the same engagement file. Open an audit save file here to link it; the interview tool then shows document status and the practice and document cross-check. Save file stores both parts. Open the same file in the audit tracker to see interview tiers next to each document.</p>
+<h3>Where data is stored</h3><p>Entries autosave in this browser for this file only. Clearing browser data erases them. Press <b>Save file</b> after each session and keep the file with the engagement records. Use a separate copy of this HTML file for each client.</p>
+<h3>Sources</h3><p>Subcategory outcomes come from NIST CSF 2.0. Questions, prompts, evidence lists, and role mapping are practitioner guidance written for this framework. Items marked VERIFY must be checked against current Thai notifications.</p>`},
+TH:{title:"แบบประเมินด้วยการสัมภาษณ์ตาม CSF",help:"วิธีใช้",open:"เปิดไฟล์",save:"บันทึกไฟล์",xlsx:"ส่งออก Excel",
+ tabs:{setup:"ตั้งค่า",plan:"แผนการสัมภาษณ์",sys:"ระบบและ Quick BIA",ven:"ผู้ขาย",env:"สภาพแวดล้อม",dept:"แผนก",iv:"สัมภาษณ์",tech:"ตรวจ Technical Control",obs:"ข้อสังเกต",score:"Tier ราย Category",dash:"แดชบอร์ด",fu:"รายการขอเอกสาร"},
+ saved:"บันทึกอัตโนมัติในเบราว์เซอร์นี้เมื่อ",notSaved:"ข้อมูลเก็บในเบราว์เซอร์นี้เท่านั้น กดบันทึกไฟล์เพื่อเก็บสำเนาถาวร",noStore:"เบราว์เซอร์นี้ไม่อนุญาตให้เก็บข้อมูล กดบันทึกไฟล์เพื่อเก็บงาน",
+ eng:"ข้อมูลงาน",client:"ลูกค้า",assessor:"ผู้ประเมิน",date:"วันที่ประเมิน",ref:"รหัสงาน",scopeNote:"ขอบเขต",
+ phClient:"[PLACEHOLDER: ชื่อลูกค้า]",phAssessor:"[PLACEHOLDER: ชื่อ ตำแหน่ง]",phRef:"[PLACEHOLDER: รหัสงานหรือโครงการ]",phScope:"[PLACEHOLDER: หน่วยงาน สถานที่ และระบบในขอบเขต]",
+ people:"ผู้ให้สัมภาษณ์",peopleHint:"เพิ่มผู้ให้สัมภาษณ์ทุกคน บทบาทของแต่ละคนใช้กำหนดว่าคำถามใดจะอยู่ในแผนการสัมภาษณ์",addPerson:"เพิ่มผู้ให้สัมภาษณ์",
+ pc:{name:"ชื่อ",role:"บทบาท",dept:"ฝ่ายหรือตำแหน่ง",date:"วันที่สัมภาษณ์",del:""},phName:"[PLACEHOLDER: ชื่อ]",phDept:"[PLACEHOLDER: ฝ่ายหรือตำแหน่งงาน]",remove:"ลบ",
+ rules:"หลักเกณฑ์การให้คะแนน",rulesHint:"หลักเกณฑ์นี้เป็นไปตามวิธีการประเมิน คือกำหนด Current Tier ราย Category และบันทึกหลักฐานและช่องว่างราย Subcategory",
+ rCap:"Tier 2 ขึ้นไปต้องมีหลักฐานนอกเหนือจากคำสัมภาษณ์",rCapH:"Subcategory ที่ให้ Tier 2 ขึ้นไปจากคำบอกเล่าเท่านั้น จะนับเป็น Tier 1 จนกว่าจะได้รับหลักฐาน โดยยังบันทึกระดับที่ได้จากการสัมภาษณ์ไว้",
+ rObs:"การสาธิตให้ดูนับเป็นหลักฐาน",rObsH:"หากเลือกไม่ใช่ จะนับเฉพาะเอกสารและบันทึกเท่านั้น",rTgt:"Target Tier ตั้งต้น",rTgtH:"ใช้กับทุก Category เว้นแต่จะเปลี่ยนในแท็บ Tier ราย Category",
+ link:"เชื่อมกับ Document Audit Tracker",linkHint:"เปิดไฟล์ที่บันทึกจาก Document Audit Tracker (หรือไฟล์รวมของงาน) เพื่อดูสถานะเอกสารคู่กับแต่ละ Subcategory การบันทึกไฟล์จะเขียนข้อมูลทั้งสองส่วนลงในไฟล์งานเดียว ซึ่งเปิดได้จากทั้งสองเครื่องมือ",
+ linkNone:"ยังไม่ได้เชื่อมไฟล์ Audit",linkYes:(c,n,u)=>`เชื่อมแล้ว: <b>${c}</b> ประเมินเอกสารแล้ว ${n} ฉบับ ปรับปรุงล่าสุด ${u}`,linkOpen:"เปิดไฟล์ Audit หรือไฟล์งาน",unlink:"ยกเลิกการเชื่อม",copyEng:"คัดลอกข้อมูลงานจากไฟล์ที่เชื่อม",
+ sample:"โหลดตัวอย่าง",sampleHint:"โหลดตัวอย่างโรงพยาบาลสมมติ ข้อมูลปัจจุบันทั้งหมดจะถูกแทนที่",cfTitle:"แทนที่ข้อมูลทั้งหมดด้วยตัวอย่างหรือไม่",cfBody:(n)=>`การโหลดตัวอย่างจะเขียนทับข้อมูลทั้งหมดในไฟล์นี้ ได้แก่ ข้อมูลงาน ผู้ให้สัมภาษณ์ คะแนน บันทึก ระบบ ผู้ขาย สภาพแวดล้อม ข้อสังเกต และรายการขอเอกสาร${n?` ขณะนี้ไฟล์มี ${n}`:""} ไม่สามารถย้อนกลับได้ หากต้องการเก็บงานปัจจุบัน ให้บันทึกไฟล์ก่อน`,cfHas:(a,b,c)=>[a?"Subcategory ที่ให้คะแนนแล้ว "+a+" รายการ":"",b?"ระบบ "+b+" ระบบ":"",c?"ผู้ให้สัมภาษณ์ "+c+" คน":""].filter(Boolean).join(" "),cfOk:"เขียนทับและโหลดตัวอย่าง",cfSave:"บันทึกไฟล์ก่อน",cfCancel:"ยกเลิก",reset:"ล้างการประเมิน",resetConfirm:"คลิกอีกครั้งเพื่อลบข้อมูลทั้งหมด",
+ planHint:"คำถามจัดกลุ่มตามบทบาทที่ตอบได้ดีที่สุด Subcategory หนึ่งอาจอยู่หลายบทบาท กดเริ่มเพื่อสัมภาษณ์ตามคำถามของบทบาทนั้น หรือพิมพ์แบบคำถามก่อนประชุม",
+ cols:{role:"บทบาท",ppl:"ผู้ให้สัมภาษณ์",nq:"คำถาม",done:"ให้คะแนนแล้ว",act:"",id:"รหัส",cat:"Category",sub:"Subcategory",tier:"Tier",ev:"หลักฐาน",eff:"นับเป็น",rated:"ให้คะแนนแล้ว",mean:"ค่าเฉลี่ย",sug:"ที่แนะนำ",cur:"Current Tier",tgt:"Target Tier",gap:"ช่องว่าง",why:"เหตุผล",req:"สิ่งที่ขอ",from:"ขอจาก",status:"สถานะ",recv:"หลักฐานที่ได้รับ",docs:"เอกสารที่เกี่ยวข้อง"},
+ start:"เริ่มสัมภาษณ์",print:"พิมพ์แบบคำถาม",unassigned:"ยังไม่มีผู้ให้สัมภาษณ์ในบทบาทนี้",
+ search:"ค้นหารหัส ผลลัพธ์ หรือคำถาม",all:"ทั้งหมด",fn:"Function",cat:"Category",role:"บทบาท",stat:"สถานะ",
+ sf:{none:"ยังไม่ให้คะแนน",rated:"ให้คะแนนแล้ว",fu:"ขอหลักฐานแล้ว",cap:"นับต่ำกว่า (รอหลักฐาน)",cov:"ใกล้ถึง Tier ถัดไป (ความครอบคลุม)"},
+ outcome:"ผลลัพธ์ตาม CSF",question:"คำถามหลัก",probes:"คำถามเจาะลึก",evReq:"หลักฐานที่ควรขอ",relDocs:"เอกสารที่เกี่ยวข้องในกรอบเอกสาร",relHint:"สถานะมาจาก Document Audit Tracker ที่เชื่อมไว้",relNoLink:"เชื่อมไฟล์ Audit ในแท็บตั้งค่าเพื่อดูสถานะเอกสาร",
+ who:"ผู้ตอบ",noPeople:"เพิ่มผู้ให้สัมภาษณ์ในแท็บตั้งค่า",tierQ:"Tier ที่พบ",evQ:"ฐานของหลักฐาน",evRef:"อ้างอิงหลักฐาน",phEvRef:"[PLACEHOLDER: ชื่อไฟล์ หน้าจอที่แสดง หรือเลขที่บันทึก]",
+ notes:"บันทึกการสัมภาษณ์",phNotes:"[PLACEHOLDER: สิ่งที่ผู้ให้สัมภาษณ์ตอบ พร้อมตัวอย่าง]",gapQ:"ช่องว่าง",phGap:"[PLACEHOLDER: สิ่งที่ยังขาดเทียบกับผลลัพธ์ และความเสี่ยง]",
+ fuQ:"ขอหลักฐานหลังการสัมภาษณ์",phFu:"[PLACEHOLDER: หลักฐานที่จะขอ]",prev:"ก่อนหน้า",next:"ถัดไป",suggestedRoles:"ผู้ให้สัมภาษณ์ที่แนะนำ",
+ tv:{"0":"0","1":"1","2":"2","3":"3","4":"4",NA:"N/A"},tl:{"0":"ไม่มีการปฏิบัติ","1":"Partial","2":"Risk Informed","3":"Repeatable","4":"Adaptive",NA:"ไม่เกี่ยวข้อง",none:"ยังไม่ให้คะแนน"},
+ ta:{"0":"ไม่มีการปฏิบัติ","1":"ทำเฉพาะกิจตามสถานการณ์ ขึ้นกับตัวบุคคล ไม่มีเอกสารหรือการอนุมัติ","2":"ผู้บริหารอนุมัติและอิงความเสี่ยง แต่ยังไม่ได้ใช้สม่ำเสมอทั่วทั้งองค์กร","3":"อนุมัติเป็นนโยบายหรือขั้นตอนอย่างเป็นทางการ ใช้สม่ำเสมอทั่วองค์กร และทบทวนตามรอบ","4":"ปรับปรุงต่อเนื่องจากตัวชี้วัด บทเรียน และข้อมูลภัยคุกคาม และเป็นส่วนหนึ่งของการตัดสินใจด้านความเสี่ยงองค์กร"},
+ ev:{S:"คำบอกเล่า",O:"สาธิตให้ดู",D:"มีเอกสาร"},evl:{S:"ได้จากการสัมภาษณ์เท่านั้น",O:"แสดงให้ดูจริงหรือภาพหน้าจอ",D:"ได้รับเอกสารหรือบันทึก"},
+ capNote:(r)=>`นับเป็น Tier 1 จนกว่าจะได้รับหลักฐาน (ระดับจากการสัมภาษณ์ Tier ${r})`,
+ scoreHint:"Tier ที่แนะนำคือ Tier สูงสุดที่ Subcategory ที่ให้คะแนนแล้วอย่างน้อยครึ่งหนึ่งทำได้ถึง (กติกา R4 ของ Tier Rubric) ตัวอย่าง Tier ที่นับได้ 2, 2, 1, 2, 1 ได้ Tier 2 กำหนด Current Tier เองได้เมื่อวิจารณญาณต่างไป และบันทึกเหตุผล",auto:"อัตโนมัติ",needWhy:"ต้องระบุเหตุผลเมื่อเปลี่ยนจาก Tier ที่แนะนำ",phWhy:"[PLACEHOLDER: เหตุผล]",
+ kpi:{rated:"Subcategory ที่ให้คะแนนแล้ว",cov:"สัดส่วนที่ให้คะแนน",fu:"คำขอหลักฐานที่ค้าง",cap:"นับต่ำกว่า",covcap:"ใกล้ถึง Tier ถัดไป",cur:"Current Tier เฉลี่ย",tgt:"Category ที่ถึงเป้า",ppl:"ผู้ให้สัมภาษณ์"},
+ byFn:"Current และ Target Tier ราย Function",byCat:"Current และ Target Tier ราย Category",barLeg:"แท่ง: Current Tier เส้น: Target Tier",
+ cross:"เปรียบเทียบการปฏิบัติกับเอกสาร",crossHint:"เทียบผลการสัมภาษณ์ (ระดับที่บอกเล่าตั้งแต่ Tier 2 ถือว่ามีการปฏิบัติ) กับสถานะเอกสารจาก Audit ที่เชื่อมไว้ (มีครบหรือมีบางส่วนถือว่ามีเอกสาร)",
+ q4:{al:["มีการปฏิบัติและมีเอกสาร","ปฏิบัติจริงและมีเอกสาร ตรวจสอบความสอดคล้อง"],un:["มีการปฏิบัติแต่ไม่มีเอกสาร","ปฏิบัติจริงแต่ไม่มีเอกสาร งานเร่งด่วนที่ทำได้ง่ายคือเขียนสิ่งที่ทำอยู่แล้วเป็นเอกสาร"],pa:["มีเอกสารแต่ไม่ปฏิบัติ","มีเอกสารแต่ไม่ได้ปฏิบัติตาม ตรวจสอบการบังคับใช้และการรับรู้"],gp:["ไม่มีทั้งสองอย่าง","ไม่มีการปฏิบัติและไม่มีเอกสาร จัดเป็นช่องว่างลำดับแรก"]},
+ crossNo:"เชื่อมไฟล์ Audit ในแท็บตั้งค่าเพื่อดูการเปรียบเทียบนี้",dist:"การกระจายของ Tier ใน Subcategory ที่ให้คะแนนแล้ว",noData:"ยังไม่มี Subcategory ที่ให้คะแนน เปิดแท็บสัมภาษณ์ หรือโหลดตัวอย่างจากแท็บตั้งค่า",
+ fuHint:"หลักฐานที่ต้องเก็บหลังการสัมภาษณ์ รายการที่ให้ Tier 2 ขึ้นไปจากคำบอกเล่าเท่านั้นจะถูกเพิ่มอัตโนมัติ ส่งออก Excel แล้วส่งรายการให้ลูกค้า",
+ fuSrc:{man:"ขอแล้ว",cap:"ต้องใช้ยืนยัน Tier"},fs:{open:"ค้าง",recv:"ได้รับแล้ว"},phRecv:"[PLACEHOLDER: ไฟล์ที่ได้รับและวันที่]",
+ printTitle:"แบบคำถามสัมภาษณ์",printRole:"บทบาท",printDate:"วันที่",printPpl:"ผู้ให้สัมภาษณ์",
+ seqTitle:"ลำดับการสัมภาษณ์ที่แนะนำ",seqHint:"สัมภาษณ์ตามลำดับนี้ แต่ละรอบใช้ข้อมูลจากรอบก่อนหน้า การ์ดเส้นประขึ้นกับ S1 เท่านั้น และทำคู่ขนานกับ S2 ได้เมื่อเวลาจำกัด",why:"ทำไมต้องเรียงแบบนี้",
+ sDep:"ต้องทำหลัง",sPar:"ทำคู่ขนานกับ S2 ได้",sObj:"วัตถุประสงค์",sOut:"ผลลัพธ์",sWho:"ผู้ให้สัมภาษณ์",sDur:"เวลา",sQ:"คำถาม",sAreas:"ด้านเทคนิค",sOpenSys:"เปิดหน้าระบบและ Quick BIA",sOpenReq:"เปิดรายการขอเอกสาร",byRole:"มุมมองทางเลือก: คำถามตามบทบาท",session:"รอบสัมภาษณ์",sNone:"ไม่มีคำถาม CSF ใช้รายการขอเอกสาร",
+ sysHint:"S2 ส่วน A กับผู้ใช้งานธุรกิจ: ถามแต่ละหน่วยงานว่าใช้ระบบใด แล้วให้คะแนนผลกระทบหากระบบหยุดหนึ่งสัปดาห์ในแต่ละด้าน (1 ต่ำมาก ถึง 5 สูงมาก ตามระดับของ NIST SP 800-30 ใช้สเกลเดียวกับ Target Profile Workshop) และเวลาหยุดที่ธุรกิจรับได้ เครื่องมือจะแนะนำระดับความสำคัญ แล้วท่านกับลูกค้ายืนยัน เลือก 3 ถึง 5 ระบบเพื่อสุ่มตรวจ ให้ครอบคลุมรูปแบบการติดตั้งที่ต่างกัน S2 ส่วน B กับ IT: กรอก Core profile ด้านล่างให้ครบทุกระบบ",
+ prelim:"นี่คือการประเมินความสำคัญเบื้องต้นจากการสัมภาษณ์ ไม่ใช่การวิเคราะห์ผลกระทบทางธุรกิจ (BIA) ควรแนะนำให้ทำ BIA เต็มรูปแบบใน Roadmap",addSys:"เพิ่มระบบ",
+ sc:{name:"ระบบ",svc:"บริการทางธุรกิจที่รองรับ",own:"เจ้าของ",host:"รูปแบบการติดตั้ง",data:"ความอ่อนไหวของข้อมูล",inet:"เปิดสู่อินเทอร์เน็ต",ven:"ผู้ขายเข้าถึงระยะไกล",shared:"โครงสร้างพื้นฐานร่วม",ops:"การดำเนินงาน",fin:"การเงิน",leg:"กฎหมาย",rep:"ชื่อเสียง",hs:"สุขภาพและความปลอดภัย",pd:"ข้อมูลส่วนบุคคล",mtd:"เวลาหยุดที่รับได้",man:"มีวิธีทำงานด้วยมือ",sug:"ที่แนะนำ",crit:"ระดับความสำคัญ",why:"เหตุผล",smp:"สุ่มตรวจ"},
+ phSys:"[PLACEHOLDER: ชื่อระบบ]",phSvc:"[PLACEHOLDER: บริการ]",phOwn:"[PLACEHOLDER: เจ้าของ]",phCritWhy:"[PLACEHOLDER: เหตุผลหากเปลี่ยน]",
+ hostO:{onprem:"ศูนย์ข้อมูลภายในองค์กร",priv:"Private cloud หรือ Colocation",cloud:"Public cloud (IaaS หรือ PaaS)",saas:"SaaS",vendor:"ผู้ขายเป็นผู้ให้บริการ",unk:"ไม่ทราบ"},dataO:{H:"สูง",M:"กลาง",L:"ต่ำ"},ynO:{Y:"ใช่",N:"ไม่ใช่"},impO:{"1":"1 ต่ำมาก","2":"2 ต่ำ","3":"3 ปานกลาง","4":"4 สูง","5":"5 สูงมาก"},
+ envHint:"S1, S3 และ S6: บันทึกข้อเท็จจริงระดับองค์กร คำตอบเหล่านี้ไม่มีระดับและไม่เปลี่ยนค่าความครอบคลุม ใช้ในส่วน Current IT Landscape ของ Gap Analysis หากคำตอบซ้ำกับหัวข้อใน System profile ให้ยึด System profile การติดตั้ง (C10) คือคอลัมน์ Hosting ในแท็บระบบ ส่วนข้อมูลที่จัดเก็บ (C11) อยู่ใน Core profile",
+ dpHint:"S2C กับผู้ใช้งานหน้างาน หนึ่งแถวต่อหนึ่งแผนก ถามว่าทำงานจริงอย่างไร เครื่องมือจะเทียบคำตอบกับสิ่งที่ IT ระบุไว้ใน System profile และ Environment profile แล้วแสดงทุกจุดที่ขัดกันเป็นข้อขัดแย้ง ข้อขัดแย้งเป็นหลักฐานที่มีน้ำหนักมาก เพราะแสดงการปฏิบัติจริงที่ IT มองไม่เห็น",
+ dpK:{n:"แผนกที่สัมภาษณ์",x:"ระบบที่ไม่อยู่ในรายชื่อของ IT",c:"ข้อขัดแย้งกับคำตอบของ IT"},dc:{name:"แผนก",ppl:"ผู้ให้สัมภาษณ์",date:"วันที่",staff:"จำนวนพนักงาน",other:"ระบบหรือแอปอื่นที่ไม่อยู่ในรายชื่อ",note:"บันทึก"},
+ phDept:"[PLACEHOLDER: แผนก]",phPpl:"[PLACEHOLDER: ชื่อหรือตำแหน่ง]",phOther:"[PLACEHOLDER: ชื่อ คั่นด้วยจุลภาค]",phDNote:"[PLACEHOLDER: บริบท]",addDept:"เพิ่มแผนก",dpNone:"ยังไม่มีแผนก",
+ cqTitle:"คำถามเพิ่มเติม (U9)",cqHint:"เพิ่มคำถามเฉพาะงานนี้ เช่น การใช้เครื่องมือ Generative AI แต่ละคำถามจะเป็นคอลัมน์ที่มีคำตอบแบบข้อความและระดับ",cqQ:"คำถาม",cqS:"CSF Subcategory",phCq:"[PLACEHOLDER: คำถาม]",phCqS:"[PLACEHOLDER: เช่น PR.DS-01]",addCq:"เพิ่มคำถาม",cqNone:"ยังไม่มีคำถามเพิ่มเติม",cqAns:"[PLACEHOLDER: คำตอบ]",
+ cfTitleD:"ข้อขัดแย้งกับคำตอบของ IT",cfHintD:"คำนวณจากคำตอบ แต่ละข้ออ้างอิงหลักฐานทั้งสองฝั่ง ให้ยืนยันข้อเท็จจริงกับ IT ก่อนทำ Gap Analysis หรือเก็บไว้เป็นหลักฐานว่าการปฏิบัติจริงต่างจากที่ IT เข้าใจ",cfNoneD:"ไม่พบข้อขัดแย้ง",
+ cfT:{shadow:"ระบบที่ไม่อยู่ในรายชื่อของ IT",cred:"ใช้บัญชีร่วมกันบนระบบที่ IT ให้ระดับดี",shws:"เครื่องใช้ร่วมกันที่ IT ไม่ได้ระบุ",rem:"การเข้าถึงระยะไกลต่างจากคำตอบของ IT",bia:"งานหยุด แต่ Quick BIA บันทึกว่ามีวิธีทำงานด้วยมือ"},addToSys:"เพิ่มในรายชื่อระบบ",cfCols:{id:"รหัส",dept:"แผนก",type:"ประเภท",detail:"รายละเอียด",ev:"หลักฐาน"},
+ envFTitle:"Environment profile",envFHint:"ตอบหนึ่งคำตอบต่อหัวข้อ ระบุฐานหลักฐาน และบันทึกสั้น ๆ หากคำตอบต้องมีบริบท",envK:{f:"หัวข้อที่ตอบแล้ว",bnd:"เครื่องมือที่ซื้อแล้วแต่ยังไม่ติดตั้ง",chg:"การเปลี่ยนแปลงภายใน 12 เดือน"},
+ envNote:"บันทึก",envSess:"รอบสัมภาษณ์",envBlock:"Landscape block",envAdd:"เพิ่มแถว",envNone:"ยังไม่มีข้อมูล",envW12:"ภายใน 12 เดือน",envPhNum:"[PLACEHOLDER: ตัวเลข]",envPhText:"[PLACEHOLDER: คำตอบ]",envPhNote:"[PLACEHOLDER: บริบท]",
+ mtdO:{"4h":"น้อยกว่า 4 ชั่วโมง","1d":"4 ชั่วโมงถึง 1 วัน","1w":"1 วันถึง 1 สัปดาห์",gt:"มากกว่า 1 สัปดาห์"},critO:{A:"A สำคัญสูงสุด",B:"B สำคัญ",C:"C สนับสนุน"},
+ sugRule:"แนะนำ A: เป็นโครงสร้างพื้นฐานร่วม มีผลกระทบด้านใดสูงมาก หรือมีผลกระทบด้านใดสูงและรับเวลาหยุดได้ไม่เกิน 1 วัน (หากมีวิธีทำงานด้วยมือจะลดเป็น B เว้นแต่ต้องกลับมาภายใน 4 ชั่วโมง) แนะนำ B: มีผลกระทบตั้งแต่ปานกลางขึ้นไป รับเวลาหยุดได้ไม่เกิน 1 วัน ข้อมูลอ่อนไหวสูง หรือเปิดสู่อินเทอร์เน็ต นอกนั้นเป็น C ปรับร่วมกับลูกค้าและบันทึกเหตุผล",
+ smpTitle:"สุ่มตรวจระบบสำคัญ",smpHint:"ค่ามาจาก System profile (อัตโนมัติ) เลือกค่าเองเฉพาะเมื่อต้องการแทนค่าจาก profile และบันทึกอ้างอิงหลักฐานในช่อง ผลจะแสดงใต้ CSF Subcategory ที่เกี่ยวข้องในแท็บสัมภาษณ์ และใช้คำนวณความครอบคลุม",smpNone:"เลือกระบบในคอลัมน์สุ่มตรวจด้านบน",smpNote:"บันทึก",phSmpNote:"[PLACEHOLDER: หลักฐานที่เห็น ข้อยกเว้น]",
+ sysv:{Y:"มี",P:"บางส่วน",N:"ไม่มี",NA:"N/A",U:"ไม่ทราบ"},kSys:"ระบบที่ระบุ",kA:"สำคัญสูงสุด (A)",kSmp:"สุ่มตรวจ",smpRes:"ผลสุ่มตรวจระบบสำคัญ",
+ drTitle:"เอกสารที่จะขอ",drHint:"ติ๊กเอกสารที่ผู้ให้สัมภาษณ์พูดถึง แม้รายการขอเอกสารที่ส่งไปก่อนหน้าจะตอบว่าไม่มี ทุกรายการที่ติ๊กจะไปอยู่ในรายการขอเอกสาร",drReq:"ขอ",drOther:"เอกสารอื่นที่พูดถึง (บรรทัดละหนึ่งรายการ)",phDrOther:"[PLACEHOLDER: ชื่อเอกสาร เจ้าของ]",
+ drListTitle:"รายการขอเอกสาร",drListHint:"สร้างจากรายการที่ติ๊กระหว่างสัมภาษณ์ หนึ่งบรรทัดต่อหนึ่งเอกสาร ยืนยันผู้รับผิดชอบและวันส่งใน S10 แล้วส่งออก Excel ส่งให้ลูกค้า",
+ drc:{doc:"เอกสาร",src:"มาจาก",who:"ขอจาก",type:"ประเภท",method:"วิธี",st:"สถานะ",recv:"ไฟล์ที่ได้รับ"},drs:{req:"ขอแล้ว",recv:"ได้รับแล้ว",none:"ไม่มีจริง"},drNone:"ยังไม่มีเอกสารที่ขอ",evTitle:"หลักฐานเพื่อยืนยัน Tier",kDr:"เอกสารที่ขอ",
+ scene:"ปูพื้นก่อนถาม",sceneHint:"พูดส่วนนี้ก่อนด้วยภาษาของท่านเอง เพื่อให้ผู้ให้สัมภาษณ์เข้าใจว่าทำไมคำถามนี้สำคัญ",scenario:"คำถามเชิงสถานการณ์",scenarioHint:"ถามข้อนี้เพื่อให้เห็นภาพชัด แล้วใช้คำถามหลักและคำถามเจาะลึกเพื่อยืนยัน",
+ tcTitle:"ตรวจ Technical Control",tcHint:"ถามผู้รับผิดชอบทางเทคนิค เทียบคำตอบกับแนวปฏิบัติที่ดี แล้วบันทึกผล",good:"แนวปฏิบัติที่ดี",tcv:{Y:"มี",P:"บางส่วน",N:"ไม่มี",NA:"N/A"},tcNone:"ยังไม่ตรวจ",phTcN:"[PLACEHOLDER: สิ่งที่มีอยู่ ชื่อเครื่องมือ ความครอบคลุม หลักฐานที่เห็น]",
+ techHint:"สัมภาษณ์เชิงเทคนิคกับเจ้าหน้าที่ IT และความมั่นคงปลอดภัย จัดกลุ่มตามด้านเทคโนโลยี แต่ละข้อแสดงแนวปฏิบัติที่ดีและแหล่งอ้างอิง เพื่อให้ตัดสินคำตอบได้ทันทีหน้างาน ผลจะแสดงใต้ CSF Subcategory ที่เกี่ยวข้องด้วย",
+ area:"ด้านเทคโนโลยี",areaAsk:"ถาม",progress:"ตรวจแล้ว",csfLink:"CSF Subcategory",
+ planMgmt:"สัมภาษณ์ด้านการบริหารและกระบวนการ (ตามบทบาท)",planTech:"สัมภาษณ์เชิงเทคนิค (ตามด้านเทคโนโลยี)",planTechHint:"ใช้กับเจ้าหน้าที่ IT โครงสร้างพื้นฐาน ศูนย์ปฏิบัติการความมั่นคงปลอดภัย และนักพัฒนา เพื่อตรวจว่ามีการนำการควบคุมไปใช้จริงอย่างไร",
+ nChecks:"รายการตรวจ",tcRes:"ผลการตรวจ Technical Control ตามด้าน",tcResHint:"สัดส่วนรายการที่ตรวจแล้วซึ่งได้ผล มี บางส่วน หรือไม่มี ในแต่ละด้านเทคโนโลยี",tcSummary:(y,p,n)=>`ผลตรวจทางเทคนิค: มี ${y} บางส่วน ${p} ไม่มี ${n}`,
+ printTech:"แบบตรวจทางเทคนิค",
+ toastSaved:"บันทึกไฟล์งานแล้ว",toastOpened:"โหลดข้อมูลสัมภาษณ์แล้ว",toastLinked:"เชื่อมข้อมูล Audit แล้ว",toastBad:"ไฟล์นี้ไม่ใช่ไฟล์ของเครื่องมือหรือไฟล์งาน",toastXlsx:"ส่งออก Excel แล้ว",toastSample:"โหลดตัวอย่างแล้ว",toastReset:"ล้างข้อมูลสัมภาษณ์แล้ว",toastCopied:"คัดลอกข้อมูลงานแล้ว",
+ dS:"เอกสาร",
+ sv:{Exists:"มีครบ",Partial:"มีบางส่วน",Missing:"ไม่มี",NA:"ไม่เกี่ยวข้อง",none:"ยังไม่ประเมิน",out:"นอกขอบเขต"},
+ rR4:"การรวมผลระดับ Category (Tier Rubric R4)",rR4H:"Current Tier ที่แนะนำคือ Tier สูงสุดที่ Subcategory ที่ให้คะแนนแล้วอย่างน้อยครึ่งหนึ่งทำได้ถึง",rR3:"กติกาความครอบคลุม (Tier Rubric R3)",rR3H:"Subcategory ที่วัดความครอบคลุมได้ จะได้ Tier 3 ขึ้นไปเมื่อความครอบคลุมบนระบบ Criticality A ที่สุ่มตรวจอยู่ระดับ Largely หรือ Full เท่านั้น หากไม่ถึง Tier ที่นับได้จะคงที่ 2 และติดสถานะใกล้ถึง Tier ถัดไป",rubV:"เวอร์ชัน Tier Rubric",
+ rubTitle:(c,v)=>`คำอธิบาย Tier ของ ${c} (Tier Rubric v${v})`,rubNote:"คำอธิบายจากผู้ปฏิบัติงาน อ้างอิงลักษณะ Tier ของ CSF 2.0 ไม่ใช่ข้อความของ NIST ส่วน Tier 0 เป็นข้อกำหนดของเครื่องมือนี้",
+ covTitle:"ความครอบคลุม (Tier Rubric R3)",covBand:{full:"Full",lg:"Largely",pt:"Partial",none:"None",nm:"ยังไม่ได้วัด"},covSrc:{sampling:"การสุ่มตรวจและ System profile",tech:"การตรวจทางเทคนิค",ov:"ผู้ประเมินกำหนดเอง"},covAuto:"คำนวณ",covOv:"กำหนดเอง",covPts:"จุดข้อมูล",phCovWhy:"[PLACEHOLDER: เหตุผลที่กำหนดเอง]",
+ covNote:"คะแนน: ใช่ 1 บางส่วน 0.5 ไม่ใช่หรือไม่ทราบ 0 คิดจากระบบ Criticality A ที่สุ่มตรวจ (ใช้ทุกระบบที่สุ่มตรวจหากไม่มีระบบ A) ระดับ: Full 100% Largely ตั้งแต่ 75% Partial ตั้งแต่ 25% None ต่ำกว่า 25%",covCapNote:"นับเป็น Tier 2: ความครอบคลุมต่ำกว่า Largely ใกล้ถึง Tier ถัดไป",
+ pfTitle:"System profile (Core)",pfHint:"S2 ส่วน B กับ IT: ไล่ตามรายชื่อและตอบทุกคอลัมน์ให้ครบทุกระบบ สีแสดงระดับ คำตอบไม่ทราบใช้ได้ โดยนับเป็นไม่ใช่ในความครอบคลุม และแสดงจุดที่ลูกค้าต้องไปหาคำตอบ",pfNone:"เพิ่มระบบด้านบนก่อน",pfDet:"รายละเอียด",pfClose:"ปิด",
+ pfSec:{core:"Core profile",full:"Full profile",dev:"Development profile"},pfSecHint:{core:"ทุกระบบ (S2 ส่วน B)",full:"จำเป็นสำหรับระบบ Criticality A และระบบที่สุ่มตรวจ (S6)",dev:"สำหรับระบบที่มีที่มาเป็น COTS ปรับแต่ง พัฒนาเอง หรือจ้างภายนอกพัฒนา (S6 กับนักพัฒนา)"},
+ pfNotReq:"ไม่จำเป็นสำหรับระบบนี้ กรอกได้หากมีข้อมูล",pfDevNone:"แสดงเมื่อที่มาของระบบเป็น COTS ปรับแต่ง พัฒนาเอง หรือจ้างภายนอกพัฒนา",pfField:"หัวข้อ",pfAsk:"คำถาม",pfAns:"คำตอบ",pfEv:"หลักฐาน",pfNotes:"บันทึกและอ้างอิงหลักฐาน",phPfNotes:"[PLACEHOLDER: สิ่งที่เห็น ชื่อไฟล์ หน้าจอที่แสดง]",
+ rt:{G:"ดี",W:"อ่อน",P:"แย่",U:"ไม่ทราบ",X:"ไม่เกี่ยวข้อง"},popTitle:"ภาพรวมทุกระบบ",popHint:"สัดส่วนระบบที่ได้ระดับดีในแต่ละหัวข้อของ Core profile แยกตามระดับความสำคัญ ใช้ระบุขอบเขตของช่องว่างทั้งองค์กร ไม่ใช่เฉพาะระบบที่สุ่มตรวจ",
+ popCols:{f:"หัวข้อ",all:"ทุกระบบ",A:"A",B:"B",C:"C",unk:"ไม่ทราบ",poor:"แย่",na:"ยังไม่ตอบ"},exTitle:"ระบบที่อาจต้องเป็นข้อยกเว้น",exHint:"ระบบที่ไม่รองรับการควบคุม หรือหมดการสนับสนุนจากผู้ขาย แต่ละระบบต้องมีมาตรการทดแทนและการยอมรับความเสี่ยงที่มีกำหนดเวลา",exNone:"ยังไม่มี",
+ smpAuto:"อัตโนมัติ",smpSrc:{profile:"จาก profile",manual:"กรอกเอง"},phCref:"[PLACEHOLDER: อ้างอิงหลักฐาน]",
+ pfRes:"ผลจาก System profile และ Vendor profile",pfResHint:"คำตอบจาก profile ที่เกี่ยวกับ outcome นี้ ใช้ประเมินขอบเขตทุกระบบก่อนให้คะแนน",pfCount:(g,w,p,u,n)=>`ดี ${g} อ่อน ${w} แย่ ${p} ไม่ทราบ ${u} (จาก ${n} ที่ตอบ)`,pfTc:"System profile",
+ venHint:"S5 กับฝ่ายจัดซื้อ กฎหมาย และ IT: ระบุผู้ขายทุกรายที่เข้าถึงระบบหรือข้อมูลได้ แล้วตอบทุกคอลัมน์ กด Ctrl หรือ Cmd ค้างเพื่อเลือกหลายระบบ",addVen:"เพิ่มผู้ขาย",vc:{name:"ผู้ขาย",sys:"ระบบที่เกี่ยวข้อง",note:"บันทึก"},phVen:"[PLACEHOLDER: ชื่อผู้ขาย]",phVenNote:"[PLACEHOLDER: อ้างอิงสัญญา ผู้ติดต่อ]",venNone:"ยังไม่มีผู้ขาย",
+ obsHint:"บันทึกจุดอ่อนและร่องรอยการโจมตีที่พบระหว่างการประเมิน สังเกตเท่านั้น ห้ามทดสอบหรือเจาะระบบ เว้นแต่ขอบเขตงาน (SoW) อนุญาตให้ทดสอบ ช่องโหว่เป็นหลักฐานของช่องว่าง ไม่ใช่ช่องว่างในตัวเอง รายการระดับ Critical ที่เปิดสู่อินเทอร์เน็ตให้แจ้งภายในไม่กี่วัน ไม่ต้องรอรายงานฉบับสุดท้าย",
+ obsInc:"มีการบันทึกร่องรอยเหตุการณ์ หยุดงานส่วนนั้นและแจ้งผู้ติดต่อตามที่ระบุใน SoW ทันที",addObs:"เพิ่มข้อสังเกต",
+ oc:{id:"รหัส",type:"ประเภท",sys:"ระบบ",desc:"รายละเอียด",sev:"ความรุนแรง",inet:"เปิดสู่อินเทอร์เน็ต",subs:"Subcategory ที่เกี่ยวข้อง",st:"สถานะ",date:"วันที่แจ้ง",note:"บันทึก"},obsT:{vuln:"ช่องโหว่",inc:"ร่องรอยเหตุการณ์"},obsSev:{C:"Critical",H:"High",M:"Medium",L:"Low"},obsSt:{open:"เปิด",notified:"แจ้งแล้ว",closed:"ปิด"},
+ phObsSys:"[PLACEHOLDER: ระบบ]",phObsDesc:"[PLACEHOLDER: สิ่งที่สังเกตเห็นและตำแหน่ง]",phObsSubs:"[PLACEHOLDER: เช่น PR.PS-02]",obsNone:"ยังไม่มีข้อสังเกต",obsRel:"ข้อสังเกตทางเทคนิค",
+ drType:{doc:"เอกสาร",tech:"หลักฐานทางเทคนิค"},drMethod:{export:"Export หรือรายงานจากระบบ",screen:"ภาพหน้าจอ",demo:"สาธิตสด",copy:"สำเนาเอกสาร"},
+ rbQ:"ทวนข้อมูลแล้ว",rbHint:"ใช้ 5 นาทีสุดท้ายของแต่ละรอบทวนข้อเท็จจริงสำคัญและขอการยืนยัน",
+ helpHtml:`<h2>วิธีใช้แบบประเมินด้วยการสัมภาษณ์</h2>
+<p>ใช้ไฟล์นี้ประเมินการปฏิบัติงานจริงของลูกค้าเมื่อเอกสารไม่มีหรือไม่ครบ ครอบคลุม Subcategory ทั้ง 106 ข้อของ NIST CSF 2.0 พร้อมคำถามหลัก คำถามเจาะลึก และหลักฐานที่ควรขอในแต่ละข้อ</p>
+<h3>ขั้นตอน</h3><ol>
+<li><b>ตั้งค่า</b> กรอกข้อมูลงาน เพิ่มผู้ให้สัมภาษณ์พร้อมบทบาท และยืนยันหลักเกณฑ์การให้คะแนน เชื่อมไฟล์ Document Audit Tracker ได้หากมี</li>
+<li><b>แผนการสัมภาษณ์</b> ดูว่าคำถามใดเป็นของบทบาทใด กดเริ่มสัมภาษณ์ตามบทบาท หรือพิมพ์แบบคำถามก่อนประชุม</li>
+<li><b>สัมภาษณ์</b> ในแต่ละ Subcategory ถามคำถามหลักและคำถามเจาะลึก บันทึกผู้ตอบ Tier ที่พบ ฐานของหลักฐาน บันทึก และช่องว่าง และระบุหลักฐานที่จะขอ</li>
+<li><b>Tier ราย Category</b> ทบทวน Current Tier ที่แนะนำ ปรับพร้อมเหตุผลเมื่อจำเป็น และยืนยัน Target Tier</li>
+<li><b>แดชบอร์ดและรายการขอหลักฐาน</b> ดู Current เทียบ Target การเปรียบเทียบการปฏิบัติกับเอกสาร และส่งรายการขอหลักฐานให้ลูกค้า</li></ol>
+<h3>ระดับ Tier</h3><p>Tier 1 ถึง 4 ใช้ชื่อตาม NIST CSF 2.0 (Partial, Risk Informed, Repeatable, Adaptive) โดยนำมาใช้กับการปฏิบัติของแต่ละ Subcategory ส่วน Tier 0 (ไม่มีการปฏิบัติ) เป็นข้อกำหนดของเครื่องมือนี้เพื่อแยก "ไม่มีการปฏิบัติ" ออกจาก "ปฏิบัติเฉพาะกิจ" ไม่ใช่ Tier ของ CSF</p>
+<h3>Tier Rubric</h3><p>ให้คะแนนแต่ละ Subcategory เทียบกับคำอธิบาย Tier ของ Category นั้นใน Tier Rubric ซึ่งเป็นชุดเดียวกับที่ใช้ใน Target Profile Workshop และ Gap Analysis มีกติกา 3 ข้อ R2: Tier 2 ขึ้นไปต้องมีหลักฐานเป็นเอกสารหรือการสาธิต R3: Subcategory ที่วัดความครอบคลุมได้ จะได้ Tier 3 ขึ้นไปเมื่อความครอบคลุมบนระบบ Criticality A ที่สุ่มตรวจอยู่ระดับ Largely หรือ Full หากไม่ถึงจะนับเป็น Tier 2 และติดสถานะใกล้ถึง Tier ถัดไป R4: Tier ที่แนะนำของ Category คือ Tier สูงสุดที่ Subcategory ที่ให้คะแนนแล้วอย่างน้อยครึ่งหนึ่งทำได้ถึง</p>
+<h3>System profile</h3><p>ลูกค้าส่วนใหญ่มีเอกสารน้อย จึงเก็บข้อเท็จจริงรายระบบด้วยคำตอบแบบเลือก ใน S2 ส่วน A ถามผู้ใช้งานธุรกิจว่าใช้ระบบใด ใน S2 ส่วน B ให้ IT ตอบ Core profile ของทุกระบบ (ประมาณ 1 ถึง 2 นาทีต่อระบบ) ใน S6 กรอก Full profile ของระบบ Criticality A และระบบที่สุ่มตรวจ และ Development profile ของระบบที่ปรับแต่ง พัฒนาเอง หรือจ้างพัฒนา ทุกคำตอบมีระดับ (ดี อ่อน แย่ ไม่ทราบ) ซึ่งใช้เติมตารางสุ่มตรวจและคำนวณความครอบคลุม จึงไม่ต้องกรอกข้อมูลเดียวกันซ้ำ ภาพรวมทุกระบบแสดงว่าช่องว่างกระจายไปกว้างแค่ไหน</p>
+<h3>แผนก</h3><p>ใน S2C สัมภาษณ์ผู้ใช้งานหน้างานทีละแผนก เช่น Food and Beverage, Marketing and PR และ Finance คำถาม U1 ถึง U8 เป็นคำถามมาตรฐาน เพิ่มคำถามเฉพาะงานเป็น U9 เครื่องมือจะแสดงระบบที่ IT ไม่ได้ระบุ และจุดที่การปฏิบัติจริงขัดกับคำตอบของ IT อ้างอิงใน Gap Analysis เป็น DEPT:&lt;แผนก&gt; หรือ &lt;หัวข้อ&gt;:&lt;แผนก&gt; เช่น U2:Finance</p>
+<h3>สภาพแวดล้อม</h3><p>ใน S1, S3 และ S6 บันทึกข้อเท็จจริงระดับองค์กร ได้แก่ สถานที่ ศูนย์ข้อมูลและศูนย์สำรอง การแบ่งส่วนเครือข่าย การเข้าถึงระยะไกลของพนักงาน เครื่องลูกข่าย อุปกรณ์การแพทย์และ OT สถาปัตยกรรมการสำรองข้อมูล โครงสร้างทีม IT เครื่องมือด้านความมั่นคงปลอดภัย ประวัติเหตุการณ์ การเปลี่ยนแปลงที่กำลังดำเนินการ และการประเมินครั้งก่อน คำตอบเหล่านี้ไม่มีระดับ Gap Analysis ใช้ข้อมูลนี้ในส่วน Current IT Landscape ตรวจ Improvement Action ทุกรายการกับการเปลี่ยนแปลงที่กำลังดำเนินการและเครื่องมือที่ซื้อแล้ว และระบุข้อตรวจพบที่ซ้ำกับการประเมินครั้งก่อน แถวข้อมูลแต่ละแถวมีรหัส (เช่น TOOL-01) เพื่อใช้อ้างอิงเป็นหลักฐาน</p>
+<h3>ผู้ขาย</h3><p>ใน S5 ระบุผู้ขายทุกรายที่เข้าถึงระบบหรือข้อมูลได้ พร้อมประเภทการเข้าถึง การเข้าถึงข้อมูล ข้อสัญญา ข้อตกลงการประมวลผลข้อมูล และการตรวจสอบ แล้วเชื่อมผู้ขายกับระบบที่เกี่ยวข้อง</p>
+<h3>ข้อสังเกต</h3><p>บันทึกช่องโหว่และร่องรอยเหตุการณ์ที่พบระหว่างการประเมินในแท็บข้อสังเกต สังเกตเท่านั้น ห้ามทดสอบหรือเจาะระบบ เว้นแต่ SoW อนุญาต หากพบร่องรอยเหตุการณ์ให้หยุดงานส่วนนั้นและแจ้งผู้ติดต่อของลูกค้าทันที ช่องโหว่เป็นหลักฐานของช่องว่างและแสดงใต้ Subcategory ที่เกี่ยวข้อง</p>
+<h3>การทวนข้อมูล</h3><p>ใช้ 5 นาทีสุดท้ายของแต่ละรอบทวนข้อเท็จจริงสำคัญ แล้วติ๊กทวนข้อมูลแล้วในแท็บแผนการสัมภาษณ์ แทนการทบทวนกับเจ้าของกระบวนการอีกรอบ</p>
+<h3>ลำดับการสัมภาษณ์</h3><p>แท็บแผนการสัมภาษณ์จัดงานเป็น 10 รอบ เริ่มจากบริบทธุรกิจ (S1) ต่อด้วย Quick BIA เพื่อระบุระบบสำคัญ (S2) รอบการกำกับดูแล กฎหมาย และผู้ให้บริการ (S3 ถึง S5) ขึ้นกับ S1 เท่านั้นจึงทำคู่ขนานได้ รอบเทคนิค การตรวจจับ และการรับมือ (S6 ถึง S8) ใช้ระบบสำคัญจาก S2 และ S10 ใช้ยืนยันรายการขอเอกสาร</p>
+<h3>ระบบและ Quick BIA</h3><p>เมื่อลูกค้าไม่มีทะเบียนทรัพย์สิน ให้จัดทำรายชื่อระบบเบื้องต้นใน S2 ให้คะแนนผลกระทบและเวลาหยุดที่รับได้ และยืนยันระดับความสำคัญกับลูกค้า แล้วสุ่มตรวจระบบสำคัญ 3 ถึง 5 ระบบใน S6 ระบุในรายงานว่าเป็นการประเมินเบื้องต้น ไม่ใช่ BIA เต็มรูปแบบ และอาจมีระบบที่ไม่ได้ถูกกล่าวถึงในการสัมภาษณ์</p>
+<h3>การขอเอกสารระหว่างสัมภาษณ์</h3><p>ลูกค้ามักตอบรายการขอเอกสารว่า "ไม่มี" แล้วพูดถึงเอกสารนั้นระหว่างสัมภาษณ์ ให้ติ๊กเอกสารที่เกี่ยวข้องในแต่ละคำถาม หรือพิมพ์ชื่อเอกสารอื่นที่ได้ยิน แท็บรายการขอเอกสารจะรวมเป็นรายการเดียวไม่ซ้ำกัน เพื่อยืนยันใน S10</p>
+<h3>การปูพื้นและคำถามเชิงสถานการณ์</h3><p>แต่ละ Subcategory เริ่มด้วยประโยคปูพื้นสั้น ๆ และคำถามเชิงสถานการณ์ ใช้กับผู้บริหารและเจ้าของกระบวนการธุรกิจที่ไม่ใช่ผู้เชี่ยวชาญด้านความมั่นคงปลอดภัย โดยอธิบายว่าทำไมหัวข้อนี้สำคัญ ให้เขานึกภาพสถานการณ์จริง แล้วยืนยันด้วยคำถามหลักและคำถามเจาะลึก</p>
+<h3>ตรวจ Technical Control</h3><p>แท็บตรวจ Technical Control มีรายการตรวจสำหรับเจ้าหน้าที่ IT และความมั่นคงปลอดภัย จัดกลุ่มตามด้านเทคโนโลยี (ตัวตน เครื่องลูกข่าย เครือข่าย อีเมล ข้อมูล การสำรองข้อมูล ช่องโหว่ การบันทึก คลาวด์ ระบบงาน การเข้าถึงของผู้ให้บริการ OT และอุปกรณ์การแพทย์ กายภาพ และการรับมือเหตุการณ์) แต่ละข้อแสดงแนวปฏิบัติที่ดีและแหล่งอ้างอิง (CIS Controls v8.1 Safeguard, ISO/IEC 27002:2022 หรือแนวทางของ NIST) บันทึกผล มี บางส่วน ไม่มี หรือ N/A พร้อมสิ่งที่เห็น แนวปฏิบัติที่ดีเป็นเกณฑ์อ้างอิงจากผู้ปฏิบัติงาน ไม่ใช่ข้อกำหนดทางกฎหมาย ให้ปรับตามขนาดและความเสี่ยงของลูกค้า</p>
+<h3>หลักเกณฑ์หลักฐาน</h3><p>ตามค่าตั้งต้น Tier 2 ขึ้นไปที่อ้างอิงคำบอกเล่าเท่านั้นจะนับเป็น Tier 1 จนกว่าจะได้รับหลักฐาน ระดับที่บอกเล่ายังถูกบันทึกไว้ และระบบสร้างรายการขอหลักฐานให้อัตโนมัติ</p>
+<h3>การทำงานร่วมกับ Document Audit Tracker</h3><p>ทั้งสองเครื่องมืออ่านและเขียนไฟล์งานรูปแบบเดียวกัน เปิดไฟล์ที่บันทึกจาก Audit ที่นี่เพื่อเชื่อมข้อมูล แล้วเครื่องมือนี้จะแสดงสถานะเอกสารและการเปรียบเทียบการปฏิบัติกับเอกสาร การบันทึกไฟล์จะเก็บข้อมูลทั้งสองส่วน และเมื่อเปิดไฟล์เดียวกันใน Audit จะเห็น Tier จากการสัมภาษณ์คู่กับแต่ละเอกสาร</p>
+<h3>ข้อมูลถูกเก็บที่ไหน</h3><p>ข้อมูลบันทึกอัตโนมัติในเบราว์เซอร์นี้สำหรับไฟล์นี้เท่านั้น หากล้างข้อมูลเบราว์เซอร์ ข้อมูลจะหายไป กด <b>บันทึกไฟล์</b> หลังสัมภาษณ์ทุกครั้ง และเก็บไฟล์ไว้กับเอกสารของงาน ลูกค้าแต่ละรายควรใช้สำเนาไฟล์ HTML นี้แยกกัน</p>
+<h3>แหล่งที่มา</h3><p>ผลลัพธ์ของ Subcategory มาจาก NIST CSF 2.0 คำถาม คำถามเจาะลึก รายการหลักฐาน และการจับคู่บทบาท เป็นแนวทางจากผู้ปฏิบัติงานที่เขียนสำหรับกรอบนี้ รายการที่ระบุ VERIFY ต้องตรวจสอบกับประกาศของไทยฉบับปัจจุบัน</p>`}
+};
+const blank=()=>({v:3,app:"csf-interview",schema:SCHEMA,client:{name:"",assessor:"",date:"",ref:"",scope:""},people:[],rules:{cap:true,obs:true,tgt:"3"},cats:{},subs:{},tc:{},sys:[],vendors:[],obs:[],rb:{},dr:{},env:envBlank(),dept:[],dq:[],updated:null});
+function envBlank(){return{f:{},e:{},n:{},t:Object.fromEntries(ETB.map(z=>[z.k,[]]))};}
+function envNorm(o){const b=envBlank();o=o||{};b.f=o.f||{};b.e=o.e||{};b.n=o.n||{};ETB.forEach(z=>b.t[z.k]=(o.t||{})[z.k]||[]);return b;}
+let sessFilter="";
+let S=blank(), LA=null, lang="EN", view="setup", cur=SUBS[0], storeOK=true, lastSave=null, resetArm=false, roleFilter="", curSys=-1;
+try{const l=localStorage.getItem("csf-audit-lang");if(l==="TH"||l==="EN")lang=l;}catch(e){}
+try{const raw=localStorage.getItem(KEY);if(raw){const o=JSON.parse(raw);if(o&&o.app==="csf-interview")S=norm(o);}const lr=localStorage.getItem(LKEY);if(lr)LA=JSON.parse(lr);}catch(e){storeOK=false;}
+function norm(o){const b=blank();const s=Object.assign(b,o);s.rules=Object.assign(blank().rules,o.rules||{});s.client=Object.assign(blank().client,o.client||{});s.tc=o.tc||{};s.sys=o.sys||[];s.dr=o.dr||{};s.vendors=o.vendors||[];s.obs=o.obs||[];s.rb=o.rb||{};s.env=envNorm(o.env);s.dept=o.dept||[];s.dq=o.dq||[];
+  if(o.schema!==SCHEMA){s.sys.forEach(y=>["fin","ops","leg","rep"].forEach(k=>{if(y[k])y[k]=({"1":"2","2":"3","3":"4"})[y[k]]||y[k];}));s.schema=SCHEMA;s.v=3;}return s;}
+const $=id=>document.getElementById(id), t=()=>T[lang], Li=()=>lang==="TH"?1:0;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const role=k=>(M.roles[k]||[k,k])[Li()], outc=s=>lang==="TH"?(M.subcats_th[s]||M.subcats[s]):M.subcats[s], catNm=c=>M.categories[c][Li()];
+function persist(){S.updated=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(S));if(LA)localStorage.setItem(LKEY,JSON.stringify(LA));else localStorage.removeItem(LKEY);lastSave=new Date();storeOK=true;}catch(e){storeOK=false;}renderSavebar();}
+function renderSavebar(){const x=t();$("savebar").textContent=!storeOK?x.noStore:lastSave?`${x.saved} ${lastSave.toLocaleTimeString()}. ${x.notSaved}`:x.notSaved;}
+function toast(m){const e=$("toast");e.textContent=m;e.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>e.hidden=true,2200);}
+function seg(name,vals,curv,labels,titles){return `<span class="seg" role="group">${vals.map(v=>`<button data-seg="${name}" data-v="${v}" aria-pressed="${curv===v}"${titles?` title="${esc(titles[v]||"")}"`:""}>${esc(labels[v])}</button>`).join("")}</span>`;}
+
+/* ---------- scoring ---------- */
+function sr(s){return S.subs[s]||(S.subs[s]={tier:"",ev:"",ref:"",notes:"",gap:"",who:[],fu:false,fuText:"",fuSt:"open",recv:"",probes:{}});}
+function eff(s){const r=S.subs[s];if(!r||r.tier===""||r.tier==null)return{st:"none"};if(r.tier==="NA")return{st:"NA"};
+  const raw=+r.tier;const okEv=r.ev==="D"||(r.ev==="O"&&S.rules.obs);const capped=S.rules.cap&&raw>=2&&!okEv;let v=capped?1:raw,covCap=false;
+  if(v>=3&&COV.has(s)&&!["full","lg"].includes(covOf(s).band)){v=2;covCap=true;}return{st:"rated",raw,v,capped,covCap};}
+function catStat(c){const subs=SUBS.filter(s=>catOf(s)===c);const vals=[];let capped=0,covCapped=0,rated=0;subs.forEach(s=>{const e=eff(s);if(e.st==="rated"){vals.push(e.v);rated++;if(e.capped)capped++;if(e.covCap)covCapped++;}else if(e.st==="NA")rated++;});
+  const mean=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;const sug=vals.length?Math.max(...[0,1,2,3,4].filter(t=>vals.filter(v=>v>=t).length*2>=vals.length)):null;const o=S.cats[c]||{};
+  const curT=o.cur!==undefined&&o.cur!==""?+o.cur:sug;const tgt=+(o.tgt!==undefined&&o.tgt!==""?o.tgt:S.rules.tgt);
+  return{n:subs.length,rated,mean,sug,cur:curT,tgt,over:o.cur!==undefined&&o.cur!==""&&+o.cur!==sug,why:o.why||"",capped,covCapped,min:vals.length?Math.min(...vals):null};}
+function tierChip(v){const k=v===null||v===undefined||v===""?"none":v;return `<span class="tier t${k}">${k==="none"?"-":k==="NA"?"N/A":k}</span>`;}
+function subFlag(s){const e=eff(s),r=S.subs[s]||{};if(e.st==="none")return"none";if(e.capped)return"cap";if(e.covCap)return"cov";if(r.fu&&r.fuSt!=="recv")return"fu";return"rated";}
+
+/* ---------- linked audit ---------- */
+function auditStatus(id){if(!LA)return null;const o=(LA.scope||{})[id];if(o&&o.ov==="out")return"out";const r=(LA.docs||{})[id];return r&&r.status?r.status:"none";}
+function docPill(id){const s=auditStatus(id);return s?`<span class="st ${s}">${esc(t().sv[s])}</span>`:"";}
+function hasDoc(s){return (DOCS_BY_SUB[s]||[]).some(id=>["Exists","Partial"].includes(auditStatus(id)));}
+function docAssessed(s){return (DOCS_BY_SUB[s]||[]).some(id=>["Exists","Partial","Missing"].includes(auditStatus(id)));}
+function quad(s){const e=eff(s);if(e.st!=="rated"||!LA||!docAssessed(s))return null;const pr=e.raw>=2,dc=hasDoc(s);return pr&&dc?"al":pr?"un":dc?"pa":"gp";}
+
+/* ---------- systems and quick BIA ---------- */
+const IMP=["ops","fin","leg","rep","hs","pd"];
+function sysSug(y){const mx=Math.max(0,...IMP.map(k=>+y[k]||0));if(!mx&&!y.mtd&&y.shared!=="Y")return"";const short=y.mtd==="4h"||y.mtd==="1d";const wk=y.man==="Y"&&y.mtd!=="4h";if(y.shared==="Y")return"A";if(mx===5&&!wk)return"A";if(mx>=4&&(short||!y.mtd)&&!wk)return"A";if(mx>=3||short||y.data==="H"||y.inet==="Y")return"B";return"C";}
+function sysCrit(y){return y.crit||sysSug(y);}
+function critChip(c){return `<span class="crit ${c||"none"}">${c||"-"}</span>`;}
+function sampled(){return S.sys.map((y,i)=>({y,i})).filter(z=>z.y.smp);}
+/* ---------- system and vendor profiles ---------- */
+function pfOpt(f,c){return f.o.find(o=>o.c===c)||{r:"",n:["",""]};}
+function pfR(y,id){const v=(y.p||{})[id];return v?pfOpt(PFBY[id],v).r:"";}
+function pfApplies(y,sec){return sec==="core"||sec==="ven"||(sec==="full"?(sysCrit(y)==="A"||!!y.smp):DEVO.includes((y.p||{}).C1));}
+function derivedCtl(y,k){const rs=PF.filter(f=>f.samp===k).map(f=>pfR(y,f.id)).filter(Boolean);if(!rs.length)return"";
+  if(rs.includes("P"))return"N";if(rs.includes("U"))return"U";if(rs.every(r=>r==="X"))return"NA";if(rs.every(r=>r==="G"||r==="X"))return"Y";return"P";}
+function ctlVal(y,k){const m=(y.ctl||{})[k];if(m)return{v:m,src:"manual"};const d=derivedCtl(y,k);return d?{v:d,src:"profile"}:{v:"",src:""};}
+function pfSelect(i,f,y,attr){const x=t(),L=Li(),v=(y.p||{})[f.id]||"";return `<select data-${attr}="${i}:${f.id}" id="${attr}-${i}-${f.id}" aria-label="${esc(f.n[L])} ${esc(y.name||"")}" title="${esc(f.ask[L])}"><option value="">-</option>${f.o.map(o=>`<option value="${o.c}"${v===o.c?" selected":""}>${esc(o.n[L])}${o.r==="X"?"":" ("+esc(x.rt[o.r])+")"}</option>`).join("")}</select>`;}
+function pfCount(f,list){const c={G:0,W:0,P:0,U:0,X:0,n:0};list.forEach(y=>{const v=(y.p||{})[f.id];if(!v)return;const r=pfOpt(f,v).r;c[r]++;c.n++;});return c;}
+function pfExceptions(){const out=[];S.sys.forEach(y=>PF.forEach(f=>{const v=(y.p||{})[f.id];if(v&&f.ex.includes(v))out.push({y,f,o:pfOpt(f,v)});}));return out;}
+function covOf(s){const r=S.subs[s]||{};if(!COV.has(s))return{app:false,band:"",auto:"",pct:null,den:0,src:"",ov:false,why:""};
+  const sm=sampled(),a=sm.filter(z=>sysCrit(z.y)==="A"),pool=a.length?a:sm;let num=0,den=0,src="";
+  const ctls=SYSCTL.filter(c=>c.s.includes(s)),extra=ctls.length?[]:PF.filter(f=>!f.samp&&f.sec!=="dev"&&f.s.includes(s));
+  pool.forEach(z=>{ctls.forEach(c=>{const v=ctlVal(z.y,c.k).v;if(!v||v==="NA")return;den++;num+=SV_PTS[v]||0;});
+    extra.forEach(f=>{const rt=pfR(z.y,f.id);if(!rt||rt==="X")return;den++;num+=rt==="G"?1:rt==="W"?0.5:0;});});
+  if(den)src="sampling";else{(TC_BY_SUB[s]||[]).forEach(id=>{const v=(S.tc[id]||{}).r;if(!v||v==="NA")return;den++;num+=SV_PTS[v]||0;});if(den)src="tech";}
+  const pct=den?num/den:null,auto=pct===null?"nm":pct>=0.9999?"full":pct>=0.75?"lg":pct>=0.25?"pt":"none",ov=r.covOv||"";
+  return{app:true,pct,den,src,auto,band:ov||auto,ov:!!ov,why:r.covWhy||""};}
+/* ---------- environment profile ---------- */
+const rowId=(z,r)=>z.prefix+"-"+String(r.n).padStart(2,"0");
+function envAnswered(f){const v=S.env.f[f.k];return Array.isArray(v)?v.length>0:v!==undefined&&v!==null&&v!=="";}
+function envFieldText(f,L){const v=S.env.f[f.k];if(f.type==="multi")return (v||[]).map(c=>{const q=f.o.find(p=>p.c===c);return q?q.n[L]:c;}).join(", ");if(f.type==="sel"){const q=f.o.find(p=>p.c===v);return q?q.n[L]:"";}return v??"";}
+function envCell(z,c,r,L){const v=r[c.k];if(c.type==="sel"){const q=c.o.find(p=>p.c===v);return q?q.n[L]:"";}if(c.type==="sys")return (v||[]).map(j=>(S.sys[j]||{}).name||"").filter(Boolean).join(", ");return v??"";}
+function within12(d){if(!d)return false;const lim=new Date();lim.setFullYear(lim.getFullYear()+1);return new Date(d)<=lim;}
+const numv=v=>v!==""&&v!=null&&!isNaN(+v)?+v:"";
+function renderEnv(){const x=t(),L=Li(),E=S.env;
+  const done=EF.filter(envAnswered).length,bnd=(E.t.tools||[]).filter(r=>r.st==="bnd").length,chg12=(E.t.chg||[]).filter(r=>within12(r.date)).length;
+  const inp=f=>{const v=E.f[f.k];
+    if(f.type==="sel")return `<select data-env="${f.k}" id="env-${f.k}" aria-label="${esc(f.n[L])}"><option value="">-</option>${f.o.map(o=>`<option value="${o.c}"${v===o.c?" selected":""}>${esc(o.n[L])}</option>`).join("")}</select>`;
+    if(f.type==="multi")return `<div class="mchk">${f.o.map(o=>`<label class="mini"><input type="checkbox" data-envm="${f.k}:${o.c}"${(v||[]).includes(o.c)?" checked":""}> ${esc(o.n[L])}</label>`).join("")}</div>`;
+    return `<input type="${f.type==="num"?"number":"text"}"${f.type==="num"?' min="0"':""} data-env="${f.k}" id="env-${f.k}" aria-label="${esc(f.n[L])}" value="${esc(v??"")}" placeholder="${esc(f.type==="num"?x.envPhNum:x.envPhText)}" style="width:100%">`;};
+  const frows=EF.map(f=>`<tr><td class="mono">${f.id}</td><td>${esc(f.n[L])}<div class="mini mono">${f.s.join(", ")}</div></td><td class="mini">${esc(f.ask[L])}</td><td style="min-width:200px">${inp(f)}</td>
+    <td><select data-enve="${f.k}" id="enve-${f.k}" aria-label="${esc(x.pfEv)} ${f.id}"><option value="">-</option>${EVB.map(k=>`<option value="${k}"${(E.e[f.k]||"")===k?" selected":""}>${esc(x.ev[k])}</option>`).join("")}</select></td>
+    <td><input type="text" data-envn="${f.k}" id="envn-${f.k}" aria-label="${esc(x.envNote)} ${f.id}" value="${esc(E.n[f.k]||"")}" placeholder="${esc(x.envPhNote)}" style="width:100%;min-width:160px"></td><td class="mono mini">${f.sess}</td><td class="mono mini">${f.block.join(", ")}</td></tr>`).join("");
+  const cellIn=(z,c,i,r)=>{const v=r[c.k],a=`data-envt="${z.k}:${i}:${c.k}" id="envt-${z.k}-${i}-${c.k}" aria-label="${esc(c.n[L])}"`;
+    if(c.type==="sel")return `<select ${a}><option value="">-</option>${c.o.map(o=>`<option value="${o.c}"${v===o.c?" selected":""}>${esc(o.n[L])}</option>`).join("")}</select>`;
+    if(c.type==="sys")return `<select multiple size="3" ${a}>${S.sys.map((y,j)=>`<option value="${j}"${(v||[]).includes(j)?" selected":""}>${esc(y.name||"-")}</option>`).join("")}</select>`;
+    return `<input type="${c.type==="num"?"number":c.type==="date"?"date":"text"}"${c.type==="num"?' min="0" style="width:90px"':c.type==="text"?' style="width:100%;min-width:150px"':""} ${a} value="${esc(v??"")}">`;};
+  const tbl=z=>{const rows=E.t[z.k]||[];
+    return `<div class="box pad" style="margin-top:12px"><h2><span class="mono" style="font-size:15px">${z.id}</span> ${esc(z.n[L])} <span class="mini">${rows.length}</span></h2><p class="hint">${esc(z.hint[L])} <span class="mono mini">${z.sess} · ${z.block.join(", ")}</span></p>
+    <div class="scroll"><table class="t" style="min-width:${220+z.cols.length*150}px"><thead><tr><th>ID</th>${z.cols.map(c=>`<th>${esc(c.n[L])}</th>`).join("")}${z.k==="chg"?`<th>${x.envW12}</th>`:""}<th></th></tr></thead><tbody>
+    ${rows.map((r,i)=>`<tr${z.k==="tools"&&r.st==="bnd"?' style="background:var(--warn-soft)"':""}><td class="mono">${rowId(z,r)}</td>${z.cols.map(c=>`<td>${cellIn(z,c,i,r)}</td>`).join("")}${z.k==="chg"?`<td>${r.date?esc(within12(r.date)?x.ynO.Y:x.ynO.N):"-"}</td>`:""}<td><button class="btn sm danger" data-envdel="${z.k}:${i}">${x.remove}</button></td></tr>`).join("")||`<tr><td colspan="${z.cols.length+3}" class="mini">${x.envNone}</td></tr>`}</tbody></table></div>
+    <div class="hbtns" style="margin-top:8px"><button class="btn" data-envadd="${z.k}">${x.envAdd}</button></div></div>`;};
+  $("v-env").innerHTML=`<p class="hint">${x.envHint}</p>
+   <div class="kpis"><div class="kpi box"><b>${done} / ${EF.length}</b><span>${x.envK.f}</span></div>${ETB.map(z=>`<div class="kpi box"><b>${(E.t[z.k]||[]).length}</b><span>${esc(z.n[L])}</span></div>`).join("")}<div class="kpi box warn"><b>${bnd}</b><span>${x.envK.bnd}</span></div><div class="kpi box warn"><b>${chg12}</b><span>${x.envK.chg}</span></div></div>
+   <div class="box pad"><h2>${x.envFTitle}</h2><p class="hint">${x.envFHint}</p><div class="scroll"><table class="t" style="min-width:1250px"><thead><tr><th>ID</th><th>${x.pfField}</th><th>${x.pfAsk}</th><th>${x.pfAns}</th><th>${x.pfEv}</th><th>${x.envNote}</th><th>${x.envSess}</th><th>${x.envBlock}</th></tr></thead><tbody>${frows}</tbody></table></div></div>
+   ${ETB.map(tbl).join("")}`;}
+function envPrint(id){const x=t(),L=Li();const fs=EF.filter(f=>f.sess===id),ts=ETB.filter(z=>z.sess===id);if(!fs.length&&!ts.length)return"";
+  return `<h3>${x.tabs.env}</h3>${fs.map(f=>`<p style="margin:2pt 0;font-size:9pt"><b>${f.id} ${esc(f.n[L])}</b> (${esc(f.ask[L])}): ${f.o.length?f.o.map(o=>"[ ] "+esc(o.n[L])).join("  "):"____________"}</p>`).join("")}
+  ${ts.map(z=>`<p style="font-size:9pt;margin:6pt 0 2pt"><b>${z.id} ${esc(z.n[L])}</b></p><table style="width:100%;border-collapse:collapse" border="1"><tr>${z.cols.map(c=>`<th style="font-size:8pt">${esc(c.n[L])}</th>`).join("")}</tr>${Array.from({length:4},()=>`<tr>${z.cols.map(()=>"<td style='height:16pt'></td>").join("")}</tr>`).join("")}</table>`).join("")}`;}
+/* ---------- department interviews ---------- */
+const dName=d=>(d.name||"").trim()||"-";
+function dOpt(f,c){return f.o.find(o=>o.c===c)||null;}
+function dRate(d,f){const v=(d.u||{})[f.id];if(f.type==="multi"){const a=v||[];if(!a.length)return"";const rs=a.map(c=>(dOpt(f,c)||{}).r);return rs.includes("P")?"P":rs.includes("W")?"W":"G";}const o=v?dOpt(f,v):null;return o?o.r:"";}
+function dText(d,f,L){const v=(d.u||{})[f.id];if(f.type==="multi")return (v||[]).map(c=>{const o=dOpt(f,c);return o?o.n[L]:c;}).join(", ");if(f.type==="sys")return (d.sys||[]).map(j=>(S.sys[j]||{}).name||"").filter(Boolean).join(", ");const o=v?dOpt(f,v):null;return o?o.n[L]:"";}
+function dOther(d){return String(d.xsys||"").split(",").map(z=>z.trim()).filter(Boolean);}
+function shadowList(){const known=new Set(S.sys.map(y=>(y.name||"").trim().toLowerCase()));const out=[];S.dept.forEach(d=>dOther(d).forEach(n=>{if(!known.has(n.toLowerCase()))out.push({d,n});}));return out;}
+function deptConflicts(){const x=t(),L=Li(),out=[],add=(d,type,detail,ev,sys)=>out.push({id:"DCF-"+String(out.length+1).padStart(2,"0"),dept:dName(d),type,detail,ev,sys});
+  const known=new Set(S.sys.map(y=>(y.name||"").trim().toLowerCase()));
+  S.dept.forEach(d=>{const dn=dName(d),u=d.u||{},sys=(d.sys||[]).map(j=>S.sys[j]).filter(Boolean);
+    dOther(d).forEach(n=>{if(!known.has(n.toLowerCase()))add(d,"shadow",`${dn} uses ${n}, which is not on the IT system list.`,["U1:"+dn],n);});
+    if(["some","shared"].includes(u.U2)){const g=sys.filter(y=>pfR(y,"C3")==="G");if(g.length)add(d,"cred",`${dn} reports "${dText(d,DFBY.U2,0)}" while IT rated authentication Good on ${g.map(y=>y.name).join(", ")}.`,["U2:"+dn,...g.map(y=>"C3:"+y.name)]);}
+    if(u.U3==="stay"&&S.env.f.shws==="no")add(d,"shws",`${dn} keeps shared computers logged in all shift. IT answered that there are no shared workstations.`,["U3:"+dn,"ENV:shws"]);
+    if(["vpn","tool"].includes(u.U5)&&S.env.f.rem==="vpnm")add(d,"rem",`${dn} works remotely through "${dText(d,DFBY.U5,0)}". IT answered that staff use a VPN with MFA.`,["U5:"+dn,"ENV:rem"]);
+    if(u.U8==="stop"){const m=sys.filter(y=>y.man==="Y");if(m.length)add(d,"bia",`${dn} says work stops when the system fails. The Quick BIA records a manual workaround for ${m.map(y=>y.name).join(", ")}.`,["U8:"+dn,...m.map(y=>"BIA:"+y.name)]);}});
+  return out;}
+function renderDept(){const x=t(),L=Li();const cf=deptConflicts(),sh=shadowList();
+  const sel=(i,f,d)=>{const v=(d.u||{})[f.id]||"";return `<select data-du="${i}:${f.id}" id="du-${i}-${f.id}" aria-label="${esc(f.n[L])} ${esc(dName(d))}" title="${esc(f.ask[L])}"><option value="">-</option>${f.o.map(o=>`<option value="${o.c}"${v===o.c?" selected":""}>${esc(o.n[L])}${o.r==="X"?"":" ("+esc(x.rt[o.r])+")"}</option>`).join("")}</select>`;};
+  const cell=(i,f,d)=>{if(f.type==="sys")return `<td><select multiple size="4" data-dsys="${i}" id="dsys-${i}" aria-label="${esc(f.n[L])}">${S.sys.map((y,j)=>`<option value="${j}"${(d.sys||[]).includes(j)?" selected":""}>${esc(y.name||"-")}</option>`).join("")}</select><input type="text" data-dd="${i}:xsys" id="dd-${i}-xsys" value="${esc(d.xsys||"")}" placeholder="${esc(x.phOther)}" aria-label="${esc(x.dc.other)}" style="width:100%;margin-top:4px"></td>`;
+    if(f.type==="multi"){const v=(d.u||{})[f.id]||[];return `<td class="rt-${dRate(d,f)}" style="min-width:210px"><div class="mchk" style="flex-direction:column;gap:2px">${f.o.map(o=>`<label class="mini"><input type="checkbox" data-dm="${i}:${f.id}:${o.c}"${v.includes(o.c)?" checked":""}> ${esc(o.n[L])}</label>`).join("")}</div></td>`;}
+    return `<td class="rt-${dRate(d,f)}">${sel(i,f,d)}</td>`;};
+  const cq=(i,q,d)=>{const a=(d.cq||{})[q.n]||{};return `<td class="rt-${a.r||""}"><input type="text" data-dq="${i}:${q.n}:a" id="dqa-${i}-${q.n}" value="${esc(a.a||"")}" placeholder="${esc(x.cqAns)}" aria-label="${esc(q.q)}" style="width:100%;min-width:160px"><select data-dq="${i}:${q.n}:r" id="dqr-${i}-${q.n}" aria-label="${esc(q.q)} rating" style="margin-top:4px"><option value="">-</option>${["G","W","P","U"].map(r=>`<option value="${r}"${a.r===r?" selected":""}>${esc(x.rt[r])}</option>`).join("")}</select></td>`;};
+  const rows=S.dept.map((d,i)=>`<tr><td><input type="text" data-dd="${i}:name" id="dd-${i}-name" value="${esc(d.name||"")}" placeholder="${esc(x.phDept)}" style="width:150px"><input type="text" data-dd="${i}:ppl" id="dd-${i}-ppl" value="${esc(d.ppl||"")}" placeholder="${esc(x.phPpl)}" aria-label="${esc(x.dc.ppl)}" style="width:150px;margin-top:4px"><input type="date" data-dd="${i}:date" id="dd-${i}-date" value="${esc(d.date||"")}" aria-label="${esc(x.dc.date)}" style="margin-top:4px"><input type="number" min="0" data-dd="${i}:staff" id="dd-${i}-staff" value="${esc(d.staff||"")}" placeholder="${esc(x.dc.staff)}" aria-label="${esc(x.dc.staff)}" style="width:90px;margin-top:4px"></td>
+    ${DF.map(f=>cell(i,f,d)).join("")}${S.dq.map(q=>cq(i,q,d)).join("")}<td><textarea data-dd="${i}:note" id="dd-${i}-note" placeholder="${esc(x.phDNote)}" style="min-width:160px">${esc(d.note||"")}</textarea></td><td><button class="btn sm danger" data-deldept="${i}">${x.remove}</button></td></tr>`).join("");
+  const cqRows=S.dq.map((q,i)=>`<tr><td class="mono">U9-${q.n}</td><td><input type="text" data-cqe="${i}:q" id="cqe-${i}-q" value="${esc(q.q||"")}" placeholder="${esc(x.phCq)}" style="width:100%"></td><td><input type="text" data-cqe="${i}:s" id="cqe-${i}-s" value="${esc(q.s||"")}" placeholder="${esc(x.phCqS)}" style="width:100%"></td><td><button class="btn sm danger" data-delcq="${i}">${x.remove}</button></td></tr>`).join("");
+  $("v-dept").innerHTML=`<p class="hint">${x.dpHint}</p>
+   <div class="kpis"><div class="kpi box"><b>${S.dept.length}</b><span>${x.dpK.n}</span></div><div class="kpi box warn"><b>${sh.length}</b><span>${x.dpK.x}</span></div><div class="kpi box bad"><b>${cf.length}</b><span>${x.dpK.c}</span></div></div>
+   <div class="box pad"><h2>${x.cqTitle}</h2><p class="hint">${x.cqHint}</p><div class="scroll"><table class="t" style="min-width:700px"><thead><tr><th>ID</th><th>${x.cqQ}</th><th>${x.cqS}</th><th></th></tr></thead><tbody>${cqRows||`<tr><td colspan="4" class="mini">${x.cqNone}</td></tr>`}</tbody></table></div><div class="hbtns" style="margin-top:8px"><button class="btn" id="b-addcq">${x.addCq}</button></div></div>
+   <div class="box scroll" style="margin-top:12px"><table class="t sys" style="min-width:${1700+S.dq.length*200}px"><thead><tr><th>${x.dc.name}</th>${DF.map(f=>`<th title="${esc(f.ask[L])}"><span class="mono">${f.id}</span> ${esc(f.n[L])}<div class="mini mono">${f.s.join(", ")}</div></th>`).join("")}${S.dq.map(q=>`<th><span class="mono">U9-${q.n}</span> ${esc(q.q||"-")}<div class="mini mono">${esc(q.s||"")}</div></th>`).join("")}<th>${x.dc.note}</th><th></th></tr></thead><tbody>${rows||`<tr><td colspan="${DF.length+S.dq.length+3}" class="mini">${x.dpNone}</td></tr>`}</tbody></table></div>
+   <div class="hbtns" style="margin:8px 0"><button class="btn" id="b-adddept">${x.addDept}</button></div>
+   <div class="box pad" style="margin-top:12px"><h2>${x.cfTitleD}</h2><p class="hint">${x.cfHintD}</p>${cf.length?`<div class="scroll"><table class="t" style="min-width:900px"><thead><tr>${["id","dept","type","detail","ev"].map(k=>`<th>${esc(x.cfCols[k])}</th>`).join("")}<th></th></tr></thead><tbody>
+   ${cf.map((c,ci)=>`<tr><td class="mono">${c.id}</td><td>${esc(c.dept)}</td><td>${esc(x.cfT[c.type])}</td><td>${esc(c.detail)}</td><td class="mono mini">${esc(c.ev.join(", "))}</td><td>${c.type==="shadow"?`<button class="btn sm" data-addshadow="${ci}">${x.addToSys}</button>`:""}</td></tr>`).join("")}</tbody></table></div>`:`<p class="mini">${x.cfNoneD}</p>`}</div>`;}
+function deptPrint(id){if(id!=="S2C")return"";const x=t(),L=Li();
+  return `<h3>${x.tabs.dept}</h3><p>${x.dc.name}: ____________ · ${x.dc.ppl}: ____________</p>${DF.map(f=>`<p style="margin:2pt 0;font-size:9pt"><b>${f.id} ${esc(f.n[L])}</b> (${esc(f.ask[L])}): ${f.type==="sys"?"________________________________":f.o.map(o=>"[ ] "+esc(o.n[L])).join("  ")}</p>`).join("")}${S.dq.map(q=>`<p style="margin:2pt 0;font-size:9pt"><b>U9-${q.n}</b> ${esc(q.q)}: ________________</p>`).join("")}`;}
+/* ---------- document requests ---------- */
+function drItems(){const m=new Map();SESS.flatMap(z=>z.subs).forEach(s=>{const r=S.subs[s];if(!r)return;Object.keys(r.dr||{}).forEach(id=>{if(!r.dr[id]||!DBY[id])return;const k="d:"+id;if(!m.has(k))m.set(k,{key:k,doc:id,label:null,subs:[]});m.get(k).subs.push(s);});
+  (r.drOther||"").split("\n").map(z=>z.trim()).filter(Boolean).forEach(z=>{const k="o:"+z.toLowerCase();if(!m.has(k))m.set(k,{key:k,doc:null,label:z,subs:[]});m.get(k).subs.push(s);});});const so=s=>SESS.findIndex(z=>z.id===SUB_SESS[s]);return [...m.values()].sort((a,b)=>so(a.subs[0])-so(b.subs[0]));}
+function drWho(it){const n=new Set();it.subs.forEach(s=>((S.subs[s]||{}).who||[]).forEach(i=>{const p=S.people[i];if(p&&p.name)n.add(p.name);}));return n.size?[...n].join(", "):Q[it.subs[0]].r.map(role).join(", ");}
+const enc=encodeURIComponent, dec=decodeURIComponent;
+
+/* ---------- technical checks ---------- */
+function tcr(id){return S.tc[id]||(S.tc[id]={r:"",n:""});}
+function tcCount(ids){const c={Y:0,P:0,N:0,NA:0,none:0};ids.forEach(id=>{const r=(S.tc[id]||{}).r;c[r||"none"]++;});return c;}
+function tcBlock(id,showCsf){const x=t(),L=Li(),k=TCBY[id],r=S.tc[id]||{};
+  return `<div class="tc ${r.r||""}"><div class="top"><span class="qt"><span class="mono">${id}</span> ${esc(k.q[L])}</span>${seg("tc:"+id,["Y","P","N","NA"],r.r||"",x.tcv)}</div>
+  <div class="good"><b>${x.good}:</b> ${esc(k.g[L])} <span class="ref">[${esc(k.ref)}]</span></div>
+  ${PF.filter(f=>f.sec!=="dev"&&f.s.some(z=>k.s.includes(z))&&f.o.some(o=>o.r!=="X")).map(f=>{const c=pfCount(f,S.sys);return c.n?`<div class="mini" style="margin:4px 0"><b>${x.pfTc} ${f.id} ${esc(f.n[L])}:</b> ${esc(x.pfCount(c.G,c.W,c.P,c.U,c.n))}</div>`:"";}).join("")}
+  <input type="text" id="tcn-${id}" data-tcn="${id}" value="${esc(r.n||"")}" placeholder="${esc(x.phTcN)}" style="width:100%">
+  ${showCsf?`<div class="mini" style="margin-top:4px">${x.csfLink}: ${k.s.map(s=>`<button class="btn sm mono" data-go="${s}">${s}</button>`).join(" ")}</div>`:""}</div>`;}
+let curDom=DKEYS[0];
+function renderTech(){const x=t(),L=Li();
+  const items=DKEYS.map(d=>{const ids=TC.filter(c=>c.d===d).map(c=>c.id),k=tcCount(ids),done=ids.length-k.none;return `<button class="li${d===curDom?" sel":""}" data-dom="${d}"><span class="id">${d}</span><span class="nm">${esc(DOM[d].n[L])}</span><span class="pct">${done}/${ids.length}</span></button>`;}).join("");
+  const ids=TC.filter(c=>c.d===curDom).map(c=>c.id),k=tcCount(ids),ppl=S.people.filter(p=>DOM[curDom].r.includes(p.role));
+  $("v-tech").innerHTML=`<p class="hint">${x.techHint}</p><div class="ws"><div class="box list">${items}</div>
+   <div class="box pad detail" id="tdetail"><div class="dh"><h2><span class="mono" style="font-size:15px">${curDom}</span> ${esc(DOM[curDom].n[L])}</h2><button class="btn sm" data-printdom="${curDom}">${x.print}</button></div>
+   <div class="meta"><span>${x.areaAsk}: <b>${DOM[curDom].r.map(role).map(esc).join(", ")}</b>${ppl.length?` (${ppl.map(p=>esc(p.name)).join(", ")})`:""}</span><span>${x.progress}: <b>${ids.length-k.none} / ${ids.length}</b></span><span>${esc(x.tcSummary(k.Y,k.P,k.N))}</span></div>
+   ${ids.map(id=>tcBlock(id,true)).join("")}
+   <div class="navrow"><button class="btn" id="b-dprev"${DKEYS.indexOf(curDom)<=0?" disabled":""}>${x.prev}</button><button class="btn pri" id="b-dnext"${DKEYS.indexOf(curDom)>=DKEYS.length-1?" disabled":""}>${x.next}</button></div></div></div>`;}
+
+function renderSys(){const x=t(),L=Li();
+  const sel=(i,f,opts,v,blankLbl)=>`<select data-sy="${i}:${f}" id="sy-${i}-${f}" aria-label="${esc(x.sc[f])}"><option value="">${blankLbl||"-"}</option>${Object.entries(opts).map(([k,l])=>`<option value="${k}"${v===k?" selected":""}>${esc(l)}</option>`).join("")}</select>`;
+  const rows=S.sys.map((y,i)=>{const sg=sysSug(y);return `<tr><td><input type="text" data-sy="${i}:name" id="sy-${i}-name" value="${esc(y.name||"")}" placeholder="${esc(x.phSys)}" style="width:150px"></td>
+   <td><input type="text" data-sy="${i}:svc" id="sy-${i}-svc" value="${esc(y.svc||"")}" placeholder="${esc(x.phSvc)}" style="width:150px"></td>
+   <td><input type="text" data-sy="${i}:own" id="sy-${i}-own" value="${esc(y.own||"")}" placeholder="${esc(x.phOwn)}" style="width:110px"></td>
+   <td>${sel(i,"host",x.hostO,y.host)}</td><td>${sel(i,"data",x.dataO,y.data)}</td><td>${sel(i,"inet",x.ynO,y.inet)}</td><td>${sel(i,"ven",x.ynO,y.ven)}</td><td>${sel(i,"shared",x.ynO,y.shared)}</td>
+   ${IMP.map(f=>`<td>${sel(i,f,x.impO,y[f])}</td>`).join("")}<td>${sel(i,"mtd",x.mtdO,y.mtd)}</td><td>${sel(i,"man",x.ynO,y.man)}</td>
+   <td>${critChip(sg)}</td><td>${sel(i,"crit",x.critO,y.crit,x.auto)}</td><td><input type="text" data-sy="${i}:why" id="sy-${i}-why" value="${esc(y.why||"")}" placeholder="${esc(x.phCritWhy)}" style="width:130px">${y.crit&&y.crit!==sg&&!(y.why||"").trim()?`<div class="mini" style="color:var(--bad)">${x.needWhy}</div>`:""}</td>
+   <td style="text-align:center"><input type="checkbox" data-sysmp="${i}" aria-label="${esc(x.sc.smp)}"${y.smp?" checked":""}></td><td><button class="btn sm danger" data-delsys="${i}">${x.remove}</button></td></tr>`;}).join("");
+  const sm=sampled();const cnt={A:0,B:0,C:0};S.sys.forEach(y=>{const c=sysCrit(y);if(c)cnt[c]++;});
+  const sv=["Y","P","N","NA","U"];
+  const mat=sm.length?`<div class="scroll"><table class="t" style="min-width:${300+sm.length*170}px"><thead><tr><th>${x.smpTitle}</th><th>CSF</th>${sm.map(z=>`<th>${critChip(sysCrit(z.y))} ${esc(z.y.name||"-")}</th>`).join("")}</tr></thead><tbody>
+   ${SYSCTL.map(c=>`<tr><td>${esc(c.n[L])}</td><td class="mono mini">${c.s.join(", ")}</td>${sm.map(z=>{const cv=ctlVal(z.y,c.k),dv=derivedCtl(z.y,c.k),mv=((z.y.ctl||{})[c.k])||"";return `<td class="c${cv.v}"><select data-sc="${z.i}:${c.k}" id="sc-${z.i}-${c.k}" aria-label="${esc(c.n[L])} ${esc(z.y.name||"")}"><option value="">${x.smpAuto}${dv?": "+esc(x.sysv[dv]):""}</option>${sv.map(k=>`<option value="${k}"${mv===k?" selected":""}>${esc(x.sysv[k])}</option>`).join("")}</select>${cv.src?`<div class="mini">${esc(x.smpSrc[cv.src])}</div>`:""}<input type="text" data-scr="${z.i}:${c.k}" id="scr-${z.i}-${c.k}" value="${esc((z.y.cref||{})[c.k]||"")}" placeholder="${esc(x.phCref)}" style="width:100%;margin-top:2px"></td>`;}).join("")}</tr>`).join("")}
+   <tr><td>${x.smpNote}</td><td></td>${sm.map(z=>`<td><textarea data-sy="${z.i}:snote" id="sy-${z.i}-snote" placeholder="${esc(x.phSmpNote)}" style="min-height:60px">${esc(z.y.snote||"")}</textarea></td>`).join("")}</tr></tbody></table></div>`:`<p class="mini">${x.smpNone}</p>`;
+  const core=PF.filter(f=>f.sec==="core");
+  const prow=S.sys.map((y,i)=>`<tr><td><b>${esc(y.name||"-")}</b></td><td>${critChip(sysCrit(y))}</td>${core.map(f=>`<td class="rt-${pfR(y,f.id)}">${pfSelect(i,f,y,"pf")}</td>`).join("")}<td><button class="btn sm${curSys===i?" pri":""}" data-pfdet="${i}">${x.pfDet}</button></td></tr>`).join("");
+  const pmat=S.sys.length?`<div class="scroll"><table class="t sys" style="min-width:1600px"><thead><tr><th>${x.sc.name}</th><th>${x.sc.crit}</th>${core.map(f=>`<th title="${esc(f.ask[L])}"><span class="mono">${f.id}</span> ${esc(f.n[L])}</th>`).join("")}<th></th></tr></thead><tbody>${prow}</tbody></table></div>`:`<p class="mini">${x.pfNone}</p>`;
+  const popF=core.filter(f=>f.o.some(o=>o.r!=="X"));
+  const cell=(f,list)=>{const c=pfCount(f,list),d=c.n-c.X;return d?`${c.G} / ${d} (${Math.round(c.G/d*100)}%)`:"-";};
+  const pop=S.sys.length?`<div class="scroll"><table class="t" style="min-width:820px"><thead><tr><th>${x.popCols.f}</th><th>${x.popCols.all}</th>${["A","B","C"].map(k=>`<th>${critChip(k)}</th>`).join("")}<th>${x.popCols.poor}</th><th>${x.popCols.unk}</th><th>${x.popCols.na}</th></tr></thead><tbody>
+   ${popF.map(f=>{const all=pfCount(f,S.sys);return `<tr><td><span class="mono">${f.id}</span> ${esc(f.n[L])}</td><td class="num">${cell(f,S.sys)}</td>${["A","B","C"].map(k=>`<td class="num">${cell(f,S.sys.filter(y=>sysCrit(y)===k))}</td>`).join("")}<td class="num">${all.P}</td><td class="num">${all.U}</td><td class="num">${S.sys.length-all.n}</td></tr>`;}).join("")}</tbody></table></div>`:"";
+  const exs=pfExceptions();
+  $("v-sys").innerHTML=`<p class="hint">${x.sysHint}</p><div class="callout">${x.prelim}</div>
+   <div class="kpis"><div class="kpi box"><b>${S.sys.length}</b><span>${x.kSys}</span></div><div class="kpi box bad"><b>${cnt.A}</b><span>${x.kA}</span></div><div class="kpi box warn"><b>${cnt.B}</b><span>${esc(x.critO.B)}</span></div><div class="kpi box"><b>${cnt.C}</b><span>${esc(x.critO.C)}</span></div><div class="kpi box ok"><b>${sm.length}</b><span>${x.kSmp}</span></div><div class="kpi box warn"><b>${exs.length}</b><span>${x.exTitle}</span></div></div>
+   <div class="box scroll"><table class="t sys" style="min-width:2100px"><thead><tr>${["name","svc","own","host","data","inet","ven","shared",...IMP,"mtd","man","sug","crit","why","smp"].map(f=>`<th>${esc(x.sc[f])}</th>`).join("")}<th></th></tr></thead><tbody>${rows}</tbody></table></div>
+   <div class="hbtns" style="margin:8px 0"><button class="btn" id="b-addsys">${x.addSys}</button></div><p class="mini">${x.sugRule}</p>
+   <div class="box pad" style="margin-top:12px"><h2>${x.pfTitle}</h2><p class="hint">${x.pfHint}</p>${pmat}</div>
+   ${curSys>=0&&S.sys[curSys]?pfDetail(curSys):""}
+   <div class="grid2" style="margin-top:12px"><div class="box pad"><h2>${x.popTitle}</h2><p class="hint">${x.popHint}</p>${pop}</div>
+   <div class="box pad"><h2>${x.exTitle}</h2><p class="hint">${x.exHint}</p>${exs.length?`<ul style="margin:0;padding-left:18px;font-size:13px">${exs.map(e=>`<li><b>${esc(e.y.name||"-")}</b> ${critChip(sysCrit(e.y))}: <span class="mono">${e.f.id}</span> ${esc(e.f.n[L])}: ${esc(e.o.n[L])}</li>`).join("")}</ul>`:`<p class="mini">${x.exNone}</p>`}</div></div>
+   <div class="box pad" style="margin-top:12px"><h2>${x.smpTitle}</h2><p class="hint">${x.smpHint}</p>${mat}</div>`;}
+function pfDetail(i){const x=t(),L=Li(),y=S.sys[i];y.p=y.p||{};
+  return `<div class="box pad" id="pfdetail" style="margin-top:12px"><div class="dh"><h2>${esc(y.name||"-")} ${critChip(sysCrit(y))}</h2><button class="btn sm" data-pfdet="-1">${x.pfClose}</button></div>
+  ${["core","full","dev"].map(sec=>{const ap=pfApplies(y,sec);if(sec==="dev"&&!ap)return `<h3>${x.pfSec.dev}</h3><p class="mini">${x.pfDevNone}</p>`;
+   return `<h3>${x.pfSec[sec]}</h3><p class="mini">${ap?x.pfSecHint[sec]:x.pfNotReq}</p><div class="scroll"><table class="t" style="min-width:900px"><thead><tr><th>ID</th><th>${x.pfField}</th><th>${x.pfAsk}</th><th>${x.pfAns}</th><th>${x.pfEv}</th></tr></thead><tbody>
+   ${PF.filter(f=>f.sec===sec).map(f=>{const ev=(y.pe||{})[f.id]||"";return `<tr><td class="mono">${f.id}</td><td>${esc(f.n[L])}<div class="mini mono">${f.s.join(", ")}</div></td><td class="mini">${esc(f.ask[L])}</td><td class="rt-${pfR(y,f.id)}">${pfSelect(i,f,y,"pf")}</td><td><select data-pfe="${i}:${f.id}" id="pfe-${i}-${f.id}" aria-label="${esc(x.pfEv)} ${f.id}"><option value="">-</option>${EVB.map(k=>`<option value="${k}"${ev===k?" selected":""}>${esc(x.ev[k])}</option>`).join("")}</select></td></tr>`;}).join("")}</tbody></table></div>
+   <label class="mini" for="pfn-${i}-${sec}">${x.pfNotes}</label><textarea id="pfn-${i}-${sec}" data-pfn="${i}:${sec}" placeholder="${esc(x.phPfNotes)}">${esc((y.pn||{})[sec]||"")}</textarea>`;}).join("")}</div>`;}
+function renderVen(){const x=t(),L=Li();
+  const rows=S.vendors.map((v,i)=>`<tr><td><input type="text" data-vn="${i}:name" id="vn-${i}-name" value="${esc(v.name||"")}" placeholder="${esc(x.phVen)}" style="width:170px"></td>
+   ${VF.map(f=>{const val=(v.p||{})[f.id]||"",rt=val?pfOpt(f,val).r:"";return `<td class="rt-${rt}">${pfSelect(i,f,v,"vp")}</td>`;}).join("")}
+   <td><select multiple size="3" data-vsys="${i}" id="vs-${i}" aria-label="${esc(x.vc.sys)}">${S.sys.map((y,j)=>`<option value="${j}"${(v.sys||[]).includes(j)?" selected":""}>${esc(y.name||"-")}</option>`).join("")}</select></td>
+   <td><input type="text" data-vn="${i}:note" id="vn-${i}-note" value="${esc(v.note||"")}" placeholder="${esc(x.phVenNote)}" style="width:180px"></td><td><button class="btn sm danger" data-delven="${i}">${x.remove}</button></td></tr>`).join("");
+  $("v-ven").innerHTML=`<p class="hint">${x.venHint}</p><div class="box scroll"><table class="t sys" style="min-width:1700px"><thead><tr><th>${x.vc.name}</th>${VF.map(f=>`<th title="${esc(f.ask[L])}"><span class="mono">${f.id}</span> ${esc(f.n[L])}</th>`).join("")}<th>${x.vc.sys}</th><th>${x.vc.note}</th><th></th></tr></thead><tbody>${rows||`<tr><td colspan="${VF.length+4}" class="mini">${x.venNone}</td></tr>`}</tbody></table></div>
+   <div class="hbtns" style="margin:8px 0"><button class="btn" id="b-addven">${x.addVen}</button></div>`;}
+function obsId(o){return "OBS-"+String(o.n).padStart(2,"0");}
+function renderObs(){const x=t();const so=(i,k,opts,v)=>`<select data-ob="${i}:${k}" id="ob-${i}-${k}" aria-label="${esc(x.oc[k])}"><option value="">-</option>${Object.entries(opts).map(([c,l])=>`<option value="${c}"${v===c?" selected":""}>${esc(l)}</option>`).join("")}</select>`;
+  const rows=S.obs.map((o,i)=>`<tr${o.type==="inc"?' style="background:var(--bad-soft)"':""}><td class="mono">${obsId(o)}</td><td>${so(i,"type",x.obsT,o.type)}</td>
+   <td><input type="text" list="obs-sys" data-ob="${i}:sys" id="ob-${i}-sys" value="${esc(o.sys||"")}" placeholder="${esc(x.phObsSys)}" style="width:150px"></td>
+   <td><textarea data-ob="${i}:desc" id="ob-${i}-desc" placeholder="${esc(x.phObsDesc)}" style="min-width:260px">${esc(o.desc||"")}</textarea></td><td>${so(i,"sev",x.obsSev,o.sev)}</td><td>${so(i,"inet",x.ynO,o.inet)}</td>
+   <td><input type="text" data-ob="${i}:subs" id="ob-${i}-subs" value="${esc(o.subs||"")}" placeholder="${esc(x.phObsSubs)}" style="width:150px"></td><td>${so(i,"st",x.obsSt,o.st)}</td>
+   <td><input type="date" data-ob="${i}:date" id="ob-${i}-date" value="${esc(o.date||"")}"></td><td><input type="text" data-ob="${i}:note" id="ob-${i}-note" value="${esc(o.note||"")}" style="width:150px"></td><td><button class="btn sm danger" data-delobs="${i}">${x.remove}</button></td></tr>`).join("");
+  $("v-obs").innerHTML=`<p class="hint">${x.obsHint}</p>${S.obs.some(o=>o.type==="inc"&&o.st!=="closed")?`<div class="callout" style="border-left-color:var(--bad)"><b>${x.obsInc}</b></div>`:""}
+   <datalist id="obs-sys">${S.sys.map(y=>`<option value="${esc(y.name||"")}">`).join("")}</datalist>
+   <div class="box scroll"><table class="t" style="min-width:1500px"><thead><tr>${["id","type","sys","desc","sev","inet","subs","st","date","note"].map(k=>`<th>${esc(x.oc[k])}</th>`).join("")}<th></th></tr></thead><tbody>${rows||`<tr><td colspan="11" class="mini">${x.obsNone}</td></tr>`}</tbody></table></div>
+   <div class="hbtns" style="margin:8px 0"><button class="btn" id="b-addobs">${x.addObs}</button></div>`;}
+function obsFor(s){return S.obs.filter(o=>(o.subs||"").toUpperCase().split(/[\s,;]+/).includes(s));}
+function pfResults(s){const x=t(),L=Li();const fs=PF.filter(f=>f.s.includes(s)&&f.o.some(o=>o.r!=="X")),vs=VF.filter(f=>f.s.includes(s)&&f.o.some(o=>o.r!=="X"));
+  const line=(f,list)=>{const c=pfCount(f,list);if(!c.n)return"";return `<tr><td style="min-width:200px"><span class="mono">${f.id}</span> ${esc(f.n[L])}<div class="mini">${esc(x.pfCount(c.G,c.W,c.P,c.U,c.n-c.X))}</div></td><td>${list.map(y=>{const v=(y.p||{})[f.id];if(!v)return"";const o=pfOpt(f,v);return `<span class="chipv ${RT2SV[o.r]}" title="${esc(o.n[L])}">${esc(y.name||"-")}: ${esc(o.n[L])}</span>`;}).join("")}</td></tr>`;};
+  const body=fs.map(f=>line(f,S.sys.filter(y=>pfApplies(y,f.sec)))).join("")+vs.map(f=>line(f,S.vendors)).join("");
+  return body?`<h3>${x.pfRes}</h3><p class="mini">${x.pfResHint}</p><div class="scroll"><table class="t"><tbody>${body}</tbody></table></div>`:"";}
+function covBlock(s){const x=t(),c=covOf(s);if(!c.app)return"";const r=S.subs[s]||{};
+  return `<h3>${x.covTitle}</h3><div class="linkbox"><b>${esc(x.covBand[c.band])}</b>${c.pct!==null?` (${Math.round(c.pct*100)}%, ${c.den} ${x.covPts})`:""} · ${c.ov?x.covSrc.ov:c.src?x.covSrc[c.src]:x.covBand.nm}
+   <div class="covline"><label class="mini" for="cov-${s}">${x.covOv}</label><select id="cov-${s}" data-cov="1"><option value="">${x.covAuto} (${esc(x.covBand[c.auto])})</option>${["full","lg","pt","none"].map(b=>`<option value="${b}"${r.covOv===b?" selected":""}>${esc(x.covBand[b])}</option>`).join("")}</select>
+   <input type="text" id="covw-${s}" data-f="covWhy" value="${esc(r.covWhy||"")}" placeholder="${esc(x.phCovWhy)}" style="flex:1 1 220px"></div>${c.ov&&!c.why.trim()?`<div class="mini" style="color:var(--bad)">${x.needWhy}</div>`:""}<p class="mini" style="margin:6px 0 0">${x.covNote}</p></div>`;}
+
+/* ---------- views ---------- */
+function renderSetup(){const x=t(),c=S.client,L=Li();
+  const ro=(v)=>`<option value="">-</option>`+Object.keys(M.roles).map(k=>`<option value="${k}"${v===k?" selected":""}>${esc(role(k))}</option>`).join("");
+  const ppl=S.people.map((p,i)=>`<tr><td><input type="text" data-pp="${i}:name" id="pp-${i}-name" value="${esc(p.name)}" placeholder="${esc(x.phName)}" style="width:100%"></td><td><select data-pp="${i}:role" id="pp-${i}-role" aria-label="${x.pc.role}">${ro(p.role)}</select></td><td><input type="text" data-pp="${i}:dept" id="pp-${i}-dept" value="${esc(p.dept)}" placeholder="${esc(x.phDept)}" style="width:100%"></td><td><input type="date" data-pp="${i}:date" id="pp-${i}-date" value="${esc(p.date)}"></td><td><button class="btn sm danger" data-delp="${i}">${x.remove}</button></td></tr>`).join("");
+  const nDocs=LA?Object.values(LA.docs||{}).filter(r=>r&&r.status).length:0;
+  $("v-setup").innerHTML=`<div class="grid2">
+   <div class="box pad"><h2>${x.eng}</h2><div class="form" style="margin-top:10px">
+    <label for="c-name">${x.client}</label><input type="text" id="c-name" data-cl="name" value="${esc(c.name)}" placeholder="${esc(x.phClient)}">
+    <label for="c-assessor">${x.assessor}</label><input type="text" id="c-assessor" data-cl="assessor" value="${esc(c.assessor)}" placeholder="${esc(x.phAssessor)}">
+    <label for="c-date">${x.date}</label><input type="date" id="c-date" data-cl="date" value="${esc(c.date)}">
+    <label for="c-ref">${x.ref}</label><input type="text" id="c-ref" data-cl="ref" value="${esc(c.ref)}" placeholder="${esc(x.phRef)}">
+    <label for="c-scope">${x.scopeNote}</label><textarea id="c-scope" data-cl="scope" placeholder="${esc(x.phScope)}">${esc(c.scope)}</textarea></div>
+    <h3>${x.sample}</h3><p class="mini">${x.sampleHint}</p><div class="hbtns"><button class="btn" id="b-sample">${x.sample}</button><button class="btn danger" id="b-reset">${resetArm?x.resetConfirm:x.reset}</button></div></div>
+   <div class="box pad"><h2>${x.rules}</h2><p class="hint">${x.rulesHint}</p><div class="form">
+    <label for="r-cap">${x.rCap}</label><select id="r-cap" data-rule="cap"><option value="1"${S.rules.cap?" selected":""}>${L?"ใช่":"Yes"}</option><option value="0"${!S.rules.cap?" selected":""}>${L?"ไม่ใช่":"No"}</option></select><div class="help">${x.rCapH}</div>
+    <label for="r-obs">${x.rObs}</label><select id="r-obs" data-rule="obs"><option value="1"${S.rules.obs?" selected":""}>${L?"ใช่":"Yes"}</option><option value="0"${!S.rules.obs?" selected":""}>${L?"ไม่ใช่":"No"}</option></select><div class="help">${x.rObsH}</div>
+    <label for="r-tgt">${x.rTgt}</label><select id="r-tgt" data-rule="tgt">${["1","2","3","4"].map(v=>`<option value="${v}"${S.rules.tgt===v?" selected":""}>Tier ${v} ${esc(x.tl[v])}</option>`).join("")}</select><div class="help">${x.rTgtH}</div>
+    <label>${x.rR4}</label><div class="mini">${x.rR4H}</div><label>${x.rR3}</label><div class="mini">${x.rR3H}</div><label>${x.rubV}</label><div class="mini mono">${RUBV} · ${SCHEMA}</div></div>
+    <h3>${x.link}</h3><p class="hint">${x.linkHint}</p><div class="linkbox">${LA?x.linkYes(esc((LA.client||{}).name||"-"),nDocs,esc((LA.updated||"").slice(0,10)||"-")):x.linkNone}
+    <div class="hbtns" style="margin-top:8px"><button class="btn sm" id="b-link">${x.linkOpen}</button>${LA?`<button class="btn sm" id="b-copyeng">${x.copyEng}</button><button class="btn sm danger" id="b-unlink">${x.unlink}</button>`:""}</div></div></div></div>
+   <div class="box pad" style="margin-top:12px"><h2>${x.people} <span class="mini">${S.people.length}</span></h2><p class="hint">${x.peopleHint}</p>
+    <div class="scroll"><table class="t" style="min-width:760px"><thead><tr><th>${x.pc.name}</th><th>${x.pc.role}</th><th>${x.pc.dept}</th><th>${x.pc.date}</th><th></th></tr></thead><tbody>${ppl}</tbody></table></div>
+    <div style="margin-top:8px"><button class="btn" id="b-addp">${x.addPerson}</button></div></div>`;}
+
+function roleSubs(k){return SUBS.filter(s=>Q[s].r.includes(k));}
+function renderPlan(){const x=t();
+  const rows=ROLE_KEYS.map(k=>{const subs=roleSubs(k),done=subs.filter(s=>eff(s).st!=="none").length,ppl=S.people.filter(p=>p.role===k);
+    return `<tr><td><b>${esc(role(k))}</b><div class="mini">${FN.map(f=>{const n=subs.filter(s=>fnOf(s)===f).length;return n?`${f} ${n}`:"";}).filter(Boolean).join(" · ")}</div></td><td>${ppl.length?ppl.map(p=>esc(p.name||"-")).join(", "):`<span class="mini">${x.unassigned}</span>`}</td><td class="num">${subs.length}</td><td class="num">${done} / ${subs.length}</td><td><div class="hbtns"><button class="btn sm pri" data-start="${k}">${x.start}</button><button class="btn sm" data-print="${k}">${x.print}</button></div></td></tr>`;}).join("");
+  const L=Li();const trows=DKEYS.map(d=>{const ids=TC.filter(c=>c.d===d).map(c=>c.id),k=tcCount(ids),ppl=S.people.filter(p=>DOM[d].r.includes(p.role));
+    return `<tr><td><b>${esc(DOM[d].n[L])}</b><div class="mini mono">${d}</div></td><td>${DOM[d].r.map(role).map(esc).join(", ")}${ppl.length?`<div class="mini">${ppl.map(p=>esc(p.name||"-")).join(", ")}</div>`:""}</td><td class="num">${ids.length}</td><td class="num">${ids.length-k.none} / ${ids.length}</td><td><div class="hbtns"><button class="btn sm pri" data-startdom="${d}">${x.start}</button><button class="btn sm" data-printdom="${d}">${x.print}</button></div></td></tr>`;}).join("");
+  const cards=SESS.map(k=>{const done=k.subs.filter(s=>eff(s).st!=="none").length,n=k.subs.length;const ppl=S.people.filter(p=>k.r.includes(p.role)).map(p=>p.name).filter(Boolean);
+    return `<div class="sess${k.par?" par":""}"><div class="sh"><span class="sn">${k.id}</span><span class="st3">${esc(k.n[L])}</span><span class="mini num">${n?done+" / "+n:""}</span></div>
+    ${n?`<div class="bar2"><i style="width:${done/n*100}%"></i></div>`:""}
+    <p><b>${x.sObj}:</b> ${esc(k.obj[L])}</p><p><b>${x.sOut}:</b> ${esc(k.out[L])}</p>
+    <p><b>${x.sWho}:</b> ${k.r.map(role).map(esc).join(", ")}${ppl.length?` (${ppl.map(esc).join(", ")})`:""}</p>
+    <p><b>${x.sDur}:</b> ${esc(k.dur[L])}${k.dep.length?` · <b>${x.sDep}:</b> ${k.dep.join(", ")}`:""}${k.par?` · <b>${x.sPar}</b>`:""}</p>
+    ${k.areas.length?`<p><b>${x.sAreas}:</b> ${k.areas.map(a=>`<button class="btn sm" data-startdom="${a}">${esc(DOM[a].n[L])}</button>`).join(" ")}</p>`:""}
+    <label class="mini" style="display:flex;gap:6px;align-items:center" title="${esc(x.rbHint)}"><input type="checkbox" data-rb="${k.id}"${S.rb[k.id]?" checked":""}> ${x.rbQ}${S.rb[k.id]?" ("+esc(S.rb[k.id])+")":""}</label>
+    <div class="hbtns" style="margin-top:auto">${n?`<button class="btn sm pri" data-sess="${k.id}">${x.start}</button><button class="btn sm" data-printsess="${k.id}">${x.print}</button>`:`<span class="mini">${x.sNone}</span>`}${k.id==="S2"?`<button class="btn sm" data-tab="sys">${x.sOpenSys}</button>`:""}${["S1","S3","S6"].includes(k.id)?`<button class="btn sm" data-tab="env">${esc(x.tabs.env)}</button>`:""}${k.id==="S2C"?`<button class="btn sm" data-tab="dept">${esc(x.tabs.dept)}</button>`:""}${k.id==="S10"?`<button class="btn sm" data-tab="fu">${x.sOpenReq}</button>`:""}</div></div>`;}).join("");
+  const flow=SESS.map(k=>`<span class="${k.par?"p":""}">${k.id}</span>`).join("<em>›</em>");
+  $("v-plan").innerHTML=`<h2>${x.seqTitle}</h2><p class="hint">${x.seqHint}</p><div class="flow">${flow}</div>
+  <details class="box pad" style="margin-bottom:10px"><summary><b>${x.why}</b></summary><ol style="margin:8px 0 0;padding-left:20px;font-size:13px">${PRIN.map(z=>`<li>${esc(z[L])}</li>`).join("")}</ol></details>
+  <div class="sessgrid">${cards}</div>
+  <details class="box pad" style="margin-top:14px"><summary><b>${x.byRole}</b></summary><p class="hint" style="margin-top:8px">${x.planHint}</p><div class="scroll"><table class="t" style="min-width:760px"><thead><tr><th>${x.cols.role}</th><th>${x.cols.ppl}</th><th>${x.cols.nq}</th><th>${x.cols.done}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></details>
+  <details class="box pad" style="margin-top:10px"><summary><b>${x.planTech}</b></summary><p class="hint" style="margin-top:8px">${x.planTechHint}</p><div class="scroll"><table class="t" style="min-width:760px"><thead><tr><th>${x.area}</th><th>${x.areaAsk}</th><th>${x.nChecks}</th><th>${x.progress}</th><th></th></tr></thead><tbody>${trows}</tbody></table></div></details>`;}
+
+function listItems(){const g=id=>($(id)||{}).value||"";const q=g("l-q").toLowerCase(),fn=g("l-fn"),ct=g("l-cat"),rl=$("l-role")?g("l-role"):roleFilter,st=g("l-st"),ss=$("l-sess")?g("l-sess"):sessFilter;
+  return (ss?SBY[ss].subs:SUBS).filter(s=>{if(fn&&fnOf(s)!==fn)return false;if(ct&&catOf(s)!==ct)return false;if(rl&&!Q[s].r.includes(rl))return false;if(st&&subFlag(s)!==st)return false;
+   if(q&&!(s.toLowerCase().includes(q)||M.subcats[s].toLowerCase().includes(q)||(M.subcats_th[s]||"").includes(q)||Q[s].q[0].toLowerCase().includes(q)||Q[s].q[1].includes(q)))return false;return true;});}
+function renderList(){const el=$("l-items");if(!el)return;const items=listItems();
+  el.innerHTML=items.map(s=>{const e=eff(s),f=subFlag(s);return `<button class="li${s===cur?" sel":""}" data-pick="${s}">${tierChip(e.st==="rated"?String(e.v):e.st==="NA"?"NA":null)}<span class="id">${s}</span><span class="nm">${esc(outc(s))}</span>${f==="cap"?`<span class="flag" title="${esc(t().sf.cap)}">!</span>`:f==="cov"?`<span class="flag info" title="${esc(t().sf.cov)}">+</span>`:f==="fu"?`<span class="flag info" title="${esc(t().sf.fu)}">?</span>`:""}</button>`;}).join("")||`<p class="mini" style="padding:10px">-</p>`;}
+function renderIv(){const x=t();const g=id=>($(id)||{}).value;const prev={q:g("l-q")||"",fn:g("l-fn")||"",cat:g("l-cat")||"",role:$("l-role")?g("l-role"):roleFilter,st:g("l-st")||"",sess:$("l-sess")?g("l-sess"):sessFilter};
+  const o=(v,l)=>`<option value="${v}">${esc(l)}</option>`;
+  $("v-iv").innerHTML=`<div class="ws"><div class="box list"><div class="lfil"><input type="search" id="l-q" placeholder="${esc(x.search)}" aria-label="${esc(x.search)}">
+   <select id="l-sess" aria-label="${x.session}">${o("",x.session+": "+x.all)}${SESS.filter(k=>k.subs.length).map(k=>o(k.id,k.id+" "+k.n[Li()])).join("")}</select>
+   <select id="l-role" aria-label="${x.role}">${o("",x.role+": "+x.all)}${ROLE_KEYS.map(k=>o(k,role(k))).join("")}</select>
+   <select id="l-fn" aria-label="${x.fn}">${o("",x.fn+": "+x.all)}${FN.map(f=>o(f,f+" "+M.functions[f][Li()])).join("")}</select>
+   <select id="l-cat" aria-label="${x.cat}">${o("",x.cat+": "+x.all)}${CATS.map(c=>o(c,c+" "+catNm(c))).join("")}</select>
+   <select id="l-st" aria-label="${x.stat}">${o("",x.stat+": "+x.all)}${["none","rated","fu","cap","cov"].map(s=>o(s,x.sf[s])).join("")}</select></div><div id="l-items"></div></div>
+   <div class="box pad detail" id="detail"></div></div>`;
+  $("l-q").value=prev.q;$("l-fn").value=prev.fn;$("l-cat").value=prev.cat;$("l-role").value=prev.role;$("l-sess").value=prev.sess;$("l-st").value=prev.st;
+  const it=listItems();if(it.length&&!it.includes(cur))cur=it[0];renderList();renderDetail();}
+function renderDetail(){const el=$("detail");if(!el)return;const x=t(),L=Li(),s=cur,q=Q[s],r=S.subs[s]||{probes:{},who:[]},e=eff(s);
+  const docs=(DOCS_BY_SUB[s]||[]).map(id=>DBY[id]);
+  const it=listItems(),idx=it.indexOf(s);
+  const people=S.people.map((p,i)=>({p,i})).filter(z=>z.p.name||z.p.role);
+  el.innerHTML=`<div class="dh">${tierChip(e.st==="rated"?String(e.v):e.st==="NA"?"NA":null)}<h2><span class="mono" style="font-size:15px">${s}</span> ${esc(outc(s))}</h2></div>
+  <div class="meta"><span>${x.cat}: <b>${catOf(s)} ${esc(catNm(catOf(s)))}</b></span><span>${x.fn}: <b>${fnOf(s)} ${esc(M.functions[fnOf(s)][L])}</b></span><span>${x.session}: <b>${SUB_SESS[s]} ${esc(SBY[SUB_SESS[s]].n[L])}</b></span><span>${x.suggestedRoles}: <b>${q.r.map(role).map(esc).join(", ")}</b></span></div>
+  ${L?`<p class="mini">${x.outcome} (EN): ${esc(M.subcats[s])}</p>`:""}
+  <div class="scene"><div class="st1"><div class="mini"><span class="step">1</span><b>${x.scene}</b> · ${x.sceneHint}</div><div style="margin-top:4px">${esc(q.f[L])}</div></div>
+   <div class="st2"><div class="mini"><span class="step">2</span><b>${x.scenario}</b> · ${x.scenarioHint}</div><div class="qq" style="margin-top:4px">${esc(q.x[L])}</div></div></div>
+  <div class="qbox"><div class="mini"><span class="step">3</span>${x.question}</div><div class="qq">${esc(q.q[L])}</div></div>
+  <h3><span class="step">4</span>${x.probes}</h3>${q.p.map((p,i)=>`<label class="probe"><input type="checkbox" data-probe="${i}"${(r.probes||{})[i]?" checked":""}> <span>${esc(p[L])}</span></label>`).join("")}
+  <p class="mini"><b>${x.evReq}:</b> ${esc(q.e[L])}</p>
+  <h3>${x.drTitle}</h3><p class="mini">${x.drHint}</p>${docs.length?`<div class="scroll"><table class="t"><thead><tr><th>${x.drReq}</th><th>${x.relDocs}</th><th></th><th></th><th></th></tr></thead><tbody>${docs.map(d=>`<tr><td style="text-align:center"><input type="checkbox" data-drq="${d.id}" id="drq-${s}-${d.id}" aria-label="${x.drReq} ${d.id}"${((r.dr||{})[d.id])?" checked":""}></td><td class="mono">${d.id}</td><td>${esc(L?d.th:d.en)}</td><td>${esc(d.level)}</td><td>${docPill(d.id)}</td></tr>`).join("")}</tbody></table></div><p class="mini">${LA?x.relHint:x.relNoLink}</p>`:""}
+  <label class="mini" for="dro-${s}">${x.drOther}</label><textarea id="dro-${s}" data-f="drOther" placeholder="${esc(x.phDrOther)}" style="min-height:44px">${esc(r.drOther||"")}</textarea>
+  ${(()=>{const ctl=SYSCTL.filter(c=>c.s.includes(s)),sm=sampled();if(!ctl.length||!sm.length)return"";return `<h3>${x.smpRes}</h3><div class="scroll"><table class="t"><thead><tr><th></th>${sm.map(z=>`<th>${critChip(sysCrit(z.y))} ${esc(z.y.name||"-")}</th>`).join("")}</tr></thead><tbody>${ctl.map(c=>`<tr><td>${esc(c.n[L])}</td>${sm.map(z=>{const v=ctlVal(z.y,c.k).v||"none";return `<td><span class="chipv ${v}">${v==="none"?"-":esc(x.sysv[v])}</span></td>`;}).join("")}</tr>`).join("")}</tbody></table></div>`;})()}
+  ${pfResults(s)}
+  ${obsFor(s).length?`<h3>${x.obsRel}</h3><ul style="margin:0;padding-left:18px;font-size:13px">${obsFor(s).map(o=>`<li><span class="mono">${obsId(o)}</span> ${esc(o.sys||"")}: ${esc(o.desc||"")} ${o.sev?`<span class="flag">${esc(x.obsSev[o.sev])}</span>`:""}</li>`).join("")}</ul>`:""}
+  ${(TC_BY_SUB[s]||[]).length?`<h3>${x.tcTitle}</h3><p class="mini">${x.tcHint}</p>${TC_BY_SUB[s].map(id=>tcBlock(id,false)).join("")}`:""}
+  <h3>${x.who}</h3>${people.length?`<div class="chips">${people.map(z=>`<button class="chip" data-who="${z.i}" aria-pressed="${(r.who||[]).includes(z.i)}">${esc(z.p.name||"-")}${z.p.role?` · ${esc(z.p.role)}`:""}</button>`).join("")}</div>`:`<p class="mini">${x.noPeople}</p>`}
+  ${covBlock(s)}
+  <h3>${x.tierQ}</h3>${seg("tier",TIERS,r.tier||"",x.tv,Object.fromEntries(TIERS.map(v=>[v,v==="NA"?x.tl[v]:x.tl[v]+": "+RUB[catOf(s)][v][L]])))}
+  <p class="mini" style="margin:6px 0 0"><b>${esc(x.rubTitle(catOf(s),RUBV))}</b></p><ul class="anchors">${["0","1","2","3","4"].map(v=>`<li><b>${v} ${esc(x.tl[v])}:</b> ${esc(RUB[catOf(s)][v][L])}</li>`).join("")}</ul><p class="mini" style="margin:2px 0 0">${x.rubNote}</p>
+  <h3>${x.evQ}</h3>${seg("ev",EVB,r.ev||"",x.ev,x.evl)} ${e.capped?`<span class="flag">${esc(x.capNote(e.raw))}</span>`:""}${e.covCap?` <span class="flag info">${esc(x.covCapNote)}</span>`:""}
+  <div style="margin-top:8px"><label class="mini" for="ref-${s}">${x.evRef}</label><input type="text" id="ref-${s}" data-f="ref" value="${esc(r.ref||"")}" placeholder="${esc(x.phEvRef)}" style="width:100%"></div>
+  <h3>${x.notes}</h3><textarea id="nt-${s}" data-f="notes" placeholder="${esc(x.phNotes)}" style="min-height:90px">${esc(r.notes||"")}</textarea>
+  <h3>${x.gapQ}</h3><textarea id="gp-${s}" data-f="gap" placeholder="${esc(x.phGap)}">${esc(r.gap||"")}</textarea>
+  <h3><label style="display:flex;gap:6px;align-items:center;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink)"><input type="checkbox" id="fu-${s}" data-fu="1"${r.fu?" checked":""}> ${x.fuQ}</label></h3>
+  ${r.fu?`<input type="text" id="fut-${s}" data-f="fuText" value="${esc(r.fuText||"")}" placeholder="${esc(x.phFu)}" style="width:100%">`:""}
+  <div class="navrow"><button class="btn" id="b-prev"${idx<=0?" disabled":""}>${x.prev}</button><button class="btn pri" id="b-next"${idx<0||idx>=it.length-1?" disabled":""}>${x.next}</button></div>`;}
+
+function renderScore(){const x=t(),L=Li();
+  const rows=CATS.map(c=>{const k=catStat(c),o=S.cats[c]||{};const gap=k.cur===null?null:k.tgt-k.cur;const need=k.over&&!k.why.trim();
+    return `<tr><td class="mono">${c}</td><td>${esc(catNm(c))}${k.capped?`<div><span class="flag">${k.capped} ${esc(x.sf.cap)}</span></div>`:""}${k.covCapped?`<div><span class="flag info">${k.covCapped} ${esc(x.sf.cov)}</span></div>`:""}</td><td class="num">${k.rated} / ${k.n}</td><td class="num">${k.mean===null?"-":k.mean.toFixed(2)}</td><td>${tierChip(k.sug===null?null:String(k.sug))}</td>
+    <td><select data-catcur="${c}" id="cc-${c}" aria-label="${x.cols.cur} ${c}"><option value="">${x.auto}${k.sug===null?"":" ("+k.sug+")"}</option>${["0","1","2","3","4"].map(v=>`<option value="${v}"${o.cur===v?" selected":""}>${v}</option>`).join("")}</select></td>
+    <td><select data-cattgt="${c}" id="ct-${c}" aria-label="${x.cols.tgt} ${c}"><option value="">${x.auto} (${S.rules.tgt})</option>${["1","2","3","4"].map(v=>`<option value="${v}"${o.tgt===v?" selected":""}>${v}</option>`).join("")}</select></td>
+    <td class="num">${gap===null?"-":gap>0?`<b style="color:var(--bad)">${gap}</b>`:`<span style="color:var(--ok)">0</span>`}</td>
+    <td><input type="text" id="cw-${c}" data-catwhy="${c}" value="${esc(o.why||"")}" placeholder="${esc(x.phWhy)}" style="width:100%">${need?`<div class="mini" style="color:var(--bad)">${x.needWhy}</div>`:""}</td></tr>`;}).join("");
+  $("v-score").innerHTML=`<p class="hint">${x.scoreHint}</p><div class="box scroll"><table class="t" style="min-width:1000px"><thead><tr><th>${x.cols.id}</th><th>${x.cols.cat}</th><th>${x.cols.rated}</th><th>${x.cols.mean}</th><th>${x.cols.sug}</th><th>${x.cols.cur}</th><th>${x.cols.tgt}</th><th>${x.cols.gap}</th><th style="min-width:240px">${x.cols.why}</th></tr></thead><tbody>${rows}</tbody></table></div>`;}
+
+function fuItems(){return SUBS.filter(s=>{const r=S.subs[s];return r&&(r.fu||eff(s).capped);});}
+function renderDash(){const x=t(),L=Li();const rated=SUBS.filter(s=>eff(s).st!=="none").length;const cs=CATS.map(c=>({c,...catStat(c)}));const withCur=cs.filter(k=>k.cur!==null);
+  const avg=withCur.length?(withCur.reduce((a,k)=>a+k.cur,0)/withCur.length).toFixed(1):"-";const atT=withCur.filter(k=>k.cur>=k.tgt).length;
+  const fuOpen=fuItems().filter(s=>(S.subs[s].fuSt||"open")!=="recv").length,capN=SUBS.filter(s=>eff(s).capped).length;
+  const pair=(label,c,tg)=>`<div class="pair"><span>${label}</span><span class="tr" title="Current ${c===null?"-":c.toFixed(1)} / Target ${tg.toFixed(1)}">${c===null?"":`<i style="width:${c/4*100}%;background:${c>=tg?"var(--ok)":c>=tg-1?"var(--warn)":"var(--bad)"}"></i>`}<u style="left:calc(${tg/4*100}% - 1px)"></u></span><span class="num">${c===null?"-":c.toFixed(1)} / ${tg.toFixed(1)}</span></div>`;
+  const fnRows=FN.map(f=>{const ks=withCur.filter(k=>k.c.startsWith(f));const all=cs.filter(k=>k.c.startsWith(f));const c=ks.length?ks.reduce((a,k)=>a+k.cur,0)/ks.length:null;const tg=all.reduce((a,k)=>a+k.tgt,0)/all.length;return pair(`${f} ${esc(M.functions[f][L])}`,c,tg);}).join("");
+  const catRows=cs.map(k=>pair(`<span class="mono">${k.c}</span>`,k.cur,k.tgt)).join("");
+  const dist={"0":0,"1":0,"2":0,"3":0,"4":0,NA:0};SUBS.forEach(s=>{const e=eff(s);if(e.st==="rated")dist[String(e.v)]++;else if(e.st==="NA")dist.NA++;});const dmax=Math.max(1,...Object.values(dist));
+  const qd={al:[],un:[],pa:[],gp:[]};SUBS.forEach(s=>{const q=quad(s);if(q)qd[q].push(s);});
+  $("v-dash").innerHTML=`${rated?"":`<div class="callout ok">${x.noData}</div>`}
+  <div class="kpis"><div class="kpi box"><b>${rated} / ${SUBS.length}</b><span>${x.kpi.rated}</span></div><div class="kpi box"><b>${Math.round(rated/SUBS.length*100)}%</b><span>${x.kpi.cov}</span></div><div class="kpi box"><b>${avg}</b><span>${x.kpi.cur}</span></div><div class="kpi box ${atT===withCur.length&&withCur.length?"ok":""}"><b>${atT} / ${CATS.length}</b><span>${x.kpi.tgt}</span></div><div class="kpi box warn"><b>${fuOpen}</b><span>${x.kpi.fu}</span></div><div class="kpi box warn"><b>${capN}</b><span>${x.kpi.cap}</span></div><div class="kpi box"><b>${SUBS.filter(s=>eff(s).covCap).length}</b><span>${x.kpi.covcap}</span></div><div class="kpi box"><b>${S.people.length}</b><span>${x.kpi.ppl}</span></div><div class="kpi box"><b>${S.sys.length} / ${S.sys.filter(y=>sysCrit(y)==="A").length} / ${sampled().length}</b><span>${x.kSys} / A / ${x.kSmp}</span></div><div class="kpi box"><b>${drItems().length}</b><span>${x.kDr}</span></div></div>
+  <div class="grid2"><div class="box pad"><h2>${x.byFn}</h2><p class="mini">${x.barLeg}</p><div class="bars">${fnRows}</div>
+   <h3>${x.dist}</h3><div class="bars">${Object.entries(dist).map(([k,v])=>`<div class="bar"><span>${tierChip(k)} ${esc(x.tl[k])}</span><span class="tr"><i style="width:${v/dmax*100}%;background:var(--accent)"></i></span><span class="num">${v}</span></div>`).join("")}</div></div>
+  <div class="box pad"><h2>${x.byCat}</h2><p class="mini">${x.barLeg}</p><div class="bars">${catRows}</div></div></div>
+  <div class="box pad" style="margin-top:12px"><h2>${x.tcRes}</h2><p class="hint">${x.tcResHint}</p><div class="legend"><span><i style="background:var(--ok)"></i>${x.tcv.Y}</span><span><i style="background:var(--warn)"></i>${x.tcv.P}</span><span><i style="background:var(--bad)"></i>${x.tcv.N}</span><span><i style="background:var(--na)"></i>${x.tcv.NA}</span></div><div class="bars">${DKEYS.map(d=>{const ids=TC.filter(c=>c.d===d).map(c=>c.id),k=tcCount(ids),tot=ids.length;const w=v=>v/tot*100;return `<div class="bar"><span>${esc(DOM[d].n[L])}</span><span class="tr" title="${x.tcv.Y} ${k.Y} / ${x.tcv.P} ${k.P} / ${x.tcv.N} ${k.N} / ${x.tcv.NA} ${k.NA} / ${x.tcNone} ${k.none}"><i style="width:${w(k.Y)}%;background:var(--ok)"></i><i style="width:${w(k.P)}%;background:var(--warn)"></i><i style="width:${w(k.N)}%;background:var(--bad)"></i><i style="width:${w(k.NA)}%;background:var(--na)"></i></span><span class="num">${tot-k.none}/${tot}</span></div>`;}).join("")}</div></div>
+  <div class="box pad" style="margin-top:12px"><h2>${x.cross}</h2><p class="hint">${x.crossHint}</p>${LA?`<div class="quad">${["al","un","pa","gp"].map(k=>`<div style="background:${k==="al"?"var(--ok-soft)":k==="gp"?"var(--bad-soft)":"var(--warn-soft)"}"><b class="n">${qd[k].length}</b><b>${esc(x.q4[k][0])}</b><div class="mini">${esc(x.q4[k][1])}</div><div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">${qd[k].map(s=>`<button class="btn sm mono" data-go="${s}">${s}</button>`).join("")}</div></div>`).join("")}</div>`:`<p class="mini">${x.crossNo}</p>`}</div>`;}
+
+function renderFu(){const x=t(),L=Li();const items=fuItems();const dri=drItems();
+  const drRows=dri.map(it=>{const st=(S.dr[it.key]||{}).st||"req",k=enc(it.key);const d=it.doc?DBY[it.doc]:null;
+    return `<tr><td>${d?`<span class="mono">${d.id}</span> ${esc(L?d.th:d.en)}`:esc(it.label)}</td><td>${it.subs.map(s=>`<button class="btn sm mono" data-go="${s}">${s}</button>`).join(" ")}</td><td class="mini">${esc(drWho(it))}</td><td><select data-drt="${k}" id="drt-${k}" aria-label="${esc(x.drc.type)}">${Object.entries(x.drType).map(([c,l])=>`<option value="${c}"${((S.dr[it.key]||{}).type||"doc")===c?" selected":""}>${esc(l)}</option>`).join("")}</select></td><td><select data-drm="${k}" id="drm-${k}" aria-label="${esc(x.drc.method)}"><option value="">-</option>${Object.entries(x.drMethod).map(([c,l])=>`<option value="${c}"${(S.dr[it.key]||{}).method===c?" selected":""}>${esc(l)}</option>`).join("")}</select></td><td>${seg("drs:"+k,["req","recv","none"],st,x.drs)}</td><td><input type="text" id="drr-${k}" data-drr="${k}" value="${esc((S.dr[it.key]||{}).recv||"")}" placeholder="${esc(x.phRecv)}" style="width:100%"></td></tr>`;}).join("");
+  $("v-fu").innerHTML=`<h2>${x.drListTitle} <span class="mini">${dri.length}</span></h2><p class="hint">${x.drListHint}</p><div class="box scroll" style="margin-bottom:16px"><table class="t" style="min-width:1300px"><thead><tr><th>${x.drc.doc}</th><th>${x.drc.src}</th><th>${x.drc.who}</th><th>${x.drc.type}</th><th>${x.drc.method}</th><th>${x.drc.st}</th><th style="min-width:200px">${x.drc.recv}</th></tr></thead><tbody>${drRows||`<tr><td colspan="7" class="mini">${x.drNone}</td></tr>`}</tbody></table></div>
+  <h2>${x.evTitle}</h2><p class="hint">${x.fuHint}</p><div class="box scroll"><table class="t" style="min-width:1000px"><thead><tr><th>${x.cols.id}</th><th>${x.cols.req}</th><th>${x.cols.from}</th><th>${x.cols.tier}</th><th>${x.cols.status}</th><th style="min-width:220px">${x.cols.recv}</th></tr></thead><tbody>
+  ${items.map(s=>{const r=S.subs[s],e=eff(s);const who=(r.who||[]).map(i=>S.people[i]).filter(Boolean).map(p=>p.name).join(", ")||Q[s].r.map(role).join(", ");
+   return `<tr><td><button class="btn sm mono" data-go="${s}">${s}</button><div class="mini">${r.fu?x.fuSrc.man:x.fuSrc.cap}</div></td><td>${esc(r.fuText||Q[s].e[L])}</td><td class="mini">${esc(who)}</td><td>${tierChip(e.st==="rated"?String(e.v):null)}${e.capped?` <span class="mini">(${e.raw})</span>`:""}</td><td>${seg("fust:"+s,["open","recv"],r.fuSt||"open",x.fs)}</td><td><input type="text" id="rv-${s}" data-recv="${s}" value="${esc(r.recv||"")}" placeholder="${esc(x.phRecv)}" style="width:100%"></td></tr>`;}).join("")||`<tr><td colspan="6" class="mini">-</td></tr>`}</tbody></table></div>`;}
+
+/* ---------- print ---------- */
+function printRole(k){const x=t(),L=Li();const subs=roleSubs(k);const ppl=S.people.filter(p=>p.role===k).map(p=>p.name).filter(Boolean).join(", ");
+  $("printArea").innerHTML=`<h1>${x.printTitle}: ${esc(role(k))}</h1><p>${x.client}: ${esc(S.client.name||"")} · ${x.printDate}: ____________ · ${x.printPpl}: ${esc(ppl||"____________")}</p>
+  ${subs.map(s=>`<div class="pq"><p><b>${s}</b> ${esc(outc(s))}</p><p><i>${x.scene}:</i> ${esc(Q[s].f[L])}</p><p><b>${x.scenario}:</b> ${esc(Q[s].x[L])}</p><p><b>${x.question}:</b> ${esc(Q[s].q[L])}</p><ul>${Q[s].p.map(p=>`<li>${esc(p[L])}</li>`).join("")}</ul><p><i>${x.evReq}: ${esc(Q[s].e[L])}</i></p><p>Tier: 0 / 1 / 2 / 3 / 4 / N/A &nbsp;&nbsp; ${x.evQ}: ${EVB.map(v=>x.ev[v]).join(" / ")}</p><div class="pl"></div></div>`).join("")}`;
+  window.print();}
+
+function printSess(id){const x=t(),L=Li(),k=SBY[id];const ppl=S.people.filter(p=>k.r.includes(p.role)).map(p=>p.name).filter(Boolean).join(", ");
+  const pfLegend=sec=>PF.filter(f=>f.sec===sec).map(f=>`<p style="margin:2pt 0;font-size:9pt"><b>${f.id} ${esc(f.n[L])}</b> (${esc(f.ask[L])}): ${f.o.map(o=>"[ ] "+esc(o.n[L])).join("  ")}</p>`).join("");
+  const coreTbl=`<h3>${x.pfTitle}</h3><table style="width:100%;border-collapse:collapse" border="1"><tr><th style="font-size:8pt">${esc(x.sc.name)}</th>${PF.filter(f=>f.sec==="core").map(f=>`<th style="font-size:8pt">${f.id}</th>`).join("")}</tr>${Array.from({length:15},()=>`<tr>${Array.from({length:PF.filter(f=>f.sec==="core").length+1},()=>"<td style='height:16pt'></td>").join("")}</tr>`).join("")}</table>${pfLegend("core")}`;
+  const sysTbl=id==="S2"?`<h3>${x.tabs.sys}</h3><table style="width:100%;border-collapse:collapse" border="1"><tr>${["name","svc","own","host","data","inet","ven",...IMP,"mtd","man","crit"].map(f=>`<th style="font-size:8pt">${esc(x.sc[f])}</th>`).join("")}</tr>${Array.from({length:12},()=>`<tr>${Array.from({length:16},()=>"<td style='height:18pt'></td>").join("")}</tr>`).join("")}</table><p style="font-size:9pt">${esc(Object.values(x.impO).join(" · "))}</p>${coreTbl}`:id==="S6"?`<h3>${x.pfSec.full}</h3>${pfLegend("full")}<h3>${x.pfSec.dev}</h3>${pfLegend("dev")}`:id==="S5"?`<h3>${x.tabs.ven}</h3>${pfLegend("ven")}`:"";
+  const tcs=k.areas.length?`<h3>${x.tcTitle}</h3>`+TC.filter(c=>k.areas.includes(c.d)).map(c=>`<div class="pq"><p><b>${c.id}</b> ${esc(c.q[L])}</p><p><i>${x.good}: ${esc(c.g[L])} [${esc(c.ref)}]</i></p><p>${["Y","P","N","NA"].map(v=>"[ ] "+x.tcv[v]).join("   ")}</p></div>`).join(""):"";
+  $("printArea").innerHTML=`<h1>${k.id} ${esc(k.n[L])}</h1><p>${x.client}: ${esc(S.client.name||"")} · ${x.printDate}: ____________ · ${x.printPpl}: ${esc(ppl||"____________")}</p><p><b>${x.sObj}:</b> ${esc(k.obj[L])}</p>${sysTbl}${envPrint(k.id)}${deptPrint(k.id)}
+  ${k.subs.map(s=>`<div class="pq"><p><b>${s}</b> ${esc(outc(s))}</p><p><i>${x.scene}:</i> ${esc(Q[s].f[L])}</p><p><b>${x.scenario}:</b> ${esc(Q[s].x[L])}</p><p><b>${x.question}:</b> ${esc(Q[s].q[L])}</p><ul>${Q[s].p.map(p=>`<li>${esc(p[L])}</li>`).join("")}</ul><p><i>${x.evReq}: ${esc(Q[s].e[L])}</i></p><p>Tier: 0 / 1 / 2 / 3 / 4 / N/A &nbsp; ${x.drTitle}: ${(DOCS_BY_SUB[s]||[]).map(id=>"[ ] "+id).join("  ")}</p><div class="pl"></div></div>`).join("")}${tcs}`;
+  window.print();}
+function printDom(d){const x=t(),L=Li();const ppl=S.people.filter(p=>DOM[d].r.includes(p.role)).map(p=>p.name).filter(Boolean).join(", ");
+  $("printArea").innerHTML=`<h1>${x.printTech}: ${esc(DOM[d].n[L])}</h1><p>${x.client}: ${esc(S.client.name||"")} · ${x.printDate}: ____________ · ${x.printPpl}: ${esc(ppl||"____________")}</p>
+  ${TC.filter(c=>c.d===d).map(c=>`<div class="pq"><p><b>${c.id}</b> ${esc(c.q[L])}</p><p><i>${x.good}: ${esc(c.g[L])} [${esc(c.ref)}]</i></p><p>${["Y","P","N","NA"].map(v=>"[ ] "+x.tcv[v]).join("   ")} &nbsp; CSF: ${c.s.join(", ")}</p><div class="pl"></div></div>`).join("")}`;
+  window.print();}
+
+/* ---------- rendering + events ---------- */
+const VIEWS={setup:renderSetup,plan:renderPlan,sys:renderSys,ven:renderVen,env:renderEnv,dept:renderDept,iv:renderIv,tech:renderTech,obs:renderObs,score:renderScore,dash:renderDash,fu:renderFu};
+function renderStatic(){const x=t();document.documentElement.lang=lang==="TH"?"th":"en";$("t-title").textContent=x.title;
+  $("b-help").textContent=x.help;$("b-open").textContent=x.open;$("b-save").textContent=x.save;$("b-xlsx").textContent=x.xlsx;
+  $("b-th").setAttribute("aria-pressed",lang==="TH");$("b-en").setAttribute("aria-pressed",lang==="EN");
+  const c=S.client;$("eng").innerHTML=`${x.client}: <b>${esc(c.name||x.phClient)}</b> · ${x.assessor}: <b>${esc(c.assessor||"-")}</b> · ${x.date}: <b>${esc(c.date||"-")}</b>${LA?` · <span class="st Exists">${lang==="TH"?"เชื่อม Audit แล้ว":"Audit linked"}</span>`:""}`;
+  $("tabs").innerHTML=Object.entries(x.tabs).map(([k,v])=>`<button role="tab" data-tab="${k}" aria-selected="${view===k}">${esc(v)}</button>`).join("");renderSavebar();}
+function renderView(){Object.keys(VIEWS).forEach(k=>$("v-"+k).hidden=k!==view);VIEWS[view]();}
+function renderAll(){renderStatic();renderView();}
+function setView(v){view=v;try{history.replaceState(null,"","#"+v)}catch(e){}renderStatic();renderView();window.scrollTo({top:0});}
+function goSub(s){cur=s;roleFilter="";if(view!=="iv"){view="iv";try{history.replaceState(null,"","#iv")}catch(e){}renderStatic();Object.keys(VIEWS).forEach(k=>$("v-"+k).hidden=k!=="iv");renderIv();["l-role","l-fn","l-cat","l-st","l-q"].forEach(id=>$(id).value="");renderList();renderDetail();}else{renderList();renderDetail();}const dt=$("detail");if(dt)dt.scrollIntoView({block:"start"});}
+function refreshIv(){renderDetail();renderList();}
+
+document.addEventListener("click",e=>{
+  const tb=e.target.closest("[data-tab]");if(tb){setView(tb.dataset.tab);return;}
+  const pk=e.target.closest("[data-pick]");if(pk){cur=pk.dataset.pick;renderList();renderDetail();if(window.innerWidth<900)$("detail").scrollIntoView({block:"start"});return;}
+  const go=e.target.closest("[data-go]");if(go){goSub(go.dataset.go);return;}
+  const stt=e.target.closest("[data-start]");if(stt){roleFilter=stt.dataset.start;view="iv";renderStatic();$("v-iv").innerHTML="";Object.keys(VIEWS).forEach(k=>$("v-"+k).hidden=k!=="iv");renderIv();$("l-role").value=roleFilter;const it=listItems();cur=it[0]||cur;renderList();renderDetail();window.scrollTo({top:0});return;}
+  const pr=e.target.closest("[data-print]");if(pr){printRole(pr.dataset.print);return;}
+  const ssn=e.target.closest("[data-sess]");if(ssn){sessFilter=ssn.dataset.sess;roleFilter="";view="iv";try{history.replaceState(null,"","#iv")}catch(er){}renderStatic();Object.keys(VIEWS).forEach(k=>$("v-"+k).hidden=k!=="iv");$("v-iv").innerHTML="";renderIv();["l-role","l-fn","l-cat","l-st","l-q"].forEach(id=>$(id).value="");$("l-sess").value=sessFilter;cur=SBY[sessFilter].subs[0];renderList();renderDetail();window.scrollTo({top:0});return;}
+  const psn=e.target.closest("[data-printsess]");if(psn){printSess(psn.dataset.printsess);return;}
+  const dsy=e.target.closest("[data-delsys]");if(dsy){const di=+dsy.dataset.delsys;S.sys.splice(di,1);S.vendors.forEach(v=>{v.sys=(v.sys||[]).filter(z=>z!==di).map(z=>z>di?z-1:z);});(S.env.t.chg||[]).forEach(r=>{r.sys=(r.sys||[]).filter(z=>z!==di).map(z=>z>di?z-1:z);});S.dept.forEach(d=>{d.sys=(d.sys||[]).filter(z=>z!==di).map(z=>z>di?z-1:z);});if(curSys===di)curSys=-1;else if(curSys>di)curSys--;persist();renderSys();return;}
+  const pfd=e.target.closest("[data-pfdet]");if(pfd){const v=+pfd.dataset.pfdet;curSys=curSys===v?-1:v;renderSys();const el=$("pfdetail");if(el)el.scrollIntoView({block:"start"});return;}
+  const dve=e.target.closest("[data-delven]");if(dve){S.vendors.splice(+dve.dataset.delven,1);persist();renderVen();return;}
+  if(e.target.id==="b-adddept"){S.dept.push({n:S.dept.reduce((m,d)=>Math.max(m,d.n||0),0)+1,u:{},sys:[],cq:{}});persist();renderDept();const f=$("dd-"+(S.dept.length-1)+"-name");if(f)f.focus();return;}
+  if(e.target.id==="b-addcq"){S.dq.push({n:S.dq.reduce((m,q)=>Math.max(m,q.n||0),0)+1,q:"",s:""});persist();renderDept();const f=$("cqe-"+(S.dq.length-1)+"-q");if(f)f.focus();return;}
+  const dde=e.target.closest("[data-deldept]");if(dde){S.dept.splice(+dde.dataset.deldept,1);persist();renderDept();return;}
+  const dcq=e.target.closest("[data-delcq]");if(dcq){const q=S.dq.splice(+dcq.dataset.delcq,1)[0];S.dept.forEach(d=>{if(d.cq)delete d.cq[q.n];});persist();renderDept();return;}
+  const ash=e.target.closest("[data-addshadow]");if(ash){const c=deptConflicts()[+ash.dataset.addshadow];if(c&&c.sys){S.sys.push({name:c.sys,svc:"Found in "+c.dept+" interview (S2C)"});persist();renderDept();toast(t().addToSys+": "+c.sys);}return;}
+  const ea=e.target.closest("[data-envadd]");if(ea){const k=ea.dataset.envadd,a=S.env.t[k];a.push({n:a.reduce((m,r)=>Math.max(m,r.n||0),0)+1});persist();renderEnv();return;}
+  const ed=e.target.closest("[data-envdel]");if(ed){const [k,i]=ed.dataset.envdel.split(":");S.env.t[k].splice(+i,1);persist();renderEnv();return;}
+  const dob=e.target.closest("[data-delobs]");if(dob){S.obs.splice(+dob.dataset.delobs,1);persist();renderObs();return;}
+  const pd=e.target.closest("[data-printdom]");if(pd){printDom(pd.dataset.printdom);return;}
+  const sd=e.target.closest("[data-startdom]");if(sd){curDom=sd.dataset.startdom;setView("tech");return;}
+  const dm=e.target.closest("[data-dom]");if(dm){curDom=dm.dataset.dom;renderTech();return;}
+  if(e.target.id==="b-dprev"||e.target.id==="b-dnext"){const i=DKEYS.indexOf(curDom)+(e.target.id==="b-dprev"?-1:1);if(DKEYS[i]){curDom=DKEYS[i];renderTech();window.scrollTo({top:0});}return;}
+  const wh=e.target.closest("[data-who]");if(wh){const r=sr(cur),i=+wh.dataset.who;r.who=r.who||[];r.who=r.who.includes(i)?r.who.filter(z=>z!==i):r.who.concat(i);persist();renderDetail();return;}
+  const dp=e.target.closest("[data-delp]");if(dp){const i=+dp.dataset.delp;S.people.splice(i,1);Object.values(S.subs).forEach(r=>{r.who=(r.who||[]).filter(z=>z!==i).map(z=>z>i?z-1:z);});persist();renderSetup();return;}
+  const sg=e.target.closest("[data-seg]");if(sg){const [kind,id]=sg.dataset.seg.split(/:(.+)/);const v=sg.dataset.v;
+    if(kind==="tier"){const r=sr(cur);r.tier=r.tier===v?"":v;persist();refreshIv();return;}
+    if(kind==="ev"){const r=sr(cur);r.ev=r.ev===v?"":v;persist();refreshIv();return;}
+    if(kind==="fust"){sr(id).fuSt=v;persist();renderFu();return;}
+    if(kind==="drs"){const kk=dec(id);(S.dr[kk]||(S.dr[kk]={})).st=v;persist();renderFu();return;}
+    if(kind==="tc"){const r=tcr(id);r.r=r.r===v?"":v;persist();if(view==="tech")renderTech();else renderDetail();return;}}
+  if(e.target.id==="b-addsys"){S.sys.push({});persist();renderSys();const f=$("sy-"+(S.sys.length-1)+"-name");if(f)f.focus();return;}
+  if(e.target.id==="b-addven"){S.vendors.push({p:{},sys:[]});persist();renderVen();const f=$("vn-"+(S.vendors.length-1)+"-name");if(f)f.focus();return;}
+  if(e.target.id==="b-addobs"){const n=S.obs.reduce((m,o)=>Math.max(m,o.n||0),0)+1;S.obs.push({n,type:"vuln",st:"open"});persist();renderObs();const f=$("ob-"+(S.obs.length-1)+"-sys");if(f)f.focus();return;}
+  if(e.target.id==="b-addp"){S.people.push({name:"",role:"",dept:"",date:S.client.date||""});persist();renderSetup();const i=S.people.length-1;const f=$("pp-"+i+"-name");if(f)f.focus();return;}
+  if(e.target.id==="b-prev"||e.target.id==="b-next"){const it=listItems();const i=it.indexOf(cur);const j=e.target.id==="b-prev"?i-1:i+1;if(it[j]){cur=it[j];renderList();renderDetail();$("detail").scrollIntoView({block:"start"});}return;}
+  if(e.target.id==="b-sample"){openConfirm();return;}
+  if(e.target.id==="cf-ok"){closeConfirm();loadSample();return;}
+  if(e.target.id==="cf-save"){$("b-save").click();return;}
+  if(e.target.id==="cf-cancel"||e.target.id==="confirm"){closeConfirm();return;}
+  if(e.target.id==="b-link"){$("file").click();return;}
+  if(e.target.id==="b-unlink"){LA=null;persist();renderAll();return;}
+  if(e.target.id==="b-copyeng"){if(LA&&LA.client){S.client=Object.assign(blank().client,LA.client);persist();renderAll();toast(t().toastCopied);}return;}
+  if(e.target.id==="b-reset"){if(!resetArm){resetArm=true;renderSetup();setTimeout(()=>{if(resetArm){resetArm=false;if(view==="setup")renderSetup();}},4000);return;}resetArm=false;S=blank();persist();renderAll();toast(t().toastReset);return;}
+});
+document.addEventListener("change",e=>{const el=e.target;
+  if(el.dataset.rule){const k=el.dataset.rule;S.rules[k]=k==="tgt"?el.value:el.value==="1";persist();renderSetup();return;}
+  if(el.dataset.pp){const [i,k]=el.dataset.pp.split(":");S.people[+i][k]=el.value;persist();if(k==="role")renderSetup();return;}
+  if(el.dataset.catcur){const o=S.cats[el.dataset.catcur]||(S.cats[el.dataset.catcur]={});o.cur=el.value;persist();renderScore();return;}
+  if(el.dataset.cattgt){const o=S.cats[el.dataset.cattgt]||(S.cats[el.dataset.cattgt]={});o.tgt=el.value;persist();renderScore();return;}
+  if(el.dataset.sy){const [i,f]=el.dataset.sy.split(":");S.sys[+i][f]=el.value;persist();if(el.tagName==="SELECT")renderSys();return;}
+  if(el.dataset.sysmp){S.sys[+el.dataset.sysmp].smp=el.checked;persist();renderSys();return;}
+  if(el.dataset.sc){const [i,k]=el.dataset.sc.split(":");const y=S.sys[+i];y.ctl=y.ctl||{};if(el.value)y.ctl[k]=el.value;else delete y.ctl[k];persist();renderSys();return;}
+  if(el.dataset.pf){const [i,f]=el.dataset.pf.split(":");const y=S.sys[+i];y.p=y.p||{};if(el.value)y.p[f]=el.value;else delete y.p[f];persist();renderSys();return;}
+  if(el.dataset.pfe){const [i,f]=el.dataset.pfe.split(":");const y=S.sys[+i];y.pe=y.pe||{};y.pe[f]=el.value;persist();return;}
+  if(el.dataset.vp){const [i,f]=el.dataset.vp.split(":");const v=S.vendors[+i];v.p=v.p||{};if(el.value)v.p[f]=el.value;else delete v.p[f];persist();renderVen();return;}
+  if(el.dataset.vsys){S.vendors[+el.dataset.vsys].sys=[...el.selectedOptions].map(o=>+o.value);persist();return;}
+  if(el.dataset.ob){const [i,k]=el.dataset.ob.split(":");S.obs[+i][k]=el.value;persist();if(el.tagName==="SELECT")renderObs();return;}
+  if(el.dataset.env){S.env.f[el.dataset.env]=el.value;persist();renderEnv();return;}
+  if(el.dataset.du){const [i,f]=el.dataset.du.split(":");const d=S.dept[+i];d.u=d.u||{};if(el.value)d.u[f]=el.value;else delete d.u[f];persist();renderDept();return;}
+  if(el.dataset.dm){const [i,f,c]=el.dataset.dm.split(":");const d=S.dept[+i];d.u=d.u||{};let a=(d.u[f]||[]).filter(z=>z!==c);if(el.checked){a=c==="none"?["none"]:a.filter(z=>z!=="none").concat(c);}d.u[f]=a;persist();renderDept();return;}
+  if(el.dataset.dsys){S.dept[+el.dataset.dsys].sys=[...el.selectedOptions].map(o=>+o.value);persist();renderDept();return;}
+  if(el.dataset.dq){const [i,n,k]=el.dataset.dq.split(":");const d=S.dept[+i];d.cq=d.cq||{};const a=d.cq[n]||(d.cq[n]={});a[k]=el.value;persist();if(k==="r")renderDept();return;}
+  if(el.dataset.dd){const [i,k]=el.dataset.dd.split(":");S.dept[+i][k]=el.value;persist();if(k==="xsys"||k==="name")renderDept();return;}
+  if(el.dataset.cqe){const [i,k]=el.dataset.cqe.split(":");S.dq[+i][k]=el.value;persist();renderDept();return;}
+  if(el.dataset.envm){const [k,c]=el.dataset.envm.split(":");let a=(S.env.f[k]||[]).filter(z=>z!==c);if(el.checked){a=c==="none"?["none"]:a.filter(z=>z!=="none").concat(c);}S.env.f[k]=a;persist();renderEnv();return;}
+  if(el.dataset.enve){S.env.e[el.dataset.enve]=el.value;persist();return;}
+  if(el.dataset.envt){const [k,i,c]=el.dataset.envt.split(":");const r=S.env.t[k][+i];r[c]=el.multiple?[...el.selectedOptions].map(o=>+o.value):el.value;persist();if(el.tagName==="SELECT"||el.type==="date")renderEnv();return;}
+  if(el.dataset.drt){const kk=dec(el.dataset.drt);(S.dr[kk]||(S.dr[kk]={})).type=el.value;persist();return;}
+  if(el.dataset.drm){const kk=dec(el.dataset.drm);(S.dr[kk]||(S.dr[kk]={})).method=el.value;persist();return;}
+  if(el.dataset.rb){S.rb[el.dataset.rb]=el.checked?new Date().toISOString().slice(0,10):"";persist();renderPlan();return;}
+  if(el.dataset.cov){const r=sr(cur);r.covOv=el.value;persist();refreshIv();return;}
+  if(el.dataset.drq){const r=sr(cur);r.dr=r.dr||{};r.dr[el.dataset.drq]=el.checked;persist();return;}
+  if(el.id==="l-sess"){sessFilter=el.value;renderList();return;}
+  if(el.dataset.probe!==undefined){const r=sr(cur);r.probes=r.probes||{};r.probes[el.dataset.probe]=el.checked;persist();return;}
+  if(el.dataset.fu){const r=sr(cur);r.fu=el.checked;if(el.checked&&!r.fuText)r.fuText=Q[cur].e[Li()];persist();refreshIv();return;}
+  if(el.id==="l-role"){roleFilter=el.value;renderList();return;}
+  if(el.id&&el.id.startsWith("l-")){renderList();return;}
+  if(el.dataset.cl){S.client[el.dataset.cl]=el.value;persist();renderStatic();return;}
+});
+document.addEventListener("input",e=>{const el=e.target;
+  if(el.dataset.cl){S.client[el.dataset.cl]=el.value;persist();return;}
+  if(el.dataset.pp){const [i,k]=el.dataset.pp.split(":");S.people[+i][k]=el.value;persist();return;}
+  if(el.dataset.f){sr(cur)[el.dataset.f]=el.value;persist();return;}
+  if(el.dataset.catwhy){const o=S.cats[el.dataset.catwhy]||(S.cats[el.dataset.catwhy]={});o.why=el.value;persist();return;}
+  if(el.dataset.recv){sr(el.dataset.recv).recv=el.value;persist();return;}
+  if(el.dataset.sy&&el.tagName!=="SELECT"){const [i,f]=el.dataset.sy.split(":");S.sys[+i][f]=el.value;persist();return;}
+  if(el.dataset.drr){const kk=dec(el.dataset.drr);(S.dr[kk]||(S.dr[kk]={})).recv=el.value;persist();return;}
+  if(el.dataset.tcn){tcr(el.dataset.tcn).n=el.value;persist();return;}
+  if(el.dataset.scr){const [i,k]=el.dataset.scr.split(":");const y=S.sys[+i];y.cref=y.cref||{};y.cref[k]=el.value;persist();return;}
+  if(el.dataset.pfn){const [i,sec]=el.dataset.pfn.split(":");const y=S.sys[+i];y.pn=y.pn||{};y.pn[sec]=el.value;persist();return;}
+  if(el.dataset.vn){const [i,k]=el.dataset.vn.split(":");S.vendors[+i][k]=el.value;persist();return;}
+  if(el.dataset.env&&el.tagName!=="SELECT"){S.env.f[el.dataset.env]=el.value;persist();return;}
+  if(el.dataset.envn){S.env.n[el.dataset.envn]=el.value;persist();return;}
+  if(el.dataset.dd&&el.tagName!=="SELECT"){const [i,k]=el.dataset.dd.split(":");S.dept[+i][k]=el.value;persist();return;}
+  if(el.dataset.dq&&el.tagName!=="SELECT"){const [i,n,k]=el.dataset.dq.split(":");const d=S.dept[+i];d.cq=d.cq||{};(d.cq[n]||(d.cq[n]={}))[k]=el.value;persist();return;}
+  if(el.dataset.cqe){const [i,k]=el.dataset.cqe.split(":");S.dq[+i][k]=el.value;persist();return;}
+  if(el.dataset.envt&&el.tagName!=="SELECT"&&el.type!=="date"){const [k,i,c]=el.dataset.envt.split(":");S.env.t[k][+i][c]=el.value;persist();return;}
+  if(el.dataset.ob&&el.tagName!=="SELECT"){const [i,k]=el.dataset.ob.split(":");S.obs[+i][k]=el.value;persist();return;}
+  if(el.id==="l-q"){renderList();return;}
+});
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(!$("confirm").hidden)closeConfirm();else if(!$("help").hidden)closeHelp();});
+let cfFocus=null;
+function openConfirm(){const x=t();cfFocus=document.activeElement;const n=x.cfHas(SUBS.filter(s=>eff(s).st!=="none").length,S.sys.length,S.people.length);
+  $("confirm-body").innerHTML=`<h2 id="cf-title" style="margin-top:0">${esc(x.cfTitle)}</h2><div class="callout" style="border-left-color:var(--bad)">${esc(x.cfBody(n))}</div><div class="hbtns" style="margin-top:14px;justify-content:flex-end"><button class="btn" id="cf-cancel">${esc(x.cfCancel)}</button><button class="btn" id="cf-save">${esc(x.cfSave)}</button><button class="btn danger" id="cf-ok">${esc(x.cfOk)}</button></div>`;
+  $("confirm").hidden=false;$("cf-cancel").focus();}
+function closeConfirm(){$("confirm").hidden=true;if(cfFocus&&cfFocus.focus)cfFocus.focus();}
+
+/* ---------- engagement file: save / open (shared with the Document Audit Tracker) ---------- */
+function fileBase(){return ((S.client.name||(LA&&LA.client&&LA.client.name)||"client").replace(/[^A-Za-z0-9ก-๙]+/g,"-")+"_csf-engagement_"+new Date().toISOString().slice(0,10));}
+function download(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
+$("b-save").onclick=()=>{const b={app:"csf-engagement",v:1,schemaVersion:SCHEMA,rubricVersion:RUBV,saved:new Date().toISOString(),interview:S,audit:LA};download(fileBase()+".json",new Blob([JSON.stringify(b,null,1)],{type:"application/json"}));toast(t().toastSaved);};
+$("b-open").onclick=()=>$("file").click();
+$("file").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{const o=JSON.parse(await f.text());let msg;
+  if(o&&o.app==="csf-engagement"){if(o.interview&&o.interview.app==="csf-interview"){S=norm(o.interview);msg=t().toastOpened;}if(o.audit&&o.audit.app==="csf-doc-audit"){LA=o.audit;msg=msg||t().toastLinked;}if(!msg)throw 0;}
+  else if(o&&o.app==="csf-interview"){S=norm(o);msg=t().toastOpened;}
+  else if(o&&o.app==="csf-doc-audit"){LA=o;msg=t().toastLinked;}
+  else throw 0;
+  if(LA&&!S.client.name&&LA.client)S.client=Object.assign(blank().client,LA.client);
+  persist();renderAll();toast(msg);}catch(err){toast(t().toastBad);}e.target.value="";});
+
+/* ---------- minimal XLSX writer (stored zip, inline strings) ---------- */
+const CRC=(()=>{const tb=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;tb[n]=c>>>0;}return b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=tb[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0;};})();
+function zip(files){const enc=new TextEncoder();const parts=[],cd=[];let off=0;
+  for(const [name,str] of files){const nb=enc.encode(name),db=enc.encode(str),crc=CRC(db);
+    const lh=new DataView(new ArrayBuffer(30));lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint16(8,0,true);lh.setUint32(14,crc,true);lh.setUint32(18,db.length,true);lh.setUint32(22,db.length,true);lh.setUint16(26,nb.length,true);
+    parts.push(new Uint8Array(lh.buffer),nb,db);
+    const ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint32(16,crc,true);ch.setUint32(20,db.length,true);ch.setUint32(24,db.length,true);ch.setUint16(28,nb.length,true);ch.setUint32(42,off,true);
+    cd.push(new Uint8Array(ch.buffer),nb);off+=30+nb.length+db.length;}
+  const cdSize=cd.reduce((s,a)=>s+a.length,0);const end=new DataView(new ArrayBuffer(22));end.setUint32(0,0x06054b50,true);end.setUint16(8,files.length,true);end.setUint16(10,files.length,true);end.setUint32(12,cdSize,true);end.setUint32(16,off,true);
+  return new Blob([...parts,...cd,new Uint8Array(end.buffer)],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});}
+const xe=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"");
+function colName(i){let s="";i++;while(i){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;}
+function sheetXml(rows,widths){const cols=widths?`<cols>${widths.map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join("")}</cols>`:"";
+  const body=rows.map((r,ri)=>`<row r="${ri+1}">${r.map((v,ci)=>{const ref=colName(ci)+(ri+1),st=ri===0?' s="1"':' s="2"';return typeof v==="number"?`<c r="${ref}"${st}><v>${v}</v></c>`:`<c r="${ref}" t="inlineStr"${st}><is><t xml:space="preserve">${xe(v)}</t></is></c>`;}).join("")}</row>`).join("");
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>${cols}<sheetData>${body}</sheetData><autoFilter ref="A1:${colName(Math.max(0,(rows[0]||[]).length-1))}${rows.length}"/></worksheet>`;}
+function xlsx(sheets){const wb=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheets.map((s,i)=>`<sheet name="${xe(s.name)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join("")}</sheets></workbook>`;
+  const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join("")}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="10"/><name val="Calibri"/></font><font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1F3864"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="3"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("")}</Types>`;
+  const root=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`;
+  return zip([["[Content_Types].xml",ct],["_rels/.rels",root],["xl/workbook.xml",wb],["xl/_rels/workbook.xml.rels",rels],["xl/styles.xml",styles],...sheets.map((s,i)=>[`xl/worksheets/sheet${i+1}.xml`,sheetXml(s.rows,s.widths)])]);}
+$("b-xlsx").onclick=()=>{const x=t(),L=Li(),c=S.client;const pn=i=>{const p=S.people[i];return p?(p.name||"-")+(p.role?" ("+role(p.role)+")":""):"";};
+  const rated=SUBS.filter(s=>eff(s).st!=="none").length;
+  const sum=[["Item","Value"],["Client",c.name],["Assessor",c.assessor],["Assessment date",c.date],["Engagement reference",c.ref],["Scope",c.scope],["Exported",new Date().toISOString()],
+   ["Scoring rule: Tier 2+ needs evidence",S.rules.cap?"Yes":"No"],["Scoring rule: demonstration counts as evidence",S.rules.obs?"Yes":"No"],["Default Target Tier",S.rules.tgt],
+   ["Schema version",SCHEMA],["Tier Rubric version",RUBV],["Category roll-up rule","Highest Tier reached by at least half of the rated Subcategories (Tier Rubric R4)"],["Coverage rule","Tier 3 and above need coverage of Largely or Full on Coverage-applicable Subcategories (Tier Rubric R3)"],
+   ["Subcategories rated",rated+" / "+SUBS.length],["Next-tier ready (coverage)",SUBS.filter(s=>eff(s).covCap).length],["Systems listed",S.sys.length],["Environment fields answered",EF.filter(envAnswered).length+" / "+EF.length],["Departments interviewed",S.dept.length],["Department conflicts with IT answers",deptConflicts().length],["Security tools bought, not deployed",(S.env.t.tools||[]).filter(r=>r.st==="bnd").length],["Changes in flight within 12 months",(S.env.t.chg||[]).filter(r=>within12(r.date)).length],["Systems with Core profile complete",S.sys.filter(y=>PF.filter(f=>f.sec==="core").every(f=>(y.p||{})[f.id])).length],["Vendors listed",S.vendors.length],["Technical observations",S.obs.length],["Read-back confirmed",SESS.filter(k=>S.rb[k.id]).map(k=>k.id+" ("+S.rb[k.id]+")").join(", ")],["Technical checks completed",(()=>{const k=tcCount(TC.map(c=>c.id));return `${TC.length-k.none} / ${TC.length} (Yes ${k.Y}, Partial ${k.P}, No ${k.N}, N/A ${k.NA})`;})()],["Interviewees",S.people.length],["Linked audit file",LA?((LA.client||{}).name||"yes"):"No"]];
+  const cats=[["Category","Name","Function","Subcategories","Rated","Average counted tier","Suggested Tier","Current Tier","Overridden","Target Tier","Gap","Counted lower","Next-tier ready (coverage)","Justification"]];
+  CATS.forEach(k=>{const s=catStat(k);cats.push([k,M.categories[k][L],k.slice(0,2),s.n,s.rated,s.mean===null?"":+s.mean.toFixed(2),s.sug===null?"":s.sug,s.cur===null?"":s.cur,s.over?"Yes":"No",s.tgt,s.cur===null?"":Math.max(0,s.tgt-s.cur),s.capped,s.covCapped,s.why]);});
+  const subs=[["ID","Session","Function","Category","Outcome","Main question","Answered by","Stated tier","Evidence basis","Counted tier","Counted lower","Evidence reference","Interview notes","Gap statement","Evidence requested","Request","Request status","Received evidence","Related documents","Document status (audit)","Practice vs document","Technical checks (Yes / Partial / No)","Coverage-applicable","Coverage","Coverage %","Coverage source","Coverage override reason","Next-tier ready","Technical observations"]];
+  SUBS.forEach(s=>{const r=S.subs[s]||{},e=eff(s),docs=DOCS_BY_SUB[s]||[],q=quad(s);
+   subs.push([s,SUB_SESS[s],fnOf(s),catOf(s),outc(s),Q[s].q[L],(r.who||[]).map(pn).join("; "),r.tier===""||r.tier==null?"":r.tier==="NA"?"N/A":r.tier,r.ev?x.ev[r.ev]:"",e.st==="rated"?e.v:e.st==="NA"?"N/A":"",e.capped?"Yes":"",r.ref||"",r.notes||"",r.gap||"",r.fu?"Yes":"",r.fuText||"",r.fu||e.capped?x.fs[r.fuSt||"open"]:"",r.recv||"",docs.join(", "),LA?docs.map(id=>id+": "+x.sv[auditStatus(id)]).join("; "):"",q?x.q4[q][0]:"",(()=>{const ids=TC_BY_SUB[s]||[];if(!ids.length)return"";const k=tcCount(ids);return `${k.Y} / ${k.P} / ${k.N} of ${ids.length}`;})(),...(()=>{const c=covOf(s);return c.app?["Yes",x.covBand[c.band],c.pct===null?"":Math.round(c.pct*100),c.ov?x.covSrc.ov:c.src?x.covSrc[c.src]:"",c.ov?c.why:"",e.covCap?"Yes":""]:["","","","","",""];})(),obsFor(s).map(obsId).join(", ")]);});
+  const ppl=[["Name","Role","Department or title","Interview date","Subcategories answered"]];S.people.forEach((p,i)=>ppl.push([p.name,p.role?role(p.role):"",p.dept,p.date,SUBS.filter(s=>((S.subs[s]||{}).who||[]).includes(i)).length]));
+  const fu=[["ID","Outcome","Reason","Evidence to request","Ask","Stated tier","Status","Received evidence"]];fuItems().forEach(s=>{const r=S.subs[s],e=eff(s);fu.push([s,outc(s),r.fu?x.fuSrc.man:x.fuSrc.cap,r.fuText||Q[s].e[L],(r.who||[]).map(pn).join("; ")||Q[s].r.map(role).join(", "),e.raw===undefined?"":e.raw,x.fs[r.fuSt||"open"],r.recv||""]);});
+  const qs=[["ID","Outcome","Suggested roles","Set the scene","Scenario question","Main question","Prompt 1","Prompt 2","Evidence to request"]];SUBS.forEach(s=>qs.push([s,outc(s),Q[s].r.map(role).join(", "),Q[s].f[L],Q[s].x[L],Q[s].q[L],(Q[s].p[0]||["",""])[L],(Q[s].p[1]||["",""])[L],Q[s].e[L]]));
+  const sysx=[["System","Business service","Owner","Hosting","Data sensitivity","Internet-facing","Vendor remote access","Shared infrastructure","Operations","Financial","Legal or regulatory","Reputation","Health and safety","Personal data","Tolerable downtime","Manual workaround","Suggested criticality","Criticality","Reason","Sampled","Hosting code"]];
+  S.sys.forEach(y=>{const g=(o,v)=>v?o[v]:"";sysx.push([y.name||"",y.svc||"",y.own||"",g(x.hostO,y.host),g(x.dataO,y.data),g(x.ynO,y.inet),g(x.ynO,y.ven),g(x.ynO,y.shared),...IMP.map(k=>y[k]?+y[k]:""),g(x.mtdO,y.mtd),g(x.ynO,y.man),sysSug(y),sysCrit(y),y.why||"",y.smp?"Yes":"",y.host||""]);});
+  const smx=[["Control","CSF Subcategories",...sampled().flatMap(z=>[z.y.name||"-",(z.y.name||"-")+" source",(z.y.name||"-")+" evidence"])]];SYSCTL.forEach(c=>smx.push([c.n[L],c.s.join(", "),...sampled().flatMap(z=>{const cv=ctlVal(z.y,c.k);return [cv.v?x.sysv[cv.v]:"",cv.src?x.smpSrc[cv.src]:"",(z.y.cref||{})[c.k]||""];})]));smx.push(["Notes","",...sampled().flatMap(z=>[z.y.snote||"","",""])]);
+  const pfx=[["System","Criticality","Sampled","Section","Field ID","Field","Answer","Rating","Evidence","CSF Subcategories","Section notes","Answer code"]];S.sys.forEach(y=>PF.forEach(f=>{const v=(y.p||{})[f.id];if(!v&&!pfApplies(y,f.sec))return;const o=v?pfOpt(f,v):null;pfx.push([y.name||"",sysCrit(y),y.smp?"Yes":"",x.pfSec[f.sec],f.id,f.n[L],o?o.n[L]:"",o?T.EN.rt[o.r]:"",(y.pe||{})[f.id]?x.ev[y.pe[f.id]]:"",f.s.join(", "),(y.pn||{})[f.sec]||"",v||""]);}));
+  const vfx=[["Vendor",...VF.flatMap(f=>[f.id+" "+f.n[L],f.id+" rating"]),"Linked systems","Notes",...VF.map(f=>f.id+" code")]];S.vendors.forEach(v=>vfx.push([v.name||"",...VF.flatMap(f=>{const c=(v.p||{})[f.id];const o=c?pfOpt(f,c):null;return [o?o.n[L]:"",o&&o.r!=="X"?T.EN.rt[o.r]:""];}),(v.sys||[]).map(j=>(S.sys[j]||{}).name||"").filter(Boolean).join(", "),v.note||"",...VF.map(f=>(v.p||{})[f.id]||"")]));
+  const obx=[["ID","Type","System","Description","Severity","Internet-facing","Related Subcategories","Status","Notified on","Notes"]];S.obs.forEach(o=>obx.push([obsId(o),o.type?x.obsT[o.type]:"",o.sys||"",o.desc||"",o.sev?x.obsSev[o.sev]:"",o.inet?x.ynO[o.inet]:"",o.subs||"",o.st?x.obsSt[o.st]:"",o.date||"",o.note||""]));
+  const drx=[["No.","Document ID","Document","Raised in Subcategories","Session","Ask","Type","Method","Status","Received file"]];drItems().forEach((it,n)=>{const d=it.doc?DBY[it.doc]:null;const o=S.dr[it.key]||{};drx.push([n+1,d?d.id:"",d?(L?d.th:d.en):it.label,it.subs.join(", "),[...new Set(it.subs.map(s=>SUB_SESS[s]))].join(", "),drWho(it),x.drType[o.type||"doc"],o.method?x.drMethod[o.method]:"",x.drs[o.st||"req"],o.recv||""]);});
+  const tcs=[["ID","Technology area","Check","Good practice","Reference","CSF Subcategories","Result","Observation"]];TC.forEach(c=>{const r=S.tc[c.id]||{};tcs.push([c.id,DOM[c.d].n[L],c.q[L],c.g[L],c.ref,c.s.join(", "),r.r?x.tcv[r.r]:"",r.n||""]);});
+  const efx=[["Field ID","Key","Field","Session","Landscape blocks","Answer","Answer code","Evidence","Notes","CSF Subcategories"]];
+  EF.forEach(f=>{const v=S.env.f[f.k];efx.push([f.id,f.k,f.n[L],f.sess,f.block.join(", "),f.type==="num"?numv(v):envFieldText(f,L),Array.isArray(v)?v.join(", "):(f.type==="sel"?(v||""):""),S.env.e[f.k]?x.ev[S.env.e[f.k]]:"",S.env.n[f.k]||"",f.s.join(", ")]);});
+  const etx=z=>{const h=["ID"];z.cols.forEach(c=>{h.push(c.n[0]);if(c.type==="sel")h.push(c.n[0]+" code");});if(z.k==="chg")h.push("Within 12 months");const rows=[h];
+    (S.env.t[z.k]||[]).forEach(r=>{const row=[rowId(z,r)];z.cols.forEach(c=>{const v=r[c.k];row.push(c.type==="num"?numv(v):envCell(z,c,r,L));if(c.type==="sel")row.push(v||"");});if(z.k==="chg")row.push(r.date?(within12(r.date)?"Yes":"No"):"");rows.push(row);});
+    return {name:{sites:"Sites",tools:"Security Tools",hist:"Incident History",chg:"Changes in Flight",prior:"Prior Assessments"}[z.k],rows,widths:[10,...h.slice(1).map(()=>24)]};};
+  const dpx=[["Department","Interviewees","Date","Staff","U1 Systems used","U1 Systems not on the IT list",...DF.filter(f=>f.type!=="sys").flatMap(f=>[f.id+" "+f.n[0],f.id+" code",f.id+" rating"]),"Notes"]];
+  S.dept.forEach(d=>dpx.push([dName(d),d.ppl||"",d.date||"",numv(d.staff),dText(d,DFBY.U1,L),dOther(d).join(", "),...DF.filter(f=>f.type!=="sys").flatMap(f=>{const v=(d.u||{})[f.id],r=dRate(d,f);return [dText(d,f,L),Array.isArray(v)?v.join(", "):(v||""),r?T.EN.rt[r]:""];}),d.note||""]));
+  const dqx=[["Department","Question ID","Question","CSF Subcategories","Answer","Rating"]];S.dept.forEach(d=>S.dq.forEach(q=>{const a=(d.cq||{})[q.n]||{};if(a.a||a.r)dqx.push([dName(d),"U9-"+q.n,q.q||"",q.s||"",a.a||"",a.r?T.EN.rt[a.r]:""]);}));
+  const dcx=[["ID","Department","Type","Type code","Detail","Evidence"]];deptConflicts().forEach(c=>dcx.push([c.id,c.dept,T.EN.cfT[c.type],c.type,c.detail,c.ev.join(", ")]));
+  download(fileBase().replace("csf-engagement","csf-interview")+".xlsx",xlsx([{name:"Summary",rows:sum,widths:[40,70]},{name:"Document Requests",rows:drx,widths:[5,13,50,30,10,36,18,22,12,36]},{name:"Systems (Quick BIA)",rows:sysx,widths:[24,28,20,14,12,10,10,10,8,8,8,8,8,8,16,10,10,10,30,8]},{name:"System Profile",rows:pfx,widths:[24,10,8,18,8,34,40,12,14,22,40]},{name:"System Sampling",rows:smx,widths:[46,22,...sampled().flatMap(()=>[14,12,24])]},{name:"Vendor Profile",rows:vfx,widths:[28,...VF.flatMap(()=>[26,10]),30,36]},{name:"Environment Profile",rows:efx,widths:[8,8,40,8,14,40,14,14,40,24]},...ETB.map(etx),{name:"Departments",rows:dpx,widths:[22,26,12,8,30,30,...DF.filter(f=>f.type!=="sys").flatMap(()=>[30,10,10]),36]},{name:"Department Custom",rows:dqx,widths:[22,10,50,20,50,10]},{name:"Department Conflicts",rows:dcx,widths:[9,22,36,10,80,40]},{name:"Technical Observations",rows:obx,widths:[9,18,22,60,10,10,24,10,12,36]},{name:"Category Tiers",rows:cats,widths:[9,44,8,10,8,12,10,10,10,10,6,10,50]},{name:"Subcategories",rows:subs,widths:[10,7,7,8,50,60,30,8,14,8,8,30,60,50,8,40,10,30,30,40,24,20,10,10,10,26,30,10,16]},{name:"Interviewees",rows:ppl,widths:[28,40,30,14,12]},{name:"Evidence Requests",rows:fu,widths:[10,50,20,60,36,8,10,36]},{name:"Technical Checks",rows:tcs,widths:[9,30,70,70,26,18,10,50]},{name:"Question Bank",rows:qs,widths:[10,50,40,60,60,60,50,50,50]}]));toast(t().toastXlsx);};
+
+/* ---------- sample ---------- */
+function loadSample(){S=blank();S.client={name:"Sample: Chaophraya Medical Center (fictional)",assessor:"Sample Assessor, Senior Consultant",date:"2026-10-05",ref:"SAMPLE-001",scope:"Two hospitals, HIS, PACS, LIS, ERP, Microsoft 365. Fictional example data."};
+  S.people=[{name:"Sample CIO",role:"CIO",dept:"Information Technology",date:"2026-10-05"},{name:"Sample IT Infrastructure Manager",role:"ITM",dept:"IT Infrastructure",date:"2026-10-05"},{name:"Sample DPO",role:"DPO",dept:"Legal and Compliance",date:"2026-10-06"},{name:"Sample HR Director",role:"HR",dept:"Human Resources",date:"2026-10-06"},{name:"Sample Procurement Manager",role:"PROC",dept:"Procurement",date:"2026-10-06"},{name:"Sample Facilities Manager",role:"FAC",dept:"Facilities",date:"2026-10-07"}];
+  const base={GV:1,ID:1,PR:2,DE:1,RS:1,RC:1};const bump={"PR.AA-03":2,"PR.DS-11":2,"PR.IR-02":3,"PR.AA-06":3,"GV.OC-03":2,"ID.AM-01":2,"GV.RR-04":2,"PR.AT-01":1,"GV.SC-04":1,"ID.AM-07":2,"PR.PS-02":1,"ID.RA-01":2,"DE.CM-09":2,"GV.RM-02":0,"GV.RM-07":0,"ID.RA-08":0,"RS.AN-07":0,"GV.SC-10":0};
+  const roleIdx=k=>S.people.findIndex(p=>p.role===k);
+  SUBS.forEach((s,i)=>{if(i%7===6)return;const r=sr(s);const tv=bump[s]!==undefined?bump[s]:base[fnOf(s)];r.tier=String(tv);r.ev=tv>=2?(i%3===0?"S":i%3===1?"O":"D"):"S";
+    const w=Q[s].r.map(roleIdx).filter(z=>z>=0);r.who=w.length?[w[0]]:[0];r.notes="Sample: interviewee described the current practice with one example.";
+    if(tv<3)r.gap="Sample: practice is not formally approved or applied consistently across both hospitals.";if(i%9===0){r.fu=true;r.fuText=Q[s].e[0];}if(r.ev==="D")r.ref="Sample: record reference provided";});
+  TC.forEach((c,i)=>{if(i%5===4)return;S.tc[c.id]={r:["Y","P","N","P","Y","N","NA"][i%7],n:"Sample: answer from the IT Infrastructure Manager."};});
+  S.sys=[{name:"HIS",svc:"Patient registration, orders, billing",own:"Sample CIO",host:"onprem",data:"H",inet:"N",ven:"Y",shared:"N",ops:"5",fin:"4",leg:"4",rep:"4",hs:"5",pd:"5",mtd:"4h",man:"N",smp:true,snote:"Sample: vendor connects with AnyDesk left running.",
+     p:{C1:"cotsc",C2:"staff",C3:"local",C4:"none",C5:"many",C6:"no",C7:"always",C8:"late",C9:"online",F1:"bus",F2:"man",F3:"never",F4:"never",F5:"no",F6:"none",F7:"edr",F8:"some",F9:"no",F10:"flat",D1:"vend",D2:"vonly",D3:"two",D4:"inf",D5:"func",D6:"never",D7:"no",D8:"cfg",D9:"prod",D10:"none",D11:"heavy",D12:"jit"},
+     pe:{C4:"O",C7:"O",F3:"S",F4:"S"},pn:{core:"Sample: MFA status shown live on the HIS login screen.",dev:"Sample: vendor holds the source code; no escrow agreement found."},cref:{mfa:"Sample: login screen shown in S6"}},
+   {name:"PACS",svc:"Medical imaging",own:"Sample Radiology Head",host:"vendor",data:"H",inet:"N",ven:"Y",shared:"N",ops:"5",fin:"3",leg:"3",rep:"3",hs:"4",pd:"4",mtd:"1d",man:"N",smp:true,
+     p:{C1:"cots",C2:"staff",C3:"local",C4:"none",C5:"shared",C6:"no",C7:"always",C8:"eol",C9:"imm",F1:"it",F2:"noap",F3:"never",F4:"unk",F5:"unk",F6:"none",F7:"none",F8:"unk",F9:"unk",F10:"shared"}},
+   {name:"LIS",svc:"Laboratory results",own:"Sample Lab Manager",host:"vendor",data:"H",inet:"N",ven:"Y",shared:"N",ops:"4",fin:"3",leg:"3",rep:"3",hs:"4",pd:"4",mtd:"1d",man:"Y",
+     p:{C1:"cots",C2:"staff",C3:"local",C4:"none",C5:"many",C6:"no",C7:"sup",C8:"vend",C9:"vend"}},
+   {name:"ERP",svc:"Finance, procurement, payroll",own:"Sample CFO",host:"onprem",data:"M",inet:"N",ven:"Y",shared:"N",ops:"2",fin:"4",leg:"3",rep:"2",hs:"1",pd:"3",mtd:"1w",man:"Y",
+     p:{C1:"cotsc",C2:"staff",C3:"dir",C4:"none",C5:"named",C6:"no",C7:"vpn",C8:"late",C9:"online",D1:"vend",D11:"mod"}},
+   {name:"Microsoft 365",svc:"Email, Teams, files",own:"Sample IT Infrastructure Manager",host:"saas",data:"M",inet:"Y",ven:"N",shared:"Y",ops:"3",fin:"3",leg:"2",rep:"3",hs:"1",pd:"3",mtd:"1d",man:"N",smp:true,
+     p:{C1:"saas",C2:"staff",C3:"sso",C4:"adm",C5:"many",C7:"none",C9:"none",F1:"bus",F2:"man",F3:"never",F4:"never",F6:"cen",F8:"all",F9:"yes"},ctl:{pat:"NA",dr:"NA",edr:"NA",seg:"NA"},pn:{core:"Sample: SaaS login is public by design; conditional access not configured."}},
+   {name:"Active Directory and network core",svc:"Logon and connectivity for all systems",own:"Sample IT Infrastructure Manager",host:"onprem",data:"M",inet:"N",ven:"N",shared:"Y",ops:"5",fin:"4",leg:"2",rep:"3",hs:"4",pd:"2",mtd:"4h",man:"N",smp:true,
+     p:{C1:"cots",C2:"staff",C3:"dir",C4:"none",C5:"shared",C6:"no",C7:"none",C8:"late",C9:"online",F1:"it",F2:"man",F3:"never",F4:"never",F5:"no",F6:"cen",F7:"edr",F10:"flat"},ctl:{enc:"NA"}},
+   {name:"Hospital website",svc:"Public information, appointment requests",own:"Sample Communications Manager",host:"cloud",data:"L",inet:"Y",ven:"Y",shared:"N",ops:"1",fin:"1",leg:"2",rep:"3",hs:"1",pd:"2",mtd:"gt",man:"Y",
+     p:{C1:"out",C2:"pub",C3:"local",C4:"none",C5:"shared",C6:"direct",C7:"always",C8:"eol",C9:"less",D1:"vend",D2:"vonly",D3:"prod",D4:"direct",D5:"none",D6:"never",D7:"no",D8:"hard",D9:"noenv",D10:"none",D12:"perm"}}];
+  ["spd","spd","spd","pd","pd","none","pd"].forEach((v,i)=>{S.sys[i].p.C11=v;});
+  S.env={f:{dc:"Sample: server room at Hospital 1",dr:"untested",seg:"part",rem:"vpn",ws:"900",eol:"5to20",shws:"yes",otn:"150",otp:"shared",bka:"online",ith:"25",secr:"part",outs:["app"]},
+   e:{dr:"S",seg:"S",rem:"O",bka:"O",secr:"S"},n:{dr:"Sample: the Hospital 2 server room can host HIS. Failover has never been tested.",secr:"Sample: the IT Infrastructure Manager covers security alongside operations.",otp:"Sample: infusion pumps and imaging modalities share the clinical VLAN with workstations."},
+   t:{sites:[{n:1,name:"Sample: Hospital 1",type:"hosp",staff:"750"},{n:2,name:"Sample: Hospital 2",type:"hosp",staff:"450"}],
+    tools:[{n:1,cap:"fw",prod:"Sample: next-generation firewall",cov:"full",op:"inh",st:"use"},{n:2,cap:"edr",prod:"Sample: EDR agent",cov:"part",op:"inh",st:"use",note:"Sample: servers only"},
+     {n:3,cap:"av",prod:"Sample: antivirus",cov:"full",op:"inh",st:"use",note:"Sample: workstations"},{n:4,cap:"eml",prod:"Sample: Microsoft 365 email filtering",cov:"full",op:"vend",st:"use"},
+     {n:5,cap:"log",prod:"Sample: syslog server",cov:"part",op:"nobody",st:"use",note:"Sample: logs are collected but nobody reviews them"},{n:6,cap:"mfa",prod:"Sample: Microsoft Entra ID MFA",cov:"part",op:"inh",st:"use",note:"Sample: Microsoft 365 administrators only"},
+     {n:7,cap:"vs",prod:"Sample: vulnerability scanner license",cov:"none",op:"nobody",st:"bnd",note:"Sample: bought in 2025, never installed"},{n:8,cap:"pam",prod:"",cov:"none",op:"nobody",st:"plan"},
+     {n:9,cap:"bkp",prod:"Sample: backup software",cov:"part",op:"inh",st:"use"}],
+    hist:[{n:1,date:"2025-03-12",type:"acc",sys:"Microsoft 365",imp:"Sample: one mailbox sent phishing email to patients for two hours",rep:"nr"}],
+    chg:[{n:1,proj:"Sample: PACS replacement",sys:[1],date:"2027-03-31",st:"contr"},{n:2,proj:"Sample: HIS major version upgrade",sys:[0],date:"2028-01-31",st:"plan"}],
+    prior:[{n:1,type:"ia",date:"2025-11-20",by:"Sample: CMC Internal Audit",open:"6",closed:"2"},{n:2,type:"pt",date:"2024-08-15",by:"Sample: external testing firm, hospital website",open:"4",closed:"1"}]}};
+  S.dq=[{n:1,q:"Do you use generative AI tools such as ChatGPT for work, and what data do you enter?",s:"PR.DS-01 GV.PO-01"}];
+  S.dept=[{n:1,name:"Sample: Outpatient Nursing",ppl:"Sample: head nurse and two staff nurses",date:"2026-10-06",staff:"180",sys:[0,2],xsys:"",u:{U2:"some",U3:"stay",U4:["line","phone"],U5:"none",U6:"old",U7:"it",U8:"inf"},cq:{1:{a:"Sample: no",r:"G"}},note:"Sample: nurses photograph lab results to send to doctors through LINE."},
+   {n:2,name:"Sample: Food and Beverage",ppl:"Sample: kitchen supervisor",date:"2026-10-06",staff:"60",sys:[3],xsys:"Sample: diet order sheet on Google Sheets",u:{U2:"shared",U3:"stay",U4:["line"],U5:"none",U6:"never",U7:"dk",U8:"stop"},cq:{1:{a:"Sample: no",r:"G"}}},
+   {n:3,name:"Sample: Finance",ppl:"Sample: finance manager and accountant",date:"2026-10-07",staff:"25",sys:[3,4],xsys:"",u:{U2:"own",U3:"no",U4:["usb"],U5:"vpn",U6:"12m",U7:"named",U8:"inf"},cq:{1:{a:"Sample: uses a free AI tool to summarize vendor contracts",r:"P"}}},
+   {n:4,name:"Sample: Marketing and PR",ppl:"Sample: marketing manager",date:"2026-10-07",staff:"8",sys:[4,6],xsys:"Sample: Canva, Sample: Facebook Business Suite",u:{U2:"some",U3:"no",U4:["cloud","mail"],U5:"tool",U6:"old",U7:"it",U8:"inf"},cq:{1:{a:"Sample: writes patient stories with an AI tool",r:"W"}}}];
+  S.vendors=[{name:"Sample HIS vendor",p:{V1:"sw",V2:"rem",V3:"spd",V4:"conf",V5:"no",V6:"once",V7:"A"},sys:[0],note:"Sample: support through AnyDesk."},
+   {name:"Sample PACS vendor",p:{V1:"med",V2:"rem",V3:"spd",V4:"none",V5:"no",V6:"never",V7:"A"},sys:[1]},
+   {name:"Sample cloud provider",p:{V1:"cloud",V2:"host",V3:"pd",V4:"full",V5:"yes",V6:"once",V7:"A"},sys:[4]},
+   {name:"Sample web agency",p:{V1:"sw",V2:"rem",V3:"pd",V4:"none",V5:"no",V6:"never",V7:"B"},sys:[6]}];
+  S.obs=[{n:1,type:"vuln",sys:"Hospital website",desc:"Sample: the admin login page is reachable from the internet and the server banner shows an unsupported PHP version. Observed only; not tested.",sev:"H",inet:"Y",subs:"PR.PS-02, ID.RA-01, PR.IR-01",st:"notified",date:"2026-10-07",note:"Sample: reported to the CIO by email."}];
+  S.rb={S1:"2026-10-05",S2:"2026-10-05"};
+  [["GV.PO-01",["GV-POL-001"]],["PR.DS-11",["PR-STD-006","PR-REC-003"]],["ID.AM-01",["ID-REG-001"]],["RS.MA-01",["RS-PLN-001"]],["GV.SC-05",["GV-TPL-004"]]].forEach(([s,ds])=>{const r=sr(s);r.dr={};ds.forEach(d=>r.dr[d]=true);});
+  sr("PR.AA-05").drOther="HIS user list exported for the 2025 internal audit";
+  S.dr["d:GV-POL-001"]={st:"recv",recv:"Sample: IT Policy 2019 (draft, unsigned)"};S.dr["d:ID-REG-001"]={st:"none",recv:""};
+  S.cats["PR.IR"]={cur:"2",why:"Sample: data center controls are strong, but network segmentation for medical devices is not in place."};
+  persist();renderAll();toast(t().toastSample);}
+
+/* ---------- help + lang ---------- */
+let lastFocus=null;
+function openHelp(){lastFocus=document.activeElement;$("help-body").innerHTML=t().helpHtml+`<p><button class="btn pri" id="help-close">${lang==="TH"?"ปิด":"Close"}</button></p>`;$("help").hidden=false;$("help-close").focus();}
+function closeHelp(){$("help").hidden=true;if(lastFocus)lastFocus.focus();}
+$("b-help").onclick=openHelp;$("help").addEventListener("click",e=>{if(e.target.id==="help"||e.target.id==="help-close")closeHelp();});
+function setLang(l){lang=l;try{localStorage.setItem("csf-audit-lang",l)}catch(e){}renderAll();}
+$("b-th").onclick=()=>setLang("TH");$("b-en").onclick=()=>setLang("EN");
+{const h=(location.hash||"").slice(1);if(VIEWS[h])view=h;}
+renderAll();
+</script>
