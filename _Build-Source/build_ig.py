@@ -20,9 +20,10 @@ from screening import SCREEN
 from techev import TECHEV
 from comms import COMMS
 from prompts import PROMPTS, RULES
+from doc_keywords import KW
 
 SCHEMA = "csf-ig/4"
-APP_VERSION = "2.0.0"
+APP_VERSION = "2.6.0"
 
 
 def load_data(tracker):
@@ -75,6 +76,9 @@ def main():
                (a == "opt" and b[0] in pk and b[1] in {o["k"] for o in pk[b[0]]["opts"]}), x["id"]
     docs = [{k: x[k] for k in DOC_KEYS} for x in d["docs"]]
     assert all(s in m["subcats"] for x in docs for s in x["csf"]), "Register CSF mapping must use valid Subcategories"
+    assert set(KW) == {x["id"] for x in docs}, "every Register document needs search keywords (doc_keywords.py)"
+    for x in docs:
+        x["kw"] = KW[x["id"]]
     data = dict(meta=dict(functions=m["functions"], categories=m["categories"], subcats=m["subcats"], subcats_th=m["subcats_th"],
                           roles=roles, caps=m["caps"], waves=m["waves"]),
                 adocs=docs, q=q, tc=TC, domains={k: dict(n=v[0], r=v[1].split()) for k, v in DOMAINS.items()},
@@ -88,7 +92,7 @@ def main():
     assert "__DATA__" in tpl
     body = tpl.replace("__DATA__", js)
     open("artifact_ig.html", "w", encoding="utf-8").write(body)
-    open(out, "w", encoding="utf-8").write(apply_viewmode(SKEL.replace("{body}", body), ["score", "dash"]))
+    open(out, "w", encoding="utf-8").write(apply_viewmode(SKEL.replace("{body}", body), ["suf", "dash"]))
     print("information gathering", len(body), "->", out)
 
 if __name__ == "__main__":

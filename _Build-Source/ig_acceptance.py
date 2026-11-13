@@ -15,7 +15,7 @@ sys.path.insert(0, str(R))
 from packs import MANDATES
 LOG = R.parent / "00_Master" / "Information-Gathering-Packs-Verification-Log.md"
 W = tempfile.mkdtemp()
-VIEWS = ["setup", "scope", "plan", "req", "sched", "comms", "sa", "ai", "iv", "sys", "ven", "env", "dept", "tech", "obs", "dapp", "drev", "ev", "fu", "rate", "score", "land", "dash", "ho"]
+VIEWS = ["setup", "scope", "plan", "req", "sched", "comms", "sa", "ai", "iv", "sys", "ven", "env", "dept", "tech", "obs", "dapp", "drev", "ev", "fu", "suf", "land", "dash", "ho"]
 EXPECT = {"mfg": "S", "hc": "M", "fin": "L"}
 res = []
 
@@ -54,15 +54,17 @@ async def main():
             await pg.evaluate(f"loadSample('{k}')")
             for v in VIEWS:
                 await pg.evaluate(f"setView('{v}')")
-            st = await pg.evaluate("[scale(),SUBS.filter(s=>eff(s).st==='none').length,hoCheck().err]")
+            st = await pg.evaluate("[scale(),SUBS.filter(s=>suff(s).k==='open').length,hoCheck().err]")
             ok(f"1 sample {k} runs end to end at scale {sc}", st[0] == sc and not pg.errs, f"scale {st[0]}, errors {pg.errs[:2]}")
             await pg.evaluate("setView('ho')")
-            f = await dl(pg, "#b-ho", f"handoff-{k}.json")
+            await pg.click("#b-ho")
+            f = await dl(pg, "#pw-plain", f"handoff-{k}.json")
             h = json.load(open(f, encoding="utf-8"))
             e = check_handoff(h)
-            ok(f"2 sample {k} exports a valid csf-p1-handoff/1 with 106 rated Subcategories", not e and sum(1 for s in h["subcategories"] if s["statedTier"]) == 106, "; ".join(e[:3]))
-            nolink = [s["id"] for s in h["subcategories"] if s["evidenceLevel"] in ("D", "O") and not s["evidenceIds"]]
-            ok(f"3 sample {k}: no Documented or Demonstrated rating lacks an Evidence ID", not nolink, nolink[:5])
+            ok(f"2 sample {k} exports a valid csf-p1-handoff/2 with 106 captured Subcategories and no Tier", h["schema"] == "csf-p1-handoff/2" and not e and sum(1 for s in h["subcategories"] if s["sufficiency"] != "open") == 106, "; ".join(e[:3]))
+            evids = {z["id"] for z in h["evidence"]}
+            nolink = [s["id"] for s in h["subcategories"] for z in s["log"] if z["mode"] == "shown" and z["evidenceId"] not in evids]
+            ok(f"3 sample {k}: every Shown log entry has an Evidence Register record", not nolink, nolink[:5])
             fx = await dl(pg, "#b-xlsx", f"export-{k}.xlsx")
             wb = openpyxl.load_workbook(fx, read_only=True)
             hdr = [str(c) for ws in wb for row in ws.iter_rows(max_row=1, values_only=True) for c in row if c]
@@ -71,7 +73,8 @@ async def main():
             ok(f"9 sample {k}: no Target value in state, Excel headers, or handoff", not tg, tg[:3])
         # anonymized handoff
         await pg.evaluate("loadSample('hc');S.setup.anonX=true;setView('ho')")
-        h = json.load(open(await dl(pg, "#b-ho", "handoff-anon.json"), encoding="utf-8"))
+        await pg.click("#b-ho")
+        h = json.load(open(await dl(pg, "#pw-plain", "handoff-anon.json"), encoding="utf-8"))
         txt = json.dumps(h, ensure_ascii=False)
         names = await pg.evaluate("[S.client.name,...S.people.map(p=>p.name)].filter(Boolean)")
         ok("2b aliased handoff hides client and people names and stays valid", not any(n in txt for n in names) and not check_handoff(h) and h["engagement"]["aliased"], [n for n in names if n in txt][:2])
@@ -80,8 +83,8 @@ async def main():
         pg = await page()
         A = await pg.evaluate("(()=>{loadSample('hc');return JSON.parse(JSON.stringify(S))})()")
         B = json.loads(json.dumps(A))
-        B["subs"]["PR.AA-05"]["tier"] = "3"
-        B["subs"]["GV.PO-01"]["notes"] = "Sample: session file note"
+        B["scr"]["PR.AA"] = "N" if A["scr"].get("PR.AA") != "N" else "Y"
+        B["subs"]["GV.PO-01"]["drOther"] = "Sample: session file request"
         B["people"].append({"name": "Sample Nurse Manager", "role": "SYSOWN", "dept": "Nursing", "date": "2026-10-08"})
         B["subs"]["PR.AA-01"].setdefault("st", []).append({"p": len(B["people"]) - 1, "k": "N", "txt": "Sample: nurses share logins"})
         B["team"].append({"name": "Sample Analyst 2", "ini": "SC"})
@@ -93,10 +96,10 @@ async def main():
         await pg.set_input_files("#file2", fb)
         await pg.wait_for_timeout(600)
         cf = await pg.evaluate("MG?MG.cf.map(c=>c.path.join('>')):[]")
-        await pg.evaluate("(()=>{const i=MG.cf.findIndex(c=>c.path.join('>')==='subs>PR.AA-05>tier');document.querySelector(`input[name=mg${i}][value=b]`).click();applyMerge();})()")
-        r = await pg.evaluate("({t:S.subs['PR.AA-05'].tier,np:S.people.length,ev:S.ev.map(e=>e.id),st:S.subs['PR.AA-01'].st.length,sys:S.sys.length,note:S.subs['GV.PO-01'].notes,open:!!MG})")
+        await pg.evaluate("(()=>{const i=MG.cf.findIndex(c=>c.path.join('>')==='scr>PR.AA');document.querySelector(`input[name=mg${i}][value=b]`).click();applyMerge();})()")
+        r = await pg.evaluate("({t:S.scr['PR.AA'],np:S.people.length,ev:S.ev.map(e=>e.id),st:S.subs['PR.AA-01'].st.length,sys:S.sys.length,note:S.subs['GV.PO-01'].drOther,open:!!MG})")
         lost = [e["id"] for e in A["ev"] if e["id"] not in r["ev"]]
-        ok("4 merge with conflicts resolves without data loss", "subs>PR.AA-05>tier" in cf and r["t"] == "3" and r["np"] == len(A["people"]) + 1 and "EV-SC-001" in r["ev"] and not lost
+        ok("4 merge with conflicts resolves without data loss", "scr>PR.AA" in cf and r["t"] == B["scr"]["PR.AA"] and r["np"] == len(A["people"]) + 1 and "EV-SC-001" in r["ev"] and not lost
            and r["st"] == len(A["subs"]["PR.AA-01"].get("st", [])) + 1 and r["sys"] == len(A["sys"]) + 1 and not r["open"], {"conflicts": len(cf), "lost": lost, "people": r["np"]})
 
         # 5: self-assessment round trip
